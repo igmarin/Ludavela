@@ -34,6 +34,8 @@ nonisolated struct LoteriaDeal: Equatable {
         case called(GamePicture)
         /// The called card is on the board with no bean yet: the card stays.
         case lookAgain
+        /// The player asked again, so the matching tile is shown as a one-time hint.
+        case showHelp(Int)
         /// Nothing left to call. Unreachable in play (see the type's comment); kept so the view never traps.
         case deckDone
     }
@@ -81,6 +83,8 @@ nonisolated struct LoteriaDeal: Equatable {
 
     let side: Int
     let pattern: Pattern
+    /// Whether a second "Look again" can point to the called card, for name-only levels 7–10.
+    let helpAvailable: Bool
     /// The board's cards, row by row.
     let board: [GamePicture]
     /// The calling order: every deck card, once.
@@ -91,14 +95,16 @@ nonisolated struct LoteriaDeal: Equatable {
     private(set) var marked: Set<Int> = []
     /// Taps on a tile not called yet, plus "Next card" while the called card waited on the board.
     private(set) var misses = 0
-    /// Whether the called card already cost its "look again" miss, so asking twice costs one.
+    /// Whether the first "Next card" already showed "Look again" for this called card.
     private var lookedAgain = false
+    /// Whether the matching tile has already been shown for this called card.
+    private var showedHelp = false
 
     /// Deals a board and a calling order for the level.
     static func make(difficulty: Difficulty, using generator: inout some RandomNumberGenerator) -> LoteriaDeal {
         let side = side(for: difficulty)
         return LoteriaDeal(
-            side: side, pattern: pattern(for: difficulty),
+            side: side, pattern: pattern(for: difficulty), helpAvailable: difficulty.level >= 7,
             board: Array(deck.shuffled(using: &generator).prefix(side * side)),
             calls: deck.shuffled(using: &generator))
     }
@@ -128,13 +134,23 @@ nonisolated struct LoteriaDeal: Equatable {
     /// "Next card": calls the next card, unless the called one is on the board and unmarked.
     mutating func next() -> NextOutcome {
         if let index = board.firstIndex(of: current), !marked.contains(index) {
-            if !lookedAgain { misses += 1 }
-            lookedAgain = true
+            if !lookedAgain {
+                misses += 1
+                lookedAgain = true
+                return .lookAgain
+            }
+            guard helpAvailable else { return .lookAgain }
+            if !showedHelp {
+                misses += 1
+                showedHelp = true
+                return .showHelp(index)
+            }
             return .lookAgain
         }
         guard calledCount < calls.count else { return .deckDone }
         calledCount += 1
         lookedAgain = false
+        showedHelp = false
         return .called(current)
     }
 }
