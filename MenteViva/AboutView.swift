@@ -16,6 +16,8 @@ struct AboutView: View {
                 paragraph("about.why.p1")
                 paragraph("about.why.p2")
                 paragraph("about.why.p3")
+                // The story names a diagnosis, so the disclaimer sits right under it (#552).
+                paragraph("onboarding.disclaimer")
                 paragraph("about.pictures")
                 paragraph("about.build")
                 paragraph("about.offline")
