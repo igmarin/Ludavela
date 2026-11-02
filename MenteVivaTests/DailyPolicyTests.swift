@@ -414,7 +414,11 @@ final class DailyPolicyTests: XCTestCase {
     func testGivenSeveralGamesRestedTheSameWhenOwedAPlaceThenTheFirstInGameIDOrderTakesIt() {
         let deal: [GameID] = [.memoryMatch, .quickEyes, .sudoku]
         let waiting = GameID.released.filter { !deal.contains($0) }
-        let result = DailyPolicy.withLongestWaiting(deal, from: GameID.released) { deal.contains($0) ? 0 : 10 }
+        let justPlayed = 0
+        let restedAlike = 10  // every other game rested the same number of days
+        let result = DailyPolicy.withLongestWaiting(deal, from: GameID.released) {
+            deal.contains($0) ? justPlayed : restedAlike
+        }
         XCTAssertEqual(result, [.memoryMatch, .quickEyes, waiting[0]], "all \(waiting.count) rested alike: GameID order decides")
     }
 

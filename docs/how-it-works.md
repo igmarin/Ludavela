@@ -11,7 +11,7 @@ launch
   HomeView.refreshPlan()             reads the last 14 days of sessions
     PlayerStateSummary.build         turns them into per-game numbers
     PlanStore.todaysPlan             today's games + each game's level (DailyPolicy)
-  player taps "Play today's three"   games run back to back
+  player taps "Start today's games" games run back to back
   a game ends
     modelContext.record(GameSession) one row saved, then the celebration
     the card joins the week board    (no scores shown to the player)
@@ -22,7 +22,7 @@ launch
 | Piece | Where | What it does |
 |---|---|---|
 | App entry | `MenteViva/MenteVivaApp.swift` | Opens the SwiftData store. Local-only build by default (free Apple ID). If no store opens, an in-memory one is used so play still works. |
-| Home | `HomeView.swift`, `GameCard.swift`, `Theme.swift` | Deals today's three as framed cards; each game has its own colour and an emblem drawn in SwiftUI shapes. |
+| Home | `HomeView.swift`, `GameCard.swift`, `Theme.swift` | Deals today's games (2, 3 or 5) as framed cards; each game has its own colour and an emblem drawn in SwiftUI shapes. |
 | Games | `Games/` | One file per game, plus the shared celebration, miss cue and `fitOrScroll`. |
 | Game list | `Models/GameID.swift` | The single list of games: stable ID, emoji, title key, whether it has levels. |
 | Levels | `Models/Difficulty.swift` | Levels 1–10 (#197). A game turns its level into its own knobs with `values(_:)`, a ten-row table. |
