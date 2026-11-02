@@ -36,6 +36,8 @@ struct WhyTheseGamesView: View {
                     line("why.game.tilepairs", source: .simons)
                     line("why.game.sliding", source: .simons)
                     line("why.game.photocaptions")
+                    line("why.game.wordsearch")
+                    line("why.game.loteria", source: .simons)
                     line("why.game.riddles")
                 }
 

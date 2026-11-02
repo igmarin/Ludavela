@@ -443,6 +443,8 @@ struct HomeView: View {
         case .tilePairs: TilePairsView()
         case .slidingBlocks: SlidingBlocksView()
         case .photoCaptions: MemoryMatchView(variant: .captions)
+        case .wordSearch: WordSearchView()
+        case .loteria: LoteriaView()
         case .riddles: RiddleView()
         }
     }

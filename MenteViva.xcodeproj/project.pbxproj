@@ -24,6 +24,8 @@
 		B0EF9D459562BD3300000023 /* InterruptionPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6933F6F74A2BB3F90000001D; };
 		8D9207C415703C120000001C /* LeaveGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C17B100EB7AC2E000000016; };
 		D456BAA2EE44DD2900000022 /* LevelExplainLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ED0207C93C607F0000001C; };
+		11ADE594F9FF7BF80000001D /* LoteriaDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08385CDF9018FDB600000017; };
+		FD6C741B7D1D9CD70000001D /* LoteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BCFC2846A5F21D00000017; };
 		A120B5E94542D41F00000020 /* MathStreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B6166437470950000001A; };
 		934DA6B35D17C6F90000001D /* MemoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D743B92F69A1AF00000017; };
 		2C26F128CAE066EF0000001C /* MemoryDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F600D269255E8500000016; };
@@ -62,6 +64,8 @@
 		FB6E81DBE4F4E8700000001F /* TilePairsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C339AC28C7DD1E00000019; };
 		FF53AA1B2E6FD52C0000001E /* UpOrDownDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1B8809735DB8A00000018; };
 		3F24DDA3A363333B0000001E /* UpOrDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25634A0D7E259100000018; };
+		74334D624DAFD10800000020 /* WordSearchDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE1E974C1AC0660000001A; };
+		7866CF9BB82D73A700000020 /* WordSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA94A1D33198510D0000001A; };
 		EE94290C1D7CE37100000017 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F548AF03C8043700000011; };
 		2A7F83F1E2F186E800000014 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04053E45A48AC460000000E; };
 		6866AB30C9E6CF9000000018 /* MenteVivaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65242C715F07923E00000012; };
@@ -139,6 +143,7 @@
 		629698CA737DD94600000037 /* InterruptionPauseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C465978B30833E400000031; };
 		CE284B5303E4A61900000030 /* LeaveGuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E4C780E979D4F0000002A; };
 		EE07AD69390E5FDA00000032 /* LevelExplainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65152AEC3FEF3E780000002C; };
+		B7E4B1FC59FC35F300000031 /* LoteriaDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9528366417CC390000002B; };
 		578160CE8C24557000000031 /* MemoryBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EEF523201AB21E0000002B; };
 		6B009816AE0FE1DA00000030 /* MemoryDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FC27F498CD0780000002A; };
 		A34345BFC3478D0200000037 /* MemoryMatchLevelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CECEA05CC9D6BF000000031; };
@@ -175,6 +180,7 @@
 		857E81F94A1E2E790000002C /* WarmUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1AB509F1BF452F00000026; };
 		0EEED9F3112B457400000033 /* WeeklySummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CB27B32AF72D220000002D; };
 		D45AEF3BDEB8E3E30000003A /* WhyTheseGamesStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6AD437F92C1C900000034; };
+		E09C6F8BE20EAEFB00000034 /* WordSearchDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26A0754DDCEA8D10000002E; };
 
 		38C5D34A8EFAFD760000000F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B91ABDA086A9E6DC00000010 /* BigTargets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigTargets.swift; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 		6933F6F74A2BB3F90000001D /* InterruptionPause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/InterruptionPause.swift; sourceTree = "<group>"; };
 		0C17B100EB7AC2E000000016 /* LeaveGuard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/LeaveGuard.swift; sourceTree = "<group>"; };
 		80ED0207C93C607F0000001C /* LevelExplainLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/LevelExplainLine.swift; sourceTree = "<group>"; };
+		08385CDF9018FDB600000017 /* LoteriaDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/LoteriaDeal.swift; sourceTree = "<group>"; };
+		69BCFC2846A5F21D00000017 /* LoteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/LoteriaView.swift; sourceTree = "<group>"; };
 		B13B6166437470950000001A /* MathStreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MathStreakView.swift; sourceTree = "<group>"; };
 		82D743B92F69A1AF00000017 /* MemoryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MemoryBoard.swift; sourceTree = "<group>"; };
 		88F600D269255E8500000016 /* MemoryDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MemoryDeal.swift; sourceTree = "<group>"; };
@@ -233,6 +241,8 @@
 		E8C339AC28C7DD1E00000019 /* TilePairsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/TilePairsView.swift; sourceTree = "<group>"; };
 		C5E1B8809735DB8A00000018 /* UpOrDownDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/UpOrDownDeal.swift; sourceTree = "<group>"; };
 		BF25634A0D7E259100000018 /* UpOrDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/UpOrDownView.swift; sourceTree = "<group>"; };
+		A8BE1E974C1AC0660000001A /* WordSearchDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/WordSearchDeal.swift; sourceTree = "<group>"; };
+		CA94A1D33198510D0000001A /* WordSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/WordSearchView.swift; sourceTree = "<group>"; };
 		E1F548AF03C8043700000011 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		C04053E45A48AC460000000E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		65242C715F07923E00000012 /* MenteVivaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaApp.swift; sourceTree = "<group>"; };
@@ -310,6 +320,7 @@
 		9C465978B30833E400000031 /* InterruptionPauseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/InterruptionPauseTests.swift; sourceTree = SOURCE_ROOT; };
 		C92E4C780E979D4F0000002A /* LeaveGuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/LeaveGuardTests.swift; sourceTree = SOURCE_ROOT; };
 		65152AEC3FEF3E780000002C /* LevelExplainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/LevelExplainTests.swift; sourceTree = SOURCE_ROOT; };
+		CE9528366417CC390000002B /* LoteriaDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/LoteriaDealTests.swift; sourceTree = SOURCE_ROOT; };
 		A2EEF523201AB21E0000002B /* MemoryBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryBoardTests.swift; sourceTree = SOURCE_ROOT; };
 		D55FC27F498CD0780000002A /* MemoryDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryDealTests.swift; sourceTree = SOURCE_ROOT; };
 		5CECEA05CC9D6BF000000031 /* MemoryMatchLevelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryMatchLevelsTests.swift; sourceTree = SOURCE_ROOT; };
@@ -346,6 +357,7 @@
 		2E1AB509F1BF452F00000026 /* WarmUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/WarmUpTests.swift; sourceTree = SOURCE_ROOT; };
 		A2CB27B32AF72D220000002D /* WeeklySummaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/WeeklySummaryTests.swift; sourceTree = SOURCE_ROOT; };
 		31F6AD437F92C1C900000034 /* WhyTheseGamesStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/WhyTheseGamesStringsTests.swift; sourceTree = SOURCE_ROOT; };
+		C26A0754DDCEA8D10000002E /* WordSearchDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/WordSearchDealTests.swift; sourceTree = SOURCE_ROOT; };
 		5D90A9FDEC5CFCA50000000D /* MenteViva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenteViva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5791C14BF0160AFA00000009 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9C5AA99071313C4200000015 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -394,6 +406,8 @@
 				6933F6F74A2BB3F90000001D /* InterruptionPause.swift */,
 				0C17B100EB7AC2E000000016 /* LeaveGuard.swift */,
 				80ED0207C93C607F0000001C /* LevelExplainLine.swift */,
+				08385CDF9018FDB600000017 /* LoteriaDeal.swift */,
+				69BCFC2846A5F21D00000017 /* LoteriaView.swift */,
 				B13B6166437470950000001A /* MathStreakView.swift */,
 				82D743B92F69A1AF00000017 /* MemoryBoard.swift */,
 				88F600D269255E8500000016 /* MemoryDeal.swift */,
@@ -432,6 +446,8 @@
 				E8C339AC28C7DD1E00000019 /* TilePairsView.swift */,
 				C5E1B8809735DB8A00000018 /* UpOrDownDeal.swift */,
 				BF25634A0D7E259100000018 /* UpOrDownView.swift */,
+				A8BE1E974C1AC0660000001A /* WordSearchDeal.swift */,
+				CA94A1D33198510D0000001A /* WordSearchView.swift */,
 				E1F548AF03C8043700000011 /* HistoryView.swift */,
 				C04053E45A48AC460000000E /* HomeView.swift */,
 				65242C715F07923E00000012 /* MenteVivaApp.swift */,
@@ -521,6 +537,7 @@
 				9C465978B30833E400000031 /* InterruptionPauseTests.swift */,
 				C92E4C780E979D4F0000002A /* LeaveGuardTests.swift */,
 				65152AEC3FEF3E780000002C /* LevelExplainTests.swift */,
+				CE9528366417CC390000002B /* LoteriaDealTests.swift */,
 				A2EEF523201AB21E0000002B /* MemoryBoardTests.swift */,
 				D55FC27F498CD0780000002A /* MemoryDealTests.swift */,
 				5CECEA05CC9D6BF000000031 /* MemoryMatchLevelsTests.swift */,
@@ -557,6 +574,7 @@
 				2E1AB509F1BF452F00000026 /* WarmUpTests.swift */,
 				A2CB27B32AF72D220000002D /* WeeklySummaryTests.swift */,
 				31F6AD437F92C1C900000034 /* WhyTheseGamesStringsTests.swift */,
+				C26A0754DDCEA8D10000002E /* WordSearchDealTests.swift */,
 			);
 			name = MenteVivaTests;
 			sourceTree = "<group>";
@@ -642,6 +660,8 @@
 				B0EF9D459562BD3300000023 /* InterruptionPause.swift in Sources */,
 				8D9207C415703C120000001C /* LeaveGuard.swift in Sources */,
 				D456BAA2EE44DD2900000022 /* LevelExplainLine.swift in Sources */,
+				11ADE594F9FF7BF80000001D /* LoteriaDeal.swift in Sources */,
+				FD6C741B7D1D9CD70000001D /* LoteriaView.swift in Sources */,
 				A120B5E94542D41F00000020 /* MathStreakView.swift in Sources */,
 				934DA6B35D17C6F90000001D /* MemoryBoard.swift in Sources */,
 				2C26F128CAE066EF0000001C /* MemoryDeal.swift in Sources */,
@@ -680,6 +700,8 @@
 				FB6E81DBE4F4E8700000001F /* TilePairsView.swift in Sources */,
 				FF53AA1B2E6FD52C0000001E /* UpOrDownDeal.swift in Sources */,
 				3F24DDA3A363333B0000001E /* UpOrDownView.swift in Sources */,
+				74334D624DAFD10800000020 /* WordSearchDeal.swift in Sources */,
+				7866CF9BB82D73A700000020 /* WordSearchView.swift in Sources */,
 				EE94290C1D7CE37100000017 /* HistoryView.swift in Sources */,
 				2A7F83F1E2F186E800000014 /* HomeView.swift in Sources */,
 				6866AB30C9E6CF9000000018 /* MenteVivaApp.swift in Sources */,
@@ -765,6 +787,7 @@
 				629698CA737DD94600000037 /* InterruptionPauseTests.swift in Sources */,
 				CE284B5303E4A61900000030 /* LeaveGuardTests.swift in Sources */,
 				EE07AD69390E5FDA00000032 /* LevelExplainTests.swift in Sources */,
+				B7E4B1FC59FC35F300000031 /* LoteriaDealTests.swift in Sources */,
 				578160CE8C24557000000031 /* MemoryBoardTests.swift in Sources */,
 				6B009816AE0FE1DA00000030 /* MemoryDealTests.swift in Sources */,
 				A34345BFC3478D0200000037 /* MemoryMatchLevelsTests.swift in Sources */,
@@ -801,6 +824,7 @@
 				857E81F94A1E2E790000002C /* WarmUpTests.swift in Sources */,
 				0EEED9F3112B457400000033 /* WeeklySummaryTests.swift in Sources */,
 				D45AEF3BDEB8E3E30000003A /* WhyTheseGamesStringsTests.swift in Sources */,
+				E09C6F8BE20EAEFB00000034 /* WordSearchDealTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

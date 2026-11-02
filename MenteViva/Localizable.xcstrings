@@ -1260,6 +1260,23 @@
         }
       }
     },
+    "game.celebration.loteria" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You called ¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Cantaste lotería!"
+          }
+        }
+      }
+    },
     "game.celebration.next %@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1785,6 +1802,244 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Salir de este juego?"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.called %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Called card: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carta cantada: %@"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.marked %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, marked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, marcada"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.open %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, not marked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, sin marcar"
+          }
+        }
+      }
+    },
+    "game.loteria.call" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Lotería!"
+          }
+        }
+      }
+    },
+    "game.loteria.goal.corners" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: the four corners."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: las cuatro esquinas."
+          }
+        }
+      }
+    },
+    "game.loteria.goal.full" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: the whole board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: toda la tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.goal.line" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: a full row or column."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: una fila o columna completa."
+          }
+        }
+      }
+    },
+    "game.loteria.guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the called card on your board and tap it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca la carta cantada en tu tabla y tócala."
+          }
+        }
+      }
+    },
+    "game.loteria.instruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark the called card on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca la carta cantada en tu tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.lookagain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look again — it’s on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira otra vez: está en tu tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next card"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente carta"
+          }
+        }
+      }
+    },
+    "game.loteria.notcalled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That one hasn’t been called yet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esa carta todavía no sale."
+          }
+        }
+      }
+    },
+    "game.loteria.ready" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your board is ready. Tap ¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu tabla está lista. Toca ¡Lotería!"
+          }
+        }
+      }
+    },
+    "game.loteria.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería"
           }
         }
       }
@@ -3662,6 +3917,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sube o baja"
+          }
+        }
+      }
+    },
+    "guide.loteria.example" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is the called card. Not on your board? Tap Next card."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta es la carta cantada. ¿No está en tu tabla? Toca Siguiente carta."
           }
         }
       }
@@ -12807,6 +13079,23 @@
         }
       }
     },
+    "why.game.loteria" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería exercises spotting the called card on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería ejercita encontrar la carta cantada en tu tabla."
+          }
+        }
+      }
+    },
     "why.game.math" : {
       "localizations" : {
         "en" : {
@@ -14563,6 +14852,374 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible."
+          }
+        }
+      }
+    },
+    "game.wordsearch.music.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO"
+          }
+        }
+      }
+    },
+    "game.wordsearch.garden.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN"
+          }
+        }
+      }
+    },
+    "game.wordsearch.guide" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the first letter, then the last letter, or drag between them."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca la primera letra y luego la última, o desliza entre ellas."
+          }
+        }
+      }
+    },
+    "game.wordsearch.up" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the top of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar la parte superior de la cuadrícula"
+          }
+        }
+      }
+    },
+    "game.wordsearch.example" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try a word from the list."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba una palabra de la lista."
+          }
+        }
+      }
+    },
+    "game.wordsearch.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show me a word"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muéstrame una palabra"
+          }
+        }
+      }
+    },
+    "game.wordsearch.garden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jardín"
+          }
+        }
+      }
+    },
+    "game.wordsearch.previous" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the left of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar el lado izquierdo de la cuadrícula"
+          }
+        }
+      }
+    },
+    "game.wordsearch.animals.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA"
+          }
+        }
+      }
+    },
+    "game.wordsearch.hintposition %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try row %1$lld, column %2$lld."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba la fila %1$lld, columna %2$lld."
+          }
+        }
+      }
+    },
+    "game.wordsearch.miss" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not one of the words — try another line."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esa no es de la lista: prueba otra línea."
+          }
+        }
+      }
+    },
+    "why.game.wordsearch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word Search exercises finding familiar words in a grid."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sopa de letras ejercita encontrar palabras conocidas en una cuadrícula."
+          }
+        }
+      }
+    },
+    "game.wordsearch.complete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You found all the words!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Encontraste todas las palabras!"
+          }
+        }
+      }
+    },
+    "game.wordsearch.animals" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animales"
+          }
+        }
+      }
+    },
+    "game.wordsearch.down" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the bottom of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar la parte inferior de la cuadrícula"
+          }
+        }
+      }
+    },
+    "game.wordsearch.cell %@ %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, row %2$lld, column %3$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, fila %2$lld, columna %3$lld"
+          }
+        }
+      }
+    },
+    "game.wordsearch.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the words from the list."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encuentra las palabras de la lista."
+          }
+        }
+      }
+    },
+    "game.wordsearch.found %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, found"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, encontrada"
+          }
+        }
+      }
+    },
+    "game.wordsearch.music" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Music"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Música"
+          }
+        }
+      }
+    },
+    "game.wordsearch.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word Search"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sopa de letras"
+          }
+        }
+      }
+    },
+    "game.wordsearch.selected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start selected. Choose the last letter."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primera letra elegida. Elige la última letra."
+          }
+        }
+      }
+    },
+    "game.wordsearch.notfound %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, not found"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, por encontrar"
+          }
+        }
+      }
+    },
+    "game.wordsearch.next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the right of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar el lado derecho de la cuadrícula"
           }
         }
       }
