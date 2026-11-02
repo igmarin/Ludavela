@@ -15252,13 +15252,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL"
+            "value" : "PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL,GUITAR,TRUMPET"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO"
+            "value" : "PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO,GUITARRA,MARIMBA,BANDA,NOTA"
           }
         }
       }
@@ -15268,13 +15268,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL"
+            "value" : "ROSE,TULIP,DAISY,MOSS,TREE,SEED,LEAF,SOIL,LILY,FENCE"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN"
+            "value" : "ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN,FLOR,RAMA"
           }
         }
       }
@@ -15291,22 +15291,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toca la primera letra y luego la última, o desliza entre ellas."
-          }
-        }
-      }
-    },
-    "game.wordsearch.up" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show the top of the grid"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar la parte superior de la cuadrícula"
           }
         }
       }
@@ -15359,34 +15343,18 @@
         }
       }
     },
-    "game.wordsearch.previous" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show the left of the grid"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar el lado izquierdo de la cuadrícula"
-          }
-        }
-      }
-    },
     "game.wordsearch.animals.words" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE"
+            "value" : "HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE,RABBIT,GOAT"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA"
+            "value" : "PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA,CABALLO,CONEJO"
           }
         }
       }
@@ -15467,22 +15435,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Animales"
-          }
-        }
-      }
-    },
-    "game.wordsearch.down" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show the bottom of the grid"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar la parte inferior de la cuadrícula"
           }
         }
       }
@@ -15599,18 +15551,98 @@
         }
       }
     },
-    "game.wordsearch.next" : {
+    "game.wordsearch.food" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show the right of the grid"
+            "value" : "Mexican food"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostrar el lado derecho de la cuadrícula"
+            "value" : "Comida mexicana"
+          }
+        }
+      }
+    },
+    "game.wordsearch.family" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Family"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Familia"
+          }
+        }
+      }
+    },
+    "game.wordsearch.kitchen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitchen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocina"
+          }
+        }
+      }
+    },
+    "game.wordsearch.food.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TACO,ELOTE,TAMALE,MOLE,POZOLE,SALSA,CHURRO,BEANS,TORTILLA,FLAN"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TACO,ELOTE,TAMAL,MOLE,POZOLE,SALSA,CHURRO,FRIJOL,TORTILLA,NOPAL"
+          }
+        }
+      }
+    },
+    "game.wordsearch.family.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MOTHER,FATHER,SISTER,BROTHER,GRANDMA,GRANDPA,AUNT,UNCLE,COUSIN,BABY,NIECE,SON"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MADRE,PADRE,ABUELA,ABUELO,HERMANA,HIJO,NIETA,PRIMO,TIA,CUÑADO"
+          }
+        }
+      }
+    },
+    "game.wordsearch.kitchen.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LADLE,FORK,KNIFE,PLATE,CUP,BOWL,PAN,OVEN,KETTLE,APRON"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CUCHARA,TENEDOR,CUCHILLO,PLATO,TAZA,OLLA,SARTEN,HORNO,JARRA,MANTEL,VASO"
           }
         }
       }
