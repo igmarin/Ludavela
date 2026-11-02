@@ -60,6 +60,7 @@ final class PegSolitaireBoardTests: XCTestCase {
         let board = PegSolitaireBoard.deal(level: 3, using: &rng)
         XCTAssertEqual(board.hint(budget: 0), .inconclusive)
     }
+
     /// Release builds measure the whole solver call, including memo allocation.
     func testGivenTwentyTwoPegsWhenFindingHintThenItFinishesWithinBudget() {
         var rng = Generator(state: 7)
@@ -78,5 +79,4 @@ final class PegSolitaireBoardTests: XCTestCase {
         let board = PegSolitaireBoard.deal(level: 10, using: &rng)
         XCTAssertEqual(board.hint(cancelled: { true }), .inconclusive)
     }
-
 }

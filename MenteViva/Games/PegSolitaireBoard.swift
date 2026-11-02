@@ -33,7 +33,6 @@ nonisolated struct PegSolitaireBoard: Equatable, Sendable {
 
     private(set) var pegs: UInt64
     private(set) var history: [UInt64] = []
-    private(set) var attempts = 0
 
     init(pegs: UInt64) { self.pegs = pegs }
     var pegCount: Int { pegs.nonzeroBitCount }
@@ -55,7 +54,6 @@ nonisolated struct PegSolitaireBoard: Equatable, Sendable {
         guard moves.contains(move) else { return false }
         history.append(pegs)
         pegs = Self.jumped(pegs, move)
-        attempts += 1
         return true
     }
 

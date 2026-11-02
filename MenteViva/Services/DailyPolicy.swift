@@ -165,6 +165,7 @@ nonisolated enum DailyPolicy {
         .sayings: Threshold(strong: 0.90, weak: 0.65),
         /// At roughly 1.4 times the fewest moves (0.70) it climbs; above 2.5 times (below 0.40) it eases.
         .slidingBlocks: Threshold(strong: 0.70, weak: 0.40),
+        /// Correct is pegs removed; attempts also count undone and restarted jumps. Above 0.70 (few take-backs) it climbs; below 0.40 it eases.
         .pegSolitaire: Threshold(strong: 0.70, weak: 0.40),
         /// Names and Faces counts moves as attempts and pairs as correct, like Memory Lane, so it
         /// takes Memory Lane's thresholds.
