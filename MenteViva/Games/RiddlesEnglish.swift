@@ -99,15 +99,14 @@ extension Riddles {
                 [
                     "I have long wings but I never flap,", "I carry travelers over the map,",
                     "and land on a runway after my trip.",
-                ],
-                "It flies from the airport."),
+                ], "It flies from the airport.", avoid: ["helicopter", "rocket"]),
 
             // Tier 3: medium, pictures.
             r(
                 3, "train",
                 [
                     "I run on tracks but I have no feet,", "I whistle at every crossing street,",
-                    "and pull long cars in a line so neat.",
+                    "and pull my coaches in a line so neat.",
                 ],
                 "It stops at the station."),
             r(
@@ -225,10 +224,10 @@ extension Riddles {
             r(
                 4, "wind",
                 [
-                    "You cannot see me, but I bend the trees,", "I fly your kite and cool you with a breeze,",
+                    "You cannot see me, but I sway the leaves,", "I fly your kite and cool you with a breeze,",
                     "and I whistle at the door, if you please.",
                 ],
-                "It blows the leaves around."),
+                "It makes the curtains dance."),
             r(
                 4, "horse",
                 [
@@ -247,9 +246,8 @@ extension Riddles {
                 4, "button",
                 [
                     "I'm small and round with holes in me,", "I keep your coat closed, as you see,",
-                    "sewn on tight with needle and thread.",
-                ],
-                "It goes through a little slit in your shirt."),
+                    "and I'm sewn on tight by a careful hand.",
+                ], "It goes through a little slit in your shirt."),
             r(
                 4, "drum",
                 ["Tap me, beat me, I don't mind,", "boom, boom, I keep the time,", "at the front of the band I march in line."],
@@ -266,24 +264,21 @@ extension Riddles {
             r(
                 5, "map",
                 [
-                    "I have cities but no houses,", "mountains but no trees,", "water but no fish,",
-                    "and roads where no one walks.",
-                ],
-                "You unfold it to find your way."),
+                    "I hold whole countries on one paper sheet,", "my seas are dry and my mountains lie flat,",
+                    "my roads are too thin for anybody's feet,", "and a dot says, 'You are here.' Imagine that!",
+                ], "You unfold it to find your way."),
             r(
                 5, "coin",
                 [
-                    "I have a head and a tail,", "but no body and no legs,", "I'm round and shiny in your pocket,",
-                    "and I jingle with my friends.",
-                ],
-                "You can toss it to decide."),
+                    "I'm small and round and shiny and flat,", "I wear a face on one side of me,",
+                    "I clink in the piggy bank, just like that,", "and buy a gumball, one, two, three.",
+                ], "You can toss it to decide."),
             r(
                 5, "glove",
                 [
-                    "I have a thumb and four fingers,", "but I'm not a hand at all,", "I keep your hand warm in winter,",
-                    "and I always come in a pair.",
-                ],
-                "You wear it in the cold.", avoid: ["shoe"]),
+                    "I have five little rooms for five little guests,", "I'm knitted of wool or stitched of leather,",
+                    "I keep your fingers cozy in the snow,", "and my twin warms your other hand in cold weather.",
+                ], "You wear it in the cold.", avoid: ["shoe"]),
             r(
                 5, "lamp",
                 [
@@ -294,7 +289,7 @@ extension Riddles {
             r(
                 5, "mountain",
                 [
-                    "I wear a white cap in the winter,", "I'm older than the oldest tree,", "climb me slowly, step by step,",
+                    "I wear a white cap in the winter,", "I'm wider than a town can be,", "climb me slowly, step by step,",
                     "and from my top the whole world you'll see.",
                 ],
                 "It's much taller than a hill."),
@@ -302,18 +297,14 @@ extension Riddles {
                 5, "stamp",
                 [
                     "I travel all around the world,", "but I stay in one corner the whole way,",
-                    "I'm small and square and sticky on the back,",
-                    "and I ride on your letters every day.",
-                ],
-                "The post office sells it.", avoid: ["letter"]),
+                    "I'm small and square and sticky on the back,", "and I ride on your letters every day.",
+                ], "The post office sells it.", avoid: ["letter", "book"]),
             r(
                 5, "pine",
                 [
                     "I keep my needles all year round,", "but I never sew a single seam,",
-                    "in December I wear lights and a star,",
-                    "and I smell like a forest dream.",
-                ],
-                "It's green even in winter.", avoid: ["tree", "cactus"]),
+                    "in December I'm dressed in lights and bows,", "and I smell like a forest dream.",
+                ], "It's green even in winter.", avoid: ["tree", "cactus"]),
             r(
                 5, "shoe",
                 [
@@ -325,25 +316,22 @@ extension Riddles {
                 5, "teapot",
                 [
                     "I have a handle, a spout, and a lid,", "a round fat belly where the leaves are hid,",
-                    "I pour you a cup at four o'clock,",
-                    "and wear a cozy like a woolly sock.",
+                    "I pour you a cup when friends come by,",
+                    "and wear a woolly cozy, snug and dry.",
                 ],
                 "Tea is made in it."),
             r(
                 5, "yarn",
                 [
                     "I'm a ball, but nobody kicks me,", "the cat loves to chase me across the floor,",
-                    "knitting needles click and clack with me,", "and I become a scarf, and more.",
-                ],
-                "You knit with it."),
+                    "I click and clack as I'm knitted, you see,", "and I become a scarf, and more.",
+                ], "You knit with it."),
             r(
                 5, "rocket",
                 [
                     "I count down from ten to one,", "then roar past the clouds and the sun,",
-                    "I visit the moon and the stars at night,",
-                    "riding on a tail of fire and light.",
-                ],
-                "Astronauts ride in it."),
+                    "I visit the moon and the stars at night,", "riding on a tail of fire and light.",
+                ], "Astronauts ride in it.", avoid: ["airplane", "helicopter"]),
             r(
                 5, "sailboat",
                 [

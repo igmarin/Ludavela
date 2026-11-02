@@ -198,6 +198,44 @@ final class RiddleDeckTests: XCTestCase {
 
     // MARK: - Content
 
+    /// Look-alike answers (#551 review): wherever one is the answer and another could be offered beside
+    /// it, the riddle avoids it, because its lines would fit both.
+    func testGivenLookAlikeAnswersWhenOneIsTheAnswerThenTheOthersAreAvoided() {
+        let lookAlikes: [Set<String>] = [["airplane", "helicopter", "rocket"], ["letter", "book", "stamp"], ["moon", "star"]]
+        for book in books {
+            for riddle in book.riddles {
+                guard let group = lookAlikes.first(where: { $0.contains(riddle.answer.slug) }) else { continue }
+                let pictured = RiddleDeck.tiersWithPictures.contains(riddle.tier)
+                // Everything of its kind the level could show, before `avoid` takes any out.
+                let offerable = RiddleAnswers.all.filter {
+                    $0.kind == riddle.answer.kind && (!pictured || $0.picture != nil)
+                }.map(\.slug)
+                for other in group.subtracting([riddle.answer.slug]) where offerable.contains(other) {
+                    XCTAssertTrue(riddle.avoid.contains(other), "\(riddle.id) \(riddle.answer.slug) should avoid \(other)")
+                }
+            }
+        }
+    }
+
+    /// A riddle never names another answer it could offer (#551 review): its lines and clue don't say the
+    /// name of any decoy it may be dealt, in its own language.
+    func testGivenEveryRiddleWhenReadThenItNamesNoOtherAnswerItCouldOffer() throws {
+        for book in books {
+            AppLanguage.apply(book.language, to: defaults)
+            for riddle in book.riddles {
+                let text = (riddle.lines + [riddle.clue]).joined(separator: " ").lowercased()
+                let pictured = RiddleDeck.tiersWithPictures.contains(riddle.tier)
+                for decoy in RiddleDeck.decoys(for: riddle, pictures: pictured) {
+                    let name = AppLanguage.localized(decoy.nameKey, defaults: defaults).lowercased()
+                    let pattern = "\\b" + NSRegularExpression.escapedPattern(for: name) + "(s|es)?\\b"
+                    XCTAssertNil(
+                        text.range(of: pattern, options: .regularExpression),
+                        "\(riddle.id) \(riddle.answer.slug) names \(name)")
+                }
+            }
+        }
+    }
+
     func testGivenEveryWordOnlyAnswerWhenNamedThenItHasEnglishAndSpanish() {
         for answer in RiddleAnswers.all {
             for language in ["en", "es"] {

@@ -19,7 +19,7 @@ extension Riddles {
                 "Unos días está llena y otros parece un gajito.", avoid: ["star"]),
             r(
                 1, "apple", ["Soy roja y redonda y crujo al morder,", "con mi rabito arriba me vas a ver."],
-                "Blancanieves mordió una.", avoid: ["peach"]),
+                "Hay rojas, verdes y amarillas.", avoid: ["peach"]),
             r(
                 1, "clock", ["Tengo cara y dos manecillas,", "tic, tac, te digo la hora sin prisas."],
                 "Cuelga en la pared de la sala."),
@@ -56,26 +56,27 @@ extension Riddles {
             r(
                 2, "lion",
                 ["Llevo melena como una corona,", "soy el rey de la selva y rujo fuerte,", "pero también me gusta la siesta."],
-                "Es como un gato muy, muy grande."),
+                "Su rugido se oye muy lejos."),
             r(
                 2, "guitar",
-                ["Tengo cuello y no tengo cabeza,", "seis cuerdas y una panza hueca,", "y en la serenata soy la reina."],
-                "Los mariachis la rasguean.", avoid: ["violin"]),
+                [
+                    "Tengo seis cuerdas y un hoyo en la panza,", "me abrazas para tocarme,",
+                    "y bajo la ventana canto la serenata.",
+                ], "Se toca rasgueando las cuerdas.", avoid: ["violin"]),
             r(2, "book", ["Tengo hojas y no soy planta,", "te cuento historias sin garganta."], "Lo abres para leer."),
             r(
                 2, "chair", ["Tengo cuatro patas y nunca camino;", "te sientas en mí cuando llega el vecino."],
                 "Va junto a la mesa del comedor.", avoid: ["sofa"]),
             r(2, "house", ["Tengo techo, puerta y ventana,", "y en mí despierta tu familia cada mañana."], "Ahí vives tú."),
             r(
-                2, "bread",
-                ["Salgo del horno calientito,", "dorado, redondo y suavecito,", "y con el café de la tarde, ¡qué rico!"],
+                2, "bread", ["Salgo del horno calientito,", "dorado, redondo y suavecito,", "y en la merienda soy lo más rico."],
                 "Lo vende el panadero.", avoid: ["cake", "croissant"]),
             r(
                 2, "egg", ["Soy blanco y liso, sin puerta ni ventana,", "y escondo un sol amarillo para tu mañana."],
                 "Lo pone la gallina."),
             r(
                 2, "airplane", ["Tengo alas pero no tengo plumas,", "vuelo alto entre las nubes", "y llevo gente de viaje."],
-                "Despega y aterriza en el aeropuerto."),
+                "Despega y aterriza en el aeropuerto.", avoid: ["helicopter", "rocket"]),
 
             // Tier 3: medium, pictures.
             r(
@@ -137,7 +138,7 @@ extension Riddles {
                 "Es un insecto con lunares."),
             r(
                 3, "suitcase",
-                ["Me llenas de ropa antes del viaje,", "tengo asa y a veces rueditas,", "y vuelvo a casa con regalitos."],
+                ["Me llenas de ropa antes del viaje,", "tengo asa y a veces rueditas,", "y regreso del viaje con regalitos."],
                 "La llevas cuando sales de vacaciones."),
 
             // Tier 4: medium, words.
@@ -152,9 +153,8 @@ extension Riddles {
                 4, "corn",
                 [
                     "Tengo dientes amarillos y no muerdo,", "llevo barbas y no soy abuelo,",
-                    "y en la esquina me venden con chile y limón.",
-                ],
-                "Con su masa se hacen las tortillas."),
+                    "y en la esquina me venden en vaso o en palito.",
+                ], "Crece en la milpa, envuelto en hojas."),
             r(
                 4, "tortilla",
                 [
@@ -197,7 +197,7 @@ extension Riddles {
             r(
                 4, "rainbow",
                 ["Después de la lluvia salgo en el cielo,", "con siete colores hago un puente,", "pero nadie lo puede cruzar."],
-                "Sale cuando hay sol y lluvia a la vez."),
+                "Tiene rojo, amarillo, verde, azul y morado."),
             r(
                 4, "rooster",
                 ["Me levanto antes que el sol,", "con mi cresta roja y mi canto", "despierto a todo el rancho: ¡kikirikí!"],
@@ -214,18 +214,19 @@ extension Riddles {
             r(
                 5, "shadow",
                 [
-                    "Me pego a tus pies todo el día,", "si caminas, camino contigo,", "con el sol de la tarde me hago larga,",
+                    "Me pego a tus pies todo el día,", "si caminas, camino contigo,", "cuando cae la tarde me hago larga,",
                     "y de noche me voy sin despedirme.",
-                ],
-                "Es oscura y tiene tu forma."),
+                ], "Es oscura y tiene tu forma."),
             r(
                 5, "mirror",
-                ["Si me miras, te miro;", "si sonríes, te sonrío;", "hago todo lo que haces,", "pero nunca digo nada."],
-                "Te ves en él antes de peinarte."),
+                [
+                    "Cuelgo en la pared del baño", "y te devuelvo la sonrisa;", "si levantas la mano izquierda,",
+                    "yo levanto la otra, sin prisa.",
+                ], "Te ves en él antes de peinarte."),
             r(
                 5, "broom",
                 [
-                    "Bailo por el piso sin música,", "tengo barbas tiesas y un palo largo,", "me paseo por toda la casa",
+                    "Bailo por el piso sin música,", "tengo barbas tiesas y un palo largo,", "me paseo por cada cuarto",
                     "y dejo todo limpio a mi paso.",
                 ],
                 "Con ella se barre el patio."),
@@ -239,10 +240,9 @@ extension Riddles {
             r(
                 5, "onion",
                 [
-                    "Tengo capas como un pastel", "y una camisa de papel;", "en el guacamole y en la salsa me encuentras,",
+                    "Tengo capas y más capas", "y una camisa de papel;", "en el guacamole y en la salsa me encuentras,",
                     "y al cortarme te pico los ojos.",
-                ],
-                "Va con el jitomate y el cilantro.", avoid: ["chili"]),
+                ], "Va con el jitomate y el cilantro.", avoid: ["chili"]),
             r(
                 5, "chili",
                 [
@@ -253,17 +253,15 @@ extension Riddles {
             r(
                 5, "river",
                 [
-                    "Corro y corro y nunca me canso,", "tengo boca y no hablo,", "tengo cama y no duermo,",
-                    "y siempre voy a dar al mar.",
-                ],
-                "Los peces nadan en él."),
+                    "Bajo de la sierra cantando,", "nunca me paro a descansar,", "los peces viven en mi casa,",
+                    "y al final me encuentro con el mar.",
+                ], "Tiene dos orillas y a veces un puente."),
             r(
                 5, "letter",
                 [
-                    "Viajo lejos sin pies ni alas,", "llevo un timbre en la esquina,", "guardo palabras de cariño",
+                    "Viajo lejos sin pies ni alas,", "llevo una estampilla en la esquina,", "guardo palabras de cariño",
                     "y me abres con alegría.",
-                ],
-                "La trae el cartero.", avoid: ["stamp"]),
+                ], "La trae el cartero.", avoid: ["stamp", "book"]),
             r(
                 5, "cloud",
                 [

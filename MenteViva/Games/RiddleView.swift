@@ -33,12 +33,15 @@ struct RiddleView: View {
 
             if let round = run.round {
                 riddleText(round.riddle)
-                clueRow(round.riddle)
+                // At accessibility sizes the answers come straight after the riddle and the clue waits
+                // below them, so the tiles are not pushed off the first screen (#551 review).
+                if !typeSize.isAccessibilitySize { clueRow(round.riddle) }
                 if run.solved {
                     solvedRow(round.riddle.answer)
                 } else {
                     choices(round)
                 }
+                if typeSize.isAccessibilitySize { clueRow(round.riddle) }
                 RoundCounter(progress: run.progress)
             }
         }
@@ -90,7 +93,7 @@ struct RiddleView: View {
     @ViewBuilder
     private func clueRow(_ riddle: Riddle) -> some View {
         if run.clueShown {
-            Label(clueLine(riddle), systemImage: "lightbulb.fill")
+            iconLine(clueLine(riddle), systemImage: "lightbulb.fill")
                 .font(.title2.italic())
                 .foregroundStyle(.tint)
                 .multilineTextAlignment(.center)
@@ -99,12 +102,23 @@ struct RiddleView: View {
                 run.showClue()
                 AccessibilityNotification.Announcement(clueLine(riddle)).post()
             } label: {
-                Label(AppLanguage.localized("game.riddles.clue"), systemImage: "lightbulb")
+                iconLine(AppLanguage.localized("game.riddles.clue"), systemImage: "lightbulb")
                     .font(.title2.weight(.semibold))
             }
             .buttonStyle(AnswerTileStyle(strength: 0.08, minHeight: 72))
             .guideTarget()
         }
+    }
+
+    /// An icon beside text that may wrap: the icon sits on the first line's baseline, not halfway down
+    /// a wrapped label, and VoiceOver reads only the text.
+    private func iconLine(_ text: String, systemImage: String) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Image(systemName: systemImage).accessibilityHidden(true)
+            Text(text)
+        }
+        .multilineTextAlignment(.center)
+        .padding(.horizontal, 8)
     }
 
     private func clueLine(_ riddle: Riddle) -> String {
