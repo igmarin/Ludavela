@@ -13838,6 +13838,70 @@
           }
         }
       }
+    },
+    "about.why.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why I made MenteViva"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por qué hice MenteViva"
+          }
+        }
+      }
+    },
+    "about.why.p1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I made MenteViva mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hice MenteViva, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa."
+          }
+        }
+      }
+    },
+    "about.why.p2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I also made it for myself, my sister and my nephews and nieces, because this illness runs in our family. I wanted something that invites us to exercise our minds through play, and I want to share it with everyone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También la hice para mí, para mi hermana y para mis sobrinos, porque en nuestra familia esta enfermedad es hereditaria. Quería algo que nos invitara a ejercitar la mente jugando, y quiero compartirlo con todas las personas."
+          }
+        }
+      }
+    },
+    "about.why.p3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I hope that what I can build, with the help of AI, will keep not only my dad company, but as many people as possible."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
