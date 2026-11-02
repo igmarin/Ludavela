@@ -17,6 +17,183 @@
         }
       }
     },
+    "Level %lld" : {
+      "comment" : "Difficulty.title: a level's name on the family screens.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level %lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nivel %lld"
+          }
+        }
+      }
+    },
+    "about.build" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app was built with the help of AI coding assistants, including Meta's Muse Code."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La app se creó con ayuda de asistentes de programación con IA, entre ellos Muse Code de Meta."
+          }
+        }
+      }
+    },
+    "about.offline" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing in the app uses AI while you play. Your games and photos stay on this device."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nada en la app usa IA mientras juegas. Tus partidas y fotos se quedan en este dispositivo."
+          }
+        }
+      }
+    },
+    "about.pictures" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The pictures in this app were made with AI image tools, including Meta's Muse Image, and checked by a person."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las imágenes de esta app se hicieron con herramientas de IA, entre ellas Muse Image de Meta, y las revisó una persona."
+          }
+        }
+      }
+    },
+    "about.row" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de"
+          }
+        }
+      }
+    },
+    "about.row.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How the pictures and the app were made."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo se hicieron las imágenes y la app."
+          }
+        }
+      }
+    },
+    "about.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About MenteViva"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de MenteViva"
+          }
+        }
+      }
+    },
+    "about.why.p1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I made MenteViva mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hice MenteViva, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa."
+          }
+        }
+      }
+    },
+    "about.why.p2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I also made it for myself, my sister and my nephews and nieces, because this illness runs in our family. I wanted something that invites us to exercise our minds through play, and I want to share it with everyone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También la hice para mí, para mi hermana y para mis sobrinos, porque en nuestra familia esta enfermedad es hereditaria. Quería algo que nos invitara a ejercitar la mente jugando, y quiero compartirlo con todas las personas."
+          }
+        }
+      }
+    },
+    "about.why.p3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I hope that what I can build, with the help of AI, will keep not only my dad company, but as many people as possible."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible."
+          }
+        }
+      }
+    },
+    "about.why.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why I made MenteViva"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por qué hice MenteViva"
+          }
+        }
+      }
+    },
     "album.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -420,6 +597,23 @@
         }
       }
     },
+    "family.photos.a11y.photo %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo %lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto %lld"
+          }
+        }
+      }
+    },
     "family.photos.add" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -494,40 +688,6 @@
         }
       }
     },
-    "family.photos.why" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Faces, places and pets you love make Memory Lane, Names and Faces and Photo Stories feel like yours."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Caras, lugares y mascotas queridos hacen que Camino de Memoria, Nombres y Caras e Historias en fotos se sientan tuyos."
-          }
-        }
-      }
-    },
-    "family.photos.noname" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No name yet"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todavía sin nombre"
-          }
-        }
-      }
-    },
     "family.photos.edit" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -541,23 +701,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Editar"
-          }
-        }
-      }
-    },
-    "family.photos.a11y.photo %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Photo %lld"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Foto %lld"
           }
         }
       }
@@ -608,6 +751,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fotos para los juegos"
+          }
+        }
+      }
+    },
+    "family.photos.noname" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No name yet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todavía sin nombre"
           }
         }
       }
@@ -699,6 +859,23 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "family.photos.why" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faces, places and pets you love make Memory Lane, Names and Faces and Photo Stories feel like yours."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caras, lugares y mascotas queridos hacen que Camino de Memoria, Nombres y Caras e Historias en fotos se sientan tuyos."
           }
         }
       }
@@ -1091,6 +1268,39 @@
         }
       }
     },
+    "game.celebration.added" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Added to your week"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregado a tu semana"
+          }
+        }
+      }
+    },
+    "game.celebration.cards %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You cleared %lld cards"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitaste %lld cartas"
+          }
+        }
+      }
+    },
     "game.celebration.daydone" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1193,39 +1403,6 @@
         }
       }
     },
-    "game.celebration.added" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Added to your week"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregado a tu semana"
-          }
-        }
-      }
-    },
-    "game.celebration.cards %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You cleared %lld cards"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quitaste %lld cartas"
-          }
-        }
-      }
-    },
     "game.celebration.home" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1256,6 +1433,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Encontraste %lld!"
+          }
+        }
+      }
+    },
+    "game.celebration.loteria" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You called ¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Cantaste lotería!"
           }
         }
       }
@@ -1535,6 +1729,22 @@
         }
       }
     },
+    "game.colorclash.color.purple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purple"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morado"
+          }
+        }
+      }
+    },
     "game.colorclash.color.red" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1548,6 +1758,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rojo"
+          }
+        }
+      }
+    },
+    "game.colorclash.color.yellow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yellow"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amarillo"
           }
         }
       }
@@ -1603,6 +1829,22 @@
         }
       }
     },
+    "game.colorclash.shape.hexagon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hexagon"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hexágono"
+          }
+        }
+      }
+    },
     "game.colorclash.shape.square" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1616,6 +1858,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuadrado"
+          }
+        }
+      }
+    },
+    "game.colorclash.shape.star" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Star"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estrella"
           }
         }
       }
@@ -1704,6 +1962,22 @@
         }
       }
     },
+    "game.colorclash.word.purple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PURPLE"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MORADO"
+          }
+        }
+      }
+    },
     "game.colorclash.word.red" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1717,6 +1991,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ROJO"
+          }
+        }
+      }
+    },
+    "game.colorclash.word.yellow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YELLOW"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AMARILLO"
           }
         }
       }
@@ -1785,6 +2075,244 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Salir de este juego?"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.called %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Called card: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carta cantada: %@"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.marked %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, marked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, marcada"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.open %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, not marked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, sin marcar"
+          }
+        }
+      }
+    },
+    "game.loteria.call" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Lotería!"
+          }
+        }
+      }
+    },
+    "game.loteria.goal.corners" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: the four corners."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: las cuatro esquinas."
+          }
+        }
+      }
+    },
+    "game.loteria.goal.full" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: the whole board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: toda la tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.goal.line" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: a full row or column."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: una fila o columna completa."
+          }
+        }
+      }
+    },
+    "game.loteria.guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the called card on your board and tap it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca la carta cantada en tu tabla y tócala."
+          }
+        }
+      }
+    },
+    "game.loteria.instruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark the called card on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca la carta cantada en tu tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.lookagain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look again — it’s on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira otra vez: está en tu tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next card"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente carta"
+          }
+        }
+      }
+    },
+    "game.loteria.notcalled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That one hasn’t been called yet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esa carta todavía no sale."
+          }
+        }
+      }
+    },
+    "game.loteria.ready" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your board is ready. Tap ¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu tabla está lista. Toca ¡Lotería!"
+          }
+        }
+      }
+    },
+    "game.loteria.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería"
           }
         }
       }
@@ -2004,6 +2532,244 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Camino de Memoria"
+          }
+        }
+      }
+    },
+    "game.peg.cell %lld %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "row %1$lld, column %2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fila %1$lld, columna %2$lld"
+          }
+        }
+      }
+    },
+    "game.peg.down" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump down"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saltar abajo"
+          }
+        }
+      }
+    },
+    "game.peg.empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "empty hole"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hueco vacío"
+          }
+        }
+      }
+    },
+    "game.peg.example" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump over a neighbour into an empty hole."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta sobre una ficha hacia un hueco vacío."
+          }
+        }
+      }
+    },
+    "game.peg.guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a peg, then a ring to jump."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca una ficha y luego un círculo para saltar."
+          }
+        }
+      }
+    },
+    "game.peg.instruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump a peg over another to remove it. Leave just one."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salta una ficha sobre otra para quitarla. Deja solo una."
+          }
+        }
+      }
+    },
+    "game.peg.left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump left"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saltar a la izquierda"
+          }
+        }
+      }
+    },
+    "game.peg.occupied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "peg"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ficha"
+          }
+        }
+      }
+    },
+    "game.peg.right" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump right"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saltar a la derecha"
+          }
+        }
+      }
+    },
+    "game.peg.searchmore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That move is hard to find. Try undoing a move or starting over."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuesta encontrar ese movimiento. Prueba deshacer o empezar de nuevo."
+          }
+        }
+      }
+    },
+    "game.peg.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peg Solitaire"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Come solo"
+          }
+        }
+      }
+    },
+    "game.peg.unsolvable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No way to one peg from here. Undo, or start over?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desde aquí ya no se llega a una. ¿Deshacer o empezar de nuevo?"
+          }
+        }
+      }
+    },
+    "game.peg.up" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump up"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saltar arriba"
+          }
+        }
+      }
+    },
+    "game.peg.win" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Just one left!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Quedó solo una!"
           }
         }
       }
@@ -2486,6 +3252,214 @@
         }
       }
     },
+    "game.sayings.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finish the Saying"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termina el refrán"
+          }
+        }
+      }
+    },
+    "game.sequence.a11y.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to repeat the sequence"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca para repetir la secuencia"
+          }
+        }
+      }
+    },
+    "game.sequence.almost" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost — watch again"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casi — míralo otra vez"
+          }
+        }
+      }
+    },
+    "game.sequence.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Watch, then tap the same tiles in order."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira y luego toca las mismas fichas en orden."
+          }
+        }
+      }
+    },
+    "game.sequence.shape.circle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Círculo"
+          }
+        }
+      }
+    },
+    "game.sequence.shape.drop" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drop"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gota"
+          }
+        }
+      }
+    },
+    "game.sequence.shape.heart" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corazón"
+          }
+        }
+      }
+    },
+    "game.sequence.shape.leaf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leaf"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoja"
+          }
+        }
+      }
+    },
+    "game.sequence.shape.moon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moon"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luna"
+          }
+        }
+      }
+    },
+    "game.sequence.shape.square" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Square"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuadrado"
+          }
+        }
+      }
+    },
+    "game.sequence.shape.star" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Star"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estrella"
+          }
+        }
+      }
+    },
+    "game.sequence.shape.sun" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sun"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sol"
+          }
+        }
+      }
+    },
+    "game.sequence.shape.triangle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triangle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triángulo"
+          }
+        }
+      }
+    },
     "game.sequence.title" : {
       "localizations" : {
         "en" : {
@@ -2502,120 +3476,34 @@
         }
       }
     },
-    "game.sliding.title" : {
+    "game.sequence.turn" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sliding Blocks"
+            "value" : "Your turn"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bloques deslizantes"
+            "value" : "Tu turno"
           }
         }
       }
     },
-    "game.sliding.instruction" : {
-      "extractionState" : "manual",
+    "game.sequence.watch" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slide the blocks to free the big one."
+            "value" : "Watch…"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desliza los bloques para sacar el grande."
-          }
-        }
-      }
-    },
-    "game.sliding.tapblock" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap a block to move it."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca un bloque para moverlo."
-          }
-        }
-      }
-    },
-    "game.sliding.undo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Undo"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deshacer"
-          }
-        }
-      }
-    },
-    "game.sliding.restart" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start over"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Empezar de nuevo"
-          }
-        }
-      }
-    },
-    "game.sliding.hint" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show me a move"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Muéstrame un paso"
-          }
-        }
-      }
-    },
-    "game.sliding.out" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It's out!"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Salió!"
+            "value" : "Mira…"
           }
         }
       }
@@ -2637,19 +3525,19 @@
         }
       }
     },
-    "game.sliding.block.wide" : {
+    "game.sliding.block.small" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "wide block"
+            "value" : "small block"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "bloque ancho"
+            "value" : "bloque pequeño"
           }
         }
       }
@@ -2671,121 +3559,138 @@
         }
       }
     },
-    "game.sliding.block.small" : {
+    "game.sliding.block.wide" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "small block"
+            "value" : "wide block"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "bloque pequeño"
+            "value" : "bloque ancho"
           }
         }
       }
     },
-    "game.sliding.place.topleft" : {
+    "game.sliding.hint" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "top left"
+            "value" : "Show me a move"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "arriba a la izquierda"
+            "value" : "Muéstrame un paso"
           }
         }
       }
     },
-    "game.sliding.place.topmiddle" : {
+    "game.sliding.instruction" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "top middle"
+            "value" : "Slide the blocks to free the big one."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "arriba en el centro"
+            "value" : "Desliza los bloques para sacar el grande."
           }
         }
       }
     },
-    "game.sliding.place.topright" : {
+    "game.sliding.move.down" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "top right"
+            "value" : "Move down"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "arriba a la derecha"
+            "value" : "Mover abajo"
           }
         }
       }
     },
-    "game.sliding.place.middleleft" : {
+    "game.sliding.move.left" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "middle left"
+            "value" : "Move left"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "en el centro a la izquierda"
+            "value" : "Mover a la izquierda"
           }
         }
       }
     },
-    "game.sliding.place.middle" : {
+    "game.sliding.move.right" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "middle"
+            "value" : "Move right"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "en el centro"
+            "value" : "Mover a la derecha"
           }
         }
       }
     },
-    "game.sliding.place.middleright" : {
+    "game.sliding.move.up" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "middle right"
+            "value" : "Move up"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "en el centro a la derecha"
+            "value" : "Mover arriba"
+          }
+        }
+      }
+    },
+    "game.sliding.out" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's out!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Salió!"
           }
         }
       }
@@ -2858,70 +3763,171 @@
         }
       }
     },
-    "game.sliding.move.left" : {
+    "game.sliding.place.middle" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Move left"
+            "value" : "middle"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mover a la izquierda"
+            "value" : "en el centro"
           }
         }
       }
     },
-    "game.sliding.move.right" : {
+    "game.sliding.place.middleleft" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Move right"
+            "value" : "middle left"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mover a la derecha"
+            "value" : "en el centro a la izquierda"
           }
         }
       }
     },
-    "game.sliding.move.up" : {
+    "game.sliding.place.middleright" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Move up"
+            "value" : "middle right"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mover arriba"
+            "value" : "en el centro a la derecha"
           }
         }
       }
     },
-    "game.sliding.move.down" : {
+    "game.sliding.place.topleft" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Move down"
+            "value" : "top left"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mover abajo"
+            "value" : "arriba a la izquierda"
+          }
+        }
+      }
+    },
+    "game.sliding.place.topmiddle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "top middle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arriba en el centro"
+          }
+        }
+      }
+    },
+    "game.sliding.place.topright" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "top right"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arriba a la derecha"
+          }
+        }
+      }
+    },
+    "game.sliding.restart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start over"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar de nuevo"
+          }
+        }
+      }
+    },
+    "game.sliding.tapblock" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a block to move it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca un bloque para moverlo."
+          }
+        }
+      }
+    },
+    "game.sliding.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sliding Blocks"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloques deslizantes"
+          }
+        }
+      }
+    },
+    "game.sliding.undo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deshacer"
           }
         }
       }
@@ -2939,88 +3945,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toca un bloque y luego una flecha para deslizarlo."
-          }
-        }
-      }
-    },
-    "game.tangram.guide" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap a piece, then tap where it fits."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca una pieza y luego toca dónde encaja."
-          }
-        }
-      }
-    },
-    "game.tangram.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tangram"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tangram"
-          }
-        }
-      }
-    },
-    "game.tilepairs.guide" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap two matching tiles that are not covered."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca dos fichas iguales que no estén tapadas."
-          }
-        }
-      }
-    },
-    "game.tilepairs.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tile Pairs"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Parejas de fichas"
-          }
-        }
-      }
-    },
-    "game.sayings.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Finish the Saying"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Termina el refrán"
           }
         }
       }
@@ -3153,6 +4077,22 @@
         }
       }
     },
+    "game.sudoku.guide" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a square, then the number that fits"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca un cuadro y después el número que encaje"
+          }
+        }
+      }
+    },
     "game.sudoku.instruction" : {
       "localizations" : {
         "en" : {
@@ -3229,6 +4169,590 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sudoku"
+          }
+        }
+      }
+    },
+    "game.tangram.a11y.pickfirst" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a piece first"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige primero una pieza"
+          }
+        }
+      }
+    },
+    "game.tangram.a11y.place %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place in %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colocar %@"
+          }
+        }
+      }
+    },
+    "game.tangram.flip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flip"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voltear"
+          }
+        }
+      }
+    },
+    "game.tangram.guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a piece, then tap where it fits."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca una pieza y luego toca dónde encaja."
+          }
+        }
+      }
+    },
+    "game.tangram.instruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fill the shape with the pieces."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llena la figura con las piezas."
+          }
+        }
+      }
+    },
+    "game.tangram.miss.flip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost — try flipping it"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casi — prueba a voltearla"
+          }
+        }
+      }
+    },
+    "game.tangram.miss.spot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost — try another spot"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casi — prueba otro lugar"
+          }
+        }
+      }
+    },
+    "game.tangram.miss.turn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost — try turning it"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casi — prueba a girarla"
+          }
+        }
+      }
+    },
+    "game.tangram.piece.large" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "large triangle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "triángulo grande"
+          }
+        }
+      }
+    },
+    "game.tangram.piece.medium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "medium triangle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "triángulo mediano"
+          }
+        }
+      }
+    },
+    "game.tangram.piece.parallelogram" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "parallelogram"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "paralelogramo"
+          }
+        }
+      }
+    },
+    "game.tangram.piece.small" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "small triangle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "triángulo pequeño"
+          }
+        }
+      }
+    },
+    "game.tangram.piece.square" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "square"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cuadrado"
+          }
+        }
+      }
+    },
+    "game.tangram.showone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show me one"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muéstrame una"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.bottom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bottom"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "abajo"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.bottom.left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bottom left"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "abajo a la izquierda"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.bottom.right" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bottom right"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "abajo a la derecha"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "left"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a la izquierda"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.middle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "middle"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en el centro"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.right" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "right"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a la derecha"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.top" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "top"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arriba"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.top.left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "top left"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arriba a la izquierda"
+          }
+        }
+      }
+    },
+    "game.tangram.slot.top.right" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "top right"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arriba a la derecha"
+          }
+        }
+      }
+    },
+    "game.tangram.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tangram"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tangram"
+          }
+        }
+      }
+    },
+    "game.tangram.turn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Girar"
+          }
+        }
+      }
+    },
+    "game.tilepairs.a11y.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double tap to pick this tile"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca dos veces para elegir esta ficha"
+          }
+        }
+      }
+    },
+    "game.tilepairs.covered" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That one's covered — try a tile on the edge"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esa está tapada — prueba una del borde"
+          }
+        }
+      }
+    },
+    "game.tilepairs.guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap two matching tiles that are not covered."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca dos fichas iguales que no estén tapadas."
+          }
+        }
+      }
+    },
+    "game.tilepairs.hint %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look for the two %@ tiles"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca las dos fichas de %@"
+          }
+        }
+      }
+    },
+    "game.tilepairs.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find two free tiles that match."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca dos fichas libres iguales."
+          }
+        }
+      }
+    },
+    "game.tilepairs.matched %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nice — you matched the %@!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Bien — encontraste el par: %@!"
+          }
+        }
+      }
+    },
+    "game.tilepairs.mismatch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost — those two are different"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casi — esas dos son distintas"
+          }
+        }
+      }
+    },
+    "game.tilepairs.showpair" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show me a pair"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muéstrame una pareja"
+          }
+        }
+      }
+    },
+    "game.tilepairs.stuck" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's mix the tiles"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mezclemos las fichas"
+          }
+        }
+      }
+    },
+    "game.tilepairs.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tile Pairs"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parejas de fichas"
           }
         }
       }
@@ -3326,6 +4850,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otra carta"
+          }
+        }
+      }
+    },
+    "game.upordown.guide" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a card one higher or one lower than this one"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca una carta que sea uno más o uno menos que esta"
           }
         }
       }
@@ -3666,6 +5206,423 @@
         }
       }
     },
+    "game.wordsearch.animals" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animales"
+          }
+        }
+      }
+    },
+    "game.wordsearch.animals.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA"
+          }
+        }
+      }
+    },
+    "game.wordsearch.cell %@ %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, row %2$lld, column %3$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, fila %2$lld, columna %3$lld"
+          }
+        }
+      }
+    },
+    "game.wordsearch.complete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You found all the words!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Encontraste todas las palabras!"
+          }
+        }
+      }
+    },
+    "game.wordsearch.down" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the bottom of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar la parte inferior de la cuadrícula"
+          }
+        }
+      }
+    },
+    "game.wordsearch.example" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try a word from the list."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba una palabra de la lista."
+          }
+        }
+      }
+    },
+    "game.wordsearch.found %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, found"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, encontrada"
+          }
+        }
+      }
+    },
+    "game.wordsearch.garden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jardín"
+          }
+        }
+      }
+    },
+    "game.wordsearch.garden.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN"
+          }
+        }
+      }
+    },
+    "game.wordsearch.guide" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the first letter, then the last letter, or drag between them."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca la primera letra y luego la última, o desliza entre ellas."
+          }
+        }
+      }
+    },
+    "game.wordsearch.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show me a word"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muéstrame una palabra"
+          }
+        }
+      }
+    },
+    "game.wordsearch.hintposition %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try row %1$lld, column %2$lld."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba la fila %1$lld, columna %2$lld."
+          }
+        }
+      }
+    },
+    "game.wordsearch.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the words from the list."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encuentra las palabras de la lista."
+          }
+        }
+      }
+    },
+    "game.wordsearch.miss" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not one of the words — try another line."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esa no es de la lista: prueba otra línea."
+          }
+        }
+      }
+    },
+    "game.wordsearch.music" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Music"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Música"
+          }
+        }
+      }
+    },
+    "game.wordsearch.music.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO"
+          }
+        }
+      }
+    },
+    "game.wordsearch.next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the right of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar el lado derecho de la cuadrícula"
+          }
+        }
+      }
+    },
+    "game.wordsearch.notfound %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, not found"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, por encontrar"
+          }
+        }
+      }
+    },
+    "game.wordsearch.previous" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the left of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar el lado izquierdo de la cuadrícula"
+          }
+        }
+      }
+    },
+    "game.wordsearch.selected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start selected. Choose the last letter."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primera letra elegida. Elige la última letra."
+          }
+        }
+      }
+    },
+    "game.wordsearch.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word Search"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sopa de letras"
+          }
+        }
+      }
+    },
+    "game.wordsearch.up" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the top of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar la parte superior de la cuadrícula"
+          }
+        }
+      }
+    },
+    "guide.again" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show me again"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muéstramelo otra vez"
+          }
+        }
+      }
+    },
+    "guide.colorclash.example %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ink is %@: tap that color."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tinta es de color %@: toca ese color."
+          }
+        }
+      }
+    },
+    "guide.gotit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Got it"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entendido"
+          }
+        }
+      }
+    },
+    "guide.loteria.example" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is the called card. Not on your board? Tap Next card."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta es la carta cantada. ¿No está en tu tabla? Toca Siguiente carta."
+          }
+        }
+      }
+    },
     "guide.slidingblocks.example" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3679,6 +5636,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prueba este bloque."
+          }
+        }
+      }
+    },
+    "guide.sudoku.example %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For example, the number %lld fits the ringed square."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por ejemplo, en el cuadro marcado encaja el número %lld."
           }
         }
       }
@@ -3713,6 +5686,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esta tiene una gemela que no está tapada."
+          }
+        }
+      }
+    },
+    "guide.upordown.example %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This one fits: %@ is one away from the open card."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta encaja: %@ está a un número de la carta abierta."
+          }
+        }
+      }
+    },
+    "guide.upordown.example.none" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look for a card one higher or one lower than the open card."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca una carta que sea uno más o uno menos que la carta abierta."
           }
         }
       }
@@ -4278,19 +6283,104 @@
         }
       }
     },
-    "Level %lld" : {
-      "comment" : "Difficulty.title: a level's name on the family screens.",
+    "level.explain.eased" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Level %lld"
+            "value" : "We made it a little calmer, so you enjoy it more."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nivel %lld"
+            "value" : "Lo pusimos más tranquilo para que lo disfrutes más."
+          }
+        }
+      }
+    },
+    "level.explain.raised1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We made it a little harder: you've been doing great."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo subimos un poquito: te ha ido muy bien."
+          }
+        }
+      }
+    },
+    "level.explain.raised2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two steps up: you're flying!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subimos dos pasos: ¡vas volando!"
+          }
+        }
+      }
+    },
+    "level.offer.keep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep it as it is"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Así está bien"
+          }
+        }
+      }
+    },
+    "level.offer.prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That went really well. Shall we try the next level?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Te salió muy bien! ¿Probamos el siguiente nivel?"
+          }
+        }
+      }
+    },
+    "level.offer.yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes, let's try"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sí, probemos"
           }
         }
       }
@@ -7374,6 +9464,326 @@
         }
       }
     },
+    "saying.100.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and goes out like a lamb"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "escampa"
+          }
+        }
+      }
+    },
+    "saying.100.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "March comes in like a lion"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siempre que llueve"
+          }
+        }
+      }
+    },
+    "saying.101.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "run deep"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "y ríase la gente"
+          }
+        }
+      }
+    },
+    "saying.101.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Still waters"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ande yo caliente"
+          }
+        }
+      }
+    },
+    "saying.102.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in a teacup"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "recoge tempestades"
+          }
+        }
+      }
+    },
+    "saying.102.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A storm"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quien siembra vientos"
+          }
+        }
+      }
+    },
+    "saying.103.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "before the dawn"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "con un dedo"
+          }
+        }
+      }
+    },
+    "saying.103.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's always darkest"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se puede tapar el sol"
+          }
+        }
+      }
+    },
+    "saying.104.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fine by eleven"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ganancia de pescadores"
+          }
+        }
+      }
+    },
+    "saying.104.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rain before seven"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A río revuelto"
+          }
+        }
+      }
+    },
+    "saying.105.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lifts all boats"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a su cauce"
+          }
+        }
+      }
+    },
+    "saying.105.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A rising tide"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las aguas siempre vuelven"
+          }
+        }
+      }
+    },
+    "saying.106.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "is a problem halved"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "corazón que no siente"
+          }
+        }
+      }
+    },
+    "saying.106.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A problem shared"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ojos que no ven"
+          }
+        }
+      }
+    },
+    "saying.107.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to tango"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lava la otra"
+          }
+        }
+      }
+    },
+    "saying.107.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It takes two"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una mano"
+          }
+        }
+      }
+    },
+    "saying.108.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "divided we fall"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hace la fuerza"
+          }
+        }
+      }
+    },
+    "saying.108.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "United we stand"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La unión"
+          }
+        }
+      }
+    },
+    "saying.109.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in numbers"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pocas palabras bastan"
+          }
+        }
+      }
+    },
+    "saying.109.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's safety"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A buen entendedor"
+          }
+        }
+      }
+    },
     "saying.11.end" : {
       "localizations" : {
         "en" : {
@@ -7406,6 +9816,326 @@
         }
       }
     },
+    "saying.110.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "than to receive"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "se entiende la gente"
+          }
+        }
+      }
+    },
+    "saying.110.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's better to give"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hablando"
+          }
+        }
+      }
+    },
+    "saying.111.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "think alike"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ser agradecidos"
+          }
+        }
+      }
+    },
+    "saying.111.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Great minds"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es de bien nacidos"
+          }
+        }
+      }
+    },
+    "saying.112.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "as yourself"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "y ellos se juntan"
+          }
+        }
+      }
+    },
+    "saying.112.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Love your neighbor"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dios los cría"
+          }
+        }
+      }
+    },
+    "saying.113.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "make good neighbors"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "se lava en casa"
+          }
+        }
+      }
+    },
+    "saying.113.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good fences"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La ropa sucia"
+          }
+        }
+      }
+    },
+    "saying.114.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in public"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "es tu casa"
+          }
+        }
+      }
+    },
+    "saying.114.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't air your dirty laundry"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mi casa"
+          }
+        }
+      }
+    },
+    "saying.115.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "home is best"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "honra merece"
+          }
+        }
+      }
+    },
+    "saying.115.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "East or west"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El que a los suyos se parece"
+          }
+        }
+      }
+    },
+    "saying.116.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cannot stand"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oyen"
+          }
+        }
+      }
+    },
+    "saying.116.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A house divided against itself"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las paredes"
+          }
+        }
+      }
+    },
+    "saying.117.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "next to godliness"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "caza ratón"
+          }
+        }
+      }
+    },
+    "saying.117.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cleanliness is"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hijo de gato"
+          }
+        }
+      }
+    },
+    "saying.118.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "and everything in its place"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dónde le aprieta el zapato"
+          }
+        }
+      }
+    },
+    "saying.118.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A place for everything"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada uno sabe"
+          }
+        }
+      }
+    },
+    "saying.119.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sweeps clean"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pero no revueltos"
+          }
+        }
+      }
+    },
+    "saying.119.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A new broom"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juntos"
+          }
+        }
+      }
+    },
     "saying.12.end" : {
       "localizations" : {
         "en" : {
@@ -7434,6 +10164,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lo barato"
+          }
+        }
+      }
+    },
+    "saying.120.end" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "like son"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "buena sombra le cobija"
+          }
+        }
+      }
+    },
+    "saying.120.start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like father"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al que a buen árbol se arrima"
           }
         }
       }
@@ -10222,678 +12984,6 @@
         }
       }
     },
-    "saying.100.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "and goes out like a lamb"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "escampa"
-          }
-        }
-      }
-    },
-    "saying.100.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "March comes in like a lion"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Siempre que llueve"
-          }
-        }
-      }
-    },
-    "saying.101.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "run deep"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "y ríase la gente"
-          }
-        }
-      }
-    },
-    "saying.101.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Still waters"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ande yo caliente"
-          }
-        }
-      }
-    },
-    "saying.102.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "in a teacup"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "recoge tempestades"
-          }
-        }
-      }
-    },
-    "saying.102.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A storm"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quien siembra vientos"
-          }
-        }
-      }
-    },
-    "saying.103.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "before the dawn"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "con un dedo"
-          }
-        }
-      }
-    },
-    "saying.103.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It's always darkest"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se puede tapar el sol"
-          }
-        }
-      }
-    },
-    "saying.104.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fine by eleven"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ganancia de pescadores"
-          }
-        }
-      }
-    },
-    "saying.104.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rain before seven"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A río revuelto"
-          }
-        }
-      }
-    },
-    "saying.105.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "lifts all boats"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "a su cauce"
-          }
-        }
-      }
-    },
-    "saying.105.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A rising tide"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Las aguas siempre vuelven"
-          }
-        }
-      }
-    },
-    "saying.106.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "is a problem halved"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "corazón que no siente"
-          }
-        }
-      }
-    },
-    "saying.106.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A problem shared"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ojos que no ven"
-          }
-        }
-      }
-    },
-    "saying.107.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "to tango"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "lava la otra"
-          }
-        }
-      }
-    },
-    "saying.107.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It takes two"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Una mano"
-          }
-        }
-      }
-    },
-    "saying.108.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "divided we fall"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "hace la fuerza"
-          }
-        }
-      }
-    },
-    "saying.108.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "United we stand"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La unión"
-          }
-        }
-      }
-    },
-    "saying.109.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "in numbers"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "pocas palabras bastan"
-          }
-        }
-      }
-    },
-    "saying.109.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "There's safety"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A buen entendedor"
-          }
-        }
-      }
-    },
-    "saying.110.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "than to receive"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "se entiende la gente"
-          }
-        }
-      }
-    },
-    "saying.110.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It's better to give"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hablando"
-          }
-        }
-      }
-    },
-    "saying.111.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "think alike"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ser agradecidos"
-          }
-        }
-      }
-    },
-    "saying.111.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Great minds"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Es de bien nacidos"
-          }
-        }
-      }
-    },
-    "saying.112.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "as yourself"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "y ellos se juntan"
-          }
-        }
-      }
-    },
-    "saying.112.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Love your neighbor"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dios los cría"
-          }
-        }
-      }
-    },
-    "saying.113.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "make good neighbors"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "se lava en casa"
-          }
-        }
-      }
-    },
-    "saying.113.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Good fences"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La ropa sucia"
-          }
-        }
-      }
-    },
-    "saying.114.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "in public"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "es tu casa"
-          }
-        }
-      }
-    },
-    "saying.114.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Don't air your dirty laundry"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mi casa"
-          }
-        }
-      }
-    },
-    "saying.115.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "home is best"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "honra merece"
-          }
-        }
-      }
-    },
-    "saying.115.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "East or west"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "El que a los suyos se parece"
-          }
-        }
-      }
-    },
-    "saying.116.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cannot stand"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "oyen"
-          }
-        }
-      }
-    },
-    "saying.116.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A house divided against itself"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Las paredes"
-          }
-        }
-      }
-    },
-    "saying.117.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "next to godliness"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "caza ratón"
-          }
-        }
-      }
-    },
-    "saying.117.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cleanliness is"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hijo de gato"
-          }
-        }
-      }
-    },
-    "saying.118.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "and everything in its place"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dónde le aprieta el zapato"
-          }
-        }
-      }
-    },
-    "saying.118.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A place for everything"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cada uno sabe"
-          }
-        }
-      }
-    },
-    "saying.119.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sweeps clean"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "pero no revueltos"
-          }
-        }
-      }
-    },
-    "saying.119.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A new broom"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Juntos"
-          }
-        }
-      }
-    },
-    "saying.120.end" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "like son"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "buena sombra le cobija"
-          }
-        }
-      }
-    },
-    "saying.120.start" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Like father"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al que a buen árbol se arrima"
-          }
-        }
-      }
-    },
     "settings.done" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -10907,6 +12997,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listo"
+          }
+        }
+      }
+    },
+    "settings.guides" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the game guides again"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volver a ver las guías"
+          }
+        }
+      }
+    },
+    "settings.guides.done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done. You'll see them again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listo. Volverás a verlas."
           }
         }
       }
@@ -11030,6 +13152,23 @@
         }
       }
     },
+    "settings.privacy.photos" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your photos and their names never leave it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus fotos y sus nombres nunca salen de aquí."
+          }
+        }
+      }
+    },
     "settings.privacy.policy" : {
       "localizations" : {
         "en" : {
@@ -11090,23 +13229,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "https://menteviva-e4s.pages.dev/es/support"
-          }
-        }
-      }
-    },
-    "settings.privacy.photos" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your photos and their names never leave it."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tus fotos y sus nombres nunca salen de aquí."
           }
         }
       }
@@ -11328,108 +13450,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustes de juego"
-          }
-        }
-      }
-    },
-    "level.explain.raised1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We made it a little harder: you've been doing great."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lo subimos un poquito: te ha ido muy bien."
-          }
-        }
-      }
-    },
-    "level.explain.raised2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Two steps up: you're flying!"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Subimos dos pasos: ¡vas volando!"
-          }
-        }
-      }
-    },
-    "level.explain.eased" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We made it a little calmer, so you enjoy it more."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lo pusimos más tranquilo para que lo disfrutes más."
-          }
-        }
-      }
-    },
-    "level.offer.prompt" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "That went really well. Shall we try the next level?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Te salió muy bien! ¿Probamos el siguiente nivel?"
-          }
-        }
-      }
-    },
-    "level.offer.yes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yes, let's try"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sí, probemos"
-          }
-        }
-      }
-    },
-    "level.offer.keep" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keep it as it is"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Así está bien"
           }
         }
       }
@@ -11825,876 +13845,6 @@
         }
       }
     },
-    "game.tangram.instruction" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fill the shape with the pieces."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Llena la figura con las piezas."
-          }
-        }
-      }
-    },
-    "game.tangram.turn" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turn"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Girar"
-          }
-        }
-      }
-    },
-    "game.tangram.flip" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Flip"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voltear"
-          }
-        }
-      }
-    },
-    "game.tangram.showone" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show me one"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Muéstrame una"
-          }
-        }
-      }
-    },
-    "game.tangram.miss.flip" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Almost — try flipping it"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Casi — prueba a voltearla"
-          }
-        }
-      }
-    },
-    "game.tangram.miss.spot" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Almost — try another spot"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Casi — prueba otro lugar"
-          }
-        }
-      }
-    },
-    "game.tangram.miss.turn" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Almost — try turning it"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Casi — prueba a girarla"
-          }
-        }
-      }
-    },
-    "game.tangram.piece.large" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "large triangle"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "triángulo grande"
-          }
-        }
-      }
-    },
-    "game.tangram.piece.medium" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "medium triangle"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "triángulo mediano"
-          }
-        }
-      }
-    },
-    "game.tangram.piece.small" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "small triangle"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "triángulo pequeño"
-          }
-        }
-      }
-    },
-    "game.tangram.piece.square" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "square"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cuadrado"
-          }
-        }
-      }
-    },
-    "game.tangram.piece.parallelogram" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "parallelogram"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "paralelogramo"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.top.left" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "top left"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "arriba a la izquierda"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.top" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "top"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "arriba"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.top.right" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "top right"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "arriba a la derecha"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.left" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "left"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "a la izquierda"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.middle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "middle"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "en el centro"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.right" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "right"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "a la derecha"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.bottom.left" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "bottom left"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "abajo a la izquierda"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.bottom" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "bottom"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "abajo"
-          }
-        }
-      }
-    },
-    "game.tangram.slot.bottom.right" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "bottom right"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "abajo a la derecha"
-          }
-        }
-      }
-    },
-    "game.tangram.a11y.place %@" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Place in %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Colocar %@"
-          }
-        }
-      }
-    },
-    "game.tangram.a11y.pickfirst" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pick a piece first"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elige primero una pieza"
-          }
-        }
-      }
-    },
-    "game.colorclash.color.purple" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Purple"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Morado"
-          }
-        }
-      }
-    },
-    "game.colorclash.color.yellow" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yellow"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Amarillo"
-          }
-        }
-      }
-    },
-    "game.colorclash.word.purple" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PURPLE"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MORADO"
-          }
-        }
-      }
-    },
-    "game.colorclash.word.yellow" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "YELLOW"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AMARILLO"
-          }
-        }
-      }
-    },
-    "game.colorclash.shape.hexagon" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hexagon"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hexágono"
-          }
-        }
-      }
-    },
-    "game.colorclash.shape.star" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Star"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estrella"
-          }
-        }
-      }
-    },
-    "guide.colorclash.example %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The ink is %@: tap that color."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La tinta es de color %@: toca ese color."
-          }
-        }
-      }
-    },
-    "guide.gotit" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Got it"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entendido"
-          }
-        }
-      }
-    },
-    "guide.again" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show me again"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Muéstramelo otra vez"
-          }
-        }
-      }
-    },
-    "game.sudoku.guide" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap a square, then the number that fits"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca un cuadro y después el número que encaje"
-          }
-        }
-      }
-    },
-    "game.upordown.guide" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap a card one higher or one lower than this one"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca una carta que sea uno más o uno menos que esta"
-          }
-        }
-      }
-    },
-    "guide.sudoku.example %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "For example, the number %lld fits the ringed square."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por ejemplo, en el cuadro marcado encaja el número %lld."
-          }
-        }
-      }
-    },
-    "guide.upordown.example %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This one fits: %@ is one away from the open card."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esta encaja: %@ está a un número de la carta abierta."
-          }
-        }
-      }
-    },
-    "guide.upordown.example.none" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Look for a card one higher or one lower than the open card."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Busca una carta que sea uno más o uno menos que la carta abierta."
-          }
-        }
-      }
-    },
-    "settings.guides" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show the game guides again"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Volver a ver las guías"
-          }
-        }
-      }
-    },
-    "settings.guides.done" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done. You'll see them again."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Listo. Volverás a verlas."
-          }
-        }
-      }
-    },
-    "game.sequence.instruction" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Watch, then tap the same tiles in order."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mira y luego toca las mismas fichas en orden."
-          }
-        }
-      }
-    },
-    "game.sequence.watch" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Watch…"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mira…"
-          }
-        }
-      }
-    },
-    "game.sequence.turn" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your turn"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tu turno"
-          }
-        }
-      }
-    },
-    "game.sequence.almost" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Almost — watch again"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Casi — míralo otra vez"
-          }
-        }
-      }
-    },
-    "game.sequence.a11y.hint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap to repeat the sequence"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca para repetir la secuencia"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.circle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Circle"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Círculo"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.star" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Star"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estrella"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.square" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Square"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cuadrado"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.triangle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Triangle"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Triángulo"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.heart" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heart"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Corazón"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.moon" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Moon"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Luna"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.drop" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Drop"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gota"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.leaf" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leaf"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hoja"
-          }
-        }
-      }
-    },
-    "game.sequence.shape.sun" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sun"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sol"
-          }
-        }
-      }
-    },
     "today.share" : {
       "localizations" : {
         "en" : {
@@ -12759,6 +13909,70 @@
         }
       }
     },
+    "warmup.accept" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's play"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juguemos"
+          }
+        }
+      }
+    },
+    "warmup.accept.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deals three games for today."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reparte tres juegos para hoy."
+          }
+        }
+      }
+    },
+    "warmup.notnow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not now"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora no"
+          }
+        }
+      }
+    },
+    "warmup.offer.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shall we play three games to find your pace?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Jugamos tres partidas para encontrar tu ritmo?"
+          }
+        }
+      }
+    },
     "why.footer" : {
       "localizations" : {
         "en" : {
@@ -12807,6 +14021,23 @@
         }
       }
     },
+    "why.game.loteria" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería exercises spotting the called card on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería ejercita encontrar la carta cantada en tu tabla."
+          }
+        }
+      }
+    },
     "why.game.math" : {
       "localizations" : {
         "en" : {
@@ -12835,6 +14066,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Camino de Memoria ejercita recordar dónde está cada cosa."
+          }
+        }
+      }
+    },
+    "why.game.peg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peg Solitaire exercises planning your jumps."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Come solo ejercita planear los saltos."
           }
         }
       }
@@ -12995,6 +14243,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sube o baja ejercita planear tu próxima carta."
+          }
+        }
+      }
+    },
+    "why.game.wordsearch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word Search exercises finding familiar words in a grid."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sopa de letras ejercita encontrar palabras conocidas en una cuadrícula."
           }
         }
       }
@@ -13411,613 +14675,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Por qué estos juegos"
-          }
-        }
-      }
-    },
-    "game.tilepairs.a11y.hint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Double tap to pick this tile"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca dos veces para elegir esta ficha"
-          }
-        }
-      }
-    },
-    "game.tilepairs.covered" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "That one's covered — try a tile on the edge"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esa está tapada — prueba una del borde"
-          }
-        }
-      }
-    },
-    "game.tilepairs.hint %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Look for the two %@ tiles"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Busca las dos fichas de %@"
-          }
-        }
-      }
-    },
-    "game.tilepairs.instruction" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Find two free tiles that match."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Busca dos fichas libres iguales."
-          }
-        }
-      }
-    },
-    "game.tilepairs.matched %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nice — you matched the %@!"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Bien — encontraste el par: %@!"
-          }
-        }
-      }
-    },
-    "game.tilepairs.mismatch" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Almost — those two are different"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Casi — esas dos son distintas"
-          }
-        }
-      }
-    },
-    "game.tilepairs.showpair" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show me a pair"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Muéstrame una pareja"
-          }
-        }
-      }
-    },
-    "game.tilepairs.stuck" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Let's mix the tiles"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mezclemos las fichas"
-          }
-        }
-      }
-    },
-    "warmup.accept" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Let's play"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Juguemos"
-          }
-        }
-      }
-    },
-    "warmup.accept.hint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deals three games for today."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reparte tres juegos para hoy."
-          }
-        }
-      }
-    },
-    "warmup.notnow" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not now"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ahora no"
-          }
-        }
-      }
-    },
-    "warmup.offer.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Shall we play three games to find your pace?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Jugamos tres partidas para encontrar tu ritmo?"
-          }
-        }
-      }
-    },
-    "about.row" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acerca de"
-          }
-        }
-      }
-    },
-    "about.row.hint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "How the pictures and the app were made."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cómo se hicieron las imágenes y la app."
-          }
-        }
-      }
-    },
-    "about.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About MenteViva"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acerca de MenteViva"
-          }
-        }
-      }
-    },
-    "about.pictures" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The pictures in this app were made with AI image tools, including Meta's Muse Image, and checked by a person."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Las imágenes de esta app se hicieron con herramientas de IA, entre ellas Muse Image de Meta, y las revisó una persona."
-          }
-        }
-      }
-    },
-    "about.build" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The app was built with the help of AI coding assistants, including Meta's Muse Code."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La app se creó con ayuda de asistentes de programación con IA, entre ellos Muse Code de Meta."
-          }
-        }
-      }
-    },
-    "about.offline" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nothing in the app uses AI while you play. Your games and photos stay on this device."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nada en la app usa IA mientras juegas. Tus partidas y fotos se quedan en este dispositivo."
-          }
-        }
-      }
-    },
-    "about.why.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Why I made MenteViva"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por qué hice MenteViva"
-          }
-        }
-      }
-    },
-    "about.why.p1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I made MenteViva mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hice MenteViva, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa."
-          }
-        }
-      }
-    },
-    "about.why.p2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I also made it for myself, my sister and my nephews and nieces, because this illness runs in our family. I wanted something that invites us to exercise our minds through play, and I want to share it with everyone."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "También la hice para mí, para mi hermana y para mis sobrinos, porque en nuestra familia esta enfermedad es hereditaria. Quería algo que nos invitara a ejercitar la mente jugando, y quiero compartirlo con todas las personas."
-          }
-        }
-      }
-    },
-    "about.why.p3" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "I hope that what I can build, with the help of AI, will keep not only my dad company, but as many people as possible."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible."
-          }
-        }
-      }
-    },
-    "game.peg.searchmore" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "That move is hard to find. Try undoing a move or starting over."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cuesta encontrar ese movimiento. Prueba deshacer o empezar de nuevo."
-          }
-        }
-      }
-    },
-    "game.peg.down" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jump down"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saltar abajo"
-          }
-        }
-      }
-    },
-    "game.peg.cell %lld %lld" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "row %1$lld, column %2$lld"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "fila %1$lld, columna %2$lld"
-          }
-        }
-      }
-    },
-    "game.peg.instruction" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jump a peg over another to remove it. Leave just one."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salta una ficha sobre otra para quitarla. Deja solo una."
-          }
-        }
-      }
-    },
-    "game.peg.example" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jump over a neighbour into an empty hole."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salta sobre una ficha hacia un hueco vacío."
-          }
-        }
-      }
-    },
-    "game.peg.unsolvable" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No way to one peg from here. Undo, or start over?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desde aquí ya no se llega a una. ¿Deshacer o empezar de nuevo?"
-          }
-        }
-      }
-    },
-    "why.game.peg" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Peg Solitaire exercises planning your jumps."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Come solo ejercita planear los saltos."
-          }
-        }
-      }
-    },
-    "game.peg.empty" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "empty hole"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "hueco vacío"
-          }
-        }
-      }
-    },
-    "game.peg.left" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jump left"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saltar a la izquierda"
-          }
-        }
-      }
-    },
-    "game.peg.right" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jump right"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saltar a la derecha"
-          }
-        }
-      }
-    },
-    "game.peg.win" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Just one left!"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Quedó solo una!"
-          }
-        }
-      }
-    },
-    "game.peg.guide" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap a peg, then a ring to jump."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca una ficha y luego un círculo para saltar."
-          }
-        }
-      }
-    },
-    "game.peg.up" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jump up"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Saltar arriba"
-          }
-        }
-      }
-    },
-    "game.peg.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Peg Solitaire"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Come solo"
-          }
-        }
-      }
-    },
-    "game.peg.occupied" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "peg"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ficha"
           }
         }
       }

@@ -1,7 +1,7 @@
 # App Store listing (#232)
 
 Everything App Store Connect asks for, EN and ES, ready to paste. Updated 2026-10-30 for v1.0:
-15 games, free, local-only. First draft: #35 (2026-09-20).
+17 games, free, local-only. First draft: #35 (2026-09-20).
 
 **Before pasting**, re-check three things in the current App Store Connect, because they change: the
 screenshot sizes, the category list and the age-rating questions. And if Sliding Blocks (#222, #223)
@@ -41,9 +41,9 @@ category matches how the app is often installed: by someone in the family, for s
 
 ## Promotional text (≤ 170, can change without review)
 
-- **EN:** Fifteen calm games for memory, attention, words, numbers and shapes. Free, offline, no
+- **EN:** Seventeen calm games for memory, attention, words, numbers and shapes. Free, offline, no
   account and no ads, in English and Spanish.
-- **ES:** Quince juegos tranquilos de memoria, atención, palabras, números y formas. Gratis, sin
+- **ES:** Diecisiete juegos tranquilos de memoria, atención, palabras, números y formas. Gratis, sin
   conexión, sin cuenta y sin anuncios, en español e inglés.
 
 ## Keywords (≤ 100, comma-separated, no spaces, no app name)
@@ -55,15 +55,15 @@ category matches how the app is often installed: by someone in the family, for s
 
 Fun mental exercise, at your own pace.
 
-MenteViva is fifteen calm games, each a different kind of thinking. Big buttons, clear colours, and
+MenteViva is seventeen calm games, each a different kind of thinking. Big buttons, clear colours, and
 no countdown clock. When a move doesn't fit, it says "almost", never "wrong". Some games show
 one example move the first time, so anyone can start on their own.
 
-FIFTEEN GAMES
+SEVENTEEN GAMES
 • Memory: Memory Lane, Names and Faces, Repeat the Sequence, Photo Stories (with your own family photos)
-• Attention: Quick Eyes, Color Clash, Tangram, Tile Pairs, Sliding Blocks, Peg Solitaire
+• Attention: Quick Eyes, Color Clash, Tangram, Tile Pairs, Sliding Blocks, Peg Solitaire, Lotería
 • Numbers: Number Trail, Sudoku, Up or Down
-• Words: Name the Herd, Finish the Saying
+• Words: Name the Herd, Finish the Saying, Word Search
 
 AT YOUR PACE
 • Ten levels in every game. The level moves gently with how you play, never in the middle of a game
@@ -87,16 +87,16 @@ treat any condition. If you have a concern about memory, yours or a loved one's,
 
 Ejercicio mental divertido, a tu ritmo.
 
-MenteViva son quince juegos tranquilos, cada uno para un tipo distinto de pensamiento. Botones grandes,
+MenteViva son diecisiete juegos tranquilos, cada uno para un tipo distinto de pensamiento. Botones grandes,
 colores claros y sin cuenta regresiva. Cuando una jugada no encaja, dice «casi», nunca «mal».
 Algunos juegos muestran una jugada de ejemplo la primera vez, para que cualquiera empiece por
 su cuenta.
 
-QUINCE JUEGOS
+DIECISIETE JUEGOS
 • Memoria: Camino de Memoria, Nombres y Caras, Repite la secuencia, Historias en fotos (con tus propias fotos de familia)
-• Atención: Ojos Ágiles, Choque de Colores, Tangram, Parejas de fichas, Bloques deslizantes, Come solo
+• Atención: Ojos Ágiles, Choque de Colores, Tangram, Parejas de fichas, Bloques deslizantes, Come solo, Lotería
 • Números: Sendero de Números, Sudoku, Sube o baja
-• Palabras: Nombra la Manada, Termina el refrán
+• Palabras: Nombra la Manada, Termina el refrán, Sopa de letras
 
 A TU RITMO
 • Diez niveles en cada juego. El nivel se ajusta con calma según cómo juegas, nunca a mitad de partida

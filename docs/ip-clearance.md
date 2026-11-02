@@ -66,6 +66,7 @@ alternatives are proposed in the last column).
 | 10 | Repeat the Sequence | Repite la secuencia | Public domain: Corsi / sequence memory (Corsi 1972) | USPTO + EUIPO + IMPI + App Store | No live mark. Avoided "Simon" (trademark). Phrase is descriptive. | none | — · Follow the Sequence / Sigue la secuencia · Pattern Replay / Repite el patrón |
 | 11 | Tangram | Tangram | Public domain: Chinese dissection puzzle (early 1800s) | USPTO + EUIPO + IMPI + App Store | Generic puzzle name in 9/41 — many App Store titles use it descriptively, no single owner of the word alone. | low (generic, crowded) | — · Shape Puzzle / Rompecabezas de Formas · Seven Pieces / Siete Piezas |
 | 12 | Tile Pairs | Parejas de fichas* | Public domain: mahjong-solitaire style matching | USPTO + EUIPO + IMPI + App Store | No live mark "Tile Pairs" / "Parejas de fichas" in 9/41. Avoided "Shanghai" (trademark). | none | — · Matching Tiles / Fichas Pareadas · Pair the Tiles / Empareja las fichas |
+| 14 | Word Search | Sopa de letras | Public-domain word-search format | Pending: USPTO, EUIPO, IMPI | Not yet checked | Pending owner confirmation (#226) | — |
 | 13 | Sliding Blocks | Bloques deslizantes | Public domain: sliding-block / Huarong Dao style (1930s) | USPTO + EUIPO + IMPI + App Store | No live mark "Sliding Blocks" / "Bloques deslizantes" in 9/41. Avoided "Klotski" (trademark). | none | — · Slide Puzzle / Rompecabezas Deslizante · Moving Blocks / Bloques en Movimiento |
 
 * why-these-games.md proposes "Pares de fichas"; Localizable.xcstrings ships "Parejas de fichas" — same meaning, same check above (both strings searched; neither has a live mark in 9/41).
@@ -170,3 +171,4 @@ outside the app, on public registers.
 - Trademark search: USPTO, EUIPO and IMPI register searches remain to be completed; owner and lawyer review required.
 - Art: drawn in code. Sounds: SoundPlayer tones. Content: deals generated backwards on device.
 - Not a clinical test layout.
+- **Word Search (#550):** Original EN/ES word lists; emblem drawn in code; sounds use SoundPlayer tones. Trademark searches and owner confirmation remain pending before merge.
