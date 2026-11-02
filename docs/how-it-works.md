@@ -59,11 +59,11 @@ ranking decides.
 score = value[game] × focusBoost (1.5 or 1) × (0.5 + 0.5 × daysSinceLastPlayed / 7)     (days capped at 7)
 ```
 
-Two rules then guarantee that every game comes round, whatever the focus or the deal size. A game left out
-for a week takes the deal's last place (#279). A game not played for two weeks also takes the place before
+Two rules then make every game come round, whatever the focus or the deal size (proved up to 28 games). A game
+not played for a week takes the deal's last place (#279). A game not played for two weeks also takes the place before
 the last (#547). If several are owed a place, the longest-rested wins and ties go in `GameID` order.
 The first place of a deal of three or more never changes. The warm-up (#213, offered at the end of
-onboarding, not when setting up for a family member) deals three games from three different areas, calls the
+onboarding, not when setting up for a family member; Settings → My plan can still start it) deals three games from three different areas, calls the
 first three sessions of each calibrating, and moves their levels in bigger steps before the staircase starts.
 
 - Hidden games are never picked.
