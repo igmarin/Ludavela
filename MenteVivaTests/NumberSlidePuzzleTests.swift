@@ -100,10 +100,10 @@ final class NumberSlidePuzzleTests: XCTestCase {
         XCTAssertEqual(saved.accuracy, 1, "the fewest moves, none shown")
     }
 
-    func testGivenLevelOneSolvedByShowMeAMoveAloneThenTheSessionSaysSoAndTheLevelHolds() {
+    func testGivenLevelOneSolvedByShowMeAMoveAloneThenTheSessionSaysSoAndTheLevelHolds() throws {
         var generator = SeededGenerator(state: 1)
         let deal = NumberSlidePuzzle.deal(for: Difficulty(level: 1), using: &generator)
-        let fewest = NumberSlideSolver.fewestMoves(from: deal)
+        let fewest = try XCTUnwrap(NumberSlideSolver.fewestMoves(from: deal))
         let solved = solvedByHints(deal)
         let session = solved.session(level: Difficulty(level: 1), fewestMoves: fewest, hints: solved.movesMade, seconds: 30)
         XCTAssertEqual(session.attempts, 3 * fewest, "each shown move counts itself and two more")
@@ -177,7 +177,7 @@ final class NumberSlidePuzzleTests: XCTestCase {
         var generator = SeededGenerator(state: 4)
         for _ in 0..<20 {
             let deal = NumberSlidePuzzle.deal(for: Difficulty(level: 1), using: &generator)
-            XCTAssertTrue((3...4).contains(NumberSlideSolver.fewestMoves(from: deal)), "\(deal.tiles)")
+            XCTAssertTrue((3...4).contains(NumberSlideSolver.fewestMoves(from: deal) ?? 0), "\(deal.tiles)")
         }
     }
 
@@ -258,6 +258,55 @@ final class NumberSlidePuzzleTests: XCTestCase {
         }
     }
 
+    /// The search keeps the estimate up to date slide by slide instead of counting the board
+    /// again (#559 review): after every one of thousands of random slides on both boards it
+    /// matches a fresh count.
+    func testGivenThousandsOfRandomSlidesThenTheKeptEstimateMatchesAFreshCountEveryTime() {
+        var generator = SeededGenerator(state: 559)
+        for size in [3, 4] {
+            for _ in 0..<5 {
+                var board = NumberSlidePuzzle.scrambled(size: size, moves: 200, using: &generator)
+                let start = board
+                var cells: [Int] = []
+                var fresh: [Int] = []
+                for _ in 0..<1_000 {
+                    let options = NumberSlidePuzzle.neighbours(of: board.gap, size: size)
+                    let cell = options[Int.random(in: options.indices, using: &generator)]
+                    board.slide(at: cell)
+                    cells.append(cell)
+                    fresh.append(NumberSlideSolver.estimate(board))
+                }
+                XCTAssertEqual(
+                    NumberSlideSolver.estimates(along: cells, from: start), fresh, "\(size)×\(size) from \(start.tiles)")
+            }
+        }
+    }
+
+    /// Leaving the screen cancels the count of the deal's fewest moves (#559 review): the search
+    /// asks once, at its first check, and stops there, finding nothing.
+    func testGivenACancelledCountWhenSearchingAHardBoardThenItStopsAtTheFirstCheck() {
+        var generator = SeededGenerator(state: 60)
+        let hard = NumberSlidePuzzle.scrambled(size: 4, moves: 60, using: &generator)
+        var asked = 0
+        let fewest = NumberSlideSolver.fewestMoves(from: hard) {
+            asked += 1
+            return true
+        }
+        XCTAssertNil(fewest)
+        XCTAssertEqual(asked, 1, "one check, after 4,096 nodes, then nothing more")
+    }
+
+    /// With no count found, the session is scored from the moves alone, never from the estimate
+    /// (#559 review): the estimate is a lower bound, not a solution.
+    func testGivenNoFewestMovesWhenSavedThenTheSessionScoresFromTheMovesAlone() {
+        var puzzle = NumberSlidePuzzle.solved(size: 4)
+        puzzle.slide(at: 12)
+        puzzle.slide(at: 0)
+        let session = puzzle.session(level: Difficulty(level: 10), fewestMoves: nil, hints: 1, seconds: 60)
+        XCTAssertEqual(session.attempts, puzzle.movesMade + 2)
+        XCTAssertEqual(session.correct, puzzle.movesMade)
+    }
+
     // MARK: - The staircase (#547 review)
 
     /// A steady player who takes 2.5 times the fewest moves, one game a day from level 1, follows
@@ -285,7 +334,7 @@ final class NumberSlidePuzzleTests: XCTestCase {
             }
             guard level.level < 6 else { break }
             let deal = NumberSlidePuzzle.deal(for: level, using: &generator)
-            let fewest = NumberSlideSolver.fewestMoves(from: deal)
+            let fewest = NumberSlideSolver.fewestMoves(from: deal) ?? 0
             let moves = Int((2.5 * Double(fewest)).rounded())
             let session = GameSession(gameID: .numberSlide, rounds: 1, durationSeconds: 60, correct: fewest, attempts: moves)
             recent.insert(session.accuracy ?? 0, at: 0)

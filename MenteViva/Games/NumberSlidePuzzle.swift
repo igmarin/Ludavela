@@ -146,11 +146,15 @@ nonisolated struct NumberSlidePuzzle: Hashable, Sendable {
     /// move (which also counts in `movesMade`). Two, not Sliding Blocks' one, because this game's
     /// staircase climbs from 0.35 (`DailyPolicy.thresholds`): a game played by "Show me a move"
     /// alone scores 1/3 and holds its level instead of climbing.
-    func session(level: Difficulty, fewestMoves: Int, hints: Int, seconds: Int) -> GameSession {
+    ///
+    /// `fewestMoves` is nil when no search found a solution in time (or it was cancelled): the
+    /// session is then scored from the moves alone, as Sliding Blocks does without its count, so a
+    /// guess is never recorded as the fewest.
+    func session(level: Difficulty, fewestMoves: Int?, hints: Int, seconds: Int) -> GameSession {
         let attempts = movesMade + 2 * hints
         return GameSession(
             gameID: .numberSlide, rounds: 1, durationSeconds: seconds,
-            correct: min(fewestMoves, attempts), attempts: attempts, difficulty: level)
+            correct: min(fewestMoves ?? movesMade, attempts), attempts: attempts, difficulty: level)
     }
 }
 
@@ -194,16 +198,31 @@ nonisolated enum NumberSlideSolver {
     }
 
     /// The deal's fewest moves (one per tile per cell), recorded as `correct`. Exact when the search
-    /// fits 3 million nodes (every 3×3 board, and nearly every 4×4 deal); past it, the length the
-    /// widened search finds, which can only make the player's accuracy look better, never worse. Up
-    /// to about a third of a second on the hardest level-10 deals in a release build, so the view
-    /// runs it off the main thread.
-    static func fewestMoves(from puzzle: NumberSlidePuzzle) -> Int {
+    /// fits 3 million nodes (every 3×3 board, and nearly every 4×4 deal); past it, the length of a
+    /// real solution the widened search finds, which can only make the player's accuracy look
+    /// better, never worse. Nil when no search finds one (or `isCancelled` answers true, asked every
+    /// 4,096 nodes): never the estimate, which is a lower bound, not a solution. Up to about a third
+    /// of a second on the hardest level-10 deals in a release build, so the view runs it off the
+    /// main thread and cancels it when the deal is left.
+    static func fewestMoves(
+        from puzzle: NumberSlidePuzzle, isCancelled: @escaping () -> Bool = { false }
+    ) -> Int? {
         for (weight, budget) in [(2, 3_000_000), (3, 500_000), (4, 500_000), (6, 500_000)] {
-            var search = Search(puzzle: puzzle, weight: weight, budget: budget)
+            var search = Search(puzzle: puzzle, weight: weight, budget: budget, isCancelled: isCancelled)
             if let path = search.run() { return path.count }
+            if search.cancelled { return nil }
         }
-        return estimate(puzzle)
+        return nil
+    }
+
+    /// The estimate after each single-tile slide of `cells` from `puzzle`, kept up to date move by
+    /// move as the search keeps it (tests compare it with a fresh count after every slide).
+    static func estimates(along cells: [Int], from puzzle: NumberSlidePuzzle) -> [Int] {
+        var search = Search(puzzle: puzzle, weight: 2, budget: 0)
+        return cells.map { cell in
+            search.move(from: cell)
+            return search.manhattan + search.conflicts
+        }
     }
 
     /// The linear-conflict cost of every line a board of up to 4×4 can hold, indexed by
@@ -249,7 +268,11 @@ nonisolated enum NumberSlideSolver {
     private struct Search {
         let size: Int
         let weight: Int
-        let budget: Int
+        /// Nodes this search may expand; cut to the nodes spent when it is cancelled.
+        var budget: Int
+        /// Asked every 4,096 nodes, so a cancelled background search stops within a few milliseconds.
+        let isCancelled: () -> Bool
+        var cancelled = false
         var board: [Int]
         var gap: Int
         var manhattan = 0
@@ -275,12 +298,13 @@ nonisolated enum NumberSlideSolver {
         /// `lineCosts`, held here: reading a static in the hot loop costs a lazy-init check each time.
         private let costTable = NumberSlideSolver.lineCosts
 
-        init(puzzle: NumberSlidePuzzle, weight: Int, budget: Int) {
+        init(puzzle: NumberSlidePuzzle, weight: Int, budget: Int, isCancelled: @escaping () -> Bool = { false }) {
             let size = puzzle.size
             let cells = size * size
             self.size = size
             self.weight = weight
             self.budget = budget
+            self.isCancelled = isCancelled
             board = puzzle.tiles
             gap = puzzle.gap
             var distance = Array(repeating: 0, count: cells * cells)
@@ -341,6 +365,10 @@ nonisolated enum NumberSlideSolver {
                 return f
             }
             nodes += 1
+            if nodes & 4095 == 0, isCancelled() {
+                cancelled = true
+                budget = nodes
+            }
             if nodes >= budget { return Int.max }
             var smallest = Int.max
             let here = gap
@@ -359,7 +387,7 @@ nonisolated enum NumberSlideSolver {
         }
 
         /// The tile at `cell` slides into the gap.
-        private mutating func move(from cell: Int) {
+        mutating func move(from cell: Int) {
             let tile = board[cell]
             let to = gap
             let cells = board.count

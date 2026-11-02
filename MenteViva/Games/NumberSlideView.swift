@@ -18,7 +18,7 @@ struct NumberSlideView: View {
     @State private var puzzle: NumberSlidePuzzle?
     /// The deal's fewest moves, recorded as `correct`. Worked out off the main thread at the deal
     /// (up to half a second on the hardest 4×4 deals), long before anyone finishes.
-    @State private var fewest: Task<Int, Never>?
+    @State private var fewest: Task<Int?, Never>?
     /// The tile "Show me a move" just slid, ringed in amber until the next move, so the eye finds
     /// it even when Reduce Motion lands it at once.
     @State private var shownTile: Int?
@@ -55,7 +55,14 @@ struct NumberSlideView: View {
             .numberSlide, line: AppLanguage.localized("game.numberslide.guide"),
             example: AppLanguage.localized("guide.numberslide.example")
         )
-        .onAppear { if puzzle == nil { deal() } }
+        .onAppear {
+            if let puzzle {
+                // Coming back to a deal whose count leaving the screen cancelled: count it again.
+                if fewest?.isCancelled ?? true { countFewest(NumberSlidePuzzle(size: puzzle.size, tiles: puzzle.dealt)) }
+            } else {
+                deal()
+            }
+        }
         .onDisappear { fewest?.cancel() }
         .celebration(isPresented: $showCelebration, game: .numberSlide, detail: finalDetail, onPlayAgain: deal)
     }
@@ -261,6 +268,15 @@ struct NumberSlideView: View {
         slide(at: cell, shown: true)
     }
 
+    /// Counts the deal's fewest moves in the background. Cancelled on a new deal or when the screen
+    /// goes, and the search stops within a few milliseconds of it.
+    private func countFewest(_ deal: NumberSlidePuzzle) {
+        fewest?.cancel()
+        fewest = Task.detached(priority: .userInitiated) {
+            NumberSlideSolver.fewestMoves(from: deal) { Task.isCancelled }
+        }
+    }
+
     private func deal() {
         difficulty = Difficulty.stored(.numberSlide)
         var generator = SystemRandomNumberGenerator()
@@ -271,8 +287,7 @@ struct NumberSlideView: View {
         hintsUsed = 0
         shownTile = nil
         startedAt = .now
-        fewest?.cancel()
-        fewest = Task.detached(priority: .userInitiated) { NumberSlideSolver.fewestMoves(from: fresh) }
+        countFewest(fresh)
     }
 
     /// All in order: record the session with its level (issue spec), then the shared celebration
@@ -282,7 +297,8 @@ struct NumberSlideView: View {
         let elapsed = Int(Date.now.timeIntervalSince(startedAt))
         let (level, hints, work) = (difficulty, hintsUsed, fewest)
         Task { @MainActor in
-            let best = await work?.value ?? solved.movesMade
+            // Nil when no count was found: the session is then scored from the moves alone.
+            let best = await work?.value ?? nil
             modelContext.record(solved.session(level: level, fewestMoves: best, hints: hints, seconds: elapsed))
             finalDetail = AppLanguage.localized("game.numberslide.done")
             if CaptionSpeaker.autoSpeaks() { CaptionSpeaker.speak(finalDetail) }
