@@ -90,11 +90,6 @@ struct HistoryView: View {
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
                     .listRowBackground(Color.clear)
-                    // The trailing star is decoration; VoiceOver would read it as a word (#543).
-                    .accessibilityLabel(
-                        AppLanguage.localized("history.summary \(snapshot.weekCount)")
-                            .replacingOccurrences(of: " 🌟", with: "")
-                    )
                     .accessibilityAddTraits(.isHeader)
             }
 

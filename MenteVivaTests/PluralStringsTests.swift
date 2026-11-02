@@ -31,8 +31,8 @@ final class PluralStringsTests: XCTestCase {
     }
 
     func testGivenOneSessionWhenWeekHeaderThenItIsSingular() {
-        XCTAssertEqual(text("history.summary \(1)", "en"), "You played 1 time this week! 🌟")
-        XCTAssertEqual(text("history.summary \(1)", "es"), "¡Jugaste 1 vez esta semana! 🌟")
+        XCTAssertEqual(text("history.summary \(1)", "en"), "You played 1 time this week!")
+        XCTAssertEqual(text("history.summary \(1)", "es"), "¡Jugaste 1 vez esta semana!")
     }
 
     func testGivenOnePlayWhenMyWeekChipIsSpokenThenItSaysOnce() {

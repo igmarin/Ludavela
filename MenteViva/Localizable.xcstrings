@@ -3934,13 +3934,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "You played %lld time this week! 🌟"
+                  "value" : "You played %lld time this week!"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "You played %lld times this week! 🌟"
+                  "value" : "You played %lld times this week!"
                 }
               }
             }
@@ -3952,13 +3952,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "¡Jugaste %lld vez esta semana! 🌟"
+                  "value" : "¡Jugaste %lld vez esta semana!"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "¡Jugaste %lld veces esta semana! 🌟"
+                  "value" : "¡Jugaste %lld veces esta semana!"
                 }
               }
             }

@@ -54,13 +54,15 @@ nonisolated struct SudokuPuzzle: Equatable {
     static let showMeHeight = 100.0
     /// Spacing the screen puts between its stacked parts.
     private static let stackSpacing = 20.0
-    /// Height kept for what sits above the board: the instruction slot, as tall as the tallest
-    /// miss note (two lines and its padding), and the spacing under it. The note lives in that
-    /// slot (#541), so nothing else is reserved for it.
-    private static let headerHeight = 96.0
+    /// Height kept for what sits above the board in landscape: the instruction (two lines at the
+    /// default text size) and its spacing. The miss note lives in that slot (#541).
+    private static let headerHeight = 80.0
     /// The level banner (one title line and its spacing) shown on the first open after a level
     /// change, which is the day 9×9 first appears. Kept free so the board never jumps when it shows.
     private static let bannerHeight = 48.0
+    /// Portrait's top: the level banner (48), the instruction slot (about 50 on an iPad column:
+    /// one line of the longest note plus its padding) and the two 20pt spacings, 138 rounded up.
+    private static let portraitTopHeight = 140.0
     /// Width the pad needs beside the board: three keys of up to 100pt and the gaps between them.
     private static let padColumnsWidth = 3 * 100.0 + 2 * 12.0
 
@@ -101,7 +103,7 @@ nonisolated struct SudokuPuzzle: Equatable {
         let padKey = padKeyHeight(width: width)
         let padHeight = size == 9 ? padKey : Double(size == 6 ? 2 : 1) * 100 + (size == 6 ? 12 : 0)
         let below = padHeight + showMeHeight + stackSpacing * 2
-        let side = min(widthSide, (height - headerHeight - bannerHeight - below - gaps) / count)
+        let side = min(widthSide, (height - portraitTopHeight - below - gaps) / count)
         let keysFit = size != 9 || padKey >= minTarget
         return side >= minTarget && keysFit ? (side, size == 9 ? .row : .stacked) : nil
     }

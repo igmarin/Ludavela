@@ -80,39 +80,46 @@ struct OnboardingView: View {
                     .fitOrScroll()
                 footer(for: question)
             }
-        } else {
+        } else if let offer {
             VStack(spacing: 24) {
-                if let offer {
-                    switch offer {
-                    case .photos: photosOffer
-                    case .warmUp: warmUpOffer
-                    }
-                } else {
-                    welcome
+                switch offer {
+                case .photos: photosOffer
+                case .warmUp: warmUpOffer
                 }
             }
             // At the largest text sizes the screens scroll, so the answers and buttons stay reachable.
             .fitOrScroll()
+        } else {
+            welcome
         }
     }
 
     // MARK: Step 1 - the welcome screen, kept as it was
 
+    /// The full layout where it fits; on a short screen (an iPhone SE) the compact one, with tighter
+    /// rows and a smaller card fan so Start stays on screen (#543); at the largest text, it scrolls.
+    /// This is the one `ViewThatFits` here: nested inside `fitOrScroll` it would always scroll.
     private var welcome: some View {
-        // 12pt between rows and a smaller card fan: at 20 and full size the screen no longer fit
-        // an iPhone SE, so Start slid under the edge (#543).
-        VStack(spacing: 12) {
+        ViewThatFits(in: .vertical) {
+            welcomeStack(compact: false)
+            welcomeStack(compact: true)
+            ScrollView { welcomeStack(compact: true) }
+        }
+    }
+
+    private func welcomeStack(compact: Bool) -> some View {
+        VStack(spacing: compact ? 12 : 20) {
             Spacer()
 
             CardFan(slugs: ["dog", "teapot", "sunflower"])
-                .scaleEffect(0.8)
-                .frame(height: 140)
+                .scaleEffect(compact ? 0.8 : 1)
+                .frame(height: compact ? 140 : nil)
 
             Text(AppLanguage.localized("app.title"))
                 .font(.largeTitle.weight(.bold))
                 .fontDesign(.serif)
 
-            VStack(spacing: 8) {
+            VStack(spacing: compact ? 8 : 12) {
                 line(AppLanguage.localized("onboarding.line1"))
                 line(AppLanguage.localized("onboarding.line2"))
                 line(AppLanguage.localized("onboarding.line3"))
