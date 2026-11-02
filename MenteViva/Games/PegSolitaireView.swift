@@ -17,6 +17,7 @@ struct PegSolitaireView: View {
     @State private var startedAt = Date.now
     @State private var showCelebration = false
     @State private var searchID = 0
+    @State private var hintTask: Task<PegSolitaireBoard.Hint, Never>?
 
     private var instruction: String { AppLanguage.localized("game.peg.instruction") }
 
@@ -46,6 +47,7 @@ struct PegSolitaireView: View {
         )
         .onAppear { if board == nil { deal() } }
         .onDisappear {
+            hintTask?.cancel()
             searchID += 1
             searching = false
         }
@@ -135,6 +137,7 @@ struct PegSolitaireView: View {
 
     private func apply(_ move: PegSolitaireBoard.Move) {
         guard var current = board, current.jump(move) else { return }
+        hintTask?.cancel()
         searchID += 1
         searching = false
         note = nil
@@ -155,6 +158,7 @@ struct PegSolitaireView: View {
 
     private func undo() {
         guard var current = board, current.undo() else { return }
+        hintTask?.cancel()
         searchID += 1
         searching = false
         note = nil
@@ -167,6 +171,7 @@ struct PegSolitaireView: View {
 
     private func restart() {
         guard let initial else { return }
+        hintTask?.cancel()
         searchID += 1
         searching = false
         note = nil
@@ -194,11 +199,14 @@ struct PegSolitaireView: View {
     /// Search away from the main thread and discard an answer if the board changed meanwhile.
     private func hint() {
         guard let current = board else { return }
+        hintTask?.cancel()
         searchID += 1
         let id = searchID
         searching = true
+        let work = Task.detached { current.hint(cancelled: { Task.isCancelled }) }
+        hintTask = work
         Task {
-            let result = await Task.detached { current.hint() }.value
+            let result = await work.value
             guard id == searchID else { return }
             searching = false
             switch result {

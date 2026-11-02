@@ -73,4 +73,10 @@ final class PegSolitaireBoardTests: XCTestCase {
         #endif
     }
 
+    func testGivenCancelledSearchWhenHintRequestedThenItIsInconclusive() {
+        var rng = Generator(state: 7)
+        let board = PegSolitaireBoard.deal(level: 10, using: &rng)
+        XCTAssertEqual(board.hint(cancelled: { true }), .inconclusive)
+    }
+
 }

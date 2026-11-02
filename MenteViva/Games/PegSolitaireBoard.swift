@@ -10,7 +10,7 @@ nonisolated struct PegSolitaireBoard: Equatable, Sendable {
     }
 
     /// A budget-limited search must not mistake an unfinished search for proof.
-    enum Hint: Equatable {
+    enum Hint: Equatable, Sendable {
         case move(Move)
         case unsolvable
         case inconclusive
@@ -87,7 +87,7 @@ nonisolated struct PegSolitaireBoard: Equatable, Sendable {
     }
 
     /// Memoized depth-first search returns only a proven next step or a proven dead end.
-    func hint(budget: Int = 500_000) -> Hint {
+    func hint(budget: Int = 500_000, cancelled: () -> Bool = { false }) -> Hint {
         if pegCount == 1 { return .solved }
         var seen = Set<UInt64>()
         var remaining = budget
@@ -95,7 +95,7 @@ nonisolated struct PegSolitaireBoard: Equatable, Sendable {
         func solve(_ state: UInt64) -> Bool {
             if state.nonzeroBitCount == 1 { return true }
             if seen.contains(state) { return false }
-            guard remaining > 0 else {
+            guard remaining > 0 && !cancelled() else {
                 exhausted = true
                 return false
             }
@@ -107,7 +107,7 @@ nonisolated struct PegSolitaireBoard: Equatable, Sendable {
             seen.insert(state)
             return false
         }
-        guard remaining > 0 else { return .inconclusive }
+        guard remaining > 0 && !cancelled() else { return .inconclusive }
         for move in moves {
             if solve(Self.jumped(pegs, move)) { return .move(move) }
             if exhausted { return .inconclusive }
