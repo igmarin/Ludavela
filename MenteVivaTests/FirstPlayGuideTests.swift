@@ -51,6 +51,13 @@ final class FirstPlayGuideTests: XCTestCase {
         XCTAssertEqual(arrow.center.y, frame.midY)
     }
 
+    func testGivenASideArrowWhenItStandsBesideTheRingThenItFitsTheGapAGridLeavesBetweenTiles() {
+        let frame = CGRect(x: 20, y: 100, width: 80, height: 80)
+        let arrow = GuideArrow.placement(frame: frame, container: CGSize(width: 400, height: 800))
+        // The arrow's far edge (a 24pt symbol) stays inside the gap, so it cannot cover the next tile.
+        XCTAssertLessThanOrEqual(arrow.center.x + arrow.size / 2 - frame.maxX, GuideArrow.sideGap)
+    }
+
     func testGivenAHighTargetOnTheRightWhenTheArrowIsPlacedThenItStandsOnTheLeftPointingRight() {
         let frame = CGRect(x: 300, y: 100, width: 80, height: 80)
         let arrow = GuideArrow.placement(frame: frame, container: CGSize(width: 400, height: 800))

@@ -99,18 +99,20 @@ struct OnboardingView: View {
     // MARK: Step 1 - the welcome screen, kept as it was
 
     private var welcome: some View {
-        // 20pt between rows, not 28: the card fan is taller than the emoji it replaced, and
-        // at 28 the screen no longer fit an everyday phone, so Start slid under the edge.
-        VStack(spacing: 20) {
+        // 12pt between rows and a smaller card fan: at 20 and full size the screen no longer fit
+        // an iPhone SE, so Start slid under the edge (#543).
+        VStack(spacing: 12) {
             Spacer()
 
             CardFan(slugs: ["dog", "teapot", "sunflower"])
+                .scaleEffect(0.8)
+                .frame(height: 140)
 
             Text(AppLanguage.localized("app.title"))
                 .font(.largeTitle.weight(.bold))
                 .fontDesign(.serif)
 
-            VStack(spacing: 12) {
+            VStack(spacing: 8) {
                 line(AppLanguage.localized("onboarding.line1"))
                 line(AppLanguage.localized("onboarding.line2"))
                 line(AppLanguage.localized("onboarding.line3"))
@@ -347,6 +349,9 @@ struct OnboardingView: View {
             } label: {
                 Text(AppLanguage.localized("onboarding.photos.later"))
                     .font(.title2)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
             }
             .buttonStyle(AnswerTileStyle(strength: 0.10))
             .accessibilityLabel(AppLanguage.localized("onboarding.photos.later"))

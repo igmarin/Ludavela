@@ -330,11 +330,11 @@ final class SudokuPuzzleTests: XCTestCase {
 
     func testGivenAWideShortScreenWhenLaidOutThenBoardSideComesFromHeight() {
         // Landscape: 1,100pt wide would allow 76pt squares beside the pad; 700pt of height allows
-        // (700 - 128 - 16) / 9, with the level banner's room counted in the 128.
+        // (700 - 144 - 16) / 9, with the level banner's room counted in the 144.
         let layout = drawn(level: 10, width: 1100, height: 700)
         XCTAssertEqual(layout.size, 9)
         XCTAssertEqual(layout.pad, .beside)
-        XCTAssertEqual(layout.side, (700.0 - 128 - 16) / 9, accuracy: 0.001)
+        XCTAssertEqual(layout.side, (700.0 - 144 - 16) / 9, accuracy: 0.001)
     }
 
     func testGivenAShortLandscapeWhenLevelTenIsLaidOutThenSixBySixFitsTheHeightWithItsPadBeside() {
@@ -397,8 +397,15 @@ final class SudokuPuzzleTests: XCTestCase {
         XCTAssertEqual(layout.pad, .beside)
         XCTAssertTrue(layout.fits)
         XCTAssertEqual(SudokuPuzzle.padColumns(size: 4, pad: .beside), 4)
-        XCTAssertLessThanOrEqual(SudokuPuzzle.besideColumnHeight(size: 4) + 80, 500)
-        XCTAssertGreaterThan(SudokuPuzzle.besideColumnHeight(size: 6) + 80, 500)
+        XCTAssertLessThanOrEqual(SudokuPuzzle.besideColumnHeight(size: 4) + 96, 500)
+    }
+
+    /// #543: the miss note lives in the instruction slot at the top (#541), so the board no longer
+    /// keeps a second reserve for it under the pad. The top budget counts the level banner and the slot.
+    func testGivenTheNoteLivesInTheInstructionSlotWhenAnIPadPortraitIsLaidOutThenTheBoardUsesTheFreedRoom() {
+        let kept = SudokuPuzzle.keptArrangement(size: 9, width: 788, height: 1018)
+        // Before: (1018 - 80 - 72 - 220.4 - 16) / 9 = 69.9pt. After: (1018 - 96 - 48 - 220.4 - 16) / 9 = 70.8pt.
+        XCTAssertGreaterThan(kept.side, 70.5)
     }
 
     func testGivenAPortraitPadRowWhenTheBoardIsNarrowerThanTheWidthThenKeysStillKeepSixtyPoints() {
