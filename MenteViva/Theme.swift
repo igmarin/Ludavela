@@ -93,6 +93,7 @@ extension GameID {
         case .slidingBlocks: Color(light: 0xA14A0E, dark: 0xF2A56B)
         case .photoCaptions: Color(light: 0x6D5A0B, dark: 0xE0CB6A)
         case .wordSearch: Color(light: 0x1F5F7A, dark: 0x86C5DE)
+        case .loteria: Color(light: 0x9E2A2B, dark: 0xF7A8B0)
         }
     }
 }

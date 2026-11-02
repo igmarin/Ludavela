@@ -1,7 +1,7 @@
 # ES review packet — for the native-speaker pass (#12)
 
 Hand this whole file to the reviewer. Generated from `Localizable.xcstrings`
-(826 user-facing strings; keys that are only format specifiers are omitted).
+(866 user-facing strings; keys that are only format specifiers are omitted).
 Rows already signed off on #12 are pre-marked ✅.
 Regenerate after any string change: `python3 tools/generate_es_packet.py`.
 
@@ -24,21 +24,21 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 
 | Key | English | Español | Used in | ✓ |
 |---|---|---|---|---|
-| `Level %lld` | Level %lld | Nivel %lld | CategoryDeal, CategoryFluencyView, CelebrationView, ColorClashDeal, ColorClashView, DailyPolicy, Difficulty, FamilySettings, GameID, GameSession, HistoryView, LevelExplainLine, LevelMigration, LevelOfferStore, LevelPolicy, MathStreakView, MemoryMatchView, MenteVivaApp, NumberTrailQuestion, PhotoCaptionDeal, PlanStore, PlayerStateSummary, ProgressRates, QuickEyesDeal, QuickEyesRun, QuickEyesView, RepeatSequenceView, SayingsDeck, SayingsView, SequenceDeal, SetUpView, SlidingBlocksLevels, SlidingBlocksPuzzle, SlidingBlocksView, SudokuPuzzle, SudokuView, TangramPuzzle, TangramView, TilePairsDeal, TilePairsView, ToneSynth, UpOrDownDeal, UpOrDownView, WarmUp, WeeklySummary |  |
+| `Level %lld` | Level %lld | Nivel %lld | CategoryDeal, CategoryFluencyView, CelebrationView, ColorClashDeal, ColorClashView, DailyPolicy, Difficulty, FamilySettings, GameID, GameSession, HistoryView, LevelExplainLine, LevelMigration, LevelOfferStore, LevelPolicy, LoteriaView, MathStreakView, MemoryMatchView, MenteVivaApp, NumberTrailQuestion, PhotoCaptionDeal, PlanStore, PlayerStateSummary, ProgressRates, QuickEyesDeal, QuickEyesRun, QuickEyesView, RepeatSequenceView, SayingsDeck, SayingsView, SequenceDeal, SetUpView, SlidingBlocksLevels, SlidingBlocksPuzzle, SlidingBlocksView, SudokuPuzzle, SudokuView, TangramPuzzle, TangramView, TilePairsDeal, TilePairsView, ToneSynth, UpOrDownDeal, UpOrDownView, WarmUp, WeeklySummary, WordSearchView |  |
 | `about.build` | The app was built with the help of AI coding assistants, including Meta's Muse Code. | La app se creó con ayuda de asistentes de programación con IA, entre ellos Muse Code de Meta. | AboutView |  |
 | `about.offline` | Nothing in the app uses AI while you play. Your games and photos stay on this device. | Nada en la app usa IA mientras juegas. Tus partidas y fotos se quedan en este dispositivo. | AboutView |  |
 | `about.pictures` | The pictures in this app were made with AI image tools, including Meta's Muse Image, and checked by a person. | Las imágenes de esta app se hicieron con herramientas de IA, entre ellas Muse Image de Meta, y las revisó una persona. | AboutView |  |
 | `about.row` | About | Acerca de | SettingsView |  |
 | `about.row.hint` | How the pictures and the app were made. | Cómo se hicieron las imágenes y la app. | SettingsView |  |
 | `about.title` | About MenteViva | Acerca de MenteViva | AboutView |  |
-| `about.why.p1` | I made MenteViva mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active. | Hice MenteViva, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa. | — |  |
-| `about.why.p2` | I also made it for myself, my sister and my nephews and nieces, because this illness runs in our family. I wanted something that invites us to exercise our minds through play, and I want to share it with everyone. | También la hice para mí, para mi hermana y para mis sobrinos, porque en nuestra familia esta enfermedad es hereditaria. Quería algo que nos invitara a ejercitar la mente jugando, y quiero compartirlo con todas las personas. | — |  |
-| `about.why.p3` | I hope that what I can build, with the help of AI, will keep not only my dad company, but as many people as possible. | Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible. | — |  |
-| `about.why.title` | Why I made MenteViva | Por qué hice MenteViva | — |  |
+| `about.why.p1` | I made MenteViva mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active. | Hice MenteViva, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa. | AboutView |  |
+| `about.why.p2` | I also made it for myself, my sister and my nephews and nieces, because this illness runs in our family. I wanted something that invites us to exercise our minds through play, and I want to share it with everyone. | También la hice para mí, para mi hermana y para mis sobrinos, porque en nuestra familia esta enfermedad es hereditaria. Quería algo que nos invitara a ejercitar la mente jugando, y quiero compartirlo con todas las personas. | AboutView |  |
+| `about.why.p3` | I hope that what I can build, with the help of AI, will keep not only my dad company, but as many people as possible. | Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible. | AboutView |  |
+| `about.why.title` | Why I made MenteViva | Por qué hice MenteViva | AboutView |  |
 | `album.title` | Your picture album | Tu álbum de imágenes | HistoryView |  |
 | `album.today %@` | Today's picture: %@. It's in your album. | La imagen de hoy: %@. Ya está en tu álbum. | DailyPictureCard |  |
 | `app.title` | MenteViva | MenteViva | HomeView, OnboardingView |  |
-| `difficulty.level` | Level %lld | Nivel %lld | QuickEyesDeal, SetUpView, SlidingBlocksPuzzle, UpOrDownDeal |  |
+| `difficulty.level` | Level %lld | Nivel %lld | LoteriaDeal, QuickEyesDeal, SetUpView, SlidingBlocksPuzzle, UpOrDownDeal, WordSearchView |  |
 | `family.auto` | set automatically | ajustado automáticamente | SetUpView |  |
 | `family.caption.field` | A name or a few words | Un nombre o unas palabras | FamilyPhotoCaptionSheet |  |
 | `family.caption.placeholder` | Mom's house | La casa de mamá | FamilyPhotoCaptionSheet |  |
@@ -106,6 +106,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.celebration.headline.5` | Nicely played! | ¡Bien jugado! | — |  |
 | `game.celebration.home` | Home | Inicio | CelebrationView, LeaveGuard |  |
 | `game.celebration.items %lld` | You found %lld of them! | ¡Encontraste %lld! | CategoryFluencyView |  |
+| `game.celebration.loteria` | You called ¡Lotería! | ¡Cantaste lotería! | LoteriaView |  |
 | `game.celebration.next %@` | Next: %@ | Siguiente: %@ | CelebrationView | ✅ |
 | `game.celebration.pairs %lld` | You found all %lld pairs! | ¡Encontraste las %lld parejas! | MemoryBoard, MemoryMatchView |  |
 | `game.celebration.playagain` | Play again | Jugar de nuevo | CelebrationView |  |
@@ -142,6 +143,20 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.leave.note` | It won't be saved, but you can start a new one any time. | No se guardará, pero puedes empezar otro cuando quieras. | LeaveGuard |  |
 | `game.leave.stay` | Keep playing | Seguir jugando | LeaveGuard |  |
 | `game.leave.title` | Leave this game? | ¿Salir de este juego? | LeaveGuard |  |
+| `game.loteria.a11y.called %@` | Called card: %@ | Carta cantada: %@ | LoteriaView |  |
+| `game.loteria.a11y.marked %@` | %@, marked | %@, marcada | LoteriaView |  |
+| `game.loteria.a11y.open %@` | %@, not marked | %@, sin marcar | LoteriaView |  |
+| `game.loteria.call` | ¡Lotería! | ¡Lotería! | LoteriaView |  |
+| `game.loteria.goal.corners` | Goal: the four corners. | Meta: las cuatro esquinas. | LoteriaView |  |
+| `game.loteria.goal.full` | Goal: the whole board. | Meta: toda la tabla. | LoteriaView |  |
+| `game.loteria.goal.line` | Goal: a full row or column. | Meta: una fila o columna completa. | LoteriaView |  |
+| `game.loteria.guide` | Find the called card on your board and tap it. | Busca la carta cantada en tu tabla y tócala. | LoteriaView |  |
+| `game.loteria.instruction` | Mark the called card on your board. | Marca la carta cantada en tu tabla. | LoteriaView |  |
+| `game.loteria.lookagain` | Look again — it’s on your board. | Mira otra vez: está en tu tabla. | LoteriaView |  |
+| `game.loteria.next` | Next card | Siguiente carta | LoteriaView |  |
+| `game.loteria.notcalled` | That one hasn’t been called yet. | Esa carta todavía no sale. | LoteriaView |  |
+| `game.loteria.ready` | Your board is ready. Tap ¡Lotería! | Tu tabla está lista. Toca ¡Lotería! | LoteriaView |  |
+| `game.loteria.title` | Lotería | Lotería | GameID |  |
 | `game.math.instruction` | Tap the correct answer. | Toca la respuesta correcta. | MathStreakView |  |
 | `game.math.operator.dividedBy` | divided by | entre | NumberTrailQuestion |  |
 | `game.math.operator.minus` | minus | menos | NumberTrailQuestion |  |
@@ -303,9 +318,32 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.upordown.suit.hearts` | hearts | corazones | — |  |
 | `game.upordown.suit.spades` | spades | picas | — |  |
 | `game.upordown.title` | Up or Down | Sube o baja | GameID |  |
+| `game.wordsearch.animals` | Animals | Animales | — |  |
+| `game.wordsearch.animals.words` | HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE | PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA | — |  |
+| `game.wordsearch.cell %@ %lld %lld` | %1$@, row %2$lld, column %3$lld | %1$@, fila %2$lld, columna %3$lld | WordSearchView |  |
+| `game.wordsearch.complete` | You found all the words! | ¡Encontraste todas las palabras! | WordSearchView |  |
+| `game.wordsearch.down` | Show the bottom of the grid | Mostrar la parte inferior de la cuadrícula | WordSearchView |  |
+| `game.wordsearch.example` | Try a word from the list. | Prueba una palabra de la lista. | WordSearchView |  |
+| `game.wordsearch.found %@` | %@, found | %@, encontrada | WordSearchView |  |
+| `game.wordsearch.garden` | Garden | Jardín | — |  |
+| `game.wordsearch.garden.words` | ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL | ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN | — |  |
+| `game.wordsearch.guide` | Tap the first letter, then the last letter, or drag between them. | Toca la primera letra y luego la última, o desliza entre ellas. | WordSearchView |  |
+| `game.wordsearch.hint` | Show me a word | Muéstrame una palabra | WordSearchView |  |
+| `game.wordsearch.hintposition %lld %lld` | Try row %1$lld, column %2$lld. | Prueba la fila %1$lld, columna %2$lld. | WordSearchView |  |
+| `game.wordsearch.instruction` | Find the words from the list. | Encuentra las palabras de la lista. | WordSearchView |  |
+| `game.wordsearch.miss` | Not one of the words — try another line. | Esa no es de la lista: prueba otra línea. | WordSearchView |  |
+| `game.wordsearch.music` | Music | Música | — |  |
+| `game.wordsearch.music.words` | PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL | PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO | — |  |
+| `game.wordsearch.next` | Show the right of the grid | Mostrar el lado derecho de la cuadrícula | WordSearchView |  |
+| `game.wordsearch.notfound %@` | %@, not found | %@, por encontrar | WordSearchView |  |
+| `game.wordsearch.previous` | Show the left of the grid | Mostrar el lado izquierdo de la cuadrícula | WordSearchView |  |
+| `game.wordsearch.selected` | Start selected. Choose the last letter. | Primera letra elegida. Elige la última letra. | WordSearchView |  |
+| `game.wordsearch.title` | Word Search | Sopa de letras | GameID |  |
+| `game.wordsearch.up` | Show the top of the grid | Mostrar la parte superior de la cuadrícula | WordSearchView |  |
 | `guide.again` | Show me again | Muéstramelo otra vez | FirstPlayGuide |  |
 | `guide.colorclash.example %@` | The ink is %@: tap that color. | La tinta es de color %@: toca ese color. | ColorClashView |  |
 | `guide.gotit` | Got it | Entendido | FirstPlayGuide |  |
+| `guide.loteria.example` | This is the called card. Not on your board? Tap Next card. | Esta es la carta cantada. ¿No está en tu tabla? Toca Siguiente carta. | LoteriaView |  |
 | `guide.slidingblocks.example` | Try this block. | Prueba este bloque. | SlidingBlocksView |  |
 | `guide.sudoku.example %lld` | For example, the number %lld fits the ringed square. | Por ejemplo, en el cuadro marcado encaja el número %lld. | SudokuView |  |
 | `guide.tangram.example` | Start with this piece. | Empieza con esta pieza. | TangramView |  |
@@ -360,7 +398,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `object.umbrella` | Umbrella | Paraguas | EverydayObjects |  |
 | `onboarding.back` | Back | Atrás | OnboardingView |  |
 | `onboarding.back.hint` | Goes back to the previous question. | Vuelve a la pregunta anterior. | OnboardingView |  |
-| `onboarding.disclaimer` | This is not a medical device. | No es un dispositivo médico. | OnboardingView |  |
+| `onboarding.disclaimer` | This is not a medical device. | No es un dispositivo médico. | AboutView, OnboardingView |  |
 | `onboarding.focus.attention` | Attention | Atención | OnboardingSteps |  |
 | `onboarding.focus.fun` | Just have fun | Solo pasarla bien | OnboardingSteps |  |
 | `onboarding.focus.memory` | Memory | Memoria | OnboardingSteps |  |
@@ -812,6 +850,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `why.footer` | Educational information, not medical advice. | Información educativa, no consejo médico. | WhyTheseGamesView |  |
 | `why.game.category` | Name the Herd exercises finding words. | Nombra la Manada ejercita encontrar palabras. | WhyTheseGamesView |  |
 | `why.game.colorclash` | Color Clash exercises paying attention to what matters and ignoring the rest. | Choque de Colores ejercita fijarse en lo importante y dejar pasar lo demás. | WhyTheseGamesView |  |
+| `why.game.loteria` | Lotería exercises spotting the called card on your board. | Lotería ejercita encontrar la carta cantada en tu tabla. | WhyTheseGamesView |  |
 | `why.game.math` | Number Trail exercises quick, easy sums. | Sendero de Números ejercita las cuentas sencillas y rápidas. | WhyTheseGamesView |  |
 | `why.game.memory` | Memory Lane exercises remembering where things are. | Camino de Memoria ejercita recordar dónde está cada cosa. | WhyTheseGamesView |  |
 | `why.game.photocaptions` | Names and Faces exercises matching a name to a face. | Nombres y Caras ejercita unir un nombre con una cara. | WhyTheseGamesView |  |
@@ -824,6 +863,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `why.game.tangram` | Tangram exercises planning how shapes fit together. | Tangram ejercita planear cómo encajan las formas. | WhyTheseGamesView |  |
 | `why.game.tilepairs` | Tile Pairs exercises looking closely and spotting matches. | Parejas de fichas ejercita mirar con atención y encontrar parejas. | WhyTheseGamesView |  |
 | `why.game.upordown` | Up or Down exercises planning your next card. | Sube o baja ejercita planear tu próxima carta. | WhyTheseGamesView |  |
+| `why.game.wordsearch` | Word Search exercises finding familiar words in a grid. | Sopa de letras ejercita encontrar palabras conocidas en una cuadrícula. | WhyTheseGamesView |  |
 | `why.games.title` | What each game exercises | Qué ejercita cada juego | WhyTheseGamesView |  |
 | `why.not.advice` | This is educational information, not medical advice. | Esta es información educativa, no consejo médico. | WhyTheseGamesView |  |
 | `why.not.device` | MenteViva is not a medical device. | MenteViva no es un dispositivo médico. | WhyTheseGamesView |  |
@@ -849,4 +889,4 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `why.source.simons` | Read the Simons 2016 review (SAGE Journals) | Leer la revisión de Simons de 2016 (SAGE Journals) | WhyTheseGamesView |  |
 | `why.source.stanford` | Read the Stanford 2014 consensus (Stanford Longevity) | Leer el consenso de Stanford de 2014 (Stanford Longevity) | WhyTheseGamesView |  |
 | `why.source.workingmemory` | Read the working memory study (PubMed) | Leer el estudio sobre memoria de trabajo (PubMed) | WhyTheseGamesView |  |
-| `why.title` | Why these games | Por qué estos juegos | SettingsView, WhyTheseGamesView |  |
+| `why.title` | Why these games | Por qué estos juegos | AboutView, SettingsView, WhyTheseGamesView |  |

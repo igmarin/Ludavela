@@ -228,7 +228,7 @@ struct Emblem: View {
 
     /// The games whose emblem is a mini board of the game itself (#512). They replaced an
     /// unrelated hero picture, so Home and the celebration draw them at the picture's size.
-    static let boards: Set<GameID> = [.tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence, .wordSearch]
+    static let boards: Set<GameID> = [.tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria]
 
     var body: some View {
         Canvas { context, size in
@@ -403,6 +403,23 @@ struct Emblem: View {
             name.move(to: CGPoint(x: 16, y: 50))
             name.addLine(to: CGPoint(x: 48, y: 50))
             context.stroke(name, with: ink, style: line)
+        case .loteria:
+            // Lotería (#548): a tabla of 3×3 little cards with a bean on three of them in a row; the
+            // middle bean is amber, so the line reads as the win.
+            context.stroke(
+                Path(roundedRect: CGRect(x: 6, y: 6, width: 52, height: 52), cornerRadius: 5), with: ink, style: line)
+            for row in 0..<3 {
+                for column in 0..<3 {
+                    let cell = CGRect(x: 11 + Double(column) * 15, y: 11 + Double(row) * 15, width: 12, height: 12)
+                    context.stroke(Path(roundedRect: cell, cornerRadius: 2), with: ink, style: StrokeStyle(lineWidth: 2))
+                }
+            }
+            for column in 0..<3 {
+                var bean = Path(ellipseIn: CGRect(x: -5, y: -3.5, width: 10, height: 7))
+                bean = bean.applying(
+                    CGAffineTransform(translationX: 17 + Double(column) * 15, y: 32).rotated(by: -0.45))
+                context.fill(bean, with: column == 1 ? amber : ink)
+            }
         }
     }
 
