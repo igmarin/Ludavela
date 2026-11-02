@@ -19,58 +19,71 @@ struct WordSearchView: View {
     @State private var boardWidth: CGFloat = 0
     @State private var boardOffsetY: CGFloat = 0
     @State private var dragging = false
+    @State private var dragStart: Int?
+    @State private var dragPoint: CGPoint = .zero
+    @State private var dragTask: Task<Void, Never>?
     private let cell: CGFloat = 100
 
     private var instruction: String { AppLanguage.localized("game.wordsearch.instruction") }
 
     var body: some View {
-        VStack(spacing: 16) {
-            LevelExplainBanner(game: .wordSearch, hasStarted: attempts > 0, keepsSpace: true)
-            Text(instruction).font(.title2).multilineTextAlignment(.center)
-            if let deal {
-                Text(AppLanguage.localized(deal.themeKey)).font(.title2.bold())
-                GeometryReader { geometry in
-                    board(deal)
-                        .offset(x: -boardOffset, y: -boardOffsetY)
-                        .onAppear { boardWidth = geometry.size.width }
-                        .onChange(of: geometry.size.width) { _, width in
-                            boardWidth = width
-                            boardOffset = min(boardOffset, max(0, CGFloat(deal.side) * cell - width))
+        ScrollViewReader { proxy in
+            VStack(spacing: 16) {
+                LevelExplainBanner(game: .wordSearch, hasStarted: attempts > 0, keepsSpace: true)
+                Text(instruction).font(.title2).multilineTextAlignment(.center)
+                if let deal {
+                    Text(AppLanguage.localized(deal.themeKey)).font(.title2.bold())
+                    GeometryReader { geometry in
+                        board(deal)
+                            .offset(x: -boardOffset, y: -boardOffsetY)
+                            .onAppear { boardWidth = geometry.size.width }
+                            .onChange(of: geometry.size.width) { _, width in
+                                boardWidth = width
+                                boardOffset = min(boardOffset, max(0, CGFloat(deal.side) * cell - width))
+                            }
+                    }
+                    .frame(height: boardHeight(deal))
+                    .clipped()
+                    .coordinateSpace(name: "wordsearch.viewport")
+                    .id("wordsearch.board")
+                    if CGFloat(deal.side) * cell > boardWidth {
+                        HStack {
+                            pageButton("game.wordsearch.previous", symbol: "chevron.left", forward: false, deal: deal)
+                            pageButton("game.wordsearch.next", symbol: "chevron.right", forward: true, deal: deal)
                         }
-                }
-                .frame(height: boardHeight(deal))
-                .clipped()
-                if CGFloat(deal.side) * cell > boardWidth {
-                    HStack {
-                        pageButton("game.wordsearch.previous", symbol: "chevron.left", forward: false, deal: deal)
-                        pageButton("game.wordsearch.next", symbol: "chevron.right", forward: true, deal: deal)
                     }
-                }
-                if CGFloat(deal.side) * cell > boardHeight(deal) {
-                    HStack {
-                        pageButton("game.wordsearch.up", symbol: "chevron.up", forward: false, deal: deal, vertical: true)
-                        pageButton("game.wordsearch.down", symbol: "chevron.down", forward: true, deal: deal, vertical: true)
+                    if CGFloat(deal.side) * cell > boardHeight(deal) {
+                        HStack {
+                            pageButton("game.wordsearch.up", symbol: "chevron.up", forward: false, deal: deal, vertical: true)
+                            pageButton("game.wordsearch.down", symbol: "chevron.down", forward: true, deal: deal, vertical: true)
+                        }
                     }
+                    words(deal)
+                    if showMiss {
+                        Text(AppLanguage.localized("game.wordsearch.miss"))
+                            .font(.title2).multilineTextAlignment(.center)
+                    }
+                    Button(AppLanguage.localized("game.wordsearch.hint"), action: showHint)
+                        .buttonStyle(AnswerTileStyle(strength: 0.12, minHeight: 100))
                 }
-                words(deal)
-                if showMiss {
-                    Text(AppLanguage.localized("game.wordsearch.miss"))
-                        .font(.title2).multilineTextAlignment(.center)
-                }
-                Button(AppLanguage.localized("game.wordsearch.hint"), action: showHint)
-                    .buttonStyle(AnswerTileStyle(strength: 0.12, minHeight: 100))
+            }
+            .padding()
+            .fitOrScroll()
+            .scrollDisabled(dragging)
+            .onChange(of: hint) { _, index in
+                if index != nil { proxy.scrollTo("wordsearch.board", anchor: .center) }
             }
         }
-        .padding()
-        .fitOrScroll()
-        .scrollDisabled(dragging)
         .gameHeader(.wordSearch, instruction: instruction, inProgress: attempts > 0, celebrating: showCelebration)
         .firstPlayGuide(
             .wordSearch, line: AppLanguage.localized("game.wordsearch.guide"),
             example: AppLanguage.localized("game.wordsearch.example")
         )
         .onAppear { if deal == nil { newDeal() } }
-        .onDisappear { hintTask?.cancel() }
+        .onDisappear {
+            hintTask?.cancel()
+            dragTask?.cancel()
+        }
         .celebration(
             isPresented: $showCelebration, game: .wordSearch,
             detail: AppLanguage.localized("game.wordsearch.complete"), onPlayAgain: newDeal)
@@ -122,16 +135,47 @@ struct WordSearchView: View {
         }
         .frame(width: CGFloat(deal.side) * cell, height: CGFloat(deal.side) * cell)
         .simultaneousGesture(
-            DragGesture(minimumDistance: 15).onChanged { _ in
-                dragging = true
-            }.onEnded { value in
-                dragging = false
-                guard let start = index(at: value.startLocation, side: deal.side),
-                    let end = index(at: value.location, side: deal.side), start != end
-                else { return }
-                first = nil
-                select(start, end)
-            })
+            DragGesture(minimumDistance: 15, coordinateSpace: .named("wordsearch.viewport"))
+                .onChanged { value in
+                    dragPoint = value.location
+                    if !dragging {
+                        dragging = true
+                        dragStart = index(
+                            at: CGPoint(x: value.startLocation.x + boardOffset, y: value.startLocation.y + boardOffsetY),
+                            side: deal.side)
+                        dragTask = Task { @MainActor in
+                            while !Task.isCancelled {
+                                try? await Task.sleep(for: .milliseconds(200))
+                                guard !Task.isCancelled else { return }
+                                scrollDuringDrag(deal)
+                            }
+                        }
+                    }
+                }
+                .onEnded { value in
+                    dragTask?.cancel()
+                    dragging = false
+                    let point = CGPoint(x: value.location.x + boardOffset, y: value.location.y + boardOffsetY)
+                    guard let start = dragStart, let end = index(at: point, side: deal.side), start != end else { return }
+                    dragStart = nil
+                    first = nil
+                    select(start, end)
+                })
+    }
+
+    /// Holding near a viewport edge reveals the next cells during a long drag.
+    private func scrollDuringDrag(_ deal: WordSearchDeal) {
+        let edge: CGFloat = 40
+        func movement(_ position: CGFloat, extent: CGFloat) -> CGFloat {
+            if position < edge { return -30 }
+            if position > extent - edge { return 30 }
+            return 0
+        }
+        boardOffset = min(
+            max(0, boardOffset + movement(dragPoint.x, extent: boardWidth)), max(0, CGFloat(deal.side) * cell - boardWidth))
+        boardOffsetY = min(
+            max(0, boardOffsetY + movement(dragPoint.y, extent: boardHeight(deal))),
+            max(0, CGFloat(deal.side) * cell - boardHeight(deal)))
     }
 
     /// Paging keeps horizontal swipes reserved for selecting words, so scrolling cannot count a miss.

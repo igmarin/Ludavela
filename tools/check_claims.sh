@@ -8,12 +8,20 @@ files=(
     MenteViva/Localizable.xcstrings
     docs/store-listing.md
     docs/product-brief.md
+    site/index.html
     site/en
     site/es
     README.md
 )
 
-hits="$(grep -RniE "$pattern" "${files[@]}")"
+# Narrow exception (#552): the owner's personal story ("my dad was diagnosed with ...") is not a
+# claim about the games. It is allowed only as these two exact sentences, as a whole catalog value
+# or a whole homepage paragraph; any added word stops matching and the line is checked like any
+# other. Never widen this for other strings.
+en='I made MenteViva mainly for my dad\. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active\.'
+es='Hice MenteViva, sobre todo, para mi papá\. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa\.'
+story="^(MenteViva/Localizable\.xcstrings:[0-9]+: +\"value\" : \"($en|$es)\",?|site/index\.html:[0-9]+:<p( lang=\"es\")?>($en|$es)</p>)$"
+hits="$(grep -RniE "$pattern" "${files[@]}" | grep -vE "$story")"
 status=$?
 if [ "$status" -eq 0 ]; then
     printf '%s\n' "$hits"

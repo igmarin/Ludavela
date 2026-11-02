@@ -13703,34 +13703,98 @@
         }
       }
     },
-    "game.wordsearch.title" : {
+    "about.why.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Word Search"
+            "value" : "Why I made MenteViva"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sopa de letras"
+            "value" : "Por qué hice MenteViva"
           }
         }
       }
     },
-    "game.wordsearch.instruction" : {
+    "about.why.p1" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Find the words from the list."
+            "value" : "I made MenteViva mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Encuentra las palabras de la lista."
+            "value" : "Hice MenteViva, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa."
+          }
+        }
+      }
+    },
+    "about.why.p2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I also made it for myself, my sister and my nephews and nieces, because this illness runs in our family. I wanted something that invites us to exercise our minds through play, and I want to share it with everyone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También la hice para mí, para mi hermana y para mis sobrinos, porque en nuestra familia esta enfermedad es hereditaria. Quería algo que nos invitara a ejercitar la mente jugando, y quiero compartirlo con todas las personas."
+          }
+        }
+      }
+    },
+    "about.why.p3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I hope that what I can build, with the help of AI, will keep not only my dad company, but as many people as possible."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible."
+          }
+        }
+      }
+    },
+    "game.wordsearch.music.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO"
+          }
+        }
+      }
+    },
+    "game.wordsearch.garden.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN"
           }
         }
       }
@@ -13751,6 +13815,22 @@
         }
       }
     },
+    "game.wordsearch.up" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the top of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar la parte superior de la cuadrícula"
+          }
+        }
+      }
+    },
     "game.wordsearch.example" : {
       "localizations" : {
         "en" : {
@@ -13763,6 +13843,86 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prueba una palabra de la lista."
+          }
+        }
+      }
+    },
+    "game.wordsearch.hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show me a word"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muéstrame una palabra"
+          }
+        }
+      }
+    },
+    "game.wordsearch.garden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garden"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jardín"
+          }
+        }
+      }
+    },
+    "game.wordsearch.previous" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the left of the grid"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar el lado izquierdo de la cuadrícula"
+          }
+        }
+      }
+    },
+    "game.wordsearch.animals.words" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA"
+          }
+        }
+      }
+    },
+    "game.wordsearch.hintposition %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try row %1$lld, column %2$lld."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba la fila %1$lld, columna %2$lld."
           }
         }
       }
@@ -13783,18 +13943,18 @@
         }
       }
     },
-    "game.wordsearch.hint" : {
+    "why.game.wordsearch" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show me a word"
+            "value" : "Word Search exercises finding familiar words in a grid."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muéstrame una palabra"
+            "value" : "Sopa de letras ejercita encontrar palabras conocidas en una cuadrícula."
           }
         }
       }
@@ -13831,82 +13991,18 @@
         }
       }
     },
-    "game.wordsearch.garden" : {
+    "game.wordsearch.down" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Garden"
+            "value" : "Show the bottom of the grid"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jardín"
-          }
-        }
-      }
-    },
-    "game.wordsearch.music" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Music"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Música"
-          }
-        }
-      }
-    },
-    "game.wordsearch.animals.words" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA"
-          }
-        }
-      }
-    },
-    "game.wordsearch.garden.words" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN"
-          }
-        }
-      }
-    },
-    "game.wordsearch.music.words" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO"
+            "value" : "Mostrar la parte inferior de la cuadrícula"
           }
         }
       }
@@ -13927,6 +14023,22 @@
         }
       }
     },
+    "game.wordsearch.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the words from the list."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encuentra las palabras de la lista."
+          }
+        }
+      }
+    },
     "game.wordsearch.found %@" : {
       "localizations" : {
         "en" : {
@@ -13943,34 +14055,34 @@
         }
       }
     },
-    "game.wordsearch.notfound %@" : {
+    "game.wordsearch.music" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@, not found"
+            "value" : "Music"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@, por encontrar"
+            "value" : "Música"
           }
         }
       }
     },
-    "why.game.wordsearch" : {
+    "game.wordsearch.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Word Search exercises finding familiar words in a grid."
+            "value" : "Word Search"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sopa de letras ejercita encontrar palabras conocidas en una cuadrícula."
+            "value" : "Sopa de letras"
           }
         }
       }
@@ -13991,34 +14103,18 @@
         }
       }
     },
-    "game.wordsearch.hintposition %lld %lld" : {
+    "game.wordsearch.notfound %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Try row %1$lld, column %2$lld."
+            "value" : "%@, not found"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prueba la fila %1$lld, columna %2$lld."
-          }
-        }
-      }
-    },
-    "game.wordsearch.previous" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show the left of the grid"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar el lado izquierdo de la cuadrícula"
+            "value" : "%@, por encontrar"
           }
         }
       }
@@ -14035,38 +14131,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostrar el lado derecho de la cuadrícula"
-          }
-        }
-      }
-    },
-    "game.wordsearch.up" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show the top of the grid"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar la parte superior de la cuadrícula"
-          }
-        }
-      }
-    },
-    "game.wordsearch.down" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show the bottom of the grid"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar la parte inferior de la cuadrícula"
           }
         }
       }
