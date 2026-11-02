@@ -24,7 +24,7 @@ final class LeaveGuardTests: XCTestCase {
         var progress = RoundProgress(totalRounds: 10)
         progress.completeRound()
         let roundGames: [GameID] = [
-            .mathStreaks, .stroop, .sayings, .repeatSequence, .quickEyes, .categoryFluency, .reminiscence,
+            .mathStreaks, .stroop, .sayings, .repeatSequence, .quickEyes, .categoryFluency, .reminiscence, .riddles,
         ]
         for game in roundGames {
             XCTAssertFalse(

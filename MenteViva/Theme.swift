@@ -92,6 +92,7 @@ extension GameID {
         case .tilePairs: Color(light: 0x4B5563, dark: 0xB8C0CC)
         case .slidingBlocks: Color(light: 0xA14A0E, dark: 0xF2A56B)
         case .photoCaptions: Color(light: 0x6D5A0B, dark: 0xE0CB6A)
+        case .riddles: Color(light: 0x24589C, dark: 0x94BDF2)
         }
     }
 }
