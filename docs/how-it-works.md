@@ -10,8 +10,8 @@ launch
   RootView (MenteVivaApp.swift)      first run → OnboardingView, otherwise HomeView
   HomeView.refreshPlan()             reads the last 14 days of sessions
     PlayerStateSummary.build         turns them into per-game numbers
-    PlanStore.todaysPlan             today's three games + each game's level (DailyPolicy)
-  player taps "Play today's three"   games run back to back
+    PlanStore.todaysPlan             today's games + each game's level (DailyPolicy)
+  player taps "Start today's games" games run back to back
   a game ends
     modelContext.record(GameSession) one row saved, then the celebration
     the card joins the week board    (no scores shown to the player)
@@ -22,12 +22,12 @@ launch
 | Piece | Where | What it does |
 |---|---|---|
 | App entry | `MenteViva/MenteVivaApp.swift` | Opens the SwiftData store. Local-only build by default (free Apple ID). If no store opens, an in-memory one is used so play still works. |
-| Home | `HomeView.swift`, `GameCard.swift`, `Theme.swift` | Deals today's three as framed cards; each game has its own colour and an emblem drawn in SwiftUI shapes. |
+| Home | `HomeView.swift`, `GameCard.swift`, `Theme.swift` | Deals today's games (2, 3 or 5) as framed cards; each game has its own colour and an emblem drawn in SwiftUI shapes. |
 | Games | `Games/` | One file per game, plus the shared celebration, miss cue and `fitOrScroll`. |
 | Game list | `Models/GameID.swift` | The single list of games: stable ID, emoji, title key, whether it has levels. |
 | Levels | `Models/Difficulty.swift` | Levels 1–10 (#197). A game turns its level into its own knobs with `values(_:)`, a ten-row table. |
 | Saved play | `Models/GameSession.swift` | One row per finished game: rounds, attempts, correct, duration, level. No scores on screen. |
-| Daily plan | `Services/DailyPolicy.swift` | Pure rules: which three games, and each game's level. No network. |
+| Daily plan | `Services/DailyPolicy.swift` | Pure rules: which games, and each game's level. No network. |
 | Plan cache | `Services/PlanStore.swift` | The plan is saved for the day, with each game's level and when it last changed. |
 | Progress | `Services/WeeklySummary.swift`, `ProgressRates.swift` | Rates, never sums: accuracy per play, level reached, days played. Feeds My Week and My progress. |
 | Family screens | `SetUpView.swift`, `MyProgressView.swift`, `Services/FamilySettings.swift` | Per device: hide a game, pin a level, choose Memory Lane photos. |
@@ -46,16 +46,26 @@ Names and Faces (#142) is Memory Lane's board with each family photo paired to i
 captions; until then `GameAvailability` keeps it off Home, out of the daily plan and out of the family's
 "last game visible" count.
 
-## How today's three are chosen
+## How today's games are chosen
 
-`DailyPolicy.plan` scores every game and takes the top three:
+`DailyPolicy.plan` scores every visible game and deals the top few. The deal holds 2 games for 5 minutes a
+day, 3 for 10 (also when nothing is set) and 5 for 15. The score is the game's fixed `value` (Memory Lane
+1.0; most others 0.8; Number Trail and Color Clash 0.55), times 1.5 if the game exercises an area the player
+chose, times a rest factor that runs from half (played today) to full (a week or more away). Ties go to
+the game that comes first in `GameID`. A brand-new player has every game equally rested, so the plain
+ranking decides.
 
 ```text
-score = value[game] × (0.5 + 0.5 × daysSinceLastPlayed / 7)     (days capped at 7)
+score = value[game] × focusBoost (1.5 or 1) × (0.5 + 0.5 × daysSinceLastPlayed / 7)     (days capped at 7)
 ```
 
-- `value` is a fixed weight per game (Memory Lane 1.0 … Number Trail 0.3). A game not played for a week
-  counts fully; one played today counts half.
+Two rules then make every game come round, whatever the focus or the deal size (proved up to 28 games). A game
+not played for a week takes the deal's last place (#279). A game not played for two weeks also takes the place before
+the last (#547). If several are owed a place, the longest-rested wins and ties go in `GameID` order.
+The first place of a deal of three or more never changes. The warm-up (#213, offered at the end of
+onboarding, not when setting up for a family member; Settings → My plan can still start it) deals three games from three different areas, calls the
+first three sessions of each calibrating, and moves their levels in bigger steps before the staircase starts.
+
 - Hidden games are never picked.
 - **Levels** follow a staircase, once a day and never mid-game (#198): the newest session strong (90%+) → up
   one; the two newest strong → up two; the newest hard going (under 65%) → down one, never more. Only

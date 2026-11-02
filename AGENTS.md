@@ -32,7 +32,7 @@ MenteViva/            app (SwiftUI + SwiftData)
   MenteVivaApp.swift  entry; LOCAL_ONLY picks the store
   HomeView, OnboardingView, SettingsView, HistoryView,
   MyProgressView (rates, #141), SetUpView (hide/pin/photos)
-  Games/              14 games, one View file each (13 views: Names and Faces is Memory Lane's board),
+  Games/              19 games, one View file each (18 views: Names and Faces is Memory Lane's board),
                       with its pure deal/puzzle file beside it (SudokuPuzzle, UpOrDownDeal, ...);
                       shared: CelebrationView, DailyPictureCard, MissCue, FitOrScroll, AnswerBeat,
                       RoundCounter, LevelExplainLine, PictureView
@@ -58,7 +58,7 @@ docs/                 start at docs/README.md
 
 ## Current status
 
-- 14 games playable (the list is `GameID.swift` and README.md), levels 1–10 in every game but
+- 19 games playable (the list is `GameID.swift` and README.md), levels 1–10 in every game but
   Photo Stories; ES/EN complete; local-only build is the default.
 - **Daily picks and levels are decided on the device** (`DailyPolicy`, #101): no model, no network,
   no cost. The app no longer calls Jev (#195); `docs/jev-json/` and `docs/jev-integration.md` are history.
