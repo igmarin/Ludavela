@@ -7,20 +7,26 @@ struct WordSearchView: View {
     @State private var difficulty = Difficulty.stored(.wordSearch)
     @State private var game: WordSearchSelection?
     @State private var startedAt = Date.now
-    @State private var showMiss = false
     @State private var hint: Int?
     @State private var hintTask: Task<Void, Never>?
     @State private var showCelebration = false
-    /// An iPad on its side puts the board beside everything else, so the whole game fits on one screen.
-    @State private var wide = false
+    /// The play area inside the screen's margins. Zero until measured; the first deal waits for it.
+    @State private var area = CGSize.zero
     /// A finger on the board. SwiftUI clears it when the finger lifts or the touch is cancelled,
     /// so the page can always scroll again.
     @GestureState private var touching = false
     /// The word list's column width grows with the text size, so a word is never broken across lines.
     @ScaledMetric(relativeTo: .title2) private var wordColumn: CGFloat = 140
 
-    /// Cells grow with the screen up to this size; an 8×8 board on an iPhone SE gets 44pt (#560).
-    private static let maxCell: CGFloat = 64
+    /// An iPad on its side puts the board beside everything else, so the whole game fits on one screen.
+    private var wide: Bool { GameColumn.isPad && area.width > area.height }
+
+    /// The width the board may take: the screen's on a phone, the centred column's on an iPad, and
+    /// beside the word list (at least 300pt wide) on an iPad on its side, where the height counts too.
+    private var boardSpace: Double {
+        if wide { return min(area.height, area.width - 24 - 300) }
+        return GameColumn.isPad ? min(area.width, GameColumn.maxWidth) : area.width
+    }
 
     private var instruction: String { AppLanguage.localized("game.wordsearch.instruction") }
 
@@ -34,7 +40,7 @@ struct WordSearchView: View {
                     Text(AppLanguage.localized(game.deal.themeKey)).font(.title2.bold())
                     if !wide { board(game) }
                     words(game)
-                    if showMiss {
+                    if game.showsMiss {
                         Text(AppLanguage.localized("game.wordsearch.miss"))
                             .font(.title2).multilineTextAlignment(.center)
                     }
@@ -44,38 +50,39 @@ struct WordSearchView: View {
             }
         }
         .gameColumn(maxWidth: wide ? .infinity : GameColumn.maxWidth)
-        // A narrow side margin, so an 8×8 board on an iPhone SE keeps 44pt cells.
+        // A narrow side margin, so a 375pt iPhone SE fits six 60pt squares.
         .padding(.vertical)
-        .padding(.horizontal, 8)
+        .padding(.horizontal, WordSearchDeal.sideMargin)
         .fitOrScroll()
         // A drag on the board picks letters and never scrolls the page.
         .scrollDisabled(touching)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onGeometryChange(for: Bool.self) { proxy in
-            GameColumn.isPad && proxy.size.width > proxy.size.height
-        } action: { isWide in
-            wide = isWide
+        // Measured outside the padding and the fit-or-scroll, so it is the space the screen offers.
+        .onGeometryChange(for: CGSize.self) {
+            CGSize(width: $0.size.width - 2 * WordSearchDeal.sideMargin, height: $0.size.height - 32)
+        } action: { size in
+            guard size.width > 0, size.height > 0 else { return }
+            area = size
+            // As in Sudoku: a board that no longer fits with 60pt squares is dealt again at a size
+            // that does; one that still fits keeps its progress.
+            if let game, Double(game.deal.side) * WordSearchDeal.minCell <= boardSpace { return }
+            newDeal()
         }
         .gameHeader(.wordSearch, instruction: instruction, inProgress: (game?.attempts ?? 0) > 0, celebrating: showCelebration)
         .firstPlayGuide(
             .wordSearch, line: AppLanguage.localized("game.wordsearch.guide"),
             example: AppLanguage.localized("game.wordsearch.example")
         )
-        .onAppear { if game == nil { newDeal() } }
         .onDisappear { hintTask?.cancel() }
         .celebration(
             isPresented: $showCelebration, game: .wordSearch,
             detail: AppLanguage.localized("game.wordsearch.complete"), onPlayAgain: newDeal)
     }
 
-    /// A square as wide as the screen allows, so every letter is always in view.
+    /// The whole grid at once, with squares of 60 to 64pt.
     private func board(_ game: WordSearchSelection) -> some View {
-        Color.clear
-            .aspectRatio(1, contentMode: .fit)
-            .frame(maxWidth: Self.maxCell * CGFloat(game.deal.side))
-            .overlay {
-                GeometryReader { proxy in grid(game, cell: proxy.size.width / CGFloat(game.deal.side)) }
-            }
+        let cell = WordSearchDeal.cell(side: game.deal.side, space: boardSpace)
+        return grid(game, cell: cell).frame(width: cell * Double(game.deal.side), height: cell * Double(game.deal.side))
     }
 
     private func grid(_ game: WordSearchSelection, cell: CGFloat) -> some View {
@@ -111,12 +118,10 @@ struct WordSearchView: View {
                 .updating($touching) { _, state, _ in state = true }
                 .onEnded { value in
                     guard let start = index(at: value.startLocation, side: side, cell: cell) else { return }
-                    // A wobbling finger is still a tap.
-                    if hypot(value.translation.width, value.translation.height) < 15 {
-                        tap(start)
-                    } else if let end = index(at: value.location, side: side, cell: cell), end != start {
-                        pick(start, end)
-                    }
+                    // A wobbling finger is still a tap; so is a drag that ends where it began.
+                    let wobble = hypot(value.translation.width, value.translation.height) < 15
+                    guard let end = wobble ? start : index(at: value.location, side: side, cell: cell) else { return }
+                    drag(start, end)
                 })
     }
 
@@ -153,9 +158,10 @@ struct WordSearchView: View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: min(wordColumn, 300)))], spacing: 8) {
             ForEach(game.deal.words, id: \.text) { word in
                 let isFound = game.found.contains(word.text)
-                HStack {
-                    if isFound { Image(systemName: "checkmark").accessibilityHidden(true) }
-                    Text(word.text).strikethrough(isFound).font(.title2.bold()).lineLimit(1).minimumScaleFactor(0.5)
+                // The tick goes above a word too long to share its line, so no word is ever broken.
+                ViewThatFits(in: .horizontal) {
+                    HStack { listed(word.text, isFound: isFound) }
+                    VStack { listed(word.text, isFound: isFound) }
                 }
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel(
@@ -166,14 +172,19 @@ struct WordSearchView: View {
         }
     }
 
+    @ViewBuilder
+    private func listed(_ text: String, isFound: Bool) -> some View {
+        if isFound { Image(systemName: "checkmark").font(.title2).accessibilityHidden(true) }
+        Text(text).strikethrough(isFound).font(.title2.bold()).fixedSize()
+    }
+
     private func tap(_ index: Int) {
         guard !showCelebration, let outcome = game?.tap(index) else { return }
-        if outcome == .started { showMiss = false }
         show(outcome)
     }
 
-    private func pick(_ start: Int, _ end: Int) {
-        guard !showCelebration, let outcome = game?.pick(from: start, to: end) else { return }
+    private func drag(_ start: Int, _ end: Int) {
+        guard !showCelebration, let outcome = game?.drag(from: start, to: end) else { return }
         show(outcome)
     }
 
@@ -183,11 +194,9 @@ struct WordSearchView: View {
         case .started, .cancelled:
             return
         case .miss:
-            showMiss = true
             Feedback.play(.miss)
             AccessibilityNotification.Announcement(AppLanguage.localized("game.wordsearch.miss")).post()
         case .found(let word):
-            showMiss = false
             Feedback.play(.success)
             AccessibilityNotification.Announcement(String(format: AppLanguage.localized("game.wordsearch.found %@"), word))
                 .post()
@@ -228,11 +237,10 @@ struct WordSearchView: View {
         }
         game = WordSearchSelection(
             deal: WordSearchDeal.make(
-                level: difficulty.level, tablet: GameColumn.isPad,
+                level: difficulty.level, tablet: GameColumn.isPad, space: boardSpace,
                 spanish: AppLanguage.currentLocale.language.languageCode?.identifier == "es", themes: themes,
                 using: &random))
         hint = nil
-        showMiss = false
         startedAt = .now
     }
 }

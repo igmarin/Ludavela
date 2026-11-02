@@ -353,7 +353,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.wordsearch.complete` | You found all the words! | ¡Encontraste todas las palabras! | WordSearchView |  |
 | `game.wordsearch.example` | Try a word from the list. | Prueba una palabra de la lista. | WordSearchView |  |
 | `game.wordsearch.family` | Family | Familia | — |  |
-| `game.wordsearch.family.words` | MOTHER,FATHER,SISTER,BROTHER,GRANDMA,GRANDPA,AUNT,UNCLE,COUSIN,BABY | MADRE,PADRE,ABUELA,ABUELO,HERMANA,HIJO,NIETA,PRIMO,TIA,CUÑADO | — |  |
+| `game.wordsearch.family.words` | MOTHER,FATHER,SISTER,BROTHER,GRANDMA,GRANDPA,AUNT,UNCLE,COUSIN,BABY,NIECE,SON | MADRE,PADRE,ABUELA,ABUELO,HERMANA,HIJO,NIETA,PRIMO,TIA,CUÑADO | — |  |
 | `game.wordsearch.food` | Mexican food | Comida mexicana | — |  |
 | `game.wordsearch.food.words` | TACO,ELOTE,TAMALE,MOLE,POZOLE,SALSA,CHURRO,BEANS,TORTILLA,FLAN | TACO,ELOTE,TAMAL,MOLE,POZOLE,SALSA,CHURRO,FRIJOL,TORTILLA,NOPAL | — |  |
 | `game.wordsearch.found %@` | %@, found | %@, encontrada | WordSearchView |  |
@@ -364,10 +364,10 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.wordsearch.hintposition %lld %lld` | Try row %1$lld, column %2$lld. | Prueba la fila %1$lld, columna %2$lld. | WordSearchView |  |
 | `game.wordsearch.instruction` | Find the words from the list. | Encuentra las palabras de la lista. | WordSearchView |  |
 | `game.wordsearch.kitchen` | Kitchen | Cocina | — |  |
-| `game.wordsearch.kitchen.words` | LADLE,FORK,KNIFE,PLATE,CUP,BOWL,PAN,OVEN,KETTLE,APRON | CUCHARA,TENEDOR,CUCHILLO,PLATO,TAZA,OLLA,SARTEN,HORNO,JARRA,MANTEL | — |  |
+| `game.wordsearch.kitchen.words` | LADLE,FORK,KNIFE,PLATE,CUP,BOWL,PAN,OVEN,KETTLE,APRON | CUCHARA,TENEDOR,CUCHILLO,PLATO,TAZA,OLLA,SARTEN,HORNO,JARRA,MANTEL,VASO | — |  |
 | `game.wordsearch.miss` | Not one of the words — try another line. | Esa no es de la lista: prueba otra línea. | WordSearchView |  |
 | `game.wordsearch.music` | Music | Música | — |  |
-| `game.wordsearch.music.words` | PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL,GUITAR,TRUMPET | PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO,GUITARRA,MARIMBA | — |  |
+| `game.wordsearch.music.words` | PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL,GUITAR,TRUMPET | PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO,GUITARRA,MARIMBA,BANDA,NOTA | — |  |
 | `game.wordsearch.notfound %@` | %@, not found | %@, por encontrar | WordSearchView |  |
 | `game.wordsearch.selected` | Start selected. Choose the last letter. | Primera letra elegida. Elige la última letra. | WordSearchView |  |
 | `game.wordsearch.title` | Word Search | Sopa de letras | GameID |  |

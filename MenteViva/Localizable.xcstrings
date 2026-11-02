@@ -15258,7 +15258,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO,GUITARRA,MARIMBA"
+            "value" : "PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO,GUITARRA,MARIMBA,BANDA,NOTA"
           }
         }
       }
@@ -15620,7 +15620,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MOTHER,FATHER,SISTER,BROTHER,GRANDMA,GRANDPA,AUNT,UNCLE,COUSIN,BABY"
+            "value" : "MOTHER,FATHER,SISTER,BROTHER,GRANDMA,GRANDPA,AUNT,UNCLE,COUSIN,BABY,NIECE,SON"
           }
         },
         "es" : {
@@ -15642,7 +15642,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CUCHARA,TENEDOR,CUCHILLO,PLATO,TAZA,OLLA,SARTEN,HORNO,JARRA,MANTEL"
+            "value" : "CUCHARA,TENEDOR,CUCHILLO,PLATO,TAZA,OLLA,SARTEN,HORNO,JARRA,MANTEL,VASO"
           }
         }
       }

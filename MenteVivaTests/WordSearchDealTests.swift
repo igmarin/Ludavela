@@ -138,6 +138,38 @@ final class WordSearchDealTests: XCTestCase {
         }
     }
 
+    /// House rule (AGENTS.md): squares never under 60pt. Phones deal by width (#560), as Sudoku does.
+    func testGivenPhoneWidthsWhenSizedThenEveryLevelHasSquaresOfAtLeast60pt() {
+        let wanted = [6, 6, 7, 7, 8, 8, 8, 8, 8, 8]
+        // Screen width (320 is an iPhone SE with Display Zoom) and the largest grid with 60pt squares.
+        for (width, largest) in [(320.0, 5), (375, 6), (393, 6), (440, 7)] {
+            let space = width - 2 * WordSearchDeal.sideMargin
+            for level in 1...10 {
+                let side = WordSearchDeal.side(level: level, tablet: false, space: space)
+                let cell = WordSearchDeal.cell(side: side, space: space)
+                XCTAssertEqual(side, min(wanted[level - 1], largest), "\(width)pt, level \(level)")
+                XCTAssertGreaterThanOrEqual(cell, 60, "\(width)pt, level \(level)")
+                XCTAssertLessThanOrEqual(cell, 64)
+                XCTAssertLessThanOrEqual(Double(side) * cell, space)
+            }
+        }
+        // A portrait iPad's 640pt column keeps the whole iPad table at 64pt.
+        for level in 1...10 {
+            let side = WordSearchDeal.side(level: level, tablet: true, space: 640)
+            XCTAssertEqual(side, [6, 6, 8, 8, 9, 9, 10, 10, 10, 10][level - 1])
+            XCTAssertEqual(WordSearchDeal.cell(side: side, space: 640), 64)
+        }
+    }
+
+    /// Picked by experiment: one more word than the side often took hundreds of re-rolls.
+    func testGivenAGridSideWhenCountingWordsThenTheCountNeverPassesTheSide() {
+        for side in 5...10 {
+            XCTAssertEqual(
+                (1...10).map { WordSearchDeal.wordCount(level: $0, side: side) },
+                [4, 4, 5, 5, 6, 6, 7, 7, 8, 8].map { min($0, side) })
+        }
+    }
+
     private func selection() -> WordSearchSelection {
         var random = Seeded(state: 1)
         return WordSearchSelection(
@@ -170,6 +202,30 @@ final class WordSearchDealTests: XCTestCase {
         XCTAssertNil(selection.first)
         XCTAssertEqual(selection.attempts, 0)
         XCTAssertEqual(selection.tap(3), .started)
+    }
+
+    func testGivenAMissThenADoubleTapWhenCancelledThenTheMissNoteGoes() {
+        var selection = selection()
+        _ = selection.pick(from: 0, to: 1)
+        XCTAssertTrue(selection.showsMiss)
+        _ = selection.tap(5)
+        XCTAssertFalse(selection.showsMiss)
+        _ = selection.pick(from: 0, to: 1)
+        XCTAssertTrue(selection.showsMiss)
+        _ = selection.tap(5)
+        XCTAssertEqual(selection.tap(5), .cancelled)
+        XCTAssertFalse(selection.showsMiss)
+    }
+
+    func testGivenADragThatEndsOnItsStartWhenLiftedThenItActsAsATap() throws {
+        var selection = selection()
+        XCTAssertEqual(selection.drag(from: 7, to: 7), .started)
+        XCTAssertEqual(selection.first, 7)
+        XCTAssertEqual(selection.drag(from: 7, to: 7), .cancelled)
+        XCTAssertNil(selection.first)
+        XCTAssertEqual(selection.attempts, 0)
+        let word = try XCTUnwrap(selection.deal.words.first)
+        XCTAssertEqual(selection.drag(from: word.cells.last!, to: word.cells.first!), .found(word.text))
     }
 
     func testGivenALineThatIsNoWordWhenPickedThenAMissIsCountedAndNothingIsFound() throws {
@@ -211,18 +267,23 @@ final class WordSearchDealTests: XCTestCase {
                     XCTAssertFalse(
                         blocked.contains { word.contains($0) || String(word.reversed()).contains($0) }, word)
                 }
-                for tablet in [false, true] {
+                // Phones at 320, 375, 393 and 440pt wide, then an iPad: every deal succeeds and every word fits.
+                let boards = [312.0, 367, 385, 432].map { (tablet: false, space: $0) } + [(tablet: true, space: 640)]
+                for board in boards {
                     for level in 1...10 {
-                        var random = Seeded(state: UInt64(level))
-                        let deal = WordSearchDeal.make(
-                            level: level, tablet: tablet, spanish: language == "es",
-                            themes: [(key, words)], using: &random)
-                        XCTAssertEqual(deal.words.count, [4, 4, 5, 5, 6, 6, 7, 7, 8, 8][level - 1])
-                        for word in deal.words {
-                            XCTAssertEqual(deal.occurrences(of: word.text), [word.cells])
-                        }
-                        if language == "es" {
-                            XCTAssertTrue(deal.grid.allSatisfy { "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".contains($0) })
+                        for seed in 1...3 {
+                            var random = Seeded(state: UInt64(level * 10 + seed))
+                            let deal = WordSearchDeal.make(
+                                level: level, tablet: board.tablet, space: board.space, spanish: language == "es",
+                                themes: [(key, words)], using: &random)
+                            XCTAssertEqual(deal.words.count, WordSearchDeal.wordCount(level: level, side: deal.side))
+                            for word in deal.words {
+                                XCTAssertLessThanOrEqual(word.text.count, deal.side)
+                                XCTAssertEqual(deal.occurrences(of: word.text), [word.cells])
+                            }
+                            if language == "es" {
+                                XCTAssertTrue(deal.grid.allSatisfy { "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".contains($0) })
+                            }
                         }
                     }
                 }
