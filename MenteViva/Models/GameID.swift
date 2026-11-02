@@ -16,6 +16,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
     case tilePairs = "tile_pairs"
     case slidingBlocks = "sliding_blocks"
     case photoCaptions = "photo_captions"
+    case wordSearch = "word_search"
     case loteria = "loteria"
 
     /// Registered but not playable yet: kept out of the deal, Set up, progress and
@@ -41,6 +42,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .tilePairs: "🀄"
         case .slidingBlocks: "🧱"
         case .photoCaptions: "🖼️"
+        case .wordSearch: "🔎"
         case .loteria: "🫘"
         }
     }
@@ -61,7 +63,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .sayings: "book"
         case .repeatSequence: "piano"
         case .stroop, .sudoku, .upOrDown, .tilePairs: nil
-        case .tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence, .loteria: nil
+        case .tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria: nil
         }
     }
 
@@ -81,6 +83,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .tilePairs: "game.tilepairs.title"
         case .slidingBlocks: "game.sliding.title"
         case .photoCaptions: "game.photocaptions.title"
+        case .wordSearch: "game.wordsearch.title"
         case .loteria: "game.loteria.title"
         }
     }

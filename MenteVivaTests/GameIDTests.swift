@@ -15,7 +15,7 @@ final class GameIDTests: XCTestCase {
         XCTAssertEqual(Array(raw.prefix(existing.count)), existing)
         XCTAssertEqual(
             Set(raw).subtracting(existing),
-            ["repeat_sequence", "tangram", "tile_pairs", "sliding_blocks", "photo_captions", "loteria"])
+            ["repeat_sequence", "tangram", "tile_pairs", "sliding_blocks", "photo_captions", "word_search", "loteria"])
     }
 
     func testGivenUnreleasedGamesWhenReleasedThenTheyAreLeftOut() {
@@ -49,6 +49,7 @@ final class GameIDTests: XCTestCase {
             Set(emblemOnly),
             [
                 .stroop, .sudoku, .upOrDown, .tilePairs, .tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence,
+                .wordSearch,
                 .loteria,
             ])
         // Home draws Emblem.boards at picture size, so it must be exactly the drawn games minus the four plain emblems.

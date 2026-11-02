@@ -58,7 +58,7 @@ nonisolated enum DailyPolicy {
         .memoryMatch: 1.0, .quickEyes: 0.8, .categoryFluency: 0.7, .stroop: 0.55, .mathStreaks: 0.55,
         .reminiscence: 0.7, .sudoku: 0.8, .upOrDown: 0.8, .sayings: 0.8,
         .repeatSequence: 0.8, .tangram: 0.8, .tilePairs: 0.8, .slidingBlocks: 0.8,
-        .photoCaptions: 0.8, .loteria: 0.8,
+        .photoCaptions: 0.8, .wordSearch: 0.8, .loteria: 0.8,
     ]
     static let gamesPerDay = 3
 
@@ -94,6 +94,8 @@ nonisolated enum DailyPolicy {
         .slidingBlocks: .attention,
         /// Names and Faces: whose name goes with whose photo.
         .photoCaptions: .memory,
+        /// Word Search: words in a grid.
+        .wordSearch: .words,
         /// Lotería: the called card on a board of pictures.
         .loteria: .attention,
     ]

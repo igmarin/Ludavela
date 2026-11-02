@@ -31,7 +31,7 @@ Sources are the ones already in the repo's research docs. Nothing new was added.
 
 ## 2. What each game exercises
 
-One line per game, 15 in all. "Exercises" is the only verb used.
+One line per game, 16 in all. "Exercises" is the only verb used.
 
 | Key | English | Español | Source |
 |---|---|---|---|
