@@ -33,6 +33,8 @@ struct SudokuView: View {
     @State private var note: Note?
     @State private var showCelebration = false
     @State private var finalDetail = ""
+    /// Kept here so `fitOrScroll` swapping layouts keeps the level line's state (#481).
+    @State private var levelMemo = LevelExplainBanner.Memo()
 
     /// Which gentle note shows: the near miss, or the ask to choose a square first (#510).
     private enum Note {
@@ -50,13 +52,14 @@ struct SudokuView: View {
     var body: some View {
         VStack(spacing: 20) {
             LevelExplainBanner(
-                game: GameID.sudoku, hasStarted: attempts > 0 || !entries.isEmpty)
+                game: GameID.sudoku, hasStarted: attempts > 0 || !entries.isEmpty, keepsSpace: true,
+                sharedMemo: levelMemo)
             noteSlot
 
             if let puzzle {
                 let arrangement = arrangement(for: puzzle)
                 if arrangement.pad == .beside {
-                    // Wide iPad: the board on the left, its keys and the note on the right (#400).
+                    // Wide iPad: the board on the left, its keys on the right (#400).
                     HStack(spacing: 20) {
                         board(puzzle, side: arrangement.side)
                         VStack(spacing: 20) {
