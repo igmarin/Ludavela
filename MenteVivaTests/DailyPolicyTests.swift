@@ -193,11 +193,12 @@ final class DailyPolicyTests: XCTestCase {
         let summary = try JSONDecoder().decode(Envelope.self, from: data).state
         // The 011 payload lists per-game means but no recentAccuracies array
         // yet — the staircase sees no strong session and holds every level.
-        // Word Search and Lotería (#548) came after this payload, so they are hidden with the other later games.
+        // Word Search, Lotería (#548) and Riddles (#551) came after this payload, so they are hidden with the other later games.
         let p = plan(
             summary,
             hidden: [
                 .reminiscence, .sudoku, .upOrDown, .sayings, .repeatSequence, .tangram, .photoCaptions, .wordSearch, .loteria,
+                .riddles,
             ])
         // Jev picked quick_eyes, category_fluency, memory_match for this payload. Since #277 the rested
         // 0.55 games outrank Name the Herd (0.7, played 2 days ago: 0.45), and since #279 Number Trail,
@@ -397,6 +398,7 @@ final class DailyPolicyTests: XCTestCase {
             .repeatSequence: stats(days: 2), .tangram: stats(days: 2), .photoCaptions: stats(days: 2),
             .wordSearch: stats(days: 2),
             .loteria: stats(days: 2),
+            .riddles: stats(days: 2),
         ])
         // The fixture plays every released game but the two newest (Tile Pairs, Sliding Blocks):
         // never played, they top the ranking.
