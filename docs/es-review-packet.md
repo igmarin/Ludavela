@@ -1,7 +1,7 @@
 # ES review packet — for the native-speaker pass (#12)
 
 Hand this whole file to the reviewer. Generated from `Localizable.xcstrings`
-(874 user-facing strings; keys that are only format specifiers are omitted).
+(924 user-facing strings; keys that are only format specifiers are omitted).
 Rows already signed off on #12 are pre-marked ✅.
 Regenerate after any string change: `python3 tools/generate_es_packet.py`.
 
@@ -24,7 +24,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 
 | Key | English | Español | Used in | ✓ |
 |---|---|---|---|---|
-| `Level %lld` | Level %lld | Nivel %lld | CategoryDeal, CategoryFluencyView, CelebrationView, ColorClashDeal, ColorClashView, DailyPolicy, Difficulty, FamilySettings, GameID, GameSession, HistoryView, LevelExplainLine, LevelMigration, LevelOfferStore, LevelPolicy, LoteriaView, MathStreakView, MemoryMatchView, MenteVivaApp, NumberSlidePuzzle, NumberSlideView, NumberTrailQuestion, PhotoCaptionDeal, PlanStore, PlayerStateSummary, ProgressRates, QuickEyesDeal, QuickEyesRun, QuickEyesView, RepeatSequenceView, SayingsDeck, SayingsView, SequenceDeal, SetUpView, SlidingBlocksLevels, SlidingBlocksPuzzle, SlidingBlocksView, SudokuPuzzle, SudokuView, TangramPuzzle, TangramView, TilePairsDeal, TilePairsView, ToneSynth, UpOrDownDeal, UpOrDownView, WarmUp, WeeklySummary, WordSearchView |  |
+| `Level %lld` | Level %lld | Nivel %lld | CategoryDeal, CategoryFluencyView, CelebrationView, ColorClashDeal, ColorClashView, DailyPolicy, Difficulty, FamilySettings, GameID, GameSession, HistoryView, LevelExplainLine, LevelMigration, LevelOfferStore, LevelPolicy, LoteriaView, MathStreakView, MemoryMatchView, MenteVivaApp, NumberSlidePuzzle, NumberSlideView, NumberTrailQuestion, PhotoCaptionDeal, PlanStore, PlayerStateSummary, ProgressRates, QuickEyesDeal, QuickEyesRun, QuickEyesView, RepeatSequenceView, RiddleDeck, RiddleView, SayingsDeck, SayingsView, SequenceDeal, SetUpView, SlidingBlocksLevels, SlidingBlocksPuzzle, SlidingBlocksView, SudokuPuzzle, SudokuView, TangramPuzzle, TangramView, TilePairsDeal, TilePairsView, ToneSynth, UpOrDownDeal, UpOrDownView, WarmUp, WeeklySummary, WordSearchView |  |
 | `about.build` | The app was built with the help of AI coding assistants, including Meta's Muse Code. | La app se creó con ayuda de asistentes de programación con IA, entre ellos Muse Code de Meta. | AboutView |  |
 | `about.offline` | Nothing in the app uses AI while you play. Your games and photos stay on this device. | Nada en la app usa IA mientras juegas. Tus partidas y fotos se quedan en este dispositivo. | AboutView |  |
 | `about.pictures` | The pictures in this app were made with AI image tools, including Meta's Muse Image, and checked by a person. | Las imágenes de esta app se hicieron con herramientas de IA, entre ellas Muse Image de Meta, y las revisó una persona. | AboutView |  |
@@ -112,6 +112,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.celebration.playagain` | Play again | Jugar de nuevo | CelebrationView |  |
 | `game.celebration.questions %lld` | You answered all %lld questions! | ¡Respondiste las %lld preguntas! | MathStreakView |  |
 | `game.celebration.reminiscence %lld` | one: You looked at %lld picture today / other: You looked at %lld pictures today | one: Miraste %lld imagen hoy / other: Miraste %lld imágenes hoy | ReminiscenceView |  |
+| `game.celebration.riddles %lld` | You solved %lld riddles | Resolviste %lld adivinanzas | RiddleView |  |
 | `game.celebration.rounds %lld` | You finished all %lld rounds! | ¡Terminaste las %lld rondas! | ColorClashView, QuickEyesView, RepeatSequenceView |  |
 | `game.celebration.sayings %lld` | You finished %lld sayings | Terminaste %lld refranes | SayingsView |  |
 | `game.celebration.squares %lld` | You filled %lld squares | Llenaste %lld cuadros | SudokuView |  |
@@ -200,6 +201,14 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.reminiscence.prompt.story` | Tell a story about this photo | Cuéntame una historia de esta foto | ReminiscenceDeck |  |
 | `game.reminiscence.show` | Show the name | Ver el nombre | ReminiscenceView |  |
 | `game.reminiscence.title` | Photo Stories | Historias en fotos | GameID |  |
+| `game.riddles.clue` | Give me a clue | Dame una pista | RiddleView |  |
+| `game.riddles.clue.line %@` | Clue: %@ | Pista: %@ | RiddleView |  |
+| `game.riddles.guide` | Read the riddle, then tap what it describes. | Lee la adivinanza y toca lo que describe. | RiddleView |  |
+| `game.riddles.instruction` | Read the riddle and tap the answer. | Lee la adivinanza y toca la respuesta. | RiddleView |  |
+| `game.riddles.miss` | Almost — read it once more. | Casi: léela otra vez. | RiddleView |  |
+| `game.riddles.next` | Next | Siguiente | RiddleView |  |
+| `game.riddles.solved %@` | That's it: %@! | ¡Eso es: %@! | RiddleView |  |
+| `game.riddles.title` | Riddles | Adivinanzas | GameID |  |
 | `game.round.a11y %lld %lld` | Round %1$lld of %2$lld | Ronda %1$lld de %2$lld | RoundCounter |  |
 | `game.sayings.a11y.listen` | Hear the saying | Escuchar el refrán | SayingsView |  |
 | `game.sayings.instruction` | Tap the right ending for the saying. | Toca el final correcto del refrán. | SayingsView |  |
@@ -351,6 +360,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `guide.gotit` | Got it | Entendido | FirstPlayGuide |  |
 | `guide.loteria.example` | This is the called card. Not on your board? Tap Next card. | Esta es la carta cantada. ¿No está en tu tabla? Toca Siguiente carta. | LoteriaView |  |
 | `guide.numberslide.example` | This one can slide into the space. | Esta se puede deslizar al espacio. | NumberSlideView |  |
+| `guide.riddles.example` | Stuck? This button gives you one more hint. | ¿Te atoraste? Este botón te da una pista más. | RiddleView |  |
 | `guide.slidingblocks.example` | Try this block. | Prueba este bloque. | SlidingBlocksView |  |
 | `guide.sudoku.example %lld` | For example, the number %lld fits the ringed square. | Por ejemplo, en el cuadro marcado encaja el número %lld. | SudokuView |  |
 | `guide.tangram.example` | Start with this piece. | Empieza con esta pieza. | TangramView |  |
@@ -555,6 +565,45 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `reminiscence.askobject.06` | Is there a story that goes with something like this? | ¿Hay alguna historia con algo así? | — |  |
 | `reminiscence.askobject.07` | What would you use this for on a quiet day? | ¿Para qué lo usarías en un día tranquilo? | — |  |
 | `reminiscence.askobject.08` | Where would you put this in your home today? | ¿Dónde lo pondrías hoy en tu casa? | — |  |
+| `riddle.thing.avocado` | Avocado | Aguacate | — |  |
+| `riddle.thing.bell` | Bell | Campana | — |  |
+| `riddle.thing.bottle` | Bottle | Botella | — |  |
+| `riddle.thing.broom` | Broom | Escoba | — |  |
+| `riddle.thing.button` | Button | Botón | — |  |
+| `riddle.thing.candle` | Candle | Vela | — |  |
+| `riddle.thing.chili` | Chili pepper | Chile | — |  |
+| `riddle.thing.cloud` | Cloud | Nube | — |  |
+| `riddle.thing.coin` | Coin | Moneda | — |  |
+| `riddle.thing.comb` | Comb | Peine | — |  |
+| `riddle.thing.corn` | Corn | Elote | — |  |
+| `riddle.thing.cow` | Cow | Vaca | — |  |
+| `riddle.thing.donkey` | Donkey | Burro | — |  |
+| `riddle.thing.drum` | Drum | Tambor | — |  |
+| `riddle.thing.glove` | Glove | Guante | — |  |
+| `riddle.thing.hat` | Hat | Sombrero | — |  |
+| `riddle.thing.horse` | Horse | Caballo | — |  |
+| `riddle.thing.letter` | Letter | Carta | — |  |
+| `riddle.thing.mirror` | Mirror | Espejo | — |  |
+| `riddle.thing.needle` | Needle | Aguja | — |  |
+| `riddle.thing.onion` | Onion | Cebolla | — |  |
+| `riddle.thing.owl` | Owl | Tecolote | — |  |
+| `riddle.thing.pencil` | Pencil | Lápiz | — |  |
+| `riddle.thing.pineapple` | Pineapple | Piña | — |  |
+| `riddle.thing.potato` | Potato | Papa | — |  |
+| `riddle.thing.rainbow` | Rainbow | Arcoíris | — |  |
+| `riddle.thing.river` | River | Río | — |  |
+| `riddle.thing.rooster` | Rooster | Gallo | — |  |
+| `riddle.thing.scissors` | Scissors | Tijeras | — |  |
+| `riddle.thing.shadow` | Shadow | Sombra | — |  |
+| `riddle.thing.shoe` | Shoe | Zapato | — |  |
+| `riddle.thing.snail` | Snail | Caracol | — |  |
+| `riddle.thing.snow` | Snow | Nieve | — |  |
+| `riddle.thing.spoon` | Spoon | Cuchara | — |  |
+| `riddle.thing.stamp` | Stamp | Timbre postal | — |  |
+| `riddle.thing.sun` | Sun | Sol | — |  |
+| `riddle.thing.tortilla` | Tortilla | Tortilla | — |  |
+| `riddle.thing.towel` | Towel | Toalla | — |  |
+| `riddle.thing.wind` | Wind | Viento | — |  |
 | `saying.01.end` | is worth two in the bush | que ciento volando | — |  |
 | `saying.01.start` | A bird in the hand | Más vale pájaro en mano | — |  |
 | `saying.02.end` | seldom bite | no muerde | — |  |
@@ -864,6 +913,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `why.game.photocaptions` | Names and Faces exercises matching a name to a face. | Nombres y Caras ejercita unir un nombre con una cara. | WhyTheseGamesView |  |
 | `why.game.quickeyes` | Quick Eyes exercises noticing things quickly. | Ojos Ágiles ejercita fijarse en las cosas con rapidez. | WhyTheseGamesView |  |
 | `why.game.reminiscence` | Photo Stories is a chance to enjoy your own photos and the stories they hold, on your own or with someone. There are no right or wrong answers. | Historias en fotos es una ocasión para disfrutar tus fotos y las historias que guardan, a solas o con alguien. No hay respuestas buenas ni malas. | WhyTheseGamesView |  |
+| `why.game.riddles` | Riddles exercises finding a word from a few hints. | Adivinanzas ejercita encontrar una palabra a partir de unas pistas. | WhyTheseGamesView |  |
 | `why.game.sayings` | Finish the Saying exercises finding words you already know. | Termina el refrán ejercita encontrar palabras que ya conoces. | WhyTheseGamesView |  |
 | `why.game.sequence` | Repeat the Sequence exercises holding a few things in mind at once. | Repite la secuencia ejercita tener varias cosas en mente a la vez. | WhyTheseGamesView |  |
 | `why.game.sliding` | Sliding Blocks exercises planning your moves before you make them. | Bloques deslizantes ejercita planear los movimientos antes de hacerlos. | WhyTheseGamesView |  |

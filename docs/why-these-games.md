@@ -31,7 +31,7 @@ Sources are the ones already in the repo's research docs. Nothing new was added.
 
 ## 2. What each game exercises
 
-One line per game, 17 in all. "Exercises" is the only verb used.
+One line per game, 18 in all. "Exercises" is the only verb used.
 
 | Key | English | Español | Source |
 |---|---|---|---|
@@ -52,6 +52,7 @@ One line per game, 17 in all. "Exercises" is the only verb used.
 | `why.game.numberslide` | **Number Slide** exercises planning a few moves ahead. | **Rompecocos** ejercita planear unos movimientos por adelantado. | [Simons 2016](https://journals.sagepub.com/doi/10.1177/1529100616661983) (executive function), see note B |
 | `why.game.photocaptions` | **Names and Faces** exercises matching a name to a face. | **Nombres y Caras** ejercita unir un nombre con una cara. | none: a plain description, no research claim (#142, owner to approve) |
 | `why.game.loteria` | **Lotería** exercises spotting the called card on your board. | **Lotería** ejercita encontrar la carta cantada en tu tabla. | [Simons 2016](https://journals.sagepub.com/doi/10.1177/1529100616661983) (attention) |
+| `why.game.riddles` | **Riddles** exercises finding a word from a few hints. | **Adivinanzas** ejercita encontrar una palabra a partir de unas pistas. | none: a plain description, no research claim (#551, owner to approve) |
 
 Notes for the reviewer:
 

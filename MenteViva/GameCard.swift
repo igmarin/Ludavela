@@ -434,6 +434,15 @@ struct Emblem: View {
                     CGAffineTransform(translationX: 17 + Double(column) * 15, y: 32).rotated(by: -0.45))
                 context.fill(bean, with: column == 1 ? amber : ink)
             }
+        case .riddles:
+            // A question mark, its dot in amber.
+            var mark = Path()
+            mark.move(to: CGPoint(x: 21, y: 22))
+            mark.addCurve(to: CGPoint(x: 43, y: 21), control1: CGPoint(x: 21, y: 6), control2: CGPoint(x: 43, y: 6))
+            mark.addCurve(to: CGPoint(x: 32, y: 38), control1: CGPoint(x: 43, y: 30), control2: CGPoint(x: 32, y: 29))
+            mark.addLine(to: CGPoint(x: 32, y: 42))
+            context.stroke(mark, with: ink, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
+            context.fill(circle(32, 53, 4.5), with: amber)
         }
     }
 

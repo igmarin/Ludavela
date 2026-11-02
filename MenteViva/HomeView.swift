@@ -445,6 +445,7 @@ struct HomeView: View {
         case .photoCaptions: MemoryMatchView(variant: .captions)
         case .wordSearch: WordSearchView()
         case .loteria: LoteriaView()
+        case .riddles: RiddleView()
         case .numberSlide: NumberSlideView()
         }
     }

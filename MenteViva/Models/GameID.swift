@@ -18,6 +18,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
     case photoCaptions = "photo_captions"
     case wordSearch = "word_search"
     case loteria = "loteria"
+    case riddles = "riddles"
     case numberSlide = "number_slide"
 
     /// Registered but not playable yet: kept out of the deal, Set up, progress and
@@ -45,12 +46,13 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .photoCaptions: "🖼️"
         case .wordSearch: "🔎"
         case .loteria: "🫘"
+        case .riddles: "❓"
         case .numberSlide: "🧮"
         }
     }
 
     /// The retro illustration Home and the celebration card show for this game
-    /// instead of the emblem (#373). Nil keeps the emblem: four games have no picture
+    /// instead of the emblem (#373). Nil keeps the emblem: five games have no picture
     /// that says what they are yet, and five show a drawn mini board of the game
     /// instead of an unrelated picture (#512, `Emblem.boards`).
     var heroPicture: GamePicture? { heroSlug.map { GamePictures.named($0) } }
@@ -64,7 +66,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .categoryFluency: "dog"
         case .sayings: "book"
         case .repeatSequence: "piano"
-        case .stroop, .sudoku, .upOrDown, .tilePairs: nil
+        case .stroop, .sudoku, .upOrDown, .tilePairs, .riddles: nil
         case .tangram, .slidingBlocks, .numberSlide, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria: nil
         }
     }
@@ -87,6 +89,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .photoCaptions: "game.photocaptions.title"
         case .wordSearch: "game.wordsearch.title"
         case .loteria: "game.loteria.title"
+        case .riddles: "game.riddles.title"
         case .numberSlide: "game.numberslide.title"
         }
     }
