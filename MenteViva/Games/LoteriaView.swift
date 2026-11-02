@@ -7,6 +7,8 @@ import SwiftUI
 /// Rules live in `LoteriaDeal`; this view draws, speaks and forwards taps.
 struct LoteriaView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     @State private var difficulty: Difficulty
     @State private var deal: LoteriaDeal
@@ -14,6 +16,10 @@ struct LoteriaView: View {
     @State private var note: Note?
     /// The tile that just took a "not called yet" tap, for its miss cue.
     @State private var missedTile: Int?
+    /// The called tile shown by the one-time help cue after "Look again" is tapped twice.
+    @State private var helpTile: Int?
+    @State private var helpPulse = false
+    @State private var helpCueID = 0
     @State private var startedAt = Date.now
     @State private var showCelebration = false
     @State private var finalDetail = ""
@@ -50,20 +56,16 @@ struct LoteriaView: View {
     private var hasStarted: Bool { deal.calledCount > 1 || deal.attempts > 0 }
 
     var body: some View {
-        VStack(spacing: rowGap) {
-            LevelExplainBanner(game: .loteria, hasStarted: hasStarted, keepsSpace: true)
-            instructionRow
-            Text(AppLanguage.localized(goalKey))
-                .font(.title3.weight(.semibold))
-                .foregroundStyle(.tint)
-                .multilineTextAlignment(.center)
-            playArea
-                .frame(minHeight: minimumPlayHeight)
+        Group {
+            if typeSize.isAccessibilitySize {
+                accessibilityLayout
+            } else {
+                regularLayout.fitOrScroll()
+            }
         }
+        .gameColumn()
         .padding(.horizontal, 12)
         .padding(.vertical, 16)
-        .gameColumn()
-        .fitOrScroll()
         .gameHeader(
             .loteria, instruction: AppLanguage.localized("game.loteria.instruction"),
             inProgress: hasStarted, celebrating: showCelebration
@@ -73,7 +75,64 @@ struct LoteriaView: View {
             example: AppLanguage.localized("guide.loteria.example")
         )
         .onAppear { if !hasStarted { announceCalled() } }
+        .task(id: helpCueID) { await animateHelpCue() }
         .celebration(isPresented: $showCelebration, game: .loteria, detail: finalDetail, onPlayAgain: restart)
+    }
+
+    private var regularLayout: some View {
+        VStack(spacing: rowGap) {
+            LevelExplainBanner(game: .loteria, hasStarted: hasStarted, keepsSpace: true)
+            instructionRow
+            goalLine
+            playArea
+                .frame(minHeight: minimumPlayHeight)
+        }
+    }
+
+    /// Holds the called card above the scroll region, so the player can keep finding it at the
+    /// largest text sizes while the instructions and board move into view.
+    private var accessibilityLayout: some View {
+        GeometryReader { proxy in
+            VStack(spacing: rowGap) {
+                if deal.hasLoteria {
+                    Button(action: finish) {
+                        Text(AppLanguage.localized("game.loteria.call"))
+                            .font(.largeTitle.weight(.heavy))
+                            .frame(maxWidth: .infinity, minHeight: Self.topRowMinimum)
+                    }
+                    .buttonStyle(RetroButtonStyle())
+                } else {
+                    HStack(spacing: rowGap) {
+                        compactCalledCard
+                        nextCardButton
+                    }
+                }
+                ScrollView {
+                    VStack(spacing: rowGap) {
+                        LevelExplainBanner(game: .loteria, hasStarted: hasStarted, keepsSpace: true)
+                        instructionRow
+                        goalLine
+                        if !deal.hasLoteria {
+                            board(
+                                tile: Self.tileSide(
+                                    width: proxy.size.width, height: proxy.size.width, side: deal.side, gap: gap)
+                            )
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                }
+                .frame(maxHeight: .infinity)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        }
+    }
+
+    private var goalLine: some View {
+        Text(AppLanguage.localized(goalKey))
+            .font(.title3.weight(.semibold))
+            .foregroundStyle(.tint)
+            .multilineTextAlignment(.center)
     }
 
     // MARK: - Instruction and goal
@@ -145,18 +204,46 @@ struct LoteriaView: View {
         } else {
             HStack(spacing: rowGap) {
                 calledCard(height: height)
-                Button(action: nextCard) {
-                    Text(AppLanguage.localized("game.loteria.next"))
-                        .font(.title2.weight(.semibold))
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 8)
-                }
-                .buttonStyle(AnswerTileStyle(minHeight: Self.topRowMinimum))
+                nextCardButton
             }
             .frame(height: height)
         }
+    }
+
+    private var nextCardButton: some View {
+        Button(action: nextCard) {
+            Text(AppLanguage.localized("game.loteria.next"))
+                .font(.title2.weight(.semibold))
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 8)
+        }
+        .buttonStyle(AnswerTileStyle(minHeight: Self.topRowMinimum))
+    }
+
+    /// A smaller copy of the called card for the pinned accessibility-size bar.
+    private var compactCalledCard: some View {
+        let name = AppLanguage.localized(deal.current.nameKey)
+        let showsPicture = LoteriaDeal.showsPicture(for: difficulty)
+        return HStack(spacing: 8) {
+            if showsPicture {
+                PictureView(picture: deal.current, size: 56)
+            }
+            Text(name)
+                .font(.title3.weight(.bold))
+                .lineLimit(2)
+                .minimumScaleFactor(0.6)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
+        }
+        .padding(8)
+        .frame(maxWidth: .infinity, minHeight: Self.topRowMinimum)
+        .background(Color.paper, in: .rect(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(.tint, lineWidth: 4))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(String(format: AppLanguage.localized("game.loteria.a11y.called %@"), name))
+        .guideTarget()
     }
 
     /// The called card, framed like a lotería card: its picture and name, or the name alone from
@@ -198,7 +285,12 @@ struct LoteriaView: View {
     private func tileButton(_ index: Int, size: CGFloat) -> some View {
         let picture = deal.board[index]
         let marked = deal.marked.contains(index)
+        let isHelpTile = helpTile == index
         let name = AppLanguage.localized(picture.nameKey)
+        let label =
+            isHelpTile
+            ? positionLabel(of: index)
+            : String(format: AppLanguage.localized(marked ? "game.loteria.a11y.marked %@" : "game.loteria.a11y.open %@"), name)
         return Button {
             tap(index)
         } label: {
@@ -210,9 +302,16 @@ struct LoteriaView: View {
         }
         .buttonStyle(AnswerTileStyle(strength: marked ? 0.3 : 0.12, minHeight: size))
         .frame(width: size, height: size)
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.amber, lineWidth: 6)
+                .opacity(isHelpTile && reduceMotion ? 1 : 0)
+                .accessibilityHidden(true)
+        }
+        .scaleEffect(isHelpTile && helpPulse && !reduceMotion ? 1.06 : 1)
+        .animation(.easeInOut(duration: 0.25), value: helpPulse)
         .modifier(MissCue(active: Binding(get: { missedTile == index }, set: { if !$0 { missedTile = nil } })))
-        .accessibilityLabel(
-            String(format: AppLanguage.localized(marked ? "game.loteria.a11y.marked %@" : "game.loteria.a11y.open %@"), name))
+        .accessibilityLabel(label)
     }
 
     // MARK: - Play
@@ -222,6 +321,7 @@ struct LoteriaView: View {
         switch deal.tap(index) {
         case .marked:
             note = nil
+            clearHelpCue()
             if deal.hasLoteria {
                 Feedback.play(.success)
                 AccessibilityNotification.Announcement(AppLanguage.localized("game.loteria.ready")).post()
@@ -242,14 +342,58 @@ struct LoteriaView: View {
         switch deal.next() {
         case .called:
             note = nil
+            clearHelpCue()
             announceCalled()
         case .lookAgain:
             note = .lookAgain
             Feedback.play(.miss)
             AccessibilityNotification.Announcement(AppLanguage.localized(Note.lookAgain.key)).post()
+        case .showHelp(let index):
+            note = .lookAgain
+            showHelpCue(for: index)
+            Feedback.play(.miss)
+            announcePosition(of: index)
         case .deckDone:
             break
         }
+    }
+
+    private func showHelpCue(for index: Int) {
+        helpCueID += 1
+        helpTile = index
+        helpPulse = false
+    }
+
+    private func clearHelpCue() {
+        helpCueID += 1
+        helpTile = nil
+        helpPulse = false
+    }
+
+    /// Expands and settles the matching tile once; a ring stays in its place under Reduce Motion.
+    private func animateHelpCue() async {
+        guard helpTile != nil else { return }
+        withAnimation(.easeInOut(duration: 0.25)) { helpPulse = true }
+        do {
+            try await Task.sleep(for: .milliseconds(250))
+            withAnimation(.easeInOut(duration: 0.25)) { helpPulse = false }
+        } catch {
+            return
+        }
+    }
+
+    /// Gives the hinted tile a one-based position VoiceOver can announce and users can confirm.
+    private func positionLabel(of index: Int) -> String {
+        let row = index / deal.side + 1
+        let column = index % deal.side + 1
+        let name = AppLanguage.localized(deal.board[index].nameKey)
+        return String(format: AppLanguage.localized("game.loteria.a11y.position"), row, column, name)
+    }
+
+    /// VoiceOver hears the target's one-based row and column with its name.
+    private func announcePosition(of index: Int) {
+        guard UIAccessibility.isVoiceOverRunning else { return }
+        AccessibilityNotification.Announcement(positionLabel(of: index)).post()
     }
 
     /// Calls the card out: spoken when "Read names aloud" is on (the voice rule every game
@@ -270,6 +414,7 @@ struct LoteriaView: View {
         deal = Self.newDeal(difficulty)
         note = nil
         missedTile = nil
+        clearHelpCue()
         startedAt = .now
         announceCalled()
     }

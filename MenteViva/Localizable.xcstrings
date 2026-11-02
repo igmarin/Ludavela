@@ -1857,6 +1857,23 @@
         }
       }
     },
+    "game.loteria.a11y.position" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Row %lld, column %lld: %@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fila %lld, columna %lld: %@."
+          }
+        }
+      }
+    },
     "game.loteria.call" : {
       "extractionState" : "manual",
       "localizations" : {
