@@ -208,6 +208,8 @@ struct RiddleView: View {
     private func choose(_ answer: RiddleAnswer) {
         switch run.pick(answer) {
         case .right:
+            // Seen as soon as it is solved: leaving before Next must not bring it back early.
+            if let round = run.round { RiddleDeck.markSeen(round.riddle, defaults: .standard) }
             clearMiss()
             Feedback.play(.success)
             AccessibilityNotification.Announcement(solvedLine(answer)).post()
@@ -222,7 +224,6 @@ struct RiddleView: View {
     }
 
     private func next() {
-        if let round = run.round { RiddleDeck.markSeen(round.riddle, defaults: .standard) }
         clearMiss()
         run.next()
         if run.isFinished {
