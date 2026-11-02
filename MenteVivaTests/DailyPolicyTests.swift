@@ -381,6 +381,25 @@ final class DailyPolicyTests: XCTestCase {
         }
     }
 
+    /// The owed places hold beyond today's 18 games (#547): numbered stand-ins for 19 to 28 games,
+    /// against the worst ranking (the same games on top every day, as a focus that always wins
+    /// does), with rests capped at 14 days as `PlayerStateSummary` reports them. Every game is
+    /// dealt within 14 days at 2, 3 and 5 a day.
+    func testGivenNineteenToTwentyEightGamesAndTheSameTopGamesDailyWhenDealtThenEveryGameAppearsInTwoWeeks() {
+        for count in 19...28 {
+            for size in [2, 3, 5] {
+                var rested = Dictionary(uniqueKeysWithValues: (0..<count).map { ($0, 14) })
+                var seen = Set<Int>()
+                for _ in 0..<14 {
+                    let deal = DailyPolicy.withLongestWaiting(Array(0..<size), from: Array(0..<count)) { rested[$0] ?? 14 }
+                    seen.formUnion(deal)
+                    for game in 0..<count { rested[game] = deal.contains(game) ? 0 : min(14, (rested[game] ?? 14) + 1) }
+                }
+                XCTAssertEqual(seen.count, count, "\(count) games, \(size) a day")
+            }
+        }
+    }
+
     func testGivenAGameRestedSevenDaysWhenLeftOutThenItTakesTheLastPlace() {
         // Fully rested at 7 days, Number Trail (0.55) still ranks below the 0.8 games played 3 days ago (0.57).
         var rests = Dictionary(uniqueKeysWithValues: GameID.allCases.map { ($0, stats(days: 3)) })

@@ -219,7 +219,9 @@ nonisolated enum DailyPolicy {
         }
         return DailyPlan(
             dayStamp: dayStamp,
-            games: withLongestWaiting(Array(ranked.prefix(dealSize(for: profile)).map(\.game)), from: visible, state),
+            games: withLongestWaiting(Array(ranked.prefix(dealSize(for: profile)).map(\.game)), from: visible) {
+                state.games[$0.rawValue]?.daysSinceLastPlayed ?? 14
+            },
             difficulty: difficulty,
             changes: changes)
     }
@@ -227,21 +229,29 @@ nonisolated enum DailyPolicy {
     /// Days a game may go undealt before it is owed a place (#279).
     static let restLimit = 7
 
-    /// A visible game that has rested `restLimit` days or more takes the deal's last place (#279): the
-    /// longest-rested one, ties in `GameID` order, and only from a game that has rested less. A rule and
-    /// not a weight, because with a focus or a short deal no weight keeps every game coming round, while
-    /// this one does. The first places never change, and a brand-new player (every game equally rested)
-    /// keeps the ranked deal.
-    private static func withLongestWaiting(
-        _ deal: [GameID], from visible: [GameID], _ state: PlayerStateSummary
-    ) -> [GameID] {
-        guard deal.count > 1, let last = deal.last else { return deal }
-        let rested = { (game: GameID) in state.games[game.rawValue]?.daysSinceLastPlayed ?? 14 }
-        let waiting = visible.filter { !deal.contains($0) && rested($0) >= restLimit }
-        guard let longest = waiting.max(by: { rested($0) < rested($1) }), rested(longest) > rested(last) else {
-            return deal
+    /// The deal with the games owed a place put in (#279, #547). A visible game that has rested
+    /// `restLimit` days or more takes the deal's last place: the longest-rested one, ties in `GameID`
+    /// order, and only from a game that has rested less. A game that has gone two weeks unplayed (twice
+    /// the limit, the most `PlayerStateSummary` reports) also takes the place before it, the same
+    /// way. One owed place a day served 13 games in two weeks; with 18 games and a 2-game deal whose
+    /// first place always went to a focus area, Number Slide was never dealt. With two, every game
+    /// comes round within two weeks at any deal size and focus, up to 28 games (`DailyPolicyTests`).
+    /// Rules and not weights, because with a focus or a short deal no weight keeps every game coming
+    /// round, while these do. The first place of a deal of three or more never changes, and a
+    /// brand-new player (every game equally rested) keeps the ranked deal.
+    static func withLongestWaiting<Game: Hashable>(
+        _ deal: [Game], from visible: [Game], rested: (Game) -> Int
+    ) -> [Game] {
+        guard deal.count > 1 else { return deal }
+        var dealt = deal
+        for (place, limit) in [(dealt.count - 1, restLimit), (dealt.count - 2, 2 * restLimit)] {
+            let waiting = visible.filter { !dealt.contains($0) && rested($0) >= limit }
+            guard let longest = waiting.max(by: { rested($0) < rested($1) }), rested(longest) > rested(dealt[place]) else {
+                continue
+            }
+            dealt[place] = longest
         }
-        return Array(deal.dropLast()) + [longest]
+        return dealt
     }
 
     /// Worth, times the focus boost, times how long the game has rested: a focus moves a game up the
