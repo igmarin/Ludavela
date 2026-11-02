@@ -388,17 +388,23 @@ final class SudokuPuzzleTests: XCTestCase {
         XCTAssertEqual(layout.side, SudokuPuzzle.minTarget)
     }
 
-    func testGivenAShortLandscapeWhenTheMissNoteWouldNotFitBesideSixBySixThenFourByFourIsDealt() {
-        // 1,100 × 500: the 6×6 board alone fits ((500 - 128 - 10) / 6 ≈ 60.3pt), but its two rows of
-        // keys, Show me one and a two-line miss note need 428pt beside it, more than the 420pt under
-        // the instruction. 4×4, its four keys in one row, leaves room for the note.
+    func testGivenAShortLandscapeWhenTheNoteLivesAtTheTopThenSixBySixFitsBesideItsPad() {
+        // 1,100 × 500: the 6×6 board fits ((500 - 128 - 10) / 6 ≈ 60.3pt) and its pad column (two
+        // rows of keys and Show me one, 332pt) fits under the instruction. The miss note is in the
+        // instruction slot since #541, so the column no longer reserves room for it.
         let layout = drawn(level: 7, width: 1100, height: 500)
-        XCTAssertEqual(layout.size, 4)
+        XCTAssertEqual(layout.size, 6)
         XCTAssertEqual(layout.pad, .beside)
         XCTAssertTrue(layout.fits)
-        XCTAssertEqual(SudokuPuzzle.padColumns(size: 4, pad: .beside), 4)
-        XCTAssertLessThanOrEqual(SudokuPuzzle.besideColumnHeight(size: 4) + 80, 500)
-        XCTAssertGreaterThan(SudokuPuzzle.besideColumnHeight(size: 6) + 80, 500)
+        XCTAssertLessThanOrEqual(SudokuPuzzle.besideColumnHeight(size: 6) + 80, 500)
+    }
+
+    /// #543: the miss note lives in the instruction slot at the top (#541), so the board no longer
+    /// keeps a second reserve for it under the pad. The top budget counts the level banner and the slot.
+    func testGivenTheNoteLivesInTheInstructionSlotWhenAnIPadPortraitIsLaidOutThenTheBoardUsesTheFreedRoom() {
+        let kept = SudokuPuzzle.keptArrangement(size: 9, width: 788, height: 1018)
+        // Before: (1018 - 80 - 72 - 220.4 - 16) / 9 = 69.9pt. After: (1018 - 140 - 220.4 - 16) / 9 = 71.3pt.
+        XCTAssertGreaterThan(kept.side, 71)
     }
 
     func testGivenAPortraitPadRowWhenTheBoardIsNarrowerThanTheWidthThenKeysStillKeepSixtyPoints() {

@@ -151,6 +151,9 @@ enum GuideArrow {
     /// it never reaches the next square's digit.
     private static let ringEdge: CGFloat = 6
     private static let sideSize: CGFloat = 24
+    /// Room a side arrow needs between the target and its neighbour, so it never covers another
+    /// tile; a grid sets its column spacing to this (#543).
+    static let sideGap = ringEdge + sideSize
 
     /// The arrow's SF Symbol, point size and centre. A target in the upper half of the screen is
     /// a board's top rows, with the instruction line right above it, so the arrow stands beside the

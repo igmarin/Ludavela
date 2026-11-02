@@ -69,7 +69,8 @@ struct ColorClashView: View {
             .accessibilityLabel(stimulusLabel)
             .accessibilityHint(AppLanguage.localized("game.colorclash.a11y.stimulus.hint"))
 
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+            // The column gap leaves room for the guide's side arrow (#543).
+            LazyVGrid(columns: [GridItem(.flexible(), spacing: GuideArrow.sideGap), GridItem(.flexible())], spacing: 16) {
                 ForEach(ColorClashDeal.availableInks(for: difficulty), id: \.self) { candidate in
                     Button {
                         tap(candidate)
