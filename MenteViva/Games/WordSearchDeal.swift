@@ -20,6 +20,15 @@ nonisolated struct WordSearchDeal: Equatable {
     static let spanishLetters = Array("AAAAAAAABCDEEEEEEEEEFGHIIIIIIJKLMNÑOOOOOOOPQRRRRSSSSSTTTTUUUVXYZ")
     private static let englishLetters = Array(
         "AAAAAAAABCDEEEEEEEEEEEEFFGHHHHIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSSSTTTTTTTTTUUUVWWXYYZ")
+    /// Rude words a grid must never show by accident, in any direction (#560). A theme word that
+    /// contains one could never be dealt, so the shipped lists are tested against these too.
+    static let spanishBlocked = [
+        "CULO", "PUTA", "PEDO", "MIERDA", "CACA", "PENE", "VERGA", "PITO", "CHICHI", "MAMON", "JOTO", "PINCHE",
+        "CABRON", "PUTO", "PUTAS", "CULOS", "COÑO",
+    ]
+    static let englishBlocked = [
+        "ASS", "FUCK", "SHIT", "DICK", "CUM", "TIT", "FAG", "CUNT", "PISS", "POO", "COCK", "SLUT", "CRAP", "TWAT",
+    ]
     private static let directions = [(0, 1), (1, 0), (1, 1), (-1, 1)]
     private static let allDirections = directions + [(0, -1), (-1, 0), (-1, -1), (1, -1)]
     /// Sizes and directions change only between the five level bands.
@@ -64,8 +73,18 @@ nonisolated struct WordSearchDeal: Equatable {
                 grid[index] = pool.randomElement(using: &random)!
             }
             let deal = Self(side: side, grid: grid, words: placed, themeKey: theme.0)
-            if placed.allSatisfy({ deal.occurrences(of: $0.text) == [$0.cells] }) { return deal }
+            // Any rude word or extra copy re-rolls the whole grid from the same generator, so a seed still
+            // gives one board.
+            if placed.allSatisfy({ deal.occurrences(of: $0.text) == [$0.cells] }),
+                !deal.showsBlockedWord(spanish: isSpanish)
+            {
+                return deal
+            }
         }
+    }
+
+    func showsBlockedWord(spanish: Bool) -> Bool {
+        (spanish ? Self.spanishBlocked : Self.englishBlocked).contains { !occurrences(of: $0).isEmpty }
     }
 
     /// Searches all directions, including backwards, to reject accidental copies.

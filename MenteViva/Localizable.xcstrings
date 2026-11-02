@@ -15268,7 +15268,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL,LILY,FENCE"
+            "value" : "ROSE,TULIP,DAISY,MOSS,TREE,SEED,LEAF,SOIL,LILY,FENCE"
           }
         },
         "es" : {
@@ -15636,7 +15636,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SPOON,FORK,KNIFE,PLATE,CUP,BOWL,PAN,OVEN,KETTLE,APRON"
+            "value" : "LADLE,FORK,KNIFE,PLATE,CUP,BOWL,PAN,OVEN,KETTLE,APRON"
           }
         },
         "es" : {

@@ -62,6 +62,40 @@ final class WordSearchDealTests: XCTestCase {
         XCTAssertTrue(deal.grid.allSatisfy { "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".contains($0) })
         XCTAssertTrue(WordSearchDeal.spanishLetters.contains("Ñ"))
     }
+    func testGivenManySeedsAtEveryLevelWhenDealtThenNoRudeWordReadsInAnyDirection() {
+        let themes = [
+            ("animals", ["HORSE", "SHEEP", "TIGER", "ZEBRA", "MOUSE", "FROG", "DUCK", "WHALE"]),
+            ("animales", ["PERRO", "GATO", "TIGRE", "CEBRA", "RATON", "RANA", "PATO", "OVEJA"]),
+        ]
+        for spanish in [false, true] {
+            let blocked = spanish ? WordSearchDeal.spanishBlocked : WordSearchDeal.englishBlocked
+            for tablet in [false, true] {
+                for level in 1...10 {
+                    for seed in 1...20 {
+                        var random = Seeded(state: UInt64(seed))
+                        let deal = WordSearchDeal.make(
+                            level: level, tablet: tablet, spanish: spanish, themes: [themes[spanish ? 1 : 0]],
+                            using: &random)
+                        for word in blocked {
+                            XCTAssertEqual(deal.occurrences(of: word), [], "\(word) at level \(level), seed \(seed)")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func testGivenAPlantedRudeWordWhenCheckedThenTheGridIsRejected() {
+        // PUTA read backwards up the first column, and ASS on a diagonal.
+        let spanish = WordSearchDeal(
+            side: 4, grid: Array("AXXXTXXXUXXXPXXX"), words: [], themeKey: "")
+        XCTAssertTrue(spanish.showsBlockedWord(spanish: true))
+        XCTAssertFalse(spanish.showsBlockedWord(spanish: false))
+        let english = WordSearchDeal(side: 3, grid: Array("AXXXSXXXS"), words: [], themeKey: "")
+        XCTAssertTrue(english.showsBlockedWord(spanish: false))
+        XCTAssertFalse(WordSearchDeal(side: 2, grid: Array("ABCD"), words: [], themeKey: "").showsBlockedWord(spanish: false))
+    }
+
     /// Level table (#550): across; + down; + diagonal down; + diagonal up from level 9.
     func testGivenEachLevelWhenDealtThenEveryWordRunsInADirectionAllowedThere() {
         let across = [0, 1]
@@ -171,6 +205,12 @@ final class WordSearchDealTests: XCTestCase {
                 // Capitals with no accents; Spanish keeps Ñ.
                 XCTAssertTrue(words.allSatisfy { $0.allSatisfy { "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".contains($0) } }, text)
                 XCTAssertNotNil(strings[key] as? [String: Any], key)
+                // A theme word holding a rude word, either way round, could never be dealt.
+                let blocked = language == "es" ? WordSearchDeal.spanishBlocked : WordSearchDeal.englishBlocked
+                for word in words {
+                    XCTAssertFalse(
+                        blocked.contains { word.contains($0) || String(word.reversed()).contains($0) }, word)
+                }
                 for tablet in [false, true] {
                     for level in 1...10 {
                         var random = Seeded(state: UInt64(level))

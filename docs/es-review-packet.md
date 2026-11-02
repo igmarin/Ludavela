@@ -358,13 +358,13 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.wordsearch.food.words` | TACO,ELOTE,TAMALE,MOLE,POZOLE,SALSA,CHURRO,BEANS,TORTILLA,FLAN | TACO,ELOTE,TAMAL,MOLE,POZOLE,SALSA,CHURRO,FRIJOL,TORTILLA,NOPAL | — |  |
 | `game.wordsearch.found %@` | %@, found | %@, encontrada | WordSearchView |  |
 | `game.wordsearch.garden` | Garden | Jardín | — |  |
-| `game.wordsearch.garden.words` | ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL,LILY,FENCE | ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN,FLOR,RAMA | — |  |
+| `game.wordsearch.garden.words` | ROSE,TULIP,DAISY,MOSS,TREE,SEED,LEAF,SOIL,LILY,FENCE | ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN,FLOR,RAMA | — |  |
 | `game.wordsearch.guide` | Tap the first letter, then the last letter, or drag between them. | Toca la primera letra y luego la última, o desliza entre ellas. | WordSearchView |  |
 | `game.wordsearch.hint` | Show me a word | Muéstrame una palabra | WordSearchView |  |
 | `game.wordsearch.hintposition %lld %lld` | Try row %1$lld, column %2$lld. | Prueba la fila %1$lld, columna %2$lld. | WordSearchView |  |
 | `game.wordsearch.instruction` | Find the words from the list. | Encuentra las palabras de la lista. | WordSearchView |  |
 | `game.wordsearch.kitchen` | Kitchen | Cocina | — |  |
-| `game.wordsearch.kitchen.words` | SPOON,FORK,KNIFE,PLATE,CUP,BOWL,PAN,OVEN,KETTLE,APRON | CUCHARA,TENEDOR,CUCHILLO,PLATO,TAZA,OLLA,SARTEN,HORNO,JARRA,MANTEL | — |  |
+| `game.wordsearch.kitchen.words` | LADLE,FORK,KNIFE,PLATE,CUP,BOWL,PAN,OVEN,KETTLE,APRON | CUCHARA,TENEDOR,CUCHILLO,PLATO,TAZA,OLLA,SARTEN,HORNO,JARRA,MANTEL | — |  |
 | `game.wordsearch.miss` | Not one of the words — try another line. | Esa no es de la lista: prueba otra línea. | WordSearchView |  |
 | `game.wordsearch.music` | Music | Música | — |  |
 | `game.wordsearch.music.words` | PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL,GUITAR,TRUMPET | PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO,GUITARRA,MARIMBA | — |  |
