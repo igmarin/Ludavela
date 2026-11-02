@@ -491,8 +491,9 @@ extension SlidingDragLimits {
 }
 
 extension SlidingDirection {
-    /// The SF Symbol for this direction's arrow button.
-    fileprivate var arrowSymbol: String {
+    /// The SF Symbol for this direction's arrow: Sliding Blocks' arrow buttons and Number Slide's
+    /// "this tile can move" cue.
+    var arrowSymbol: String {
         switch self {
         case .left: "arrow.left"
         case .right: "arrow.right"

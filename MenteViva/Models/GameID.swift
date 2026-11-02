@@ -19,6 +19,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
     case wordSearch = "word_search"
     case loteria = "loteria"
     case riddles = "riddles"
+    case numberSlide = "number_slide"
 
     /// Registered but not playable yet: kept out of the deal, Set up, progress and
     /// Home until the game's view ships. That ticket removes its ID here.
@@ -46,6 +47,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .wordSearch: "🔎"
         case .loteria: "🫘"
         case .riddles: "❓"
+        case .numberSlide: "🧮"
         }
     }
 
@@ -65,7 +67,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .sayings: "book"
         case .repeatSequence: "piano"
         case .stroop, .sudoku, .upOrDown, .tilePairs, .riddles: nil
-        case .tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria: nil
+        case .tangram, .slidingBlocks, .numberSlide, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria: nil
         }
     }
 
@@ -88,6 +90,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .wordSearch: "game.wordsearch.title"
         case .loteria: "game.loteria.title"
         case .riddles: "game.riddles.title"
+        case .numberSlide: "game.numberslide.title"
         }
     }
 

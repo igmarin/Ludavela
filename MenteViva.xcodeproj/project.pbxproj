@@ -31,6 +31,8 @@
 		2C26F128CAE066EF0000001C /* MemoryDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F600D269255E8500000016; };
 		18180C4157C1561D00000021 /* MemoryMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E769752DD6A430000001B; };
 		3B89FA1FCE6129CF00000019 /* MissCue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF3B4C1D5F21E500000013; };
+		47CC96146E92854A00000023 /* NumberSlidePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7B6EB8CF19EC80000001D; };
+		8036CB71939131F300000021 /* NumberSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DDDA645134A8390000001B; };
 		253F249A6FF746A300000025 /* NumberTrailQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4D45FC480DA5090000001F; };
 		4886BCC1D06920BA00000022 /* PhotoCaptionDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C292C7FFAD74580000001C; };
 		F2E513BC326D993F0000001D /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76316028DAED7B500000017; };
@@ -148,6 +150,7 @@
 		6B009816AE0FE1DA00000030 /* MemoryDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FC27F498CD0780000002A; };
 		A34345BFC3478D0200000037 /* MemoryMatchLevelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CECEA05CC9D6BF000000031; };
 		19A5511F2D9320B700000032 /* MemoryPhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982802FDA721007D0000002C; };
+		C8C7DF56C631A07100000037 /* NumberSlidePuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B0C27874AA93700000031; };
 		4E437CEEEEB1E47600000039 /* NumberTrailQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B15A3FA40FC93B400000033; };
 		EB52E9FDB69CB05300000035 /* OnboardingStepsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C62977BDFEFF990000002F; };
 		74DF40655A8016C000000037 /* OnboardingStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35341DEF1F26544E00000031; };
@@ -208,6 +211,8 @@
 		88F600D269255E8500000016 /* MemoryDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MemoryDeal.swift; sourceTree = "<group>"; };
 		250E769752DD6A430000001B /* MemoryMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MemoryMatchView.swift; sourceTree = "<group>"; };
 		86AF3B4C1D5F21E500000013 /* MissCue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MissCue.swift; sourceTree = "<group>"; };
+		55D7B6EB8CF19EC80000001D /* NumberSlidePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberSlidePuzzle.swift; sourceTree = "<group>"; };
+		85DDDA645134A8390000001B /* NumberSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberSlideView.swift; sourceTree = "<group>"; };
 		1C4D45FC480DA5090000001F /* NumberTrailQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberTrailQuestion.swift; sourceTree = "<group>"; };
 		81C292C7FFAD74580000001C /* PhotoCaptionDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/PhotoCaptionDeal.swift; sourceTree = "<group>"; };
 		D76316028DAED7B500000017 /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/PictureView.swift; sourceTree = "<group>"; };
@@ -325,6 +330,7 @@
 		D55FC27F498CD0780000002A /* MemoryDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryDealTests.swift; sourceTree = SOURCE_ROOT; };
 		5CECEA05CC9D6BF000000031 /* MemoryMatchLevelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryMatchLevelsTests.swift; sourceTree = SOURCE_ROOT; };
 		982802FDA721007D0000002C /* MemoryPhotosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryPhotosTests.swift; sourceTree = SOURCE_ROOT; };
+		060B0C27874AA93700000031 /* NumberSlidePuzzleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/NumberSlidePuzzleTests.swift; sourceTree = SOURCE_ROOT; };
 		7B15A3FA40FC93B400000033 /* NumberTrailQuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/NumberTrailQuestionTests.swift; sourceTree = SOURCE_ROOT; };
 		83C62977BDFEFF990000002F /* OnboardingStepsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/OnboardingStepsTests.swift; sourceTree = SOURCE_ROOT; };
 		35341DEF1F26544E00000031 /* OnboardingStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/OnboardingStringsTests.swift; sourceTree = SOURCE_ROOT; };
@@ -413,6 +419,8 @@
 				88F600D269255E8500000016 /* MemoryDeal.swift */,
 				250E769752DD6A430000001B /* MemoryMatchView.swift */,
 				86AF3B4C1D5F21E500000013 /* MissCue.swift */,
+				55D7B6EB8CF19EC80000001D /* NumberSlidePuzzle.swift */,
+				85DDDA645134A8390000001B /* NumberSlideView.swift */,
 				1C4D45FC480DA5090000001F /* NumberTrailQuestion.swift */,
 				81C292C7FFAD74580000001C /* PhotoCaptionDeal.swift */,
 				D76316028DAED7B500000017 /* PictureView.swift */,
@@ -542,6 +550,7 @@
 				D55FC27F498CD0780000002A /* MemoryDealTests.swift */,
 				5CECEA05CC9D6BF000000031 /* MemoryMatchLevelsTests.swift */,
 				982802FDA721007D0000002C /* MemoryPhotosTests.swift */,
+				060B0C27874AA93700000031 /* NumberSlidePuzzleTests.swift */,
 				7B15A3FA40FC93B400000033 /* NumberTrailQuestionTests.swift */,
 				83C62977BDFEFF990000002F /* OnboardingStepsTests.swift */,
 				35341DEF1F26544E00000031 /* OnboardingStringsTests.swift */,
@@ -667,6 +676,8 @@
 				2C26F128CAE066EF0000001C /* MemoryDeal.swift in Sources */,
 				18180C4157C1561D00000021 /* MemoryMatchView.swift in Sources */,
 				3B89FA1FCE6129CF00000019 /* MissCue.swift in Sources */,
+				47CC96146E92854A00000023 /* NumberSlidePuzzle.swift in Sources */,
+				8036CB71939131F300000021 /* NumberSlideView.swift in Sources */,
 				253F249A6FF746A300000025 /* NumberTrailQuestion.swift in Sources */,
 				4886BCC1D06920BA00000022 /* PhotoCaptionDeal.swift in Sources */,
 				F2E513BC326D993F0000001D /* PictureView.swift in Sources */,
@@ -792,6 +803,7 @@
 				6B009816AE0FE1DA00000030 /* MemoryDealTests.swift in Sources */,
 				A34345BFC3478D0200000037 /* MemoryMatchLevelsTests.swift in Sources */,
 				19A5511F2D9320B700000032 /* MemoryPhotosTests.swift in Sources */,
+				C8C7DF56C631A07100000037 /* NumberSlidePuzzleTests.swift in Sources */,
 				4E437CEEEEB1E47600000039 /* NumberTrailQuestionTests.swift in Sources */,
 				EB52E9FDB69CB05300000035 /* OnboardingStepsTests.swift in Sources */,
 				74DF40655A8016C000000037 /* OnboardingStringsTests.swift in Sources */,

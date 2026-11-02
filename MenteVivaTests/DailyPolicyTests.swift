@@ -193,12 +193,14 @@ final class DailyPolicyTests: XCTestCase {
         let summary = try JSONDecoder().decode(Envelope.self, from: data).state
         // The 011 payload lists per-game means but no recentAccuracies array
         // yet — the staircase sees no strong session and holds every level.
-        // Word Search, Lotería (#548) and Riddles (#551) came after this payload, so they are hidden with the other later games.
+        // Word Search, Lotería (#548), Riddles (#551) and Number Slide (#547) came after this payload, so they are
+        // hidden with the other later games.
         let p = plan(
             summary,
             hidden: [
                 .reminiscence, .sudoku, .upOrDown, .sayings, .repeatSequence, .tangram, .photoCaptions, .wordSearch, .loteria,
                 .riddles,
+                .numberSlide,
             ])
         // Jev picked quick_eyes, category_fluency, memory_match for this payload. Since #277 the rested
         // 0.55 games outrank Name the Herd (0.7, played 2 days ago: 0.45), and since #279 Number Trail,
@@ -379,6 +381,25 @@ final class DailyPolicyTests: XCTestCase {
         }
     }
 
+    /// The owed places hold beyond today's 18 games (#547): numbered stand-ins for 19 to 28 games,
+    /// against the worst ranking (the same games on top every day, as a focus that always wins
+    /// does), with rests capped at 14 days as `PlayerStateSummary` reports them. Every game is
+    /// dealt within 14 days at 2, 3 and 5 a day.
+    func testGivenNineteenToTwentyEightGamesAndTheSameTopGamesDailyWhenDealtThenEveryGameAppearsInTwoWeeks() {
+        for count in 19...28 {
+            for size in [2, 3, 5] {
+                var rested = Dictionary(uniqueKeysWithValues: (0..<count).map { ($0, 14) })
+                var seen = Set<Int>()
+                for _ in 0..<14 {
+                    let deal = DailyPolicy.withLongestWaiting(Array(0..<size), from: Array(0..<count)) { rested[$0] ?? 14 }
+                    seen.formUnion(deal)
+                    for game in 0..<count { rested[game] = deal.contains(game) ? 0 : min(14, (rested[game] ?? 14) + 1) }
+                }
+                XCTAssertEqual(seen.count, count, "\(count) games, \(size) a day")
+            }
+        }
+    }
+
     func testGivenAGameRestedSevenDaysWhenLeftOutThenItTakesTheLastPlace() {
         // Fully rested at 7 days, Number Trail (0.55) still ranks below the 0.8 games played 3 days ago (0.57).
         var rests = Dictionary(uniqueKeysWithValues: GameID.allCases.map { ($0, stats(days: 3)) })
@@ -399,6 +420,7 @@ final class DailyPolicyTests: XCTestCase {
             .wordSearch: stats(days: 2),
             .loteria: stats(days: 2),
             .riddles: stats(days: 2),
+            .numberSlide: stats(days: 2),
         ])
         // The fixture plays every released game but the two newest (Tile Pairs, Sliding Blocks):
         // never played, they top the ranking.

@@ -2263,6 +2263,108 @@
         }
       }
     },
+    "game.numberslide.done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All in order!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Todo en orden!"
+          }
+        }
+      }
+    },
+    "game.numberslide.gap %lld %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "empty space, row %1$lld, column %2$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "espacio vacío, fila %1$lld, columna %2$lld"
+          }
+        }
+      }
+    },
+    "game.numberslide.guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a tile next to the empty space to slide it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca una ficha junto al espacio vacío para deslizarla."
+          }
+        }
+      }
+    },
+    "game.numberslide.instruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slide the tiles to put the numbers in order."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desliza las fichas para ordenar los números."
+          }
+        }
+      }
+    },
+    "game.numberslide.tile %lld %lld %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "number %1$lld, row %2$lld, column %3$lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "número %1$lld, fila %2$lld, columna %3$lld"
+          }
+        }
+      }
+    },
+    "game.numberslide.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number Slide"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rompecocos"
+          }
+        }
+      }
+    },
     "game.photocaptions.instruction" : {
       "localizations" : {
         "en" : {
@@ -3917,6 +4019,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sube o baja"
+          }
+        }
+      }
+    },
+    "guide.numberslide.example" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This one can slide into the space."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta se puede deslizar al espacio."
           }
         }
       }
@@ -13124,6 +13243,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Camino de Memoria ejercita recordar dónde está cada cosa."
+          }
+        }
+      }
+    },
+    "why.game.numberslide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number Slide exercises planning a few moves ahead."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rompecocos ejercita planear unos movimientos por adelantado."
           }
         }
       }

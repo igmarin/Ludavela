@@ -29,6 +29,7 @@ for what changed, [docs/roadmap.md](docs/roadmap.md) for what's next, and
 | Tangram | Fill the silhouette with seven tiles |
 | Tile Pairs | Find two free tiles that match |
 | Sliding Blocks | Slide the blocks to free the big one |
+| Number Slide | Rompecocos, the 15-number sliding puzzle: put the numbers in order on a 3×3 or 4×4 board |
 | Names and Faces | Match each family photo to its caption |
 | Word Search | Find themed words hidden in a grid |
 

@@ -1,7 +1,7 @@
 # ES review packet — for the native-speaker pass (#12)
 
 Hand this whole file to the reviewer. Generated from `Localizable.xcstrings`
-(916 user-facing strings; keys that are only format specifiers are omitted).
+(924 user-facing strings; keys that are only format specifiers are omitted).
 Rows already signed off on #12 are pre-marked ✅.
 Regenerate after any string change: `python3 tools/generate_es_packet.py`.
 
@@ -24,7 +24,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 
 | Key | English | Español | Used in | ✓ |
 |---|---|---|---|---|
-| `Level %lld` | Level %lld | Nivel %lld | CategoryDeal, CategoryFluencyView, CelebrationView, ColorClashDeal, ColorClashView, DailyPolicy, Difficulty, FamilySettings, GameID, GameSession, HistoryView, LevelExplainLine, LevelMigration, LevelOfferStore, LevelPolicy, LoteriaView, MathStreakView, MemoryMatchView, MenteVivaApp, NumberTrailQuestion, PhotoCaptionDeal, PlanStore, PlayerStateSummary, ProgressRates, QuickEyesDeal, QuickEyesRun, QuickEyesView, RepeatSequenceView, RiddleDeck, RiddleView, SayingsDeck, SayingsView, SequenceDeal, SetUpView, SlidingBlocksLevels, SlidingBlocksPuzzle, SlidingBlocksView, SudokuPuzzle, SudokuView, TangramPuzzle, TangramView, TilePairsDeal, TilePairsView, ToneSynth, UpOrDownDeal, UpOrDownView, WarmUp, WeeklySummary, WordSearchView |  |
+| `Level %lld` | Level %lld | Nivel %lld | CategoryDeal, CategoryFluencyView, CelebrationView, ColorClashDeal, ColorClashView, DailyPolicy, Difficulty, FamilySettings, GameID, GameSession, HistoryView, LevelExplainLine, LevelMigration, LevelOfferStore, LevelPolicy, LoteriaView, MathStreakView, MemoryMatchView, MenteVivaApp, NumberSlidePuzzle, NumberSlideView, NumberTrailQuestion, PhotoCaptionDeal, PlanStore, PlayerStateSummary, ProgressRates, QuickEyesDeal, QuickEyesRun, QuickEyesView, RepeatSequenceView, RiddleDeck, RiddleView, SayingsDeck, SayingsView, SequenceDeal, SetUpView, SlidingBlocksLevels, SlidingBlocksPuzzle, SlidingBlocksView, SudokuPuzzle, SudokuView, TangramPuzzle, TangramView, TilePairsDeal, TilePairsView, ToneSynth, UpOrDownDeal, UpOrDownView, WarmUp, WeeklySummary, WordSearchView |  |
 | `about.build` | The app was built with the help of AI coding assistants, including Meta's Muse Code. | La app se creó con ayuda de asistentes de programación con IA, entre ellos Muse Code de Meta. | AboutView |  |
 | `about.offline` | Nothing in the app uses AI while you play. Your games and photos stay on this device. | Nada en la app usa IA mientras juegas. Tus partidas y fotos se quedan en este dispositivo. | AboutView |  |
 | `about.pictures` | The pictures in this app were made with AI image tools, including Meta's Muse Image, and checked by a person. | Las imágenes de esta app se hicieron con herramientas de IA, entre ellas Muse Image de Meta, y las revisó una persona. | AboutView |  |
@@ -171,6 +171,12 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.memory.miss` | Almost — %1$@ and %2$@ are different | Casi — %1$@ y %2$@ no son pareja | MemoryBoard |  |
 | `game.memory.photo %lld` | Photo %lld | Foto %lld | MemoryMatchView |  |
 | `game.memory.title` | Memory Lane | Camino de Memoria | GameID |  |
+| `game.numberslide.done` | All in order! | ¡Todo en orden! | NumberSlideView |  |
+| `game.numberslide.gap %lld %lld` | empty space, row %1$lld, column %2$lld | espacio vacío, fila %1$lld, columna %2$lld | NumberSlideView |  |
+| `game.numberslide.guide` | Tap a tile next to the empty space to slide it. | Toca una ficha junto al espacio vacío para deslizarla. | NumberSlideView |  |
+| `game.numberslide.instruction` | Slide the tiles to put the numbers in order. | Desliza las fichas para ordenar los números. | NumberSlideView |  |
+| `game.numberslide.tile %lld %lld %lld` | number %1$lld, row %2$lld, column %3$lld | número %1$lld, fila %2$lld, columna %3$lld | NumberSlideView |  |
+| `game.numberslide.title` | Number Slide | Rompecocos | GameID |  |
 | `game.photocaptions.instruction` | Flip cards to match photos with names. | Voltea cartas para unir cada foto con su nombre. | MemoryMatchView |  |
 | `game.photocaptions.title` | Names and Faces | Nombres y Caras | GameID |  |
 | `game.quickeyes.a11y.flash %@` | Picture shown: %@ | Imagen mostrada: %@ | QuickEyesView |  |
@@ -228,7 +234,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.sliding.block.small` | small block | bloque pequeño | SlidingBlocksView |  |
 | `game.sliding.block.tall` | tall block | bloque alto | SlidingBlocksView |  |
 | `game.sliding.block.wide` | wide block | bloque ancho | SlidingBlocksView |  |
-| `game.sliding.hint` | Show me a move | Muéstrame un paso | SlidingBlocksView |  |
+| `game.sliding.hint` | Show me a move | Muéstrame un paso | NumberSlideView, SlidingBlocksView |  |
 | `game.sliding.instruction` | Slide the blocks to free the big one. | Desliza los bloques para sacar el grande. | SlidingBlocksView |  |
 | `game.sliding.move.down` | Move down | Mover abajo | — |  |
 | `game.sliding.move.left` | Move left | Mover a la izquierda | — |  |
@@ -245,10 +251,10 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.sliding.place.topleft` | top left | arriba a la izquierda | SlidingBlocksView |  |
 | `game.sliding.place.topmiddle` | top middle | arriba en el centro | SlidingBlocksView |  |
 | `game.sliding.place.topright` | top right | arriba a la derecha | SlidingBlocksView |  |
-| `game.sliding.restart` | Start over | Empezar de nuevo | SlidingBlocksView |  |
+| `game.sliding.restart` | Start over | Empezar de nuevo | NumberSlideView, SlidingBlocksView |  |
 | `game.sliding.tapblock` | Tap a block to move it. | Toca un bloque para moverlo. | SlidingBlocksView |  |
 | `game.sliding.title` | Sliding Blocks | Bloques deslizantes | GameID |  |
-| `game.sliding.undo` | Undo | Deshacer | SlidingBlocksView |  |
+| `game.sliding.undo` | Undo | Deshacer | NumberSlideView, SlidingBlocksView |  |
 | `game.slidingblocks.guide` | Tap a block, then an arrow to slide it. | Toca un bloque y luego una flecha para deslizarlo. | SlidingBlocksView |  |
 | `game.sudoku.a11y.allplaced` | All placed | Todos puestos | SudokuView |  |
 | `game.sudoku.a11y.cell %lld %lld %lld` | Row %1$lld, column %2$lld, %3$lld | Fila %1$lld, columna %2$lld, %3$lld | SudokuView |  |
@@ -353,6 +359,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `guide.colorclash.example %@` | The ink is %@: tap that color. | La tinta es de color %@: toca ese color. | ColorClashView |  |
 | `guide.gotit` | Got it | Entendido | FirstPlayGuide |  |
 | `guide.loteria.example` | This is the called card. Not on your board? Tap Next card. | Esta es la carta cantada. ¿No está en tu tabla? Toca Siguiente carta. | LoteriaView |  |
+| `guide.numberslide.example` | This one can slide into the space. | Esta se puede deslizar al espacio. | NumberSlideView |  |
 | `guide.riddles.example` | Stuck? This button gives you one more hint. | ¿Te atoraste? Este botón te da una pista más. | RiddleView |  |
 | `guide.slidingblocks.example` | Try this block. | Prueba este bloque. | SlidingBlocksView |  |
 | `guide.sudoku.example %lld` | For example, the number %lld fits the ringed square. | Por ejemplo, en el cuadro marcado encaja el número %lld. | SudokuView |  |
@@ -902,6 +909,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `why.game.loteria` | Lotería exercises spotting the called card on your board. | Lotería ejercita encontrar la carta cantada en tu tabla. | WhyTheseGamesView |  |
 | `why.game.math` | Number Trail exercises quick, easy sums. | Sendero de Números ejercita las cuentas sencillas y rápidas. | WhyTheseGamesView |  |
 | `why.game.memory` | Memory Lane exercises remembering where things are. | Camino de Memoria ejercita recordar dónde está cada cosa. | WhyTheseGamesView |  |
+| `why.game.numberslide` | Number Slide exercises planning a few moves ahead. | Rompecocos ejercita planear unos movimientos por adelantado. | WhyTheseGamesView |  |
 | `why.game.photocaptions` | Names and Faces exercises matching a name to a face. | Nombres y Caras ejercita unir un nombre con una cara. | WhyTheseGamesView |  |
 | `why.game.quickeyes` | Quick Eyes exercises noticing things quickly. | Ojos Ágiles ejercita fijarse en las cosas con rapidez. | WhyTheseGamesView |  |
 | `why.game.reminiscence` | Photo Stories is a chance to enjoy your own photos and the stories they hold, on your own or with someone. There are no right or wrong answers. | Historias en fotos es una ocasión para disfrutar tus fotos y las historias que guardan, a solas o con alguien. No hay respuestas buenas ni malas. | WhyTheseGamesView |  |
