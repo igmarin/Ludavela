@@ -411,6 +411,13 @@ final class DailyPolicyTests: XCTestCase {
             "one day short of the limit, the ranking decides")
     }
 
+    func testGivenSeveralGamesRestedTheSameWhenOwedAPlaceThenTheFirstInGameIDOrderTakesIt() {
+        let deal: [GameID] = [.memoryMatch, .quickEyes, .sudoku]
+        let waiting = GameID.released.filter { !deal.contains($0) }
+        let result = DailyPolicy.withLongestWaiting(deal, from: GameID.released) { deal.contains($0) ? 0 : 10 }
+        XCTAssertEqual(result, [.memoryMatch, .quickEyes, waiting[0]], "all \(waiting.count) rested alike: GameID order decides")
+    }
+
     func testGivenNoGameRestedSevenDaysWhenPlanThenUnchanged() {
         let recent = state([
             .memoryMatch: stats(days: 0), .stroop: stats(days: 6), .mathStreaks: stats(days: 5),

@@ -1,7 +1,7 @@
 # App Store listing (#232)
 
 Everything App Store Connect asks for, EN and ES, ready to paste. Updated 2026-10-30 for v1.0:
-17 games, free, local-only. First draft: #35 (2026-09-20).
+19 games, free, local-only. First draft: #35 (2026-09-20).
 
 **Before pasting**, re-check three things in the current App Store Connect, because they change: the
 screenshot sizes, the category list and the age-rating questions. And if Sliding Blocks (#222, #223)
@@ -41,9 +41,9 @@ category matches how the app is often installed: by someone in the family, for s
 
 ## Promotional text (≤ 170, can change without review)
 
-- **EN:** Seventeen calm games for memory, attention, words, numbers and shapes. Free, offline, no
+- **EN:** Nineteen calm games for memory, attention, words, numbers and shapes. Free, offline, no
   account and no ads, in English and Spanish.
-- **ES:** Diecisiete juegos tranquilos de memoria, atención, palabras, números y formas. Gratis, sin
+- **ES:** Diecinueve juegos tranquilos de memoria, atención, palabras, números y formas. Gratis, sin
   conexión, sin cuenta y sin anuncios, en español e inglés.
 
 ## Keywords (≤ 100, comma-separated, no spaces, no app name)
@@ -55,15 +55,15 @@ category matches how the app is often installed: by someone in the family, for s
 
 Fun mental exercise, at your own pace.
 
-MenteViva is seventeen calm games, each a different kind of thinking. Big buttons, clear colours, and
+MenteViva is nineteen calm games, each a different kind of thinking. Big buttons, clear colours, and
 no countdown clock. When a move doesn't fit, it says "almost", never "wrong". Some games show
 one example move the first time, so anyone can start on their own.
 
-SEVENTEEN GAMES
+NINETEEN GAMES
 • Memory: Memory Lane, Names and Faces, Repeat the Sequence, Photo Stories (with your own family photos)
 • Attention: Quick Eyes, Color Clash, Tangram, Tile Pairs, Sliding Blocks, Number Slide, Peg Solitaire, Lotería
 • Numbers: Number Trail, Sudoku, Up or Down
-• Words: Name the Herd, Finish the Saying, Word Search
+• Words: Name the Herd, Finish the Saying, Word Search, Riddles
 
 AT YOUR PACE
 • Ten levels in every game. The level moves gently with how you play, never in the middle of a game
@@ -87,16 +87,16 @@ treat any condition. If you have a concern about memory, yours or a loved one's,
 
 Ejercicio mental divertido, a tu ritmo.
 
-MenteViva son diecisiete juegos tranquilos, cada uno para un tipo distinto de pensamiento. Botones grandes,
+MenteViva son diecinueve juegos tranquilos, cada uno para un tipo distinto de pensamiento. Botones grandes,
 colores claros y sin cuenta regresiva. Cuando una jugada no encaja, dice «casi», nunca «mal».
 Algunos juegos muestran una jugada de ejemplo la primera vez, para que cualquiera empiece por
 su cuenta.
 
-DIECISIETE JUEGOS
+DIECINUEVE JUEGOS
 • Memoria: Camino de Memoria, Nombres y Caras, Repite la secuencia, Historias en fotos (con tus propias fotos de familia)
 • Atención: Ojos Ágiles, Choque de Colores, Tangram, Parejas de fichas, Bloques deslizantes, Rompecocos, Come solo, Lotería
 • Números: Sendero de Números, Sudoku, Sube o baja
-• Palabras: Nombra la Manada, Termina el refrán, Sopa de letras
+• Palabras: Nombra la Manada, Termina el refrán, Sopa de letras, Adivinanzas
 
 A TU RITMO
 • Diez niveles en cada juego. El nivel se ajusta con calma según cómo juegas, nunca a mitad de partida
@@ -127,7 +127,7 @@ localized, not just the screen.
 |---|---|---|---|
 | 1 | Home: today's cards dealt | Today's games, ready | Los juegos de hoy, listos |
 | 2 | Memory Lane, mid-round, a pair just found | Find the pairs, calmly | Encuentra las parejas, con calma |
-| 3 | Tangram, a tile being placed | Shapes, at your pace | Figuras, a tu ritmo |
+| 3 | Number Slide (Rompecocos), a tile sliding into place | Numbers in order, one slide at a time | Los números en orden, uno a uno |
 | 4 | Quick Eyes, answer beat showing the check | Every answer shows itself | Cada respuesta se muestra |
 | 5 | Celebration, the card joining the week | Small wins, warmly | Pequeños logros, con cariño |
 

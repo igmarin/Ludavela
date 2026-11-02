@@ -3,12 +3,12 @@
 Warm, bilingual (EN/ES) fun mental exercise for older adults, built for one family first.
 
 Add your family's photos in Set up, and Memory Lane and Names and Faces play with them.
-Seventeen calm games, levels 1–10, offline and private. Big buttons, no countdown clocks,
+Nineteen calm games, levels 1–10, offline and private. Big buttons, no countdown clocks,
 no fail shame: "Almost, try again", never "wrong".
 
 ## Status
 
-**17 games playable**, offline-first, EN and ES complete. See [CHANGELOG.md](CHANGELOG.md)
+**19 games playable**, offline-first, EN and ES complete. See [CHANGELOG.md](CHANGELOG.md)
 for what changed, [docs/roadmap.md](docs/roadmap.md) for what's next, and
 [GitHub issues](https://github.com/igmarin/menteviva/issues) for live work.
 
@@ -34,6 +34,7 @@ for what changed, [docs/roadmap.md](docs/roadmap.md) for what's next, and
 | Peg Solitaire | Jump over pegs until one remains |
 | Word Search | Find themed words hidden in a grid |
 | Lotería | Mark the called pictures on your board |
+| Riddles | Read a few lines and pick the word they describe |
 
 Home marks today's picks and each game reads the daily difficulty. Both are
 decided by a small rule policy on the device (no network, no cost).
