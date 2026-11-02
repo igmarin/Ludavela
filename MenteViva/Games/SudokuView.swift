@@ -33,6 +33,8 @@ struct SudokuView: View {
     @State private var note: Note?
     @State private var showCelebration = false
     @State private var finalDetail = ""
+    /// Kept here so `fitOrScroll` swapping layouts keeps the level line's state (#481).
+    @State private var levelMemo = LevelExplainBanner.Memo()
 
     /// Which gentle note shows: the near miss, or the ask to choose a square first (#510).
     private enum Note {
@@ -50,31 +52,26 @@ struct SudokuView: View {
     var body: some View {
         VStack(spacing: 20) {
             LevelExplainBanner(
-                game: GameID.sudoku, hasStarted: attempts > 0 || !entries.isEmpty)
-            Text(AppLanguage.localized("game.sudoku.instruction"))
-                .font(.title2)
-                .multilineTextAlignment(.center)
+                game: GameID.sudoku, hasStarted: attempts > 0 || !entries.isEmpty, keepsSpace: true,
+                sharedMemo: levelMemo)
+            noteSlot
 
             if let puzzle {
                 let arrangement = arrangement(for: puzzle)
                 if arrangement.pad == .beside {
-                    // Wide iPad: the board on the left, its keys and the note on the right (#400).
+                    // Wide iPad: the board on the left, its keys on the right (#400).
                     HStack(spacing: 20) {
                         board(puzzle, side: arrangement.side)
                         VStack(spacing: 20) {
-                            almostNote
                             numberPad(puzzle, arrangement)
                             showMeButton
                         }
                     }
                 } else {
-                    almostNote
                     board(puzzle, side: arrangement.side)
                     numberPad(puzzle, arrangement)
                     showMeButton
                 }
-            } else {
-                almostNote
             }
         }
         .gameColumn(maxWidth: columnWidth)
@@ -126,11 +123,17 @@ struct SudokuView: View {
         SudokuPuzzle.keptArrangement(size: puzzle.size, width: playArea.width, height: budgetHeight)
     }
 
-    /// The same soft amber note as Quick Eyes: kind and easy to read.
-    @ViewBuilder
-    private var almostNote: some View {
-        if let note {
-            AlmostNote(text: AppLanguage.localized(note.key))
+    /// The instruction line, which a gentle note replaces in place, as in Sayings. Every line is laid
+    /// out, so the slot keeps one height and the board never jumps when a note comes or goes.
+    private var noteSlot: some View {
+        ZStack {
+            Text(AppLanguage.localized("game.sudoku.instruction"))
+                .font(.title2)
+                .multilineTextAlignment(.center)
+                .opacity(note == nil ? 1 : 0)
+                .accessibilityHidden(note != nil)
+            ForEach([Note.almost, .chooseSquare], id: \.self) { AlmostNote(text: AppLanguage.localized($0.key)).hidden() }
+            if let note { AlmostNote(text: AppLanguage.localized(note.key)) }
         }
     }
 
