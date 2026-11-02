@@ -3,13 +3,19 @@ import SwiftUI
 /// "About MenteViva" (#378): says plainly how the pictures and the code were made and that
 /// nothing uses AI while someone plays, so players and App Store reviewers can read it in the app.
 ///
-/// Three short paragraphs in reading order under the bar's title, shown once (#531). The
+/// The owner's story first (#552), then three short paragraphs in reading order under the bar's title, shown once (#531). The
 /// words are fixed copy, so the screen reads nothing from the network and works offline. The
 /// tool names are the ones recorded in docs/art-prompts.md and docs/decisions/2026-10.md.
 struct AboutView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
+                Text(AppLanguage.localized("about.why.title"))
+                    .font(.title.bold())
+                    .accessibilityAddTraits(.isHeader)
+                paragraph("about.why.p1")
+                paragraph("about.why.p2")
+                paragraph("about.why.p3")
                 paragraph("about.pictures")
                 paragraph("about.build")
                 paragraph("about.offline")

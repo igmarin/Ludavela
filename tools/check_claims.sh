@@ -13,7 +13,11 @@ files=(
     README.md
 )
 
-hits="$(grep -RniE "$pattern" "${files[@]}")"
+# Narrow exception (#552): about.why.p1 is the owner's personal story ("my dad was diagnosed
+# with ..."), not a claim about the games. These two lines are exactly its EN and ES text.
+# Never widen this for other strings.
+story='"value" : "(I made MenteViva mainly for my dad\. He was diagnosed|Hice MenteViva, sobre todo, para mi papá\. A él le diagnosticaron)'
+hits="$(grep -RniE "$pattern" "${files[@]}" | grep -vE ":[0-9]+: +$story")"
 status=$?
 if [ "$status" -eq 0 ]; then
     printf '%s\n' "$hits"
