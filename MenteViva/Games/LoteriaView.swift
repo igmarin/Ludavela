@@ -102,10 +102,7 @@ struct LoteriaView: View {
                     }
                     .buttonStyle(RetroButtonStyle())
                 } else {
-                    HStack(spacing: rowGap) {
-                        compactCalledCard
-                        nextCardButton
-                    }
+                    calledCard(height: Self.topRowMinimum, compact: true)
                 }
                 ScrollView {
                     VStack(spacing: rowGap) {
@@ -113,6 +110,7 @@ struct LoteriaView: View {
                         instructionRow
                         goalLine
                         if !deal.hasLoteria {
+                            nextCardButton
                             board(
                                 tile: Self.tileSide(
                                     width: proxy.size.width, height: proxy.size.width, side: deal.side, gap: gap)
@@ -222,47 +220,40 @@ struct LoteriaView: View {
         .buttonStyle(AnswerTileStyle(minHeight: Self.topRowMinimum))
     }
 
-    /// A smaller copy of the called card for the pinned accessibility-size bar.
-    private var compactCalledCard: some View {
-        let name = AppLanguage.localized(deal.current.nameKey)
-        let showsPicture = LoteriaDeal.showsPicture(for: difficulty)
-        return HStack(spacing: 8) {
-            if showsPicture {
-                PictureView(picture: deal.current, size: 56)
-            }
-            Text(name)
-                .font(.title3.weight(.bold))
-                .lineLimit(2)
-                .minimumScaleFactor(0.6)
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity)
-        }
-        .padding(8)
-        .frame(maxWidth: .infinity, minHeight: Self.topRowMinimum)
-        .background(Color.paper, in: .rect(cornerRadius: 16))
-        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(.tint, lineWidth: 4))
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(String(format: AppLanguage.localized("game.loteria.a11y.called %@"), name))
-        .guideTarget()
-    }
-
     /// The called card, framed like a lotería card: its picture and name, or the name alone from
     /// level 7. VoiceOver always hears the full name.
-    private func calledCard(height: CGFloat) -> some View {
+    private func calledCard(height: CGFloat, compact: Bool = false) -> some View {
         let name = AppLanguage.localized(deal.current.nameKey)
         let showsPicture = LoteriaDeal.showsPicture(for: difficulty)
-        return VStack(spacing: 4) {
-            if showsPicture {
-                PictureView(picture: deal.current, size: max(44, height - 52))
+        return Group {
+            if compact {
+                HStack(spacing: 8) {
+                    if showsPicture { PictureView(picture: deal.current, size: 56) }
+                    Text(name)
+                        .font(.title3.weight(.bold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                }
+            } else {
+                VStack(spacing: 4) {
+                    if showsPicture {
+                        PictureView(picture: deal.current, size: max(44, height - 52))
+                    }
+                    Text(name)
+                        .font(showsPicture ? .title3.weight(.bold) : .title.weight(.bold))
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
             }
-            Text(name)
-                .font(showsPicture ? .title3.weight(.bold) : .title.weight(.bold))
-                .lineLimit(2)
-                .minimumScaleFactor(0.5)
-                .multilineTextAlignment(.center)
         }
         .padding(8)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(
+            maxWidth: .infinity, minHeight: compact ? Self.topRowMinimum : nil,
+            maxHeight: compact ? Self.topRowMinimum : .infinity
+        )
         .background(Color.paper, in: .rect(cornerRadius: 16))
         .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(.tint, lineWidth: 4))
         .accessibilityElement(children: .ignore)
@@ -309,7 +300,6 @@ struct LoteriaView: View {
                 .accessibilityHidden(true)
         }
         .scaleEffect(isHelpTile && helpPulse && !reduceMotion ? 1.06 : 1)
-        .animation(.easeInOut(duration: 0.25), value: helpPulse)
         .modifier(MissCue(active: Binding(get: { missedTile == index }, set: { if !$0 { missedTile = nil } })))
         .accessibilityLabel(label)
     }
@@ -372,7 +362,7 @@ struct LoteriaView: View {
 
     /// Expands and settles the matching tile once; a ring stays in its place under Reduce Motion.
     private func animateHelpCue() async {
-        guard helpTile != nil else { return }
+        guard helpTile != nil, !reduceMotion else { return }
         withAnimation(.easeInOut(duration: 0.25)) { helpPulse = true }
         do {
             try await Task.sleep(for: .milliseconds(250))
