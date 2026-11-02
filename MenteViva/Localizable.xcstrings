@@ -1260,6 +1260,23 @@
         }
       }
     },
+    "game.celebration.loteria" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You called ¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Cantaste lotería!"
+          }
+        }
+      }
+    },
     "game.celebration.next %@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1785,6 +1802,244 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Salir de este juego?"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.called %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Called card: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carta cantada: %@"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.marked %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, marked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, marcada"
+          }
+        }
+      }
+    },
+    "game.loteria.a11y.open %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, not marked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, sin marcar"
+          }
+        }
+      }
+    },
+    "game.loteria.call" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Lotería!"
+          }
+        }
+      }
+    },
+    "game.loteria.goal.corners" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: the four corners."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: las cuatro esquinas."
+          }
+        }
+      }
+    },
+    "game.loteria.goal.full" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: the whole board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: toda la tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.goal.line" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: a full row or column."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: una fila o columna completa."
+          }
+        }
+      }
+    },
+    "game.loteria.guide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the called card on your board and tap it."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca la carta cantada en tu tabla y tócala."
+          }
+        }
+      }
+    },
+    "game.loteria.instruction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark the called card on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca la carta cantada en tu tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.lookagain" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look again — it’s on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira otra vez: está en tu tabla."
+          }
+        }
+      }
+    },
+    "game.loteria.next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next card"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente carta"
+          }
+        }
+      }
+    },
+    "game.loteria.notcalled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That one hasn’t been called yet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esa carta todavía no sale."
+          }
+        }
+      }
+    },
+    "game.loteria.ready" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your board is ready. Tap ¡Lotería!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu tabla está lista. Toca ¡Lotería!"
+          }
+        }
+      }
+    },
+    "game.loteria.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería"
           }
         }
       }
@@ -3662,6 +3917,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sube o baja"
+          }
+        }
+      }
+    },
+    "guide.loteria.example" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is the called card. Not on your board? Tap Next card."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta es la carta cantada. ¿No está en tu tabla? Toca Siguiente carta."
           }
         }
       }
@@ -12803,6 +13075,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choque de Colores ejercita fijarse en lo importante y dejar pasar lo demás."
+          }
+        }
+      }
+    },
+    "why.game.loteria" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería exercises spotting the called card on your board."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lotería ejercita encontrar la carta cantada en tu tabla."
           }
         }
       }
