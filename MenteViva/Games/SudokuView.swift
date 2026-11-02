@@ -51,9 +51,7 @@ struct SudokuView: View {
         VStack(spacing: 20) {
             LevelExplainBanner(
                 game: GameID.sudoku, hasStarted: attempts > 0 || !entries.isEmpty)
-            Text(AppLanguage.localized("game.sudoku.instruction"))
-                .font(.title2)
-                .multilineTextAlignment(.center)
+            noteSlot
 
             if let puzzle {
                 let arrangement = arrangement(for: puzzle)
@@ -62,19 +60,15 @@ struct SudokuView: View {
                     HStack(spacing: 20) {
                         board(puzzle, side: arrangement.side)
                         VStack(spacing: 20) {
-                            almostNote
                             numberPad(puzzle, arrangement)
                             showMeButton
                         }
                     }
                 } else {
-                    almostNote
                     board(puzzle, side: arrangement.side)
                     numberPad(puzzle, arrangement)
                     showMeButton
                 }
-            } else {
-                almostNote
             }
         }
         .gameColumn(maxWidth: columnWidth)
@@ -126,11 +120,17 @@ struct SudokuView: View {
         SudokuPuzzle.keptArrangement(size: puzzle.size, width: playArea.width, height: budgetHeight)
     }
 
-    /// The same soft amber note as Quick Eyes: kind and easy to read.
-    @ViewBuilder
-    private var almostNote: some View {
-        if let note {
-            AlmostNote(text: AppLanguage.localized(note.key))
+    /// The instruction line, which a gentle note replaces in place, as in Sayings. Every line is laid
+    /// out, so the slot keeps one height and the board never jumps when a note comes or goes.
+    private var noteSlot: some View {
+        ZStack {
+            Text(AppLanguage.localized("game.sudoku.instruction"))
+                .font(.title2)
+                .multilineTextAlignment(.center)
+                .opacity(note == nil ? 1 : 0)
+                .accessibilityHidden(note != nil)
+            ForEach([Note.almost, .chooseSquare], id: \.self) { AlmostNote(text: AppLanguage.localized($0.key)).hidden() }
+            if let note { AlmostNote(text: AppLanguage.localized(note.key)) }
         }
     }
 
