@@ -44,12 +44,13 @@ nonisolated struct TodayRun: Equatable {
     }
 }
 
-/// Home's greeting by the hour: morning until noon, afternoon until six.
+/// Home's greeting by the hour: morning until noon, afternoon until eight. "Buenas noches" also
+/// means good night, so it waits until dark (#390).
 nonisolated enum Greeting {
     static func key(hour: Int) -> String {
         switch hour {
         case ..<12: "home.greeting.morning"
-        case ..<18: "home.greeting.afternoon"
+        case ..<20: "home.greeting.afternoon"
         default: "home.greeting.evening"
         }
     }

@@ -132,8 +132,8 @@ final class TodayRunTests: XCTestCase {
         XCTAssertEqual(Greeting.key(hour: 0), "home.greeting.morning")
         XCTAssertEqual(Greeting.key(hour: 11), "home.greeting.morning")
         XCTAssertEqual(Greeting.key(hour: 12), "home.greeting.afternoon")
-        XCTAssertEqual(Greeting.key(hour: 17), "home.greeting.afternoon")
-        XCTAssertEqual(Greeting.key(hour: 18), "home.greeting.evening")
+        XCTAssertEqual(Greeting.key(hour: 19), "home.greeting.afternoon")
+        XCTAssertEqual(Greeting.key(hour: 20), "home.greeting.evening")
         XCTAssertEqual(Greeting.key(hour: 23), "home.greeting.evening")
     }
 
