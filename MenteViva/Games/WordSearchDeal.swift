@@ -13,6 +13,9 @@ nonisolated struct WordSearchDeal: Equatable {
     let words: [Word]
     let themeKey: String
 
+    /// Each name has a title, `game.wordsearch.<name>`, and a word list, `<title key>.words`, in EN and ES.
+    static let themeNames = ["animals", "garden", "music", "food", "family", "kitchen"]
+
     /// Weighted letter pools approximate each language's ordinary letter frequency.
     static let spanishLetters = Array("AAAAAAAABCDEEEEEEEEEFGHIIIIIIJKLMNÑOOOOOOOPQRRRRSSSSSTTTTUUUVXYZ")
     private static let englishLetters = Array(
@@ -85,5 +88,43 @@ nonisolated struct WordSearchDeal: Equatable {
     func match(from start: Int, to end: Int) -> String? {
         words.first { ($0.cells.first == start && $0.cells.last == end) || ($0.cells.first == end && $0.cells.last == start) }?
             .text
+    }
+}
+
+/// The player's picks on one board (#560): tap the first letter and then the last, either way round,
+/// or drag between them. Tapping the start again cancels it, with no miss.
+nonisolated struct WordSearchSelection: Equatable {
+    enum Outcome: Equatable {
+        case started
+        case cancelled
+        case found(String)
+        case miss
+    }
+
+    let deal: WordSearchDeal
+    private(set) var first: Int?
+    private(set) var found: Set<String> = []
+    private(set) var attempts = 0
+
+    var isComplete: Bool { found.count == deal.words.count }
+
+    mutating func tap(_ cell: Int) -> Outcome {
+        guard let start = first else {
+            first = cell
+            return .started
+        }
+        if start == cell {
+            first = nil
+            return .cancelled
+        }
+        return pick(from: start, to: cell)
+    }
+
+    /// A line that is not a word still to find counts as a miss.
+    mutating func pick(from start: Int, to end: Int) -> Outcome {
+        first = nil
+        attempts += 1
+        guard let word = deal.match(from: start, to: end), found.insert(word).inserted else { return .miss }
+        return .found(word)
     }
 }

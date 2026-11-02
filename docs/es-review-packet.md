@@ -1,7 +1,7 @@
 # ES review packet — for the native-speaker pass (#12)
 
 Hand this whole file to the reviewer. Generated from `Localizable.xcstrings`
-(939 user-facing strings; keys that are only format specifiers are omitted).
+(941 user-facing strings; keys that are only format specifiers are omitted).
 Rows already signed off on #12 are pre-marked ✅.
 Regenerate after any string change: `python3 tools/generate_es_packet.py`.
 
@@ -348,27 +348,29 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.upordown.suit.spades` | spades | picas | — |  |
 | `game.upordown.title` | Up or Down | Sube o baja | GameID |  |
 | `game.wordsearch.animals` | Animals | Animales | — |  |
-| `game.wordsearch.animals.words` | HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE | PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA | — |  |
+| `game.wordsearch.animals.words` | HORSE,SHEEP,TIGER,ZEBRA,MOUSE,FROG,DUCK,WHALE,RABBIT,GOAT | PERRO,GATO,TIGRE,CEBRA,RATON,RANA,PATO,OVEJA,CABALLO,CONEJO | — |  |
 | `game.wordsearch.cell %@ %lld %lld` | %1$@, row %2$lld, column %3$lld | %1$@, fila %2$lld, columna %3$lld | WordSearchView |  |
 | `game.wordsearch.complete` | You found all the words! | ¡Encontraste todas las palabras! | WordSearchView |  |
-| `game.wordsearch.down` | Show the bottom of the grid | Mostrar la parte inferior de la cuadrícula | WordSearchView |  |
 | `game.wordsearch.example` | Try a word from the list. | Prueba una palabra de la lista. | WordSearchView |  |
+| `game.wordsearch.family` | Family | Familia | — |  |
+| `game.wordsearch.family.words` | MOTHER,FATHER,SISTER,BROTHER,GRANDMA,GRANDPA,AUNT,UNCLE,COUSIN,BABY | MADRE,PADRE,ABUELA,ABUELO,HERMANA,HIJO,NIETA,PRIMO,TIA,CUÑADO | — |  |
+| `game.wordsearch.food` | Mexican food | Comida mexicana | — |  |
+| `game.wordsearch.food.words` | TACO,ELOTE,TAMALE,MOLE,POZOLE,SALSA,CHURRO,BEANS,TORTILLA,FLAN | TACO,ELOTE,TAMAL,MOLE,POZOLE,SALSA,CHURRO,FRIJOL,TORTILLA,NOPAL | — |  |
 | `game.wordsearch.found %@` | %@, found | %@, encontrada | WordSearchView |  |
 | `game.wordsearch.garden` | Garden | Jardín | — |  |
-| `game.wordsearch.garden.words` | ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL | ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN | — |  |
+| `game.wordsearch.garden.words` | ROSE,TULIP,DAISY,GRASS,TREE,SEED,LEAF,SOIL,LILY,FENCE | ROSA,TULIPAN,PASTO,ARBOL,SEMILLA,HOJA,SUELO,JARDIN,FLOR,RAMA | — |  |
 | `game.wordsearch.guide` | Tap the first letter, then the last letter, or drag between them. | Toca la primera letra y luego la última, o desliza entre ellas. | WordSearchView |  |
 | `game.wordsearch.hint` | Show me a word | Muéstrame una palabra | WordSearchView |  |
 | `game.wordsearch.hintposition %lld %lld` | Try row %1$lld, column %2$lld. | Prueba la fila %1$lld, columna %2$lld. | WordSearchView |  |
 | `game.wordsearch.instruction` | Find the words from the list. | Encuentra las palabras de la lista. | WordSearchView |  |
+| `game.wordsearch.kitchen` | Kitchen | Cocina | — |  |
+| `game.wordsearch.kitchen.words` | SPOON,FORK,KNIFE,PLATE,CUP,BOWL,PAN,OVEN,KETTLE,APRON | CUCHARA,TENEDOR,CUCHILLO,PLATO,TAZA,OLLA,SARTEN,HORNO,JARRA,MANTEL | — |  |
 | `game.wordsearch.miss` | Not one of the words — try another line. | Esa no es de la lista: prueba otra línea. | WordSearchView |  |
 | `game.wordsearch.music` | Music | Música | — |  |
-| `game.wordsearch.music.words` | PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL | PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO | — |  |
-| `game.wordsearch.next` | Show the right of the grid | Mostrar el lado derecho de la cuadrícula | WordSearchView |  |
+| `game.wordsearch.music.words` | PIANO,DRUM,HARP,FLUTE,SONG,CHOIR,VIOLIN,BELL,GUITAR,TRUMPET | PIANO,TAMBOR,ARPA,FLAUTA,CANTO,CORO,VIOLIN,SONIDO,GUITARRA,MARIMBA | — |  |
 | `game.wordsearch.notfound %@` | %@, not found | %@, por encontrar | WordSearchView |  |
-| `game.wordsearch.previous` | Show the left of the grid | Mostrar el lado izquierdo de la cuadrícula | WordSearchView |  |
 | `game.wordsearch.selected` | Start selected. Choose the last letter. | Primera letra elegida. Elige la última letra. | WordSearchView |  |
 | `game.wordsearch.title` | Word Search | Sopa de letras | GameID |  |
-| `game.wordsearch.up` | Show the top of the grid | Mostrar la parte superior de la cuadrícula | WordSearchView |  |
 | `guide.again` | Show me again | Muéstramelo otra vez | FirstPlayGuide |  |
 | `guide.colorclash.example %@` | The ink is %@: tap that color. | La tinta es de color %@: toca ese color. | ColorClashView |  |
 | `guide.gotit` | Got it | Entendido | FirstPlayGuide |  |
