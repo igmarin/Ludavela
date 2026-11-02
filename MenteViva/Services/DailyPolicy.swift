@@ -161,9 +161,11 @@ nonisolated enum DailyPolicy {
         /// Names and Faces counts moves as attempts and pairs as correct, like Memory Lane, so it
         /// takes Memory Lane's thresholds.
         .photoCaptions: Threshold(strong: 0.65, weak: 0.45),
-        /// Number Slide counts fewest moves over moves made, like Sliding Blocks, so it takes Sliding
-        /// Blocks' thresholds: about 1.4 times the fewest moves climbs, past 2.5 times eases.
-        .numberSlide: Threshold(strong: 0.70, weak: 0.40),
+        /// Number Slide counts fewest moves over moves made. People take two to four times the fewest
+        /// moves on this puzzle, so a steady game at 2.5 times (0.40) climbs, up to about 2.9 times
+        /// (0.35); past 5 times (below 0.20) it eases. Sliding Blocks' 0.70 kept a fully mixed 3×3 at
+        /// about 31 moves or fewer, so most players never reached the 4×4 (#547 review).
+        .numberSlide: Threshold(strong: 0.35, weak: 0.20),
     ]
 
     /// Strong accuracy for a game (at or above counts as strong).

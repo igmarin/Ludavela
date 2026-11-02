@@ -22,6 +22,11 @@ struct NumberSlideView: View {
     /// The tile "Show me a move" just slid, ringed in amber until the next move, so the eye finds
     /// it even when Reduce Motion lands it at once.
     @State private var shownTile: Int?
+    /// The tile the first-play guide rings, the one that slides next on the way home: worked out
+    /// once per deal while the guide still has to show, never on each redraw (a 4×4 hint can search
+    /// 155,000 nodes). The guide covers the board until it is dismissed, so the deal is the only
+    /// board it ever points at.
+    @State private var guideTile: Int?
     @State private var hintsUsed = 0
     @State private var startedAt = Date.now
     @State private var showCelebration = false
@@ -66,7 +71,6 @@ struct NumberSlideView: View {
                 let inner = CGSize(width: proxy.size.width - 2 * rim, height: proxy.size.height - 2 * rim)
                 let cell = SlidingBoardLayout.cellSize(in: inner, columns: puzzle.size, rows: puzzle.size)
                 let side = cell * CGFloat(puzzle.size)
-                let guideCell = FirstPlayGuideStore.shouldShow(.numberSlide) ? guideTile(in: puzzle) : nil
                 ZStack(alignment: .topLeading) {
                     // The tray's floor: what shows through the gap, a dark recess in the wood.
                     RoundedRectangle(cornerRadius: 8)
@@ -76,7 +80,7 @@ struct NumberSlideView: View {
                         .accessibilityHidden(true)
                     gapLabel(in: puzzle, cell: cell)
                     ForEach(1..<puzzle.tiles.count, id: \.self) { number in
-                        tile(number, in: puzzle, cell: cell, isGuideTarget: guideCell == puzzle.tiles.firstIndex(of: number))
+                        tile(number, in: puzzle, cell: cell, isGuideTarget: number == guideTile)
                     }
                 }
                 .frame(width: side, height: side)
@@ -111,8 +115,8 @@ struct NumberSlideView: View {
             .overlay(alignment: direction.map(Self.edge) ?? .center) {
                 if let direction {
                     Image(systemName: direction.arrowSymbol)
-                        .font(.system(size: max(11, cell * 0.12), weight: .black))
-                        .foregroundStyle(Wood.number.opacity(0.75))
+                        .font(.system(size: cell * 0.18, weight: .black))
+                        .foregroundStyle(Wood.number)
                         .padding(cell * 0.035)
                 }
             }
@@ -164,11 +168,6 @@ struct NumberSlideView: View {
             .allowsHitTesting(false)
     }
 
-    /// The tile the first-play guide rings: the one that slides next on the way home.
-    private func guideTile(in puzzle: NumberSlidePuzzle) -> Int? {
-        NumberSlideSolver.hint(from: puzzle)
-    }
-
     /// Where a tile's arrow sits: on the edge that faces the gap, and for a sideways slide in the
     /// lower corner, clear of a two-digit number on the smallest phones.
     nonisolated private static func edge(_ direction: SlidingDirection) -> Alignment {
@@ -208,15 +207,17 @@ struct NumberSlideView: View {
 
     private var isSolved: Bool { puzzle?.isSolved ?? false }
 
-    /// A label that would split a word on a narrow phone ("Muéstrame un paso" on an iPhone SE)
-    /// shrinks a little to keep to two whole-word lines instead.
+    /// A label that would split a word on a narrow phone ("Muéstrame un paso" or "Deshacer" on an
+    /// iPhone SE) shrinks instead: a one-word label keeps to one line and a longer one to two, so
+    /// the text shrinks before any word is broken, with a margin inside the tile.
     private func controlButton(_ key: String, enabled: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(AppLanguage.localized(key))
                 .font(.title2.weight(.semibold))
                 .multilineTextAlignment(.center)
-                .lineLimit(typeSize.isAccessibilitySize ? nil : 2)
-                .minimumScaleFactor(0.7)
+                .lineLimit(typeSize.isAccessibilitySize ? nil : min(2, AppLanguage.localized(key).split(separator: " ").count))
+                .minimumScaleFactor(0.6)
+                .padding(.horizontal, 8)
         }
         .buttonStyle(AnswerTileStyle(minHeight: 100))
         .disabled(!enabled)
@@ -265,6 +266,8 @@ struct NumberSlideView: View {
         var generator = SystemRandomNumberGenerator()
         let fresh = NumberSlidePuzzle.deal(for: difficulty, using: &generator)
         puzzle = fresh
+        guideTile =
+            FirstPlayGuideStore.shouldShow(.numberSlide) ? NumberSlideSolver.hint(from: fresh).map { fresh.tiles[$0] } : nil
         hintsUsed = 0
         shownTile = nil
         startedAt = .now

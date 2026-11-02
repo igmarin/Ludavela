@@ -120,13 +120,13 @@ nonisolated struct NumberSlidePuzzle: Hashable, Sendable {
 
     /// Board size, random-walk length and the least `NumberSlideSolver.estimate` a deal may show, per
     /// level 1…10 (#547). Levels 1–5 are 3×3, 6–10 are 4×4; level 5's walk is long enough to mix the
-    /// small board fully. A walk can wander back near the goal (a later level once dealt a 2-move
-    /// board), so a deal that looks closer than `floor` is walked again. Each floor sits near the
-    /// closest 5 in 100 deals of its level, so a re-walk is rare and a level never feels like the
-    /// one below it.
+    /// small board fully. A walk can wander back near the goal (levels 4, 5 and 6 each dealt a 2-move
+    /// board in 1,000 walks), so a deal that looks closer than `floor` is walked again. Each floor
+    /// sits at the closest 5 in 100 walks of its level by `NumberSlideSolver.estimate` (measured for
+    /// #547 over 1,000 walks a level), so a re-walk is rare and a level never feels like the one below.
     static let levels: [(size: Int, scramble: ClosedRange<Int>, floor: Int)] = [
-        (3, 3...4, 0), (3, 5...7, 0), (3, 8...12, 5), (3, 14...20, 6), (3, 150...200, 8),
-        (4, 6...10, 0), (4, 12...18, 8), (4, 20...30, 11), (4, 35...50, 15), (4, 60...80, 19),
+        (3, 3...4, 0), (3, 5...7, 0), (3, 8...12, 5), (3, 14...20, 7), (3, 150...200, 10),
+        (4, 6...10, 5), (4, 12...18, 8), (4, 20...30, 11), (4, 35...50, 16), (4, 60...80, 22),
     ]
 
     /// A fresh deal for the player's level.
@@ -141,11 +141,13 @@ nonisolated struct NumberSlidePuzzle: Hashable, Sendable {
 
     // MARK: - The session
 
-    /// The finished game as a saved session (#547): `attempts` is the moves made plus one per shown
-    /// move (a shown move also counts in `movesMade`, as in Sliding Blocks), and `correct` is the
-    /// deal's fewest moves, capped at `attempts` so accuracy never passes 1.
+    /// The finished game as a saved session (#547): `correct` is the deal's fewest moves, capped at
+    /// `attempts` so accuracy never passes 1, and `attempts` is the moves made plus two per shown
+    /// move (which also counts in `movesMade`). Two, not Sliding Blocks' one, because this game's
+    /// staircase climbs from 0.35 (`DailyPolicy.thresholds`): a game played by "Show me a move"
+    /// alone scores 1/3 and holds its level instead of climbing.
     func session(level: Difficulty, fewestMoves: Int, hints: Int, seconds: Int) -> GameSession {
-        let attempts = movesMade + hints
+        let attempts = movesMade + 2 * hints
         return GameSession(
             gameID: .numberSlide, rounds: 1, durationSeconds: seconds,
             correct: min(fewestMoves, attempts), attempts: attempts, difficulty: level)
@@ -162,7 +164,7 @@ nonisolated struct NumberSlidePuzzle: Hashable, Sendable {
 ///
 /// The budget is counted in nodes, not time, so a hint is the same on every device and in tests.
 /// Measured for #547 in a release build on a Mac: the slowest hint over 300 random 60-move 4×4
-/// scrambles and 100 level-10 deals took 18 ms (mean 7 ms), well under the 100 ms the brief allows,
+/// scrambles and 100 level-10 deals took 15 ms (mean 5 ms), well under the 100 ms the brief allows,
 /// and following hints from 75 deals of levels 8–10 solved each in the fewest moves or within 8.
 nonisolated enum NumberSlideSolver {
     /// Each step of the hint's search: the weight on h (in halves) and the nodes it may search.
@@ -176,18 +178,19 @@ nonisolated enum NumberSlideSolver {
         hintSearch(from: puzzle).cell
     }
 
-    /// `hint`, with the nodes it searched (the hint-time test checks them against the budget).
-    static func hintSearch(from puzzle: NumberSlidePuzzle) -> (cell: Int?, nodes: Int) {
-        guard !puzzle.isSolved else { return (nil, 0) }
+    /// `hint`, with the nodes it searched and the whole solution it found (empty for the fallback
+    /// slide), so the hint-time test can check both.
+    static func hintSearch(from puzzle: NumberSlidePuzzle) -> (cell: Int?, nodes: Int, path: [Int]) {
+        guard !puzzle.isSolved else { return (nil, 0, []) }
         var spent = 0
         // f = 2g + weight·h, so the weights 2, 3, 4, 6 are h × 1, 1.5, 2, 3.
         for step in hintSteps {
             var search = Search(puzzle: puzzle, weight: step.weight, budget: step.nodes)
             let path = search.run()
             spent += search.nodes
-            if let first = path?.first { return (first, spent) }
+            if let path, let first = path.first { return (first, spent, path) }
         }
-        return (fallback(from: puzzle), spent)
+        return (fallback(from: puzzle), spent, [])
     }
 
     /// The deal's fewest moves (one per tile per cell), recorded as `correct`. Exact when the search
@@ -201,6 +204,22 @@ nonisolated enum NumberSlideSolver {
             if let path = search.run() { return path.count }
         }
         return estimate(puzzle)
+    }
+
+    /// The linear-conflict cost of every line a board of up to 4×4 can hold, indexed by
+    /// `count << 8 | wants`: `count` tiles that belong to the line, and where along it each wants to
+    /// be, 2 bits each in board order. 2 × (count − the longest run already in order), found once by
+    /// trying every subset. A line with fewer than two of its own tiles has no conflict.
+    static let lineCosts: [Int] = (0..<(5 << 8)).map { key in
+        let count = key >> 8
+        guard count >= 2 else { return 0 }
+        let wants = (0..<count).map { (key >> (2 * $0)) & 3 }
+        var longest = 1
+        for subset in 1..<(1 << count) where subset.nonzeroBitCount > longest {
+            let picked = wants.indices.filter { subset & (1 << $0) != 0 }.map { wants[$0] }
+            if zip(picked, picked.dropFirst()).allSatisfy({ $0 < $1 }) { longest = subset.nonzeroBitCount }
+        }
+        return 2 * (count - longest)
     }
 
     /// Manhattan distance plus linear conflict: never more than the fewest moves, and cheap, so a
@@ -254,7 +273,7 @@ nonisolated enum NumberSlideSolver {
         /// Where along `line` a tile wants to be, `line * cells + tile`, or -1 when it belongs to another line.
         private let place: [Int]
         /// `lineCosts`, held here: reading a static in the hot loop costs a lazy-init check each time.
-        private let costTable = Search.lineCosts
+        private let costTable = NumberSlideSolver.lineCosts
 
         init(puzzle: NumberSlidePuzzle, weight: Int, budget: Int) {
             let size = puzzle.size
@@ -381,20 +400,6 @@ nonisolated enum NumberSlideSolver {
                 count += 1
             }
             return costTable[count << 8 | wants]
-        }
-
-        /// The conflict cost of every line a board of up to 4×4 can hold, indexed by
-        /// `count << 8 | wants` (up to four places along the line, 2 bits each). Built once by
-        /// trying every subset of the tiles for the longest run already in order.
-        static let lineCosts: [Int] = (0..<(5 << 8)).map { key in
-            let count = key >> 8
-            let wants = (0..<count).map { (key >> (2 * $0)) & 3 }
-            var longest = min(count, 1)
-            for subset in 1..<max(2, 1 << count) where subset.nonzeroBitCount > longest {
-                let picked = wants.indices.filter { subset & (1 << $0) != 0 }.map { wants[$0] }
-                if zip(picked, picked.dropFirst()).allSatisfy({ $0 < $1 }) { longest = subset.nonzeroBitCount }
-            }
-            return 2 * (count - longest)
         }
     }
 }

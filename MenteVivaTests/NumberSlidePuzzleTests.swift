@@ -83,7 +83,9 @@ final class NumberSlidePuzzleTests: XCTestCase {
         let level = Difficulty(level: 1)
         let deal = NumberSlidePuzzle.deal(for: level, using: &generator)
         let fewest = NumberSlideSolver.fewestMoves(from: deal)
-        let solved = solvedByHints(deal)
+        // The player finds the shortest way on their own: the solver's path, tapped by them.
+        var solved = deal
+        for cell in NumberSlideSolver.hintSearch(from: deal).path { XCTAssertTrue(solved.slide(at: cell)) }
         XCTAssertTrue(solved.isSolved)
         let context = ModelContext(
             try ModelContainer(for: GameSession.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true)))
@@ -94,7 +96,20 @@ final class NumberSlidePuzzleTests: XCTestCase {
         XCTAssertEqual(saved.game, .numberSlide)
         XCTAssertEqual(saved.resolvedLevel, level)
         XCTAssertEqual(saved.correct, fewest)
-        XCTAssertEqual(saved.accuracy, 1, "hints play the shortest way, so every move counted")
+        XCTAssertEqual(saved.attempts, fewest)
+        XCTAssertEqual(saved.accuracy, 1, "the fewest moves, none shown")
+    }
+
+    func testGivenLevelOneSolvedByShowMeAMoveAloneThenTheSessionSaysSoAndTheLevelHolds() {
+        var generator = SeededGenerator(state: 1)
+        let deal = NumberSlidePuzzle.deal(for: Difficulty(level: 1), using: &generator)
+        let fewest = NumberSlideSolver.fewestMoves(from: deal)
+        let solved = solvedByHints(deal)
+        let session = solved.session(level: Difficulty(level: 1), fewestMoves: fewest, hints: solved.movesMade, seconds: 30)
+        XCTAssertEqual(session.attempts, 3 * fewest, "each shown move counts itself and two more")
+        let accuracy = try? XCTUnwrap(session.accuracy)
+        XCTAssertEqual(accuracy ?? 0, 1.0 / 3, accuracy: 1e-9)
+        XCTAssertLessThan(accuracy ?? 1, DailyPolicy.strongAccuracy(for: .numberSlide), "watching alone never climbs")
     }
 
     func testGivenVoiceOverOnlyThenTheLevelOnePuzzleCanBeSolvedWithCustomActions() {
@@ -119,14 +134,28 @@ final class NumberSlidePuzzleTests: XCTestCase {
 
     /// Counted in nodes, not on a stopwatch (a wall-clock ceiling flaked on loaded runners for
     /// Sliding Blocks). In a release build on a Mac the slowest hint over 300 such scrambles took
-    /// 18 ms, so a hint that keeps within the budget answers well under the 100 ms allowed.
+    /// 15 ms, so a hint that keeps within the budget answers well under the 100 ms allowed.
+    /// Seed 60 is past the exact search's 80,000 nodes and is answered by the widened search; seeds
+    /// 62 and 64 are answered exactly. Each answer is a whole solution found inside the budget, never
+    /// the fallback slide.
     func testGivenASixtyMoveFourByFourScrambleWhenAskedForAHintThenItAnswersWithinTheBudget() {
-        var generator = SeededGenerator(state: 60)
-        let puzzle = NumberSlidePuzzle.scrambled(size: 4, moves: 60, using: &generator)
-        let search = NumberSlideSolver.hintSearch(from: puzzle)
-        XCTAssertLessThanOrEqual(search.nodes, NumberSlideSolver.hintBudget)
-        guard let cell = search.cell else { return XCTFail("no hint") }
-        XCTAssertTrue(NumberSlidePuzzle.neighbours(of: puzzle.gap, size: 4).contains(cell), "a tile next to the gap")
+        for seed: UInt64 in [60, 62, 64] {
+            var generator = SeededGenerator(state: seed)
+            let puzzle = NumberSlidePuzzle.scrambled(size: 4, moves: 60, using: &generator)
+            let search = NumberSlideSolver.hintSearch(from: puzzle)
+            XCTAssertLessThan(search.nodes, NumberSlideSolver.hintBudget, "seed \(seed) found a path inside the budget")
+            XCTAssertEqual(search.cell, search.path.first, "seed \(seed)")
+            var replay = puzzle
+            for cell in search.path { XCTAssertTrue(replay.slide(at: cell), "seed \(seed)") }
+            XCTAssertTrue(replay.isSolved, "seed \(seed): the path solves the board")
+            XCTAssertGreaterThanOrEqual(search.path.count, NumberSlideSolver.estimate(puzzle))
+            if search.nodes < NumberSlideSolver.hintSteps[0].nodes {
+                // Answered by the exact step: the path is a shortest one.
+                XCTAssertEqual(search.path.count, NumberSlideSolver.fewestMoves(from: puzzle), "seed \(seed)")
+            } else {
+                XCTAssertEqual(seed, 60, "only seed 60 needs the widened search")
+            }
+        }
     }
 
     // MARK: - Levels
@@ -178,12 +207,91 @@ final class NumberSlidePuzzleTests: XCTestCase {
         XCTAssertEqual(session.accuracy, 1)
     }
 
-    func testGivenShownMovesThenEachCountsOnceMoreAsAnAttempt() {
+    func testGivenShownMovesThenEachCountsTwiceMoreAsAnAttempt() {
         var puzzle = NumberSlidePuzzle.solved(size: 3)
         puzzle.slide(at: 7)
         puzzle.slide(at: 6)
-        let session = puzzle.session(level: Difficulty(level: 2), fewestMoves: 2, hints: 2, seconds: 5)
-        XCTAssertEqual(session.attempts, 4)
+        let session = puzzle.session(level: Difficulty(level: 2), fewestMoves: 2, hints: 1, seconds: 5)
+        XCTAssertEqual(session.attempts, 4, "two moves, one of them shown")
         XCTAssertEqual(session.accuracy, 0.5)
+    }
+
+    // MARK: - The heuristic (#547 review)
+
+    func testGivenALineWithFewerThanTwoOfItsOwnTilesThenItHasNoConflict() {
+        XCTAssertEqual(NumberSlideSolver.lineCosts[0], 0, "no tile of its own")
+        XCTAssertEqual(NumberSlideSolver.lineCosts[1 << 8], 0, "one tile of its own")
+        XCTAssertTrue(NumberSlideSolver.lineCosts.allSatisfy { $0 >= 0 })
+        // Two tiles home in the line but in each other's way: one must leave and come back.
+        XCTAssertEqual(NumberSlideSolver.lineCosts[2 << 8 | 1], 2)
+    }
+
+    /// The exact solver against a breadth-first count of every 3×3 board from the goal.
+    func testGivenSeededThreeByThreeBoardsThenTheFewestMovesAreTheBreadthFirstDistance() {
+        // Each board as one Int, 4 bits a cell.
+        func key(_ tiles: [Int]) -> Int { tiles.reversed().reduce(0) { $0 << 4 | $1 } }
+        let goal = NumberSlidePuzzle.solved(size: 3).tiles
+        var distance = [key(goal): 0]
+        var frontier = [goal]
+        while !frontier.isEmpty {
+            var next: [[Int]] = []
+            for board in frontier {
+                let gap = board.firstIndex(of: 0) ?? 0
+                let steps = distance[key(board)] ?? 0
+                for cell in NumberSlidePuzzle.neighbours(of: gap, size: 3) {
+                    var moved = board
+                    moved.swapAt(gap, cell)
+                    if distance[key(moved)] == nil {
+                        distance[key(moved)] = steps + 1
+                        next.append(moved)
+                    }
+                }
+            }
+            frontier = next
+        }
+        XCTAssertEqual(distance.count, 181_440)
+        var generator = SeededGenerator(state: 8)
+        for _ in 0..<300 {
+            let board = NumberSlidePuzzle.scrambled(size: 3, moves: Int.random(in: 1...60, using: &generator), using: &generator)
+            XCTAssertEqual(NumberSlideSolver.fewestMoves(from: board), distance[key(board.tiles)], "\(board.tiles)")
+            XCTAssertLessThanOrEqual(NumberSlideSolver.estimate(board), distance[key(board.tiles)] ?? 0, "\(board.tiles)")
+        }
+    }
+
+    // MARK: - The staircase (#547 review)
+
+    /// A steady player who takes 2.5 times the fewest moves, one game a day from level 1, follows
+    /// `DailyPolicy` the way the app feeds it: accuracies at the current level since it last moved,
+    /// newest first, and no second move on the day a level changed.
+    func testGivenAPlayerAtTwoAndAHalfTimesTheFewestMovesThenTheyReachTheFourByFourInAFewGames() {
+        var generator = SeededGenerator(state: 25)
+        var level = Difficulty(level: 1)
+        var recent: [Double] = []
+        var changedOn: String?
+        var games = 0
+        for day in 1...20 where level.level < 6 {
+            let today = String(format: "2026-12-%02d", day)
+            let stats = PlayerStateSummary.GameStats(
+                sessionsLast14Days: games, meanAccuracy: recent.first, meanRoundsCompleted: 1, daysSinceLastPlayed: 1,
+                currentDifficulty: level, recentAccuracies: recent)
+            let summary = PlayerStateSummary(games: [GameID.numberSlide.rawValue: stats])
+            let plan = DailyPolicy.plan(
+                state: summary, lastChange: changedOn.map { [.numberSlide: $0] } ?? [:], dayStamp: today, pinned: [:],
+                hidden: [])
+            if let next = plan.difficulty[.numberSlide], next != level {
+                level = next
+                recent = []
+                changedOn = today
+            }
+            guard level.level < 6 else { break }
+            let deal = NumberSlidePuzzle.deal(for: level, using: &generator)
+            let fewest = NumberSlideSolver.fewestMoves(from: deal)
+            let moves = Int((2.5 * Double(fewest)).rounded())
+            let session = GameSession(gameID: .numberSlide, rounds: 1, durationSeconds: 60, correct: fewest, attempts: moves)
+            recent.insert(session.accuracy ?? 0, at: 0)
+            games += 1
+        }
+        XCTAssertEqual(level, Difficulty(level: 6), "the 4×4 is reached")
+        XCTAssertLessThanOrEqual(games, 5, "one level a game, from level 1")
     }
 }
