@@ -66,6 +66,7 @@ alternatives are proposed in the last column).
 | 10 | Repeat the Sequence | Repite la secuencia | Public domain: Corsi / sequence memory (Corsi 1972) | USPTO + EUIPO + IMPI + App Store | No live mark. Avoided "Simon" (trademark). Phrase is descriptive. | none | — · Follow the Sequence / Sigue la secuencia · Pattern Replay / Repite el patrón |
 | 11 | Tangram | Tangram | Public domain: Chinese dissection puzzle (early 1800s) | USPTO + EUIPO + IMPI + App Store | Generic puzzle name in 9/41 — many App Store titles use it descriptively, no single owner of the word alone. | low (generic, crowded) | — · Shape Puzzle / Rompecabezas de Formas · Seven Pieces / Siete Piezas |
 | 12 | Tile Pairs | Parejas de fichas* | Public domain: mahjong-solitaire style matching | USPTO + EUIPO + IMPI + App Store | No live mark "Tile Pairs" / "Parejas de fichas" in 9/41. Avoided "Shanghai" (trademark). | none | — · Matching Tiles / Fichas Pareadas · Pair the Tiles / Empareja las fichas |
+| 14 | Word Search | Sopa de letras | Public-domain word-search format | Pending: USPTO, EUIPO, IMPI | Not yet checked | Pending owner confirmation (#226) | — |
 | 13 | Sliding Blocks | Bloques deslizantes | Public domain: sliding-block / Huarong Dao style (1930s) | USPTO + EUIPO + IMPI + App Store | No live mark "Sliding Blocks" / "Bloques deslizantes" in 9/41. Avoided "Klotski" (trademark). | none | — · Slide Puzzle / Rompecabezas Deslizante · Moving Blocks / Bloques en Movimiento |
 | 14 | Number Slide | Rompecocos | Public domain: the 15 puzzle (Noyes Chapman / Sam Loyd era, 1870s–1880s); Mexican names Rompecocos, Quebracocos, Juego del 15 | Web search only on 2026-11-02 (#547), **not yet** the USPTO / EUIPO / IMPI registers: owner to run them | Web: no mark or toy sold as "Rompecocos" found. App Store: several unrelated apps use "Number Slide" or close variants descriptively (crowded, no single owner seen). Avoided "15 Puzzle" as a product name. | low (pending the register search; not in the #226 lawyer review) | — · Slide the Numbers / Desliza los números · Number Tray / Quebracocos |
 
@@ -176,3 +177,5 @@ the input for the one-hour IP lawyer review before the paid App Store release, a
 decisions.md 2026-10-26 item 6. The lawyer's review is still needed even when this table shows
 "none" or "low". The app itself is LOCAL_ONLY and makes no network calls; trademark checks were done
 outside the app, on public registers.
+
+- **Word Search (#550):** Original EN/ES word lists; emblem drawn in code; sounds use SoundPlayer tones. Trademark searches and owner confirmation remain pending before merge.

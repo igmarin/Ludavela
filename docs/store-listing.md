@@ -63,7 +63,7 @@ FIFTEEN GAMES
 • Memory: Memory Lane, Names and Faces, Repeat the Sequence, Photo Stories (with your own family photos)
 • Attention: Quick Eyes, Color Clash, Tangram, Tile Pairs, Sliding Blocks, Number Slide
 • Numbers: Number Trail, Sudoku, Up or Down
-• Words: Name the Herd, Finish the Saying
+• Words: Name the Herd, Finish the Saying, Word Search
 
 AT YOUR PACE
 • Ten levels in every game. The level moves gently with how you play, never in the middle of a game
@@ -96,7 +96,7 @@ QUINCE JUEGOS
 • Memoria: Camino de Memoria, Nombres y Caras, Repite la secuencia, Historias en fotos (con tus propias fotos de familia)
 • Atención: Ojos Ágiles, Choque de Colores, Tangram, Parejas de fichas, Bloques deslizantes, Rompecocos
 • Números: Sendero de Números, Sudoku, Sube o baja
-• Palabras: Nombra la Manada, Termina el refrán
+• Palabras: Nombra la Manada, Termina el refrán, Sopa de letras
 
 A TU RITMO
 • Diez niveles en cada juego. El nivel se ajusta con calma según cómo juegas, nunca a mitad de partida
