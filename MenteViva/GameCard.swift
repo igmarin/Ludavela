@@ -228,7 +228,7 @@ struct Emblem: View {
 
     /// The games whose emblem is a mini board of the game itself (#512). They replaced an
     /// unrelated hero picture, so Home and the celebration draw them at the picture's size.
-    static let boards: Set<GameID> = [.tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence]
+    static let boards: Set<GameID> = [.tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence, .pegSolitaire]
 
     var body: some View {
         Canvas { context, size in
@@ -381,6 +381,13 @@ struct Emblem: View {
             var arrow = Path()
             arrow.addLines([CGPoint(x: 27, y: 47), CGPoint(x: 32, y: 52), CGPoint(x: 37, y: 47)])
             context.stroke(arrow, with: amber, style: line)
+        case .pegSolitaire:
+            for row in 0..<7 {
+                for column in 0..<7 where (2...4).contains(row) || (2...4).contains(column) {
+                    context.fill(
+                        circle(8 + Double(column) * 8, 8 + Double(row) * 8, 3), with: row == 3 && column == 3 ? amber : ink)
+                }
+            }
         case .photoCaptions:
             // A photo frame over a name line, with an amber sun in the frame.
             context.stroke(Path(roundedRect: CGRect(x: 10, y: 8, width: 44, height: 32), cornerRadius: 6), with: ink, style: line)

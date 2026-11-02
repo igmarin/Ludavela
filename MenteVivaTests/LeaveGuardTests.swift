@@ -35,7 +35,9 @@ final class LeaveGuardTests: XCTestCase {
 
     func testGivenEveryGameMidPlayWhenLeavingThenOnlyThePuzzlesFrom404Ask() {
         // The list #404 decided, written out here rather than read from the code under test.
-        let puzzles: Set<GameID> = [.sudoku, .tangram, .slidingBlocks, .tilePairs, .upOrDown, .memoryMatch, .photoCaptions]
+        let puzzles: Set<GameID> = [
+            .sudoku, .tangram, .slidingBlocks, .pegSolitaire, .tilePairs, .upOrDown, .memoryMatch, .photoCaptions,
+        ]
         for game in GameID.allCases {
             XCTAssertEqual(
                 LeaveGuard.needsConfirmation(game: game, inProgress: true, celebrating: false),

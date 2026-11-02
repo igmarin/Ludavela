@@ -49,6 +49,7 @@ One line per game, 14 in all. "Exercises" is the only verb used.
 | `why.game.tangram` | **Tangram** exercises planning how shapes fit together. | **Tangram** ejercita planear cómo encajan las formas. | [Simons 2016](https://journals.sagepub.com/doi/10.1177/1529100616661983) (executive function) |
 | `why.game.tilepairs` | **Tile Pairs** exercises looking closely and spotting matches. | **Pares de fichas** ejercita mirar con atención y encontrar parejas. | [Simons 2016](https://journals.sagepub.com/doi/10.1177/1529100616661983) (attention) |
 | `why.game.sliding` | **Sliding Blocks** exercises planning your moves before you make them. | **Bloques deslizantes** ejercita planear los movimientos antes de hacerlos. | [Simons 2016](https://journals.sagepub.com/doi/10.1177/1529100616661983) (executive function) |
+| `why.game.peg` | **Peg Solitaire** exercises planning your jumps. | **Come solo** ejercita planear los saltos. | Traditional game |
 | `why.game.photocaptions` | **Names and Faces** exercises matching a name to a face. | **Nombres y Caras** ejercita unir un nombre con una cara. | none: a plain description, no research claim (#142, owner to approve) |
 
 Notes for the reviewer:
@@ -81,3 +82,4 @@ Notes for the reviewer:
 
 - The banned words (issue #210 acceptance grep) appear nowhere in this file, not even in quotes.
 - Every row has a source link, or says it is our own policy, or says it only describes the game.
+

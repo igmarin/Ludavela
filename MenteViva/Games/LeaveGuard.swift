@@ -6,7 +6,7 @@ enum LeaveGuard {
     /// The games whose half-played board is worth a question (#404). Round games lose a few
     /// one-tap rounds at most, so they close at once even with rounds played (#528).
     private static let asksFirst: Set<GameID> = [
-        .sudoku, .tangram, .slidingBlocks, .tilePairs, .upOrDown, .memoryMatch, .photoCaptions,
+        .sudoku, .tangram, .slidingBlocks, .pegSolitaire, .tilePairs, .upOrDown, .memoryMatch, .photoCaptions,
     ]
 
     /// `inProgress` is each game's own "has moved" (a placed digit, a move, a tap). Once the
