@@ -22,7 +22,7 @@ final class InstructionLinesTests: XCTestCase {
         let strings = try catalog()
         let keys = strings.keys.filter { $0.hasPrefix("game.") && $0.contains(".instruction") }
         XCTAssertGreaterThanOrEqual(keys.count, 14, "an instruction key went missing")
-        for key in keys.sorted() {
+        for key in keys.sorted() where key != "game.peg.instruction" {
             for language in ["en", "es"] {
                 let line = try XCTUnwrap(value(strings, key, language), "\(key) [\(language)]")
                 XCTAssertTrue(line.hasSuffix("."), "\(key) [\(language)] needs a full stop: \(line)")
@@ -33,6 +33,13 @@ final class InstructionLinesTests: XCTestCase {
                     line.split(separator: " ").count, 9, "\(key) [\(language)] is too long: \(line)")
             }
         }
+    }
+
+    /// The ticket specifies two short sentences so the goal accompanies the jump.
+    func testGivenPegInstructionWhenReadThenItMatchesTheGameRules() throws {
+        let strings = try catalog()
+        XCTAssertEqual(value(strings, "game.peg.instruction", "en"), "Jump a peg over another to remove it. Leave just one.")
+        XCTAssertEqual(value(strings, "game.peg.instruction", "es"), "Salta una ficha sobre otra para quitarla. Deja solo una.")
     }
 
     /// #531: "Show me" means a hint everywhere else; in Photo Stories the button reveals the name.

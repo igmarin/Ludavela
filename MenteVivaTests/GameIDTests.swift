@@ -17,7 +17,7 @@ final class GameIDTests: XCTestCase {
             Set(raw).subtracting(existing),
             [
                 "repeat_sequence", "tangram", "tile_pairs", "sliding_blocks", "photo_captions", "word_search", "loteria",
-                "riddles", "number_slide",
+                "riddles", "number_slide", "peg_solitaire",
             ])
     }
 
@@ -56,6 +56,7 @@ final class GameIDTests: XCTestCase {
                 .stroop, .sudoku, .upOrDown, .tilePairs, .riddles, .tangram, .slidingBlocks, .numberSlide, .mathStreaks,
                 .quickEyes,
                 .reminiscence,
+                .pegSolitaire,
                 .wordSearch,
                 .loteria,
             ])

@@ -191,4 +191,11 @@ decisions.md 2026-10-26 item 6. The lawyer's review is still needed even when th
 "none" or "low". The app itself is LOCAL_ONLY and makes no network calls; trademark checks were done
 outside the app, on public registers.
 
+## Peg Solitaire / Come solo (#549) — pending name clearance
+
+- Mechanic origin: traditional peg solitaire, 17th-century France.
+- Name: Peg Solitaire / Come solo.
+- Trademark search: USPTO, EUIPO and IMPI register searches remain to be completed; owner and lawyer review required.
+- Art: drawn in code. Sounds: SoundPlayer tones. Content: deals generated backwards on device.
+- Not a clinical test layout.
 - **Word Search (#550):** Original EN/ES word lists; emblem drawn in code; sounds use SoundPlayer tones. Trademark searches and owner confirmation remain pending before merge.

@@ -34,6 +34,8 @@
 		47CC96146E92854A00000023 /* NumberSlidePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7B6EB8CF19EC80000001D; };
 		8036CB71939131F300000021 /* NumberSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DDDA645134A8390000001B; };
 		253F249A6FF746A300000025 /* NumberTrailQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4D45FC480DA5090000001F; };
+		5FF0E0B93B7278B000000023 /* PegSolitaireBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49DBFF3D3315DE0000001D; };
+		26AC903D2D17E87300000022 /* PegSolitaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19E16EF7A4512B90000001C; };
 		4886BCC1D06920BA00000022 /* PhotoCaptionDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C292C7FFAD74580000001C; };
 		F2E513BC326D993F0000001D /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76316028DAED7B500000017; };
 		17BB594169B12A7F0000001F /* QuickEyesDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E685D4510ACEA17500000019; };
@@ -154,6 +156,7 @@
 		4E437CEEEEB1E47600000039 /* NumberTrailQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B15A3FA40FC93B400000033; };
 		EB52E9FDB69CB05300000035 /* OnboardingStepsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C62977BDFEFF990000002F; };
 		74DF40655A8016C000000037 /* OnboardingStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35341DEF1F26544E00000031; };
+		7BAD9B1E8F8040B300000037 /* PegSolitaireBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546B78970231537900000031; };
 		CA75114F293B893100000036 /* PhotoCaptionDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28474CB38505F97700000030; };
 		7380C405ADFE051B0000002F /* PlanStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E8F4F3A3785F100000029; };
 		288A7358D7C5AA1900000033 /* PlayerProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B056BE6CAA0C14F0000002D; };
@@ -214,6 +217,8 @@
 		55D7B6EB8CF19EC80000001D /* NumberSlidePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberSlidePuzzle.swift; sourceTree = "<group>"; };
 		85DDDA645134A8390000001B /* NumberSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberSlideView.swift; sourceTree = "<group>"; };
 		1C4D45FC480DA5090000001F /* NumberTrailQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberTrailQuestion.swift; sourceTree = "<group>"; };
+		9E49DBFF3D3315DE0000001D /* PegSolitaireBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/PegSolitaireBoard.swift; sourceTree = "<group>"; };
+		C19E16EF7A4512B90000001C /* PegSolitaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/PegSolitaireView.swift; sourceTree = "<group>"; };
 		81C292C7FFAD74580000001C /* PhotoCaptionDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/PhotoCaptionDeal.swift; sourceTree = "<group>"; };
 		D76316028DAED7B500000017 /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/PictureView.swift; sourceTree = "<group>"; };
 		E685D4510ACEA17500000019 /* QuickEyesDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/QuickEyesDeal.swift; sourceTree = "<group>"; };
@@ -334,6 +339,7 @@
 		7B15A3FA40FC93B400000033 /* NumberTrailQuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/NumberTrailQuestionTests.swift; sourceTree = SOURCE_ROOT; };
 		83C62977BDFEFF990000002F /* OnboardingStepsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/OnboardingStepsTests.swift; sourceTree = SOURCE_ROOT; };
 		35341DEF1F26544E00000031 /* OnboardingStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/OnboardingStringsTests.swift; sourceTree = SOURCE_ROOT; };
+		546B78970231537900000031 /* PegSolitaireBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/PegSolitaireBoardTests.swift; sourceTree = SOURCE_ROOT; };
 		28474CB38505F97700000030 /* PhotoCaptionDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/PhotoCaptionDealTests.swift; sourceTree = SOURCE_ROOT; };
 		4D1E8F4F3A3785F100000029 /* PlanStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/PlanStoreTests.swift; sourceTree = SOURCE_ROOT; };
 		5B056BE6CAA0C14F0000002D /* PlayerProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/PlayerProfileTests.swift; sourceTree = SOURCE_ROOT; };
@@ -422,6 +428,8 @@
 				55D7B6EB8CF19EC80000001D /* NumberSlidePuzzle.swift */,
 				85DDDA645134A8390000001B /* NumberSlideView.swift */,
 				1C4D45FC480DA5090000001F /* NumberTrailQuestion.swift */,
+				9E49DBFF3D3315DE0000001D /* PegSolitaireBoard.swift */,
+				C19E16EF7A4512B90000001C /* PegSolitaireView.swift */,
 				81C292C7FFAD74580000001C /* PhotoCaptionDeal.swift */,
 				D76316028DAED7B500000017 /* PictureView.swift */,
 				E685D4510ACEA17500000019 /* QuickEyesDeal.swift */,
@@ -554,6 +562,7 @@
 				7B15A3FA40FC93B400000033 /* NumberTrailQuestionTests.swift */,
 				83C62977BDFEFF990000002F /* OnboardingStepsTests.swift */,
 				35341DEF1F26544E00000031 /* OnboardingStringsTests.swift */,
+				546B78970231537900000031 /* PegSolitaireBoardTests.swift */,
 				28474CB38505F97700000030 /* PhotoCaptionDealTests.swift */,
 				4D1E8F4F3A3785F100000029 /* PlanStoreTests.swift */,
 				5B056BE6CAA0C14F0000002D /* PlayerProfileTests.swift */,
@@ -679,6 +688,8 @@
 				47CC96146E92854A00000023 /* NumberSlidePuzzle.swift in Sources */,
 				8036CB71939131F300000021 /* NumberSlideView.swift in Sources */,
 				253F249A6FF746A300000025 /* NumberTrailQuestion.swift in Sources */,
+				5FF0E0B93B7278B000000023 /* PegSolitaireBoard.swift in Sources */,
+				26AC903D2D17E87300000022 /* PegSolitaireView.swift in Sources */,
 				4886BCC1D06920BA00000022 /* PhotoCaptionDeal.swift in Sources */,
 				F2E513BC326D993F0000001D /* PictureView.swift in Sources */,
 				17BB594169B12A7F0000001F /* QuickEyesDeal.swift in Sources */,
@@ -807,6 +818,7 @@
 				4E437CEEEEB1E47600000039 /* NumberTrailQuestionTests.swift in Sources */,
 				EB52E9FDB69CB05300000035 /* OnboardingStepsTests.swift in Sources */,
 				74DF40655A8016C000000037 /* OnboardingStringsTests.swift in Sources */,
+				7BAD9B1E8F8040B300000037 /* PegSolitaireBoardTests.swift in Sources */,
 				CA75114F293B893100000036 /* PhotoCaptionDealTests.swift in Sources */,
 				7380C405ADFE051B0000002F /* PlanStoreTests.swift in Sources */,
 				288A7358D7C5AA1900000033 /* PlayerProfileTests.swift in Sources */,

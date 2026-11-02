@@ -16,6 +16,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
     case tilePairs = "tile_pairs"
     case slidingBlocks = "sliding_blocks"
     case photoCaptions = "photo_captions"
+    case pegSolitaire = "peg_solitaire"
     case wordSearch = "word_search"
     case loteria = "loteria"
     case riddles = "riddles"
@@ -44,6 +45,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .tilePairs: "🀄"
         case .slidingBlocks: "🧱"
         case .photoCaptions: "🖼️"
+        case .pegSolitaire: "🔵"
         case .wordSearch: "🔎"
         case .loteria: "🫘"
         case .riddles: "❓"
@@ -67,7 +69,9 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .sayings: "book"
         case .repeatSequence: "piano"
         case .stroop, .sudoku, .upOrDown, .tilePairs, .riddles: nil
-        case .tangram, .slidingBlocks, .numberSlide, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria: nil
+        case .tangram, .slidingBlocks, .numberSlide, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria,
+            .pegSolitaire:
+            nil
         }
     }
 
@@ -87,6 +91,7 @@ nonisolated enum GameID: String, CaseIterable, Codable {
         case .tilePairs: "game.tilepairs.title"
         case .slidingBlocks: "game.sliding.title"
         case .photoCaptions: "game.photocaptions.title"
+        case .pegSolitaire: "game.peg.title"
         case .wordSearch: "game.wordsearch.title"
         case .loteria: "game.loteria.title"
         case .riddles: "game.riddles.title"

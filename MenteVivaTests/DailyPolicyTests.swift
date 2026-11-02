@@ -208,7 +208,7 @@ final class DailyPolicyTests: XCTestCase {
         // is now released and never played, so it outranks Memory Lane in this payload.
         // Sliding Blocks (#223) is released and never played too, so it takes the last place
         // from Quick Eyes.
-        XCTAssertEqual(Set(p.games), [.tilePairs, .slidingBlocks, .mathStreaks])
+        XCTAssertEqual(Set(p.games), [.tilePairs, .slidingBlocks, .pegSolitaire])
         XCTAssertEqual(p.difficulty[.stroop], Difficulty(level: 1))
         XCTAssertEqual(p.difficulty[.mathStreaks], Difficulty(level: 1))
         XCTAssertEqual(p.difficulty[.memoryMatch], Difficulty(level: 1))
@@ -424,7 +424,7 @@ final class DailyPolicyTests: XCTestCase {
         ])
         // The fixture plays every released game but the two newest (Tile Pairs, Sliding Blocks):
         // never played, they top the ranking.
-        XCTAssertEqual(plan(recent).games, [.tilePairs, .slidingBlocks, .sudoku], "the ranking alone")
+        XCTAssertEqual(plan(recent).games, [.tilePairs, .slidingBlocks, .pegSolitaire], "the ranking alone")
         // A brand-new player has every game equally rested: the ranked deal stands.
         XCTAssertEqual(plan(state()).games, [.memoryMatch, .quickEyes, .sudoku])
     }

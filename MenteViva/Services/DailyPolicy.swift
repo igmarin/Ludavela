@@ -58,7 +58,7 @@ nonisolated enum DailyPolicy {
         .memoryMatch: 1.0, .quickEyes: 0.8, .categoryFluency: 0.7, .stroop: 0.55, .mathStreaks: 0.55,
         .reminiscence: 0.7, .sudoku: 0.8, .upOrDown: 0.8, .sayings: 0.8,
         .repeatSequence: 0.8, .tangram: 0.8, .tilePairs: 0.8, .slidingBlocks: 0.8,
-        .photoCaptions: 0.8, .wordSearch: 0.8, .loteria: 0.8, .riddles: 0.8, .numberSlide: 0.8,
+        .photoCaptions: 0.8, .wordSearch: 0.8, .loteria: 0.8, .riddles: 0.8, .numberSlide: 0.8, .pegSolitaire: 0.8,
     ]
     static let gamesPerDay = 3
 
@@ -92,6 +92,7 @@ nonisolated enum DailyPolicy {
         .tilePairs: .attention,
         /// Sliding Blocks: the moves that free a block.
         .slidingBlocks: .attention,
+        .pegSolitaire: .attention,
         /// Names and Faces: whose name goes with whose photo.
         .photoCaptions: .memory,
         /// Word Search: words in a grid.
@@ -164,6 +165,8 @@ nonisolated enum DailyPolicy {
         .sayings: Threshold(strong: 0.90, weak: 0.65),
         /// At roughly 1.4 times the fewest moves (0.70) it climbs; above 2.5 times (below 0.40) it eases.
         .slidingBlocks: Threshold(strong: 0.70, weak: 0.40),
+        /// Correct is pegs removed; attempts also count undone and restarted jumps. Above 0.70 (few take-backs) it climbs; below 0.40 it eases.
+        .pegSolitaire: Threshold(strong: 0.70, weak: 0.40),
         /// Names and Faces counts moves as attempts and pairs as correct, like Memory Lane, so it
         /// takes Memory Lane's thresholds.
         .photoCaptions: Threshold(strong: 0.65, weak: 0.45),
