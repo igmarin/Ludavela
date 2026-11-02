@@ -44,8 +44,8 @@ final class LoteriaDealTests: XCTestCase {
         }
     }
 
-    func testGivenTheCalledCardWaitsOnTheBoardWhenNextIsTappedTwiceThenHelpShowsOnceAndCountsAsATry() {
-        var dealt = deal(level: 1, seed: 7)
+    func testGivenTheCalledCardWaitsOnTheBoardAtANameOnlyLevelWhenNextIsTappedTwiceThenHelpShowsOnceAndCountsAsATry() {
+        var dealt = deal(level: 7, seed: 7)
         let index = callUntilOnBoard(&dealt)
         let called = dealt.current
         XCTAssertEqual(dealt.next(), .lookAgain)
@@ -56,6 +56,16 @@ final class LoteriaDealTests: XCTestCase {
         XCTAssertEqual(dealt.attempts, 2)
         XCTAssertEqual(dealt.next(), .lookAgain)
         XCTAssertEqual(dealt.attempts, 2, "the help is shown once for this called card")
+    }
+
+    func testGivenTheCalledCardWaitsOnTheBoardAtAPictureLevelWhenNextIsTappedTwiceThenOnlyTheFirstTryCounts() {
+        var dealt = deal(level: 6, seed: 7)
+        _ = callUntilOnBoard(&dealt)
+
+        XCTAssertEqual(dealt.next(), .lookAgain)
+        XCTAssertEqual(dealt.next(), .lookAgain)
+        XCTAssertEqual(dealt.misses, 1)
+        XCTAssertEqual(dealt.attempts, 1)
     }
 
     func testGivenATileThatWasNotCalledWhenTappedThenItIsNotMarkedAndAMissIsCounted() throws {

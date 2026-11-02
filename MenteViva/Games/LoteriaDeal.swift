@@ -83,6 +83,8 @@ nonisolated struct LoteriaDeal: Equatable {
 
     let side: Int
     let pattern: Pattern
+    /// Whether a second "Look again" can point to the called card, for name-only levels 7–10.
+    let helpAvailable: Bool
     /// The board's cards, row by row.
     let board: [GamePicture]
     /// The calling order: every deck card, once.
@@ -102,7 +104,7 @@ nonisolated struct LoteriaDeal: Equatable {
     static func make(difficulty: Difficulty, using generator: inout some RandomNumberGenerator) -> LoteriaDeal {
         let side = side(for: difficulty)
         return LoteriaDeal(
-            side: side, pattern: pattern(for: difficulty),
+            side: side, pattern: pattern(for: difficulty), helpAvailable: difficulty.level >= 7,
             board: Array(deck.shuffled(using: &generator).prefix(side * side)),
             calls: deck.shuffled(using: &generator))
     }
@@ -137,6 +139,7 @@ nonisolated struct LoteriaDeal: Equatable {
                 lookedAgain = true
                 return .lookAgain
             }
+            guard helpAvailable else { return .lookAgain }
             if !showedHelp {
                 misses += 1
                 showedHelp = true
