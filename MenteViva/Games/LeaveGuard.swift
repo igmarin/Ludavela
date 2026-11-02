@@ -6,7 +6,7 @@ enum LeaveGuard {
     /// The games whose half-played board is worth a question (#404). Round games lose a few
     /// one-tap rounds at most, so they close at once even with rounds played (#528).
     private static let asksFirst: Set<GameID> = [
-        .sudoku, .tangram, .slidingBlocks, .pegSolitaire, .tilePairs, .upOrDown, .memoryMatch, .photoCaptions,
+        .sudoku, .tangram, .slidingBlocks, .numberSlide, .pegSolitaire, .tilePairs, .upOrDown, .memoryMatch, .photoCaptions,
     ]
 
     /// `inProgress` is each game's own "has moved" (a placed digit, a move, a tap). Once the
@@ -20,7 +20,7 @@ enum LeaveGuard {
 /// Every game's back button (#528), put on by `gameHeader`, and its prompt (#404). One stray tap
 /// or edge swipe used to throw away minutes of play: nothing is saved until a game finishes.
 /// Hiding the system button also turns off the edge swipe, so this 100pt chevron is the one way
-/// out, in the same place in all 14 games. The prompt is a card over the game, not a
+/// out, in the same place in every game. The prompt is a card over the game, not a
 /// `confirmationDialog` or alert: the system draws those buttons (under 100pt) and on iPad turns
 /// a dialog into a popover without its cancel action.
 struct LeaveGuardModifier: ViewModifier {

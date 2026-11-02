@@ -229,7 +229,7 @@ struct Emblem: View {
     /// The games whose emblem is a mini board of the game itself (#512). They replaced an
     /// unrelated hero picture, so Home and the celebration draw them at the picture's size.
     static let boards: Set<GameID> = [
-        .tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria, .pegSolitaire,
+        .tangram, .slidingBlocks, .numberSlide, .mathStreaks, .quickEyes, .reminiscence, .wordSearch, .loteria, .pegSolitaire,
     ]
 
     var body: some View {
@@ -399,6 +399,18 @@ struct Emblem: View {
             found.move(to: CGPoint(x: 14, y: 26))
             found.addLine(to: CGPoint(x: 50, y: 26))
             context.stroke(found, with: amber, style: line)
+        case .numberSlide:
+            // Number Slide: the wooden tray with eight numbered tiles and the gap in the corner; the
+            // tile beside the gap, the one that slides next, is amber.
+            context.stroke(
+                Path(roundedRect: CGRect(x: 6, y: 6, width: 52, height: 52), cornerRadius: 7), with: ink, style: line)
+            for number in 1...8 {
+                let center = CGPoint(x: 17 + Double((number - 1) % 3) * 15, y: 17 + Double((number - 1) / 3) * 15)
+                let last = number == 8
+                let tile = CGRect(x: center.x - 6.5, y: center.y - 6.5, width: 13, height: 13)
+                context.fill(Path(roundedRect: tile, cornerRadius: 2.5), with: last ? amber : ink)
+                digit(number, at: center, color: last ? .onAmber : .paper, size: 10, in: &context)
+            }
         case .photoCaptions:
             // A photo frame over a name line, with an amber sun in the frame.
             context.stroke(Path(roundedRect: CGRect(x: 10, y: 8, width: 44, height: 32), cornerRadius: 6), with: ink, style: line)
@@ -429,6 +441,15 @@ struct Emblem: View {
                     CGAffineTransform(translationX: 17 + Double(column) * 15, y: 32).rotated(by: -0.45))
                 context.fill(bean, with: column == 1 ? amber : ink)
             }
+        case .riddles:
+            // A question mark, its dot in amber.
+            var mark = Path()
+            mark.move(to: CGPoint(x: 21, y: 22))
+            mark.addCurve(to: CGPoint(x: 43, y: 21), control1: CGPoint(x: 21, y: 6), control2: CGPoint(x: 43, y: 6))
+            mark.addCurve(to: CGPoint(x: 32, y: 38), control1: CGPoint(x: 43, y: 30), control2: CGPoint(x: 32, y: 29))
+            mark.addLine(to: CGPoint(x: 32, y: 42))
+            context.stroke(mark, with: ink, style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
+            context.fill(circle(32, 53, 4.5), with: amber)
         }
     }
 
@@ -438,8 +459,8 @@ struct Emblem: View {
 
     /// A number in the round print face, centred on `point`; the emblem's only text, so
     /// verbatim (digits read the same in EN and ES).
-    private func digit(_ number: Int, at point: CGPoint, color: Color, in context: inout GraphicsContext) {
-        let text = Text(verbatim: "\(number)").font(.system(size: 13, weight: .heavy, design: .rounded)).foregroundStyle(color)
+    private func digit(_ number: Int, at point: CGPoint, color: Color, size: CGFloat = 13, in context: inout GraphicsContext) {
+        let text = Text(verbatim: "\(number)").font(.system(size: size, weight: .heavy, design: .rounded)).foregroundStyle(color)
         context.draw(text, at: point)
     }
 

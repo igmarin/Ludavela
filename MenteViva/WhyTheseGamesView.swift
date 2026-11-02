@@ -35,10 +35,12 @@ struct WhyTheseGamesView: View {
                     line("why.game.tangram", source: .simons)
                     line("why.game.tilepairs", source: .simons)
                     line("why.game.sliding", source: .simons)
+                    line("why.game.numberslide", source: .simons)
                     line("why.game.peg")
                     line("why.game.photocaptions")
                     line("why.game.wordsearch")
                     line("why.game.loteria", source: .simons)
+                    line("why.game.riddles")
                 }
 
                 section("why.not.title") {

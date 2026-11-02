@@ -24,7 +24,7 @@ final class LeaveGuardTests: XCTestCase {
         var progress = RoundProgress(totalRounds: 10)
         progress.completeRound()
         let roundGames: [GameID] = [
-            .mathStreaks, .stroop, .sayings, .repeatSequence, .quickEyes, .categoryFluency, .reminiscence,
+            .mathStreaks, .stroop, .sayings, .repeatSequence, .quickEyes, .categoryFluency, .reminiscence, .riddles,
         ]
         for game in roundGames {
             XCTAssertFalse(
@@ -36,7 +36,7 @@ final class LeaveGuardTests: XCTestCase {
     func testGivenEveryGameMidPlayWhenLeavingThenOnlyThePuzzlesFrom404Ask() {
         // The list #404 decided, written out here rather than read from the code under test.
         let puzzles: Set<GameID> = [
-            .sudoku, .tangram, .slidingBlocks, .pegSolitaire, .tilePairs, .upOrDown, .memoryMatch, .photoCaptions,
+            .sudoku, .tangram, .slidingBlocks, .numberSlide, .pegSolitaire, .tilePairs, .upOrDown, .memoryMatch, .photoCaptions,
         ]
         for game in GameID.allCases {
             XCTAssertEqual(

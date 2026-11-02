@@ -61,7 +61,7 @@ one example move the first time, so anyone can start on their own.
 
 SEVENTEEN GAMES
 • Memory: Memory Lane, Names and Faces, Repeat the Sequence, Photo Stories (with your own family photos)
-• Attention: Quick Eyes, Color Clash, Tangram, Tile Pairs, Sliding Blocks, Peg Solitaire, Lotería
+• Attention: Quick Eyes, Color Clash, Tangram, Tile Pairs, Sliding Blocks, Number Slide, Peg Solitaire, Lotería
 • Numbers: Number Trail, Sudoku, Up or Down
 • Words: Name the Herd, Finish the Saying, Word Search
 
@@ -94,7 +94,7 @@ su cuenta.
 
 DIECISIETE JUEGOS
 • Memoria: Camino de Memoria, Nombres y Caras, Repite la secuencia, Historias en fotos (con tus propias fotos de familia)
-• Atención: Ojos Ágiles, Choque de Colores, Tangram, Parejas de fichas, Bloques deslizantes, Come solo, Lotería
+• Atención: Ojos Ágiles, Choque de Colores, Tangram, Parejas de fichas, Bloques deslizantes, Rompecocos, Come solo, Lotería
 • Números: Sendero de Números, Sudoku, Sube o baja
 • Palabras: Nombra la Manada, Termina el refrán, Sopa de letras
 

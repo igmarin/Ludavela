@@ -31,6 +31,8 @@
 		2C26F128CAE066EF0000001C /* MemoryDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F600D269255E8500000016; };
 		18180C4157C1561D00000021 /* MemoryMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E769752DD6A430000001B; };
 		3B89FA1FCE6129CF00000019 /* MissCue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AF3B4C1D5F21E500000013; };
+		47CC96146E92854A00000023 /* NumberSlidePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7B6EB8CF19EC80000001D; };
+		8036CB71939131F300000021 /* NumberSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DDDA645134A8390000001B; };
 		253F249A6FF746A300000025 /* NumberTrailQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4D45FC480DA5090000001F; };
 		5FF0E0B93B7278B000000023 /* PegSolitaireBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49DBFF3D3315DE0000001D; };
 		26AC903D2D17E87300000022 /* PegSolitaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19E16EF7A4512B90000001C; };
@@ -42,6 +44,10 @@
 		AD020DC30561DD5000000022 /* ReminiscenceDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D512184D7D07E0000001C; };
 		A87005C5B52DA39800000022 /* ReminiscenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EA4E85E31685D60000001C; };
 		CD2EA82032FB0E6900000024 /* RepeatSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7FB2C68C28E13F0000001E; };
+		6118445E9C42B8AD0000001C /* RiddleDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBC592BFCD4EB300000016; };
+		49C60E028C27695D0000001C /* RiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3ED6B34F0280300000016; };
+		1ED3050CCCC25C2F00000020 /* RiddlesEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5175D1E9E9D450000001A; };
+		72D1B6BEF6322BAF00000020 /* RiddlesSpanish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E5F547A5E8E8C50000001A; };
 		4ABB42872988EB3A0000001E /* RoundCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92BF2CF2BF92D800000018; };
 		C9F0638D4C5D8F2E00000019 /* Sayings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA861EB6D0E1583C00000013; };
 		6C996EBFBA06751F0000001D /* SayingsDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F3C38239D199500000017; };
@@ -146,6 +152,7 @@
 		6B009816AE0FE1DA00000030 /* MemoryDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FC27F498CD0780000002A; };
 		A34345BFC3478D0200000037 /* MemoryMatchLevelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CECEA05CC9D6BF000000031; };
 		19A5511F2D9320B700000032 /* MemoryPhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982802FDA721007D0000002C; };
+		C8C7DF56C631A07100000037 /* NumberSlidePuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B0C27874AA93700000031; };
 		4E437CEEEEB1E47600000039 /* NumberTrailQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B15A3FA40FC93B400000033; };
 		EB52E9FDB69CB05300000035 /* OnboardingStepsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C62977BDFEFF990000002F; };
 		74DF40655A8016C000000037 /* OnboardingStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35341DEF1F26544E00000031; };
@@ -161,6 +168,7 @@
 		D05B673434600BCF00000032 /* QuickEyesRunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715CB74CE2E513E50000002C; };
 		8014E3CE95A477CB00000036 /* ReminiscenceDeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC3CFEA0009500100000030; };
 		F54A8747C07E0F3800000039 /* ReminiscenceSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE180630A87047600000033; };
+		1F391AF1EA4F16DC00000030 /* RiddleDeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E717D854509515A0000002A; };
 		F3781E2CF00E20FA00000033 /* RoundProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690FA2BE3DFB9D180000002D; };
 		FB1929E3C0D7D72A00000031 /* SayingsDeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDCB81B01A478280000002B; };
 		F7D49C3705471CF100000034 /* SayingsStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D3C1612A1009B70000002E; };
@@ -206,6 +214,8 @@
 		88F600D269255E8500000016 /* MemoryDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MemoryDeal.swift; sourceTree = "<group>"; };
 		250E769752DD6A430000001B /* MemoryMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MemoryMatchView.swift; sourceTree = "<group>"; };
 		86AF3B4C1D5F21E500000013 /* MissCue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/MissCue.swift; sourceTree = "<group>"; };
+		55D7B6EB8CF19EC80000001D /* NumberSlidePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberSlidePuzzle.swift; sourceTree = "<group>"; };
+		85DDDA645134A8390000001B /* NumberSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberSlideView.swift; sourceTree = "<group>"; };
 		1C4D45FC480DA5090000001F /* NumberTrailQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/NumberTrailQuestion.swift; sourceTree = "<group>"; };
 		9E49DBFF3D3315DE0000001D /* PegSolitaireBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/PegSolitaireBoard.swift; sourceTree = "<group>"; };
 		C19E16EF7A4512B90000001C /* PegSolitaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/PegSolitaireView.swift; sourceTree = "<group>"; };
@@ -217,6 +227,10 @@
 		7A9D512184D7D07E0000001C /* ReminiscenceDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/ReminiscenceDeck.swift; sourceTree = "<group>"; };
 		11EA4E85E31685D60000001C /* ReminiscenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/ReminiscenceView.swift; sourceTree = "<group>"; };
 		3A7FB2C68C28E13F0000001E /* RepeatSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/RepeatSequenceView.swift; sourceTree = "<group>"; };
+		8FDBC592BFCD4EB300000016 /* RiddleDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/RiddleDeck.swift; sourceTree = "<group>"; };
+		66A3ED6B34F0280300000016 /* RiddleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/RiddleView.swift; sourceTree = "<group>"; };
+		22C5175D1E9E9D450000001A /* RiddlesEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/RiddlesEnglish.swift; sourceTree = "<group>"; };
+		93E5F547A5E8E8C50000001A /* RiddlesSpanish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/RiddlesSpanish.swift; sourceTree = "<group>"; };
 		CF92BF2CF2BF92D800000018 /* RoundCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/RoundCounter.swift; sourceTree = "<group>"; };
 		FA861EB6D0E1583C00000013 /* Sayings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/Sayings.swift; sourceTree = "<group>"; };
 		9F0F3C38239D199500000017 /* SayingsDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games/SayingsDeck.swift; sourceTree = "<group>"; };
@@ -321,6 +335,7 @@
 		D55FC27F498CD0780000002A /* MemoryDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryDealTests.swift; sourceTree = SOURCE_ROOT; };
 		5CECEA05CC9D6BF000000031 /* MemoryMatchLevelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryMatchLevelsTests.swift; sourceTree = SOURCE_ROOT; };
 		982802FDA721007D0000002C /* MemoryPhotosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/MemoryPhotosTests.swift; sourceTree = SOURCE_ROOT; };
+		060B0C27874AA93700000031 /* NumberSlidePuzzleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/NumberSlidePuzzleTests.swift; sourceTree = SOURCE_ROOT; };
 		7B15A3FA40FC93B400000033 /* NumberTrailQuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/NumberTrailQuestionTests.swift; sourceTree = SOURCE_ROOT; };
 		83C62977BDFEFF990000002F /* OnboardingStepsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/OnboardingStepsTests.swift; sourceTree = SOURCE_ROOT; };
 		35341DEF1F26544E00000031 /* OnboardingStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/OnboardingStringsTests.swift; sourceTree = SOURCE_ROOT; };
@@ -336,6 +351,7 @@
 		715CB74CE2E513E50000002C /* QuickEyesRunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/QuickEyesRunTests.swift; sourceTree = SOURCE_ROOT; };
 		6AC3CFEA0009500100000030 /* ReminiscenceDeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/ReminiscenceDeckTests.swift; sourceTree = SOURCE_ROOT; };
 		4BE180630A87047600000033 /* ReminiscenceSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/ReminiscenceSessionTests.swift; sourceTree = SOURCE_ROOT; };
+		2E717D854509515A0000002A /* RiddleDeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/RiddleDeckTests.swift; sourceTree = SOURCE_ROOT; };
 		690FA2BE3DFB9D180000002D /* RoundProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/RoundProgressTests.swift; sourceTree = SOURCE_ROOT; };
 		CDDCB81B01A478280000002B /* SayingsDeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/SayingsDeckTests.swift; sourceTree = SOURCE_ROOT; };
 		66D3C1612A1009B70000002E /* SayingsStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteVivaTests/SayingsStringsTests.swift; sourceTree = SOURCE_ROOT; };
@@ -409,6 +425,8 @@
 				88F600D269255E8500000016 /* MemoryDeal.swift */,
 				250E769752DD6A430000001B /* MemoryMatchView.swift */,
 				86AF3B4C1D5F21E500000013 /* MissCue.swift */,
+				55D7B6EB8CF19EC80000001D /* NumberSlidePuzzle.swift */,
+				85DDDA645134A8390000001B /* NumberSlideView.swift */,
 				1C4D45FC480DA5090000001F /* NumberTrailQuestion.swift */,
 				9E49DBFF3D3315DE0000001D /* PegSolitaireBoard.swift */,
 				C19E16EF7A4512B90000001C /* PegSolitaireView.swift */,
@@ -420,6 +438,10 @@
 				7A9D512184D7D07E0000001C /* ReminiscenceDeck.swift */,
 				11EA4E85E31685D60000001C /* ReminiscenceView.swift */,
 				3A7FB2C68C28E13F0000001E /* RepeatSequenceView.swift */,
+				8FDBC592BFCD4EB300000016 /* RiddleDeck.swift */,
+				66A3ED6B34F0280300000016 /* RiddleView.swift */,
+				22C5175D1E9E9D450000001A /* RiddlesEnglish.swift */,
+				93E5F547A5E8E8C50000001A /* RiddlesSpanish.swift */,
 				CF92BF2CF2BF92D800000018 /* RoundCounter.swift */,
 				FA861EB6D0E1583C00000013 /* Sayings.swift */,
 				9F0F3C38239D199500000017 /* SayingsDeck.swift */,
@@ -536,6 +558,7 @@
 				D55FC27F498CD0780000002A /* MemoryDealTests.swift */,
 				5CECEA05CC9D6BF000000031 /* MemoryMatchLevelsTests.swift */,
 				982802FDA721007D0000002C /* MemoryPhotosTests.swift */,
+				060B0C27874AA93700000031 /* NumberSlidePuzzleTests.swift */,
 				7B15A3FA40FC93B400000033 /* NumberTrailQuestionTests.swift */,
 				83C62977BDFEFF990000002F /* OnboardingStepsTests.swift */,
 				35341DEF1F26544E00000031 /* OnboardingStringsTests.swift */,
@@ -551,6 +574,7 @@
 				715CB74CE2E513E50000002C /* QuickEyesRunTests.swift */,
 				6AC3CFEA0009500100000030 /* ReminiscenceDeckTests.swift */,
 				4BE180630A87047600000033 /* ReminiscenceSessionTests.swift */,
+				2E717D854509515A0000002A /* RiddleDeckTests.swift */,
 				690FA2BE3DFB9D180000002D /* RoundProgressTests.swift */,
 				CDDCB81B01A478280000002B /* SayingsDeckTests.swift */,
 				66D3C1612A1009B70000002E /* SayingsStringsTests.swift */,
@@ -661,6 +685,8 @@
 				2C26F128CAE066EF0000001C /* MemoryDeal.swift in Sources */,
 				18180C4157C1561D00000021 /* MemoryMatchView.swift in Sources */,
 				3B89FA1FCE6129CF00000019 /* MissCue.swift in Sources */,
+				47CC96146E92854A00000023 /* NumberSlidePuzzle.swift in Sources */,
+				8036CB71939131F300000021 /* NumberSlideView.swift in Sources */,
 				253F249A6FF746A300000025 /* NumberTrailQuestion.swift in Sources */,
 				5FF0E0B93B7278B000000023 /* PegSolitaireBoard.swift in Sources */,
 				26AC903D2D17E87300000022 /* PegSolitaireView.swift in Sources */,
@@ -672,6 +698,10 @@
 				AD020DC30561DD5000000022 /* ReminiscenceDeck.swift in Sources */,
 				A87005C5B52DA39800000022 /* ReminiscenceView.swift in Sources */,
 				CD2EA82032FB0E6900000024 /* RepeatSequenceView.swift in Sources */,
+				6118445E9C42B8AD0000001C /* RiddleDeck.swift in Sources */,
+				49C60E028C27695D0000001C /* RiddleView.swift in Sources */,
+				1ED3050CCCC25C2F00000020 /* RiddlesEnglish.swift in Sources */,
+				72D1B6BEF6322BAF00000020 /* RiddlesSpanish.swift in Sources */,
 				4ABB42872988EB3A0000001E /* RoundCounter.swift in Sources */,
 				C9F0638D4C5D8F2E00000019 /* Sayings.swift in Sources */,
 				6C996EBFBA06751F0000001D /* SayingsDeck.swift in Sources */,
@@ -784,6 +814,7 @@
 				6B009816AE0FE1DA00000030 /* MemoryDealTests.swift in Sources */,
 				A34345BFC3478D0200000037 /* MemoryMatchLevelsTests.swift in Sources */,
 				19A5511F2D9320B700000032 /* MemoryPhotosTests.swift in Sources */,
+				C8C7DF56C631A07100000037 /* NumberSlidePuzzleTests.swift in Sources */,
 				4E437CEEEEB1E47600000039 /* NumberTrailQuestionTests.swift in Sources */,
 				EB52E9FDB69CB05300000035 /* OnboardingStepsTests.swift in Sources */,
 				74DF40655A8016C000000037 /* OnboardingStringsTests.swift in Sources */,
@@ -799,6 +830,7 @@
 				D05B673434600BCF00000032 /* QuickEyesRunTests.swift in Sources */,
 				8014E3CE95A477CB00000036 /* ReminiscenceDeckTests.swift in Sources */,
 				F54A8747C07E0F3800000039 /* ReminiscenceSessionTests.swift in Sources */,
+				1F391AF1EA4F16DC00000030 /* RiddleDeckTests.swift in Sources */,
 				F3781E2CF00E20FA00000033 /* RoundProgressTests.swift in Sources */,
 				FB1929E3C0D7D72A00000031 /* SayingsDeckTests.swift in Sources */,
 				F7D49C3705471CF100000034 /* SayingsStringsTests.swift in Sources */,

@@ -17,7 +17,7 @@ final class GameIDTests: XCTestCase {
             Set(raw).subtracting(existing),
             [
                 "repeat_sequence", "tangram", "tile_pairs", "sliding_blocks", "photo_captions", "word_search", "loteria",
-                "peg_solitaire",
+                "riddles", "number_slide", "peg_solitaire",
             ])
     }
 
@@ -31,6 +31,8 @@ final class GameIDTests: XCTestCase {
         XCTAssertTrue(GameID.released.contains(.tangram))
         XCTAssertTrue(GameID.released.contains(.repeatSequence))
         XCTAssertTrue(GameID.released.contains(.loteria))
+        XCTAssertTrue(GameID.released.contains(.riddles))
+        XCTAssertTrue(GameID.released.contains(.numberSlide))
     }
 
     /// Home and the celebration card show a retro illustration per game (#373).
@@ -44,20 +46,22 @@ final class GameIDTests: XCTestCase {
             guard let slug = game.heroSlug else { continue }
             XCTAssertTrue(slugs.contains(slug), "\(game) hero slug \(slug)")
         }
-        // Colour Clash, Sudoku, Up or Down and Tile Pairs keep their emblem; Tangram, Sliding
-        // Blocks, Number Trail, Quick Eyes and the photo game (.reminiscence) show a drawn mini board (#512),
+        // Colour Clash, Sudoku, Up or Down, Tile Pairs and Riddles (#551) keep their emblem; Tangram, Sliding
+        // Blocks, Number Slide, Number Trail, Quick Eyes and the photo game (.reminiscence) show a drawn mini board (#512),
         // and so does Lotería (#548), a tabla with beans.
         let emblemOnly = GameID.allCases.filter { $0.heroSlug == nil }
         XCTAssertEqual(
             Set(emblemOnly),
             [
-                .stroop, .sudoku, .upOrDown, .tilePairs, .tangram, .slidingBlocks, .mathStreaks, .quickEyes, .reminiscence,
+                .stroop, .sudoku, .upOrDown, .tilePairs, .riddles, .tangram, .slidingBlocks, .numberSlide, .mathStreaks,
+                .quickEyes,
+                .reminiscence,
                 .pegSolitaire,
                 .wordSearch,
                 .loteria,
             ])
-        // Home draws Emblem.boards at picture size, so it must be exactly the drawn games minus the four plain emblems.
-        XCTAssertEqual(Set(emblemOnly), Emblem.boards.union([.stroop, .sudoku, .upOrDown, .tilePairs]))
+        // Home draws Emblem.boards at picture size, so it must be exactly the drawn games minus the five plain emblems.
+        XCTAssertEqual(Set(emblemOnly), Emblem.boards.union([.stroop, .sudoku, .upOrDown, .tilePairs, .riddles]))
     }
 
     func testGivenGamesWithHeroThenPicturesAreDistinct() {
