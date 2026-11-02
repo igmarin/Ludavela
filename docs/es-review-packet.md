@@ -1,7 +1,7 @@
 # ES review packet — for the native-speaker pass (#12)
 
 Hand this whole file to the reviewer. Generated from `Localizable.xcstrings`
-(821 user-facing strings; keys that are only format specifiers are omitted).
+(822 user-facing strings; keys that are only format specifiers are omitted).
 Rows already signed off on #12 are pre-marked ✅.
 Regenerate after any string change: `python3 tools/generate_es_packet.py`.
 
@@ -68,7 +68,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `family.photos.remove.cancel` | Keep it | Dejarla | FamilyPhotoCaptionSheet |  |
 | `family.photos.remove.confirm` | Remove this photo and its name? | ¿Quitar esta foto y su nombre? | FamilyPhotoCaptionSheet |  |
 | `family.photos.unreadable %lld` | one: %lld photo couldn't be used. Try another one. / other: %lld photos couldn't be used. Try other ones. | one: %lld foto no se pudo usar. Prueba con otra. / other: %lld fotos no se pudieron usar. Prueba con otras. | SetUpView |  |
-| `family.photos.why` | Faces, places and pets you love make Memory Lane, Names and Faces and Photo Stories feel like yours. | Caras, lugares y mascotas que quieres hacen que Camino de Memoria, Nombres y Caras e Historias en fotos se sientan tuyos. | SetUpView |  |
+| `family.photos.why` | Faces, places and pets you love make Memory Lane, Names and Faces and Photo Stories feel like yours. | Caras, lugares y mascotas queridos hacen que Camino de Memoria, Nombres y Caras e Historias en fotos se sientan tuyos. | SetUpView |  |
 | `family.pinned` | set by you | elegido por ti | SetUpView |  |
 | `family.share` | Share with family | Compartir con la familia | MyProgressView |  |
 | `family.share.hint` | Sends these numbers as a text message | Envía estos números como un mensaje de texto | MyProgressView |  |
@@ -319,7 +319,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `history.share.games %lld` | 🎮 Games played: %lld | 🎮 Juegos jugados: %lld | WeeklySummary |  |
 | `history.share.hint` | Sends this week's games as a message | Envía los juegos de esta semana como mensaje | HistoryView |  |
 | `history.share.title` | 🌻 My week with MenteViva | 🌻 Mi semana con MenteViva | WeeklySummary |  |
-| `history.summary %lld` | one: You played %lld time this week! 🌟 / other: You played %lld times this week! 🌟 | one: ¡Jugaste %lld vez esta semana! 🌟 / other: ¡Jugaste %lld veces esta semana! 🌟 | HistoryView |  |
+| `history.summary %lld` | one: You played %lld time this week! / other: You played %lld times this week! | one: ¡Jugaste %lld vez esta semana! / other: ¡Jugaste %lld veces esta semana! | HistoryView |  |
 | `history.title` | My Week | Mi Semana | HistoryView, HomeView |  |
 | `history.today` | Today | Hoy | WeeklySummary |  |
 | `history.yesterday` | Yesterday | Ayer | WeeklySummary |  |
@@ -370,7 +370,8 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `onboarding.minutes.15` | 15 minutes | 15 minutos | — |  |
 | `onboarding.minutes.5` | 5 minutes | 5 minutos | — |  |
 | `onboarding.minutes.title` | How long a day? | ¿Cuánto tiempo al día? | OnboardingSteps |  |
-| `onboarding.next` | Next | Siguiente | OnboardingView |  |
+| `onboarding.next` | Next | Siguiente | OnboardingSteps |  |
+| `onboarding.next.hint` | Keeps what you picked and goes on. | Guarda lo que elegiste y sigue. | OnboardingSteps |  |
 | `onboarding.pace.calm` | Calm | Tranquilo | OnboardingSteps |  |
 | `onboarding.pace.challenge` | A challenge | Con reto | OnboardingSteps |  |
 | `onboarding.pace.normal` | Normal | Normal | OnboardingSteps |  |
@@ -380,8 +381,8 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `onboarding.photos.later` | Later, in Settings | Más tarde, en Ajustes | OnboardingView |  |
 | `onboarding.photos.later.hint` | Goes on without photos. You can add them any time in Settings. | Sigue sin fotos. Puedes añadirlas cuando quieras en Ajustes. | OnboardingView |  |
 | `onboarding.photos.title` | Add a few photos of people you love? | ¿Añadimos unas fotos de personas queridas? | OnboardingView |  |
-| `onboarding.skip` | Skip | Omitir | OnboardingView |  |
-| `onboarding.skip.hint` | Leaves this one unanswered. You can change it later in Settings, My plan. | Deja esta pregunta sin responder. Puedes cambiarla después en Ajustes, Mi plan. | OnboardingView |  |
+| `onboarding.skip` | Skip | Omitir | OnboardingSteps |  |
+| `onboarding.skip.hint` | Leaves this one unanswered. You can change it later in Settings, My plan. | Deja esta pregunta sin responder. Puedes cambiarla después en Ajustes, Mi plan. | OnboardingSteps |  |
 | `onboarding.start` | Let's play | A jugar | OnboardingView |  |
 | `onboarding.start.hint` | Opens the games | Abre los juegos | OnboardingView |  |
 | `onboarding.step %lld %lld` | Step %lld of %lld | Paso %lld de %lld | OnboardingView |  |
@@ -750,7 +751,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `settings.guides.done` | Done. You'll see them again. | Listo. Volverás a verlas. | SettingsView |  |
 | `settings.language` | Language | Idioma | AppLanguage, SettingsView |  |
 | `settings.language.restart` | The language changes right away. | El idioma cambia al instante. | SettingsView |  |
-| `settings.language.system` | Device | Sistema | AppLanguage |  |
+| `settings.language.system` | Same as my phone | Igual que el teléfono | AppLanguage |  |
 | `settings.open.hint` | Language, bigger text and privacy | Idioma, texto más grande y privacidad | HomeView |  |
 | `settings.privacy.backup %@` | A backup of this %@ may include your games. Your photos and their names are never included. | Una copia de seguridad de este %@ puede incluir tus partidas. Tus fotos y sus nombres nunca se incluyen. | SettingsView |  |
 | `settings.privacy.device %@` | Your games stay on this %@. | Tus juegos se quedan en este %@. | SettingsView |  |
