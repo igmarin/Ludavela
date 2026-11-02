@@ -1,7 +1,7 @@
 # ES review packet — for the native-speaker pass (#12)
 
 Hand this whole file to the reviewer. Generated from `Localizable.xcstrings`
-(822 user-facing strings; keys that are only format specifiers are omitted).
+(826 user-facing strings; keys that are only format specifiers are omitted).
 Rows already signed off on #12 are pre-marked ✅.
 Regenerate after any string change: `python3 tools/generate_es_packet.py`.
 
@@ -31,6 +31,10 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `about.row` | About | Acerca de | SettingsView |  |
 | `about.row.hint` | How the pictures and the app were made. | Cómo se hicieron las imágenes y la app. | SettingsView |  |
 | `about.title` | About MenteViva | Acerca de MenteViva | AboutView |  |
+| `about.why.p1` | I made MenteViva mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active. | Hice MenteViva, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa. | — |  |
+| `about.why.p2` | I also made it for myself, my sister and my nephews and nieces, because this illness runs in our family. I wanted something that invites us to exercise our minds through play, and I want to share it with everyone. | También la hice para mí, para mi hermana y para mis sobrinos, porque en nuestra familia esta enfermedad es hereditaria. Quería algo que nos invitara a ejercitar la mente jugando, y quiero compartirlo con todas las personas. | — |  |
+| `about.why.p3` | I hope that what I can build, with the help of AI, will keep not only my dad company, but as many people as possible. | Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible. | — |  |
+| `about.why.title` | Why I made MenteViva | Por qué hice MenteViva | — |  |
 | `album.title` | Your picture album | Tu álbum de imágenes | HistoryView |  |
 | `album.today %@` | Today's picture: %@. It's in your album. | La imagen de hoy: %@. Ya está en tu álbum. | DailyPictureCard |  |
 | `app.title` | MenteViva | MenteViva | HomeView, OnboardingView |  |
