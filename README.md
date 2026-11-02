@@ -3,12 +3,12 @@
 Warm, bilingual (EN/ES) fun mental exercise for older adults, built for one family first.
 
 Add your family's photos in Set up, and Memory Lane and Names and Faces play with them.
-Fourteen calm games, levels 1–10, offline and private. Big buttons, no countdown clocks,
+Fifteen calm games, levels 1–10, offline and private. Big buttons, no countdown clocks,
 no fail shame: "Almost, try again", never "wrong".
 
 ## Status
 
-**14 games playable**, offline-first, EN and ES complete. See [CHANGELOG.md](CHANGELOG.md)
+**15 games playable**, offline-first, EN and ES complete. See [CHANGELOG.md](CHANGELOG.md)
 for what changed, [docs/roadmap.md](docs/roadmap.md) for what's next, and
 [GitHub issues](https://github.com/igmarin/menteviva/issues) for live work.
 
@@ -29,6 +29,7 @@ for what changed, [docs/roadmap.md](docs/roadmap.md) for what's next, and
 | Tangram | Fill the silhouette with seven tiles |
 | Tile Pairs | Find two free tiles that match |
 | Sliding Blocks | Slide the blocks to free the big one |
+| Number Slide | Rompecocos, the 15-number sliding puzzle: put the numbers in order on a 3×3 or 4×4 board |
 | Names and Faces | Match each family photo to its caption |
 
 Home marks today's picks and each game reads the daily difficulty. Both are

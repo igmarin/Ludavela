@@ -58,7 +58,7 @@ nonisolated enum DailyPolicy {
         .memoryMatch: 1.0, .quickEyes: 0.8, .categoryFluency: 0.7, .stroop: 0.55, .mathStreaks: 0.55,
         .reminiscence: 0.7, .sudoku: 0.8, .upOrDown: 0.8, .sayings: 0.8,
         .repeatSequence: 0.8, .tangram: 0.8, .tilePairs: 0.8, .slidingBlocks: 0.8,
-        .photoCaptions: 0.8,
+        .photoCaptions: 0.8, .numberSlide: 0.8,
     ]
     static let gamesPerDay = 3
 
@@ -94,6 +94,8 @@ nonisolated enum DailyPolicy {
         .slidingBlocks: .attention,
         /// Names and Faces: whose name goes with whose photo.
         .photoCaptions: .memory,
+        /// Number Slide: the slides that put the numbers in order, planned like Sliding Blocks.
+        .numberSlide: .attention,
     ]
 
     /// A game in a chosen area counts this much more in the mix score. Only the order of the scores
@@ -129,7 +131,7 @@ nonisolated enum DailyPolicy {
     }
 
     /// Per-game strong/weak accuracy. Defaults are 0.90 / 0.65; Memory Lane,
-    /// Names and Faces, and Sliding Blocks differ. Each entry has a /// so the choice is
+    /// Names and Faces, Sliding Blocks and Number Slide differ. Each entry has a /// so the choice is
     /// auditable without opening another file.
     static let thresholds: [GameID: Threshold] = [
         /// Memory Lane counts moves as attempts and pairs as correct
@@ -159,6 +161,9 @@ nonisolated enum DailyPolicy {
         /// Names and Faces counts moves as attempts and pairs as correct, like Memory Lane, so it
         /// takes Memory Lane's thresholds.
         .photoCaptions: Threshold(strong: 0.65, weak: 0.45),
+        /// Number Slide counts fewest moves over moves made, like Sliding Blocks, so it takes Sliding
+        /// Blocks' thresholds: about 1.4 times the fewest moves climbs, past 2.5 times eases.
+        .numberSlide: Threshold(strong: 0.70, weak: 0.40),
     ]
 
     /// Strong accuracy for a game (at or above counts as strong).

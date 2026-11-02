@@ -1,0 +1,305 @@
+import SwiftData
+import SwiftUI
+
+/// Rompecocos / Number Slide (#547): the 15-number sliding puzzle, drawn as the wooden tray and
+/// cream tiles of the toy. Tap a tile in the gap's row or column and it slides, pushing the tiles
+/// between it and the gap, as a thumb does on the real one; a swipe toward the gap does the same.
+/// Each tile that can move shows a small arrow toward the gap, so the cue never rests on colour.
+/// The rules live in `NumberSlidePuzzle` and `NumberSlideSolver`; this view owns taps, drawing and
+/// the celebration. A tap that can't move anything does nothing and counts nothing, so there is no
+/// miss copy at all.
+struct NumberSlideView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var typeSize
+
+    /// Re-read on every deal, so "Play again" follows a level change.
+    @State private var difficulty = Difficulty.stored(.numberSlide)
+    @State private var puzzle: NumberSlidePuzzle?
+    /// The deal's fewest moves, recorded as `correct`. Worked out off the main thread at the deal
+    /// (up to half a second on the hardest 4×4 deals), long before anyone finishes.
+    @State private var fewest: Task<Int, Never>?
+    /// The tile "Show me a move" just slid, ringed in amber until the next move, so the eye finds
+    /// it even when Reduce Motion lands it at once.
+    @State private var shownTile: Int?
+    @State private var hintsUsed = 0
+    @State private var startedAt = Date.now
+    @State private var showCelebration = false
+    @State private var finalDetail = ""
+
+    private var instruction: String { AppLanguage.localized("game.numberslide.instruction") }
+    private var hasMoved: Bool { (puzzle?.movesMade ?? 0) > 0 }
+
+    var body: some View {
+        VStack(spacing: 16) {
+            LevelExplainBanner(game: GameID.numberSlide, hasStarted: hasMoved, keepsSpace: true)
+            Text(instruction)
+                .font(.title2)
+                .multilineTextAlignment(.center)
+
+            board
+                .frame(minHeight: 300)
+
+            controls
+        }
+        .gameColumn()
+        .padding()
+        .fitOrScroll()
+        .gameHeader(.numberSlide, instruction: instruction, inProgress: hasMoved, celebrating: showCelebration)
+        .firstPlayGuide(
+            .numberSlide, line: AppLanguage.localized("game.numberslide.guide"),
+            example: AppLanguage.localized("guide.numberslide.example")
+        )
+        .onAppear { if puzzle == nil { deal() } }
+        .onDisappear { fewest?.cancel() }
+        .celebration(isPresented: $showCelebration, game: .numberSlide, detail: finalDetail, onPlayAgain: deal)
+    }
+
+    // MARK: - Board
+
+    /// The tray's wooden rim around the tiles, in points.
+    private let rim: CGFloat = 10
+
+    private var board: some View {
+        GeometryReader { proxy in
+            if let puzzle {
+                let inner = CGSize(width: proxy.size.width - 2 * rim, height: proxy.size.height - 2 * rim)
+                let cell = SlidingBoardLayout.cellSize(in: inner, columns: puzzle.size, rows: puzzle.size)
+                let side = cell * CGFloat(puzzle.size)
+                let guideCell = FirstPlayGuideStore.shouldShow(.numberSlide) ? guideTile(in: puzzle) : nil
+                ZStack(alignment: .topLeading) {
+                    // The tray's floor: what shows through the gap, a dark recess in the wood.
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.black.opacity(0.38))
+                        .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.black.opacity(0.3), lineWidth: 3))
+                        .frame(width: side, height: side)
+                        .accessibilityHidden(true)
+                    gapLabel(in: puzzle, cell: cell)
+                    ForEach(1..<puzzle.tiles.count, id: \.self) { number in
+                        tile(number, in: puzzle, cell: cell, isGuideTarget: guideCell == puzzle.tiles.firstIndex(of: number))
+                    }
+                }
+                .frame(width: side, height: side)
+                .padding(rim)
+                .background(Wood.tray, in: RoundedRectangle(cornerRadius: 16))
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.25), radius: 0, x: 3, y: 3)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+        }
+        .accessibilityElement(children: .contain)
+    }
+
+    /// One tile: cream wood with its number in the game's crimson, a print shadow, and a small
+    /// arrow on the edge facing the gap when it can slide.
+    private func tile(_ number: Int, in puzzle: NumberSlidePuzzle, cell: CGFloat, isGuideTarget: Bool) -> some View {
+        let index = puzzle.tiles.firstIndex(of: number) ?? 0
+        let direction = puzzle.direction(ofTileAt: index)
+        let shape = RoundedRectangle(cornerRadius: cell * 0.14)
+        let isShown = shownTile == number
+        return
+            shape
+            .fill(LinearGradient(colors: [Wood.faceLight, Wood.face], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .overlay(shape.strokeBorder(isShown ? Color.amber : Wood.edge, lineWidth: isShown ? 5 : 1.5))
+            .overlay {
+                Text(verbatim: "\(number)")
+                    .font(.system(size: cell * 0.44, weight: .heavy, design: .rounded))
+                    .foregroundStyle(Wood.number)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+            }
+            .overlay(alignment: direction.map(Self.edge) ?? .center) {
+                if let direction {
+                    Image(systemName: direction.arrowSymbol)
+                        .font(.system(size: max(11, cell * 0.12), weight: .black))
+                        .foregroundStyle(Wood.number.opacity(0.75))
+                        .padding(cell * 0.035)
+                }
+            }
+            .compositingGroup()
+            .shadow(color: .black.opacity(0.3), radius: 0, x: 2, y: 3)
+            .padding(3)
+            .frame(width: cell, height: cell)
+            .contentShape(Rectangle())
+            .position(x: (CGFloat(index % puzzle.size) + 0.5) * cell, y: (CGFloat(index / puzzle.size) + 0.5) * cell)
+            .guideTarget(isGuideTarget)
+            // The one place a move animates. Reduce Motion: the tiles land at once (issue spec).
+            .animation(reduceMotion ? nil : .easeOut(duration: 0.16), value: puzzle.tiles)
+            .onTapGesture { slide(at: index) }
+            // A swipe counts only toward the gap; any other way does nothing.
+            .gesture(
+                DragGesture(minimumDistance: 16).onEnded { value in
+                    if Self.swipe(value.translation) == direction { slide(at: index) }
+                }
+            )
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(
+                AppLanguage.localized(
+                    "game.numberslide.tile \(number) \(index / puzzle.size + 1) \(index % puzzle.size + 1)"
+                        as String.LocalizationValue)
+            )
+            .accessibilityAddTraits(direction == nil ? [] : .isButton)
+            // Read in board order, whatever order the tiles are drawn in.
+            .accessibilitySortPriority(Double(puzzle.tiles.count - index))
+            // VoiceOver hears only the slide this tile can make now, named by its way (issue spec).
+            .accessibilityActions {
+                if let direction {
+                    Button(AppLanguage.localized("game.sliding.move.\(direction.rawValue)")) { slide(at: index) }
+                }
+            }
+    }
+
+    /// The gap, as an element VoiceOver can find: "empty space, row 4, column 4".
+    private func gapLabel(in puzzle: NumberSlidePuzzle, cell: CGFloat) -> some View {
+        let gap = puzzle.gap
+        return Color.clear
+            .frame(width: cell, height: cell)
+            .position(x: (CGFloat(gap % puzzle.size) + 0.5) * cell, y: (CGFloat(gap / puzzle.size) + 0.5) * cell)
+            .accessibilityElement()
+            .accessibilityLabel(
+                AppLanguage.localized(
+                    "game.numberslide.gap \(gap / puzzle.size + 1) \(gap % puzzle.size + 1)" as String.LocalizationValue)
+            )
+            .accessibilitySortPriority(Double(puzzle.tiles.count - gap))
+            .allowsHitTesting(false)
+    }
+
+    /// The tile the first-play guide rings: the one that slides next on the way home.
+    private func guideTile(in puzzle: NumberSlidePuzzle) -> Int? {
+        NumberSlideSolver.hint(from: puzzle)
+    }
+
+    /// Where a tile's arrow sits: on the edge that faces the gap, and for a sideways slide in the
+    /// lower corner, clear of a two-digit number on the smallest phones.
+    nonisolated private static func edge(_ direction: SlidingDirection) -> Alignment {
+        switch direction {
+        case .up: .top
+        case .down: .bottom
+        case .left: .bottomLeading
+        case .right: .bottomTrailing
+        }
+    }
+
+    /// The way a finished swipe went, by its longer axis.
+    nonisolated private static func swipe(_ translation: CGSize) -> SlidingDirection {
+        if abs(translation.width) > abs(translation.height) { return translation.width > 0 ? .right : .left }
+        return translation.height > 0 ? .down : .up
+    }
+
+    // MARK: - Controls
+
+    /// The three 100pt buttons in a row, as in Sliding Blocks; at the accessibility text sizes, one
+    /// per row, so no word is split.
+    @ViewBuilder
+    private var controls: some View {
+        if typeSize.isAccessibilitySize {
+            VStack(spacing: 12) { buttons }
+        } else {
+            HStack(spacing: 12) { buttons }
+        }
+    }
+
+    @ViewBuilder
+    private var buttons: some View {
+        controlButton("game.sliding.undo", enabled: !(puzzle?.history.isEmpty ?? true) && !isSolved, action: undo)
+        controlButton("game.sliding.restart", enabled: hasMoved && !isSolved, action: startOver)
+        controlButton("game.sliding.hint", enabled: puzzle != nil && !isSolved, action: showMove)
+    }
+
+    private var isSolved: Bool { puzzle?.isSolved ?? false }
+
+    /// A label that would split a word on a narrow phone ("Muéstrame un paso" on an iPhone SE)
+    /// shrinks a little to keep to two whole-word lines instead.
+    private func controlButton(_ key: String, enabled: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(AppLanguage.localized(key))
+                .font(.title2.weight(.semibold))
+                .multilineTextAlignment(.center)
+                .lineLimit(typeSize.isAccessibilitySize ? nil : 2)
+                .minimumScaleFactor(0.7)
+        }
+        .buttonStyle(AnswerTileStyle(minHeight: 100))
+        .disabled(!enabled)
+    }
+
+    // MARK: - Play
+
+    /// A tap (or a VoiceOver action) on the tile at `cell`. A solved board takes no more moves, so
+    /// the session is recorded once.
+    private func slide(at cell: Int, shown: Bool = false) {
+        guard var current = puzzle, !current.isSolved else { return }
+        let number = current.tiles[cell]
+        guard current.slide(at: cell) else { return }
+        puzzle = current
+        shownTile = shown ? number : nil
+        Feedback.play(.tap)
+        if current.isSolved { finish(solved: current) }
+    }
+
+    private func undo() {
+        guard var current = puzzle, current.undo() else { return }
+        puzzle = current
+        shownTile = nil
+        Feedback.play(.tap)
+    }
+
+    private func startOver() {
+        guard var current = puzzle, current.movesMade > 0 else { return }
+        current.startOver()
+        puzzle = current
+        hintsUsed = 0
+        shownTile = nil
+        Feedback.play(.tap)
+    }
+
+    /// "Show me a move": the next slide of a short solution is played for the player; each shown
+    /// move adds one attempt on top of the move itself.
+    private func showMove() {
+        guard let current = puzzle, let cell = NumberSlideSolver.hint(from: current) else { return }
+        hintsUsed += 1
+        slide(at: cell, shown: true)
+    }
+
+    private func deal() {
+        difficulty = Difficulty.stored(.numberSlide)
+        var generator = SystemRandomNumberGenerator()
+        let fresh = NumberSlidePuzzle.deal(for: difficulty, using: &generator)
+        puzzle = fresh
+        hintsUsed = 0
+        shownTile = nil
+        startedAt = .now
+        fewest?.cancel()
+        fewest = Task.detached(priority: .userInitiated) { NumberSlideSolver.fewestMoves(from: fresh) }
+    }
+
+    /// All in order: record the session with its level (issue spec), then the shared celebration
+    /// says it warmly. The fewest moves are long since worked out; waiting for them keeps the
+    /// session and the celebration's level offer in step.
+    private func finish(solved: NumberSlidePuzzle) {
+        let elapsed = Int(Date.now.timeIntervalSince(startedAt))
+        let (level, hints, work) = (difficulty, hintsUsed, fewest)
+        Task { @MainActor in
+            let best = await work?.value ?? solved.movesMade
+            modelContext.record(solved.session(level: level, fewestMoves: best, hints: hints, seconds: elapsed))
+            finalDetail = AppLanguage.localized("game.numberslide.done")
+            if CaptionSpeaker.autoSpeaks() { CaptionSpeaker.speak(finalDetail) }
+            AccessibilityNotification.Announcement(finalDetail).post()
+            showCelebration = true
+        }
+    }
+}
+
+/// The toy's colours. The tiles stay cream wood with crimson numbers in dark mode too, because they
+/// are the object, not the page; the tray is the game's ink, a shade deeper in dark mode so the
+/// cream tiles stand out on the dark surround. Number on face: 5.6:1.
+private enum Wood {
+    static let tray = Color(light: 0xA3283C, dark: 0x7E1F2F)
+    static let face = Color(UIColor(rgb: 0xF6E2B8))
+    static let faceLight = Color(UIColor(rgb: 0xFFF6E0))
+    static let edge = Color(UIColor(rgb: 0x8A6A3A)).opacity(0.45)
+    static let number = Color(UIColor(rgb: 0xA3283C))
+}
+
+#Preview {
+    NumberSlideView()
+}
