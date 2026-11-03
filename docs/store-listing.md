@@ -20,9 +20,13 @@ to both; the player never sees a sales pitch inside the app.
 
 ## Metadata
 
+The public name is Ludavela (#565). Update the existing App Store Connect record
+in both localizations; keep its bundle ID. Name-search limits and the release
+handoff are in [name-screening-2026-11-02.md](name-screening-2026-11-02.md).
+
 | Field | EN | ES |
 |---|---|---|
-| Name | MenteViva | MenteViva |
+| Name | Ludavela | Ludavela |
 | Subtitle (≤ 30) | Fun mental exercise | Ejercicio mental divertido |
 | Primary category | Games › Puzzle | |
 | Secondary category | Games › Family | |
@@ -55,7 +59,7 @@ category matches how the app is often installed: by someone in the family, for s
 
 Fun mental exercise, at your own pace.
 
-MenteViva is nineteen calm games, each a different kind of thinking. Big buttons, clear colours, and
+Ludavela is nineteen calm games, each a different kind of thinking. Big buttons, clear colours, and
 no countdown clock. When a move doesn't fit, it says "almost", never "wrong". Some games show
 one example move the first time, so anyone can start on their own.
 
@@ -80,14 +84,14 @@ PRIVATE BY DESIGN
 • Works fully offline, no account
 • Nothing leaves your device: no tracking, no analytics
 
-MenteViva is entertainment and mental exercise. It is not a medical device and does not diagnose or
+Ludavela is entertainment and mental exercise. It is not a medical device and does not diagnose or
 treat any condition. If you have a concern about memory, yours or a loved one's, talk to a doctor.
 
 ## Description — Spanish
 
 Ejercicio mental divertido, a tu ritmo.
 
-MenteViva son diecinueve juegos tranquilos, cada uno para un tipo distinto de pensamiento. Botones grandes,
+Ludavela son diecinueve juegos tranquilos, cada uno para un tipo distinto de pensamiento. Botones grandes,
 colores claros y sin cuenta regresiva. Cuando una jugada no encaja, dice «casi», nunca «mal».
 Algunos juegos muestran una jugada de ejemplo la primera vez, para que cualquiera empiece por
 su cuenta.
@@ -113,7 +117,7 @@ PRIVADO DESDE EL DISEÑO
 • Funciona sin conexión, sin cuenta
 • Nada sale de tu dispositivo: sin rastreo, sin analíticas
 
-MenteViva es entretenimiento y ejercicio mental. No es un dispositivo médico y no diagnostica ni trata
+Ludavela es entretenimiento y ejercicio mental. No es un dispositivo médico y no diagnostica ni trata
 ninguna enfermedad. Si te preocupa la memoria, la tuya o la de un ser querido, consulta a un médico.
 
 ## Screenshots
@@ -168,7 +172,7 @@ Result: **4+**.
 
 ## Notes for App Review
 
-> MenteViva is a free set of calm puzzle and card games for adults, in English and Spanish. It has no
+> Ludavela is a free set of calm puzzle and card games for adults, in English and Spanish. It has no
 > account, no ads, no in-app purchases and no network requests: everything stays on the device. It is
 > a general wellness game, "fun mental exercise". It makes no medical claims and does not diagnose
 > or treat anything; Settings → Why these games explains this with sources. To review: open the app,

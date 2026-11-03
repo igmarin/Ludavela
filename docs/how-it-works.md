@@ -1,4 +1,4 @@
-# How MenteViva works
+# How Ludavela works
 
 A tour of the app for someone new to the code. Rules live in [conventions.md](conventions.md), reasons in
 [decisions.md](decisions.md); this doc only says what happens, and where.

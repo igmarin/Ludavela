@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Instructions for AI agents (and humans in a hurry) working on MenteViva.
+Instructions for AI agents (and humans in a hurry) working on Ludavela (source project: MenteViva).
 
 ## Read first, in order
 

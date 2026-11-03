@@ -68,16 +68,16 @@ Notes for the reviewer:
 - **D.** The Global Council on Brain Health link is the organisation's home page. The docs mark a direct
   link to its 2019 report as unverified.
 
-## 3. What MenteViva is not
+## 3. What Ludavela is not
 
 | Key | English | Español | Source |
 |---|---|---|---|
-| `why.not.title` | What MenteViva is not | Lo que MenteViva no es | n/a |
-| `why.not.device` | MenteViva is not a medical device. | MenteViva no es un dispositivo médico. | [FDA wellness policy](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-wellness-policy-low-risk-devices) |
+| `why.not.title` | What Ludavela is not | Lo que Ludavela no es | n/a |
+| `why.not.device` | Ludavela is not a medical device. | Ludavela no es un dispositivo médico. | [FDA wellness policy](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-wellness-policy-low-risk-devices) |
 | `why.not.test` | It is not a test. It never gives you a result about your mind, and it never gives a diagnosis. | No es una prueba. Nunca te da un resultado sobre tu mente ni un diagnóstico. | `research-2026-09.md` §5 item 2 (our own policy, not a finding) |
 | `why.not.advice` | This is educational information, not medical advice. | Esta es información educativa, no consejo médico. | [FDA wellness policy](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/general-wellness-policy-low-risk-devices) |
 | `why.not.doctor` | If something worries you about your memory, please talk to a doctor. | Si algo te preocupa de tu memoria, habla con un médico. | `research-2026-09.md` §5 item 1 (our own policy, not a finding) |
-| `why.not.fun` | MenteViva is a fun mental exercise. We hope it gives you a good moment each day. | MenteViva es un ejercicio mental divertido. Esperamos que te dé un buen rato cada día. | `statistics-rationale.md` §4 (copy ceiling) |
+| `why.not.fun` | Ludavela is a fun mental exercise. We hope it gives you a good moment each day. | Ludavela es un ejercicio mental divertido. Esperamos que te dé un buen rato cada día. | `statistics-rationale.md` §4 (copy ceiling) |
 
 ---
 

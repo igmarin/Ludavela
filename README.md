@@ -1,4 +1,4 @@
-# MenteViva
+# Ludavela
 
 Warm, bilingual (EN/ES) fun mental exercise for older adults, built for one family first.
 
@@ -60,6 +60,7 @@ uses no AI at runtime.
 ## Build
 
 Requires Xcode 16+, iOS 17+ target, zero third-party dependencies.
+The source project and scheme are still named `MenteViva`.
 
 ```sh
 swift tools/generate_project.swift   # regenerate project (local-only, the default)
@@ -111,7 +112,7 @@ never promises cognitive outcomes. That's the honest position and the legally sa
 The code and docs are licensed under the [Apache License 2.0](LICENSE); see [NOTICE](NOTICE).
 You may use, change and redistribute them, keeping the copyright and licence notices.
 
-The name **MenteViva** and the app icon are not covered by that licence (Apache-2.0 §6 grants
+The name **Ludavela** and the app icon are not covered by that licence (Apache-2.0 §6 grants
 no trademark rights). If you ship your own build, give it a different name and icon.
 
 Contributions are accepted under the same licence (Apache-2.0 §5).

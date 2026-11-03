@@ -306,7 +306,7 @@ let appSettings =
         ("SWIFT_ACTIVE_COMPILATION_CONDITIONS", localOnly ? "\"$(inherited) LOCAL_ONLY\"" : "\"$(inherited)\""),
         ("CURRENT_PROJECT_VERSION", "6"),
         ("GENERATE_INFOPLIST_FILE", "YES"),
-        ("INFOPLIST_KEY_CFBundleDisplayName", "\"MenteViva\""),
+        ("INFOPLIST_KEY_CFBundleDisplayName", "\"Ludavela\""),
         // No network and no custom crypto (AGENTS.md), so App Store Connect never asks the
         // export-compliance question again on each upload.
         ("INFOPLIST_KEY_ITSAppUsesNonExemptEncryption", "NO"),

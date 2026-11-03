@@ -1,7 +1,7 @@
 # ES review packet — for the native-speaker pass (#12)
 
 Hand this whole file to the reviewer. Generated from `Localizable.xcstrings`
-(941 user-facing strings; keys that are only format specifiers are omitted).
+(942 user-facing strings; keys that are only format specifiers are omitted).
 Rows already signed off on #12 are pre-marked ✅.
 Regenerate after any string change: `python3 tools/generate_es_packet.py`.
 
@@ -30,14 +30,14 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `about.pictures` | The pictures in this app were made with AI image tools, including Meta's Muse Image, and checked by a person. | Las imágenes de esta app se hicieron con herramientas de IA, entre ellas Muse Image de Meta, y las revisó una persona. | AboutView |  |
 | `about.row` | About | Acerca de | SettingsView |  |
 | `about.row.hint` | How the pictures and the app were made. | Cómo se hicieron las imágenes y la app. | SettingsView |  |
-| `about.title` | About MenteViva | Acerca de MenteViva | AboutView |  |
-| `about.why.p1` | I made MenteViva mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active. | Hice MenteViva, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa. | AboutView |  |
+| `about.title` | About Ludavela | Acerca de Ludavela | AboutView |  |
+| `about.why.p1` | I made Ludavela mainly for my dad. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active. | Hice Ludavela, sobre todo, para mi papá. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa. | AboutView |  |
 | `about.why.p2` | I also made it for myself, my sister and my nephews and nieces, because this illness runs in our family. I wanted something that invites us to exercise our minds through play, and I want to share it with everyone. | También la hice para mí, para mi hermana y para mis sobrinos, porque en nuestra familia esta enfermedad es hereditaria. Quería algo que nos invitara a ejercitar la mente jugando, y quiero compartirlo con todas las personas. | AboutView |  |
 | `about.why.p3` | I hope that what I can build, with the help of AI, will keep not only my dad company, but as many people as possible. | Espero que lo que sé hacer, con ayuda de la IA, sirva para acompañar no solo a mi papá, sino a la mayor cantidad de personas posible. | AboutView |  |
-| `about.why.title` | Why I made MenteViva | Por qué hice MenteViva | AboutView |  |
+| `about.why.title` | Why I made Ludavela | Por qué hice Ludavela | AboutView |  |
 | `album.title` | Your picture album | Tu álbum de imágenes | HistoryView |  |
 | `album.today %@` | Today's picture: %@. It's in your album. | La imagen de hoy: %@. Ya está en tu álbum. | DailyPictureCard |  |
-| `app.title` | MenteViva | MenteViva | HomeView, OnboardingView |  |
+| `app.title` | Ludavela | Ludavela | HomeView, OnboardingView |  |
 | `difficulty.level` | Level %lld | Nivel %lld | LoteriaDeal, PegSolitaireView, QuickEyesDeal, SetUpView, SlidingBlocksPuzzle, UpOrDownDeal, WordSearchView |  |
 | `family.auto` | set automatically | ajustado automáticamente | SetUpView |  |
 | `family.caption.field` | A name or a few words | Un nombre o unas palabras | FamilyPhotoCaptionSheet |  |
@@ -76,7 +76,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `family.pinned` | set by you | elegido por ti | SetUpView |  |
 | `family.share` | Share with family | Compartir con la familia | MyProgressView |  |
 | `family.share.hint` | Sends these numbers as a text message | Envía estos números como un mensaje de texto | MyProgressView |  |
-| `family.share.title` | MenteViva — how each game went this week | MenteViva — cómo fue cada juego esta semana | MyProgressView |  |
+| `family.share.title` | Ludavela — how each game went this week | Ludavela — cómo fue cada juego esta semana | MyProgressView |  |
 | `family.show` | Show on home | Mostrar en el inicio | SetUpView |  |
 | `family.show.last` | At least one game always stays on home. | Al menos un juego siempre queda en el inicio. | SetUpView |  |
 | `game.answer.right` | That's it! | ¡Eso es! | AnswerBeat, RepeatSequenceView, UpOrDownView |  |
@@ -147,6 +147,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `game.loteria.a11y.called %@` | Called card: %@ | Carta cantada: %@ | LoteriaView |  |
 | `game.loteria.a11y.marked %@` | %@, marked | %@, marcada | LoteriaView |  |
 | `game.loteria.a11y.open %@` | %@, not marked | %@, sin marcar | LoteriaView |  |
+| `game.loteria.a11y.position` | Row %lld, column %lld: %@. | Fila %lld, columna %lld: %@. | LoteriaView |  |
 | `game.loteria.call` | ¡Lotería! | ¡Lotería! | LoteriaView |  |
 | `game.loteria.goal.corners` | Goal: the four corners. | Meta: las cuatro esquinas. | LoteriaView |  |
 | `game.loteria.goal.full` | Goal: the whole board. | Meta: toda la tabla. | LoteriaView |  |
@@ -393,7 +394,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `history.share.days %lld` | 📅 Days played: %lld | 📅 Días que jugué: %lld | WeeklySummary |  |
 | `history.share.games %lld` | 🎮 Games played: %lld | 🎮 Juegos jugados: %lld | WeeklySummary |  |
 | `history.share.hint` | Sends this week's games as a message | Envía los juegos de esta semana como mensaje | HistoryView |  |
-| `history.share.title` | 🌻 My week with MenteViva | 🌻 Mi semana con MenteViva | WeeklySummary |  |
+| `history.share.title` | 🌻 My week with Ludavela | 🌻 Mi semana con Ludavela | WeeklySummary |  |
 | `history.summary %lld` | one: You played %lld time this week! / other: You played %lld times this week! | one: ¡Jugaste %lld vez esta semana! / other: ¡Jugaste %lld veces esta semana! | HistoryView |  |
 | `history.title` | My Week | Mi Semana | HistoryView, HomeView |  |
 | `history.today` | Today | Hoy | WeeklySummary |  |
@@ -914,7 +915,7 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `today.share` | Share today's games | Compartir los juegos de hoy | HomeView, TodayShare |  |
 | `today.share.footer` | Today's games, done. | Los juegos de hoy, listos. | TodayShare |  |
 | `today.share.hint` | Sends a short message; nothing else leaves the device | Envía un mensaje corto; nada más sale del dispositivo | HomeView |  |
-| `today.share.title` | MenteViva · %@ | MenteViva · %@ | TodayShare |  |
+| `today.share.title` | Ludavela · %@ | Ludavela · %@ | TodayShare |  |
 | `warmup.accept` | Let's play | Juguemos | MyPlanView, OnboardingView |  |
 | `warmup.accept.hint` | Deals three games for today. | Reparte tres juegos para hoy. | MyPlanView, OnboardingView |  |
 | `warmup.notnow` | Not now | Ahora no | OnboardingView |  |
@@ -941,12 +942,12 @@ Mark rows: ✅ fine / ✏️ suggestion (write the fix) / ❓ needs context (ask
 | `why.game.wordsearch` | Word Search exercises finding familiar words in a grid. | Sopa de letras ejercita encontrar palabras conocidas en una cuadrícula. | WhyTheseGamesView |  |
 | `why.games.title` | What each game exercises | Qué ejercita cada juego | WhyTheseGamesView |  |
 | `why.not.advice` | This is educational information, not medical advice. | Esta es información educativa, no consejo médico. | WhyTheseGamesView |  |
-| `why.not.device` | MenteViva is not a medical device. | MenteViva no es un dispositivo médico. | WhyTheseGamesView |  |
+| `why.not.device` | Ludavela is not a medical device. | Ludavela no es un dispositivo médico. | WhyTheseGamesView |  |
 | `why.not.doctor` | If something worries you about your memory, please talk to a doctor. | Si algo te preocupa de tu memoria, habla con un médico. | WhyTheseGamesView |  |
-| `why.not.fun` | MenteViva is a fun mental exercise. We hope it gives you a good moment each day. | MenteViva es un ejercicio mental divertido. Esperamos que te dé un buen rato cada día. | WhyTheseGamesView |  |
+| `why.not.fun` | Ludavela is a fun mental exercise. We hope it gives you a good moment each day. | Ludavela es un ejercicio mental divertido. Esperamos que te dé un buen rato cada día. | WhyTheseGamesView |  |
 | `why.not.test` | It is not a test. It never gives you a result about your mind, and it never gives a diagnosis. | No es una prueba. Nunca te da un resultado sobre tu mente ni un diagnóstico. | WhyTheseGamesView |  |
-| `why.not.title` | What MenteViva is not | Lo que MenteViva no es | WhyTheseGamesView |  |
-| `why.open.hint` | The research behind the games, and what MenteViva is not. | La investigación detrás de los juegos, y lo que MenteViva no es. | SettingsView |  |
+| `why.not.title` | What Ludavela is not | Lo que Ludavela no es | WhyTheseGamesView |  |
+| `why.open.hint` | The research behind the games, and what Ludavela is not. | La investigación detrás de los juegos, y lo que Ludavela no es. | SettingsView |  |
 | `why.research.bundle` | One large study of people aged 60 to 77 looked at games together with food, movement and a healthy routine, not games alone. | Un estudio grande con personas de 60 a 77 años miró los juegos junto con la comida, el movimiento y una rutina sana, no los juegos solos. | WhyTheseGamesView |  |
 | `why.research.promise` | So we promise you nothing. We offer pleasant mental exercise, at your pace. | Por eso no te prometemos nada. Te ofrecemos un ejercicio mental agradable, a tu ritmo. | WhyTheseGamesView |  |
 | `why.research.small` | In studies of older adults, computer games led to small gains, mostly on the very tasks people practised. | En estudios con personas mayores, los juegos de computadora dieron pequeños avances, sobre todo en las mismas tareas que se practicaron. | WhyTheseGamesView |  |

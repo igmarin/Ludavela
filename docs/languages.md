@@ -1,6 +1,6 @@
 # Next languages: shortlist and validators (#40)
 
-MenteViva ships in English and Spanish. This is the shortlist for the next
+Ludavela ships in English and Spanish. This is the shortlist for the next
 language, measured on 2026-10-28.
 
 **The rule (owner gate):** a language ships only when a named native speaker

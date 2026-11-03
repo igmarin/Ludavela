@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// "About MenteViva" (#378): says plainly how the pictures and the code were made and that
+/// "About Ludavela" (#378): says plainly how the pictures and the code were made and that
 /// nothing uses AI while someone plays, so players and App Store reviewers can read it in the app.
 ///
 /// The owner's story first (#552), then three short paragraphs in reading order under the bar's title, shown once (#531). The
