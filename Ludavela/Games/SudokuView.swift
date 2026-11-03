@@ -187,7 +187,7 @@ struct SudokuView: View {
         // Alternate boxes get a light tint so the boxes read at a glance.
         let shaded = (row / puzzle.boxRows + column / puzzle.boxColumns).isMultiple(of: 2)
         let value = puzzle.givens.contains(index) ? puzzle.solution[index] : entries[index]
-        let face = Text(verbatim: value.map { "\($0)" } ?? " ")
+        let face = Text(value.map { "\($0)" } ?? " ")
             .font(.system(size: digitSize, weight: puzzle.givens.contains(index) ? .bold : .semibold))
             .foregroundStyle(
                 puzzle.givens.contains(index) ? Color.primary : GameID.sudoku.ink.opacity(shown.contains(index) ? 0.55 : 1)
