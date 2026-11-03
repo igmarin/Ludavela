@@ -4,7 +4,7 @@ import Foundation
 /// apart from the Spanish ones, not translated. Twelve per tier; tiers 1-3 have answers with pictures.
 /// Nothing about illness, death or fear, and no double meanings beyond a plain pun ("ears" of corn).
 extension Riddles {
-    static let english: [Riddle] = book(
+    nonisolated static let english: [Riddle] = book(
         "en",
         [
             // Tier 1: very easy, two lines, pictures.

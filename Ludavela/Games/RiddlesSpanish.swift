@@ -4,7 +4,7 @@ import Foundation
 /// or its order. Twelve per tier; tiers 1-3 have answers with pictures. Nothing about illness, death or
 /// fear, and no double meanings.
 extension Riddles {
-    static let spanish: [Riddle] = book(
+    nonisolated static let spanish: [Riddle] = book(
         "es",
         [
             // Tier 1: very easy, two lines, pictures.
