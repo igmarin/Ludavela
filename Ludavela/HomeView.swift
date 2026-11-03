@@ -151,16 +151,15 @@ struct HomeView: View {
 
     private var todayColumn: some View {
         VStack(alignment: .leading, spacing: 6) {
-            // At accessibility sizes the date, greeting and status fill the first screen, so the
-            // date goes and the play button rises above the cards (#529).
+            // Leave room for the next action at accessibility sizes (#529).
             if !typeSize.isAccessibilitySize {
                 Text(Date.now, format: .dateTime.weekday(.wide).day().month(.wide))
                     .font(.title3.weight(.semibold))
+                Text(AppLanguage.localized(Greeting.key(hour: Calendar.current.component(.hour, from: .now))))
+                    .font(.largeTitle.bold())
+                    .fontDesign(.serif)
+                    .accessibilityAddTraits(.isHeader)
             }
-            Text(AppLanguage.localized(Greeting.key(hour: Calendar.current.component(.hour, from: .now))))
-                .font(.largeTitle.bold())
-                .fontDesign(.serif)
-                .accessibilityAddTraits(.isHeader)
             Text(statusLine)
                 .font(.title2.weight(.semibold))
             if !today.games.isEmpty {
