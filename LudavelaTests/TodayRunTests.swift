@@ -71,6 +71,12 @@ final class TodayRunTests: XCTestCase {
         XCTAssertEqual(today.next, .categoryFluency)
     }
 
+    func testGivenCachedPlanWithUnreleasedGameWhenRunThenItIsNotOffered() {
+        let today = TodayRun(plan: [.loteria, .memoryMatch], sessions: [], now: now, calendar: calendar)
+        XCTAssertEqual(today.games, [.memoryMatch])
+        XCTAssertEqual(today.next, .memoryMatch)
+    }
+
     func testGivenNoPlanYetWhenRunThenNothingIsNextAndTheDayIsNotFinished() {
         let today = TodayRun(plan: [], sessions: [played(.memoryMatch, hoursAgo: 1)], now: now, calendar: calendar)
         XCTAssertNil(today.next)

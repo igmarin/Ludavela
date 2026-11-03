@@ -22,9 +22,8 @@ nonisolated enum GameID: String, CaseIterable, Codable {
     case riddles = "riddles"
     case numberSlide = "number_slide"
 
-    /// Registered but not playable yet: kept out of the deal, Set up, progress and
-    /// Home until the game's view ships. That ticket removes its ID here.
-    static let unreleased: Set<GameID> = []
+    /// Games kept in the app and history but unavailable to play for now.
+    static let unreleased: Set<GameID> = [.loteria]
 
     /// The games a player can see, in `allCases` order.
     static var released: [GameID] { allCases.filter { !unreleased.contains($0) } }

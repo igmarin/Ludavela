@@ -58,7 +58,7 @@ docs/                 start at docs/README.md
 
 ## Current status
 
-- 19 games playable (the list is `GameID.swift` and README.md), levels 1–10 in every game but
+- 18 games playable (19 registered; Lotería is temporarily hidden), levels 1–10 in every game but
   Photo Stories; ES/EN complete; local-only build is the default.
 - **Daily picks and levels are decided on the device** (`DailyPolicy`, #101): no model, no network,
   no cost. The app no longer calls Jev (#195); `docs/jev-json/` and `docs/jev-integration.md` are history.
