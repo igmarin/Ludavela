@@ -1,4 +1,4 @@
-# Product Brief — MenteViva
+# Product Brief — Ludavela
 
 Current truth as of 2026-09-29. History and reasons: `decisions.md`.
 

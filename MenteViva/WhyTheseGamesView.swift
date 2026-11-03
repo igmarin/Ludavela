@@ -6,7 +6,7 @@ import SwiftUI
 /// listening can jump to the part they came for. The sentences are the approved ones, kept whole:
 /// this screen adds no claim of its own. Every line that rests on a source keeps that source beside
 /// it as a link whose label names where it goes — a listener has nothing else to go on — and the
-/// last line says what MenteViva is not, because a screen about memory is exactly where a promise
+/// last line says what Ludavela is not, because a screen about memory is exactly where a promise
 /// would be expected.
 struct WhyTheseGamesView: View {
     var body: some View {

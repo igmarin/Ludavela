@@ -1,5 +1,10 @@
 # IP clearance — games, names and assets
 
+**Current public app name (2026-11-02, #565): Ludavela.** See the
+[dated preliminary screen and its limits](name-screening-2026-11-02.md). The
+MenteViva row below records the old name and its historical 2026-10-27 search; it
+does not clear the new name. Other outstanding game-name and art findings remain.
+
 Every game and every asset passes this before it ships (decisions.md 2026-10-26). It keeps us close
 to safe; it is not legal advice. A one-hour review by an IP lawyer happens before the paid release,
 with this file as the input.

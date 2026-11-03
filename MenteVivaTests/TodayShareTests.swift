@@ -21,7 +21,7 @@ final class TodayShareTests: XCTestCase {
     func testGivenThreeFinishedGamesWhenBuildingShareTextThenEachGameHasOneLineWithCheck() {
         let lines = text(language: "en").components(separatedBy: "\n")
         XCTAssertEqual(lines.count, 5, "title, three games, footer")
-        XCTAssertTrue(lines[0].hasPrefix("MenteViva · "))
+        XCTAssertTrue(lines[0].hasPrefix("Ludavela · "))
         XCTAssertEqual(lines[1], "🧩 Memory Lane ✓")
         XCTAssertEqual(lines[2], "✏️ Sudoku ✓")
         XCTAssertEqual(lines[3], "💬 Finish the Saying ✓")
@@ -30,7 +30,7 @@ final class TodayShareTests: XCTestCase {
 
     func testGivenSpanishWhenBuildingShareTextThenTitleAndFooterAreSpanish() {
         let lines = text(language: "es").components(separatedBy: "\n")
-        XCTAssertTrue(lines[0].hasPrefix("MenteViva · "))
+        XCTAssertTrue(lines[0].hasPrefix("Ludavela · "))
         XCTAssertTrue(lines[0].contains("octubre"), "the date is in Spanish too")
         XCTAssertEqual(lines.last, "Los juegos de hoy, listos.")
     }

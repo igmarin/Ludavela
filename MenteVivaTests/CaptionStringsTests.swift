@@ -30,7 +30,7 @@ final class CaptionStringsTests: XCTestCase {
             try XCTUnwrap(localizations["es"]?["stringUnit"]?["value"]).contains("se excluyen de las nuevas copias de seguridad"))
     }
 
-    /// #552: the owner's "Why I made MenteViva" story exists in English and Spanish.
+    /// #552: the owner's "Why I made Ludavela" story exists in English and Spanish.
     func testGivenAboutWhyKeysWhenCatalogReadThenEveryKeyHasEnglishAndSpanish() throws {
         try assertBothLanguages(["about.why.title", "about.why.p1", "about.why.p2", "about.why.p3"])
     }
