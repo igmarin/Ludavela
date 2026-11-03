@@ -38,7 +38,9 @@ let localOnly = !cloudKit
 /// com.igmarin.MenteViva (TeamIdentifier VB42T7NYX2).
 /// Override without editing: LUDAVELA_TEAM=XXXXXXXXXX swift tools/generate_project.swift
 /// (or change the default when the paid team replaces it).
-let developmentTeam = ProcessInfo.processInfo.environment["LUDAVELA_TEAM"] ?? "VB42T7NYX2"
+let developmentTeam = ProcessInfo.processInfo.environment["LUDAVELA_TEAM"]
+    ?? ProcessInfo.processInfo.environment["MENTEVIVA_TEAM"]
+    ?? "VB42T7NYX2"
 let testsDir = root.appendingPathComponent("LudavelaTests")
 
 /// All .swift files under `dir`, paths relative to `base`.
