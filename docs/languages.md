@@ -10,7 +10,7 @@ check is a liability, so a row with an empty Validator column is not
 started.
 
 **Size of the job:** 614 strings, about 2,190 English words, 14 of them with
-plural variants (`MenteViva/Localizable.xcstrings`, 2026-10-28). Each new
+plural variants (`Ludavela/Localizable.xcstrings`, 2026-10-28). Each new
 language also needs its own review packet.
 
 ## Shortlist, best first

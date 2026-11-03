@@ -31,11 +31,12 @@ includes similar marks, related goods/services and common-law use.
 - Current public website, privacy/support copy, README and store-listing draft.
 - The claims checker retains its exact personal-story exception with the new name.
 
-The bundle ID remains `com.igmarin.MenteViva`, the project/scheme remain
-`MenteViva`, and the source folders, stored keys, model identities and hosted URLs
-keep their existing identifiers. This is a display-brand change; it requires no
-data migration or new app record. Dated release/decision history retains the old
-name. [Apple's app-information reference](https://developer.apple.com/help/app-store-connect/reference/app-information/app-information)
+The follow-up project rename (#567) changes the Xcode project, scheme, source
+folders, app target and Swift module to `Ludavela`. The App Store bundle ID
+remains `com.igmarin.MenteViva` and the CloudKit container remains
+`iCloud.com.igmarin.MenteViva`, preserving the existing app record and any stored
+data. This needs no data migration or new app record. Dated release and decision
+history retains the name used at the time. [Apple's app-information reference](https://developer.apple.com/help/app-store-connect/reference/app-information/app-information)
 distinguishes the editable name from the bundle identifier, which cannot change
 after a build has been uploaded.
 
@@ -44,11 +45,12 @@ after a build has been uploaded.
 1. Open the existing app record, then App Information. Set the name to `Ludavela`
    in the English and Spanish localizations. Saving there checks Apple's name
    availability; this search has not reserved it.
-2. Use the updated text in `docs/store-listing.md`. The support/privacy URL host
-   may still say `menteviva-e4s.pages.dev`; keep the working URLs until a separate
+2. Use the updated text in `docs/store-listing.md`. The configured support/privacy
+   URL host still says `menteviva-e4s.pages.dev`; keep those URLs until a separate
    hosting change provides verified replacements. Deploy the updated `site/`
    content and confirm the policy/support pages are publicly reachable.
-3. Use the next unused build number and upload a new build from this change to
+3. Build with `Ludavela.xcodeproj` and the `Ludavela` scheme. Use the next unused
+   build number and upload a new build from this change to
    the same app record. Verify the
    Home-screen name, Home, About and a shared summary in EN and ES.
 4. Capture/upload final store screenshots after the name and artwork are settled.

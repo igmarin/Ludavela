@@ -11,11 +11,11 @@ Lazy-senior rules. Read before writing code.
 7. **No keys, no network:** never commit keys; the app makes no network calls and holds no key. The dev-machine classifier uses `TYPESAFE_API_KEY` (see AGENTS.md); it never enters the repo, plist or binary.
 8. **Review flow:** PRs to `main`. Before opening: build, tests and lint pass (AGENTS.md Workflow 5), strings in EN + ES (§3), `CHANGELOG.md` updated, no keys (§7), no medical claims.
 9. **Tests: TDD for logic, BDD for flows.** New pure logic (scoring, policy,
-   plan composition, adaptivity) is written test-first in `MenteVivaTests/`,
+   plan composition, adaptivity) is written test-first in `LudavelaTests/`,
    with Given/When/Then method names (`testGivenXWhenYThenZ`). User-flow tests
    (XCUITest, when they exist) read as Given/When/Then steps. Do **not** test
    SwiftUI layout trivia or Codable wire shapes. Verify with
-   `xcodebuild test -scheme MenteViva -destination 'platform=iOS Simulator,name=<device>'`
+   `xcodebuild test -scheme Ludavela -destination 'platform=iOS Simulator,name=<device>'`
    (a simulator name alone may not resolve — pass `id=<UDID>` from
    `xcrun simctl list devices available` when in doubt).
 

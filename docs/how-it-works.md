@@ -7,7 +7,7 @@ A tour of the app for someone new to the code. Rules live in [conventions.md](co
 
 ```text
 launch
-  RootView (MenteVivaApp.swift)      first run → OnboardingView, otherwise HomeView
+  RootView (LudavelaApp.swift)      first run → OnboardingView, otherwise HomeView
   HomeView.refreshPlan()             reads the last 14 days of sessions
     PlayerStateSummary.build         turns them into per-game numbers
     PlanStore.todaysPlan             today's games + each game's level (DailyPolicy)
@@ -21,7 +21,7 @@ launch
 
 | Piece | Where | What it does |
 |---|---|---|
-| App entry | `MenteViva/MenteVivaApp.swift` | Opens the SwiftData store. Local-only build by default (free Apple ID). If no store opens, an in-memory one is used so play still works. |
+| App entry | `Ludavela/LudavelaApp.swift` | Opens the SwiftData store. Local-only build by default (free Apple ID). If no store opens, an in-memory one is used so play still works. |
 | Home | `HomeView.swift`, `GameCard.swift`, `Theme.swift` | Deals today's games (2, 3 or 5) as framed cards; each game has its own colour and an emblem drawn in SwiftUI shapes. |
 | Games | `Games/` | One file per game, plus the shared celebration, miss cue and `fitOrScroll`. |
 | Game list | `Models/GameID.swift` | The single list of games: stable ID, emoji, title key, whether it has levels. |
@@ -136,7 +136,7 @@ How the numbers are kept honest:
 - **Two build modes.** The default is local-only (no CloudKit), which a free Apple ID needs. A CloudKit build
   without its entitlement crashes at launch, and the simulator doesn't show it, so test the mode you ship, on a
   device.
-- **Tests** are in `MenteVivaTests/`, named Given/When/Then. Pure logic is written test-first; SwiftUI layout is
+- **Tests** are in `LudavelaTests/`, named Given/When/Then. Pure logic is written test-first; SwiftUI layout is
   not tested. Tests never touch `UserDefaults.standard`; they use their own suite.
 - **Before every push**, `.githooks/pre-push` runs lint (`swift-format --strict`), the signpost and project-file
   checks, and `xcodebuild test`. Install it once with `git config core.hooksPath .githooks`.
@@ -150,7 +150,7 @@ How the numbers are kept honest:
 
 ## Adding a game
 
-1. Logic file first, test-first (`MenteVivaTests/…`, Given/When/Then names, seeded random generator).
+1. Logic file first, test-first (`LudavelaTests/…`, Given/When/Then names, seeded random generator).
 2. The view, copied from the shape above; targets ≥ 60pt (aim 100pt), VoiceOver labels, warm miss copy.
 3. `GameID` case, ink colour in `Theme.swift`, emblem in `GameCard.swift`, route in `HomeView.destination`,
    weight in `DailyPolicy.value`.

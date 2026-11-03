@@ -11,9 +11,9 @@ the generator, so Xcode never asks.
 ## Install (or re-install) on a device
 
 ```sh
-cd <path-to-your-MenteViva-checkout>
+cd <path-to-your-Ludavela-checkout>
 swift tools/generate_project.swift               # local-only is the default
-open MenteViva.xcodeproj
+open Ludavela.xcodeproj
 ```
 
 In Xcode:
@@ -31,7 +31,7 @@ Command-line alternative (device already trusted and connected):
 ```sh
 DEV=$(xcrun devicectl list devices | awk '/available/ {print $NF; exit}')
 xcrun devicectl device install app --device "$DEV" \
-  ~/Library/Developer/Xcode/DerivedData/MenteViva-*/Build/Products/Debug-iphoneos/MenteViva.app
+  ~/Library/Developer/Xcode/DerivedData/Ludavela-*/Build/Products/Debug-iphoneos/Ludavela.app
 ```
 
 ## The 7-day expiry (dev devices only)
@@ -43,7 +43,7 @@ or two left (2026-10-13: signed that day, profile from Oct 8, expiring Oct 15).
 Re-sign the day before any playtest, then check the date:
 
 ```sh
-APP=$(ls -dt ~/Library/Developer/Xcode/DerivedData/MenteViva-*/Build/Products/Debug-iphoneos/MenteViva.app | head -1)
+APP=$(ls -dt ~/Library/Developer/Xcode/DerivedData/Ludavela-*/Build/Products/Debug-iphoneos/Ludavela.app | head -1)
 security cms -D -i "$APP/embedded.mobileprovision" | plutil -extract ExpirationDate raw -
 ```
 
@@ -65,7 +65,7 @@ Xcode makes a new 7-day one. The file to move is `<UUID>.mobileprovision`, where
 
 | Symptom | Fix |
 |---|---|
-| "Maximum number of apps for free development profiles has been reached" | Delete *other* unused apps installed from Xcode on that device (each device allows 3 at a time) — not MenteViva, which would erase its history |
+| "Maximum number of apps for free development profiles has been reached" | Delete *other* unused apps installed from Xcode on that device (each device allows 3 at a time) — not Ludavela, which would erase its history |
 | "The device is not registered" / provisioning fails | Xcode → Settings → Accounts → select the team → **Manage Certificates / Download Manual Profiles**; then ⌘R again |
 | Bundle ID taken by another team | Change `PRODUCT_BUNDLE_IDENTIFIER` in `tools/generate_project.swift` to something unique |
 | Build installs but immediately closes | Check `~/Library/Logs/DiagnosticReports/` for the crash log, or Xcode → Window → Devices → View Device Logs |
@@ -74,27 +74,19 @@ Xcode makes a new 7-day one. The file to move is `<UUID>.mobileprovision`, where
 
 - **TestFlight** — needs the paid program (#224); see [testflight-beta.md](testflight-beta.md).
 - **CloudKit / family sharing / push** — need the iCloud entitlement; the app
-  falls back to an on-device store (see `MenteVivaApp.swift`, `LOCAL_ONLY`).
+  falls back to an on-device store (see `LudavelaApp.swift`, `LOCAL_ONLY`).
 - **Installs lasting longer than a week, and remote testers** — use TestFlight for both.
 
 ## Privacy and support pages (Cloudflare Pages, #34)
 
-The pages are plain files in `site/`; nothing to build. `tools/check_site.sh` guards them (pre-push, CI).
-The live URL does not exist until the owner does this, once:
+The app and store draft still use the configured host `menteviva-e4s.pages.dev`.
+Keep those URLs until a Ludavela host is deployed and checked from a public
+browser; a repository rename does not rename the Cloudflare Pages site.
+The pages are in `site/`. If the host is moved, update
+`Ludavela/Localizable.xcstrings`, `docs/store-listing.md`, and App Store Connect
+together, then verify the English and Spanish privacy and support pages.
 
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → pick
-   `igmarin/menteviva` (grant the Cloudflare GitHub app access to that repo if asked).
-2. Project name `menteviva` (gives `menteviva.pages.dev`; take another if it is used).
-   Production branch `main`. Framework preset **None**. Build command: empty. Build output directory:
-   `site`. **Save and Deploy**.
-3. OWNER TODO, domain: project → **Custom domains** → **Set up a custom domain** → enter the
-   subdomain (e.g. `menteviva.<your domain>`) → follow the DNS step. Optional: `.pages.dev` works.
-4. Open `https://<host>/en/privacy.html` and `/es/privacy.html` in a browser and check both load.
-5. App Store Connect → the app → **App Information** → **Privacy Policy URL**: `https://<host>/en/privacy.html`.
-   **Support URL** (version page): `https://<host>/en/support.html`. For the Spanish localization use
-   the `/es/` pages.
-6. Then, and only then, a ticket adds the link in Settings with the same URL.
-
+If Cloudflare needs the repository selected again, choose `igmarin/Ludavela`.
 Pushes to `main` redeploy; PR branches get preview URLs.
 
 ## CloudKit later

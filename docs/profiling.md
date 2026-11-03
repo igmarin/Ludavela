@@ -103,7 +103,7 @@ git config core.hooksPath .githooks
 ```
 
 - **This page stays true.** `tools/check_signposts.sh` fails when the table above and the
-  `HotPath.measure` calls in `MenteViva/` disagree in either direction. Run it before
+  `HotPath.measure` calls in `Ludavela/` disagree in either direction. Run it before
   committing a new signpost.
 - **`progress.weekly` stays linear.** `WeeklyProgressPerformanceTests` runs a year of daily
   play (2,000 sessions) through it and fails over a 2 s ceiling. Real cost is 4 ms, so the
