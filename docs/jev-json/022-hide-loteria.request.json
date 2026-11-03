@@ -1,0 +1,18 @@
+{
+  "model": "jev-latest",
+  "state": {
+    "product": "Ludavela is an offline bilingual collection of calm games for older adults.",
+    "owner_decision": "Temporarily hide Lotería because its current play does not make enough sense, while keeping its implementation and saved history."
+  },
+  "questions": {
+    "implementation": {
+      "type": "choice",
+      "instructions": "Which approach best respects the owner's decision while preserving player data?",
+      "criteria": {
+        "hide": "Remove Lotería from available games and daily selections while retaining its code and historical sessions.",
+        "delete": "Delete the game and its recorded sessions.",
+        "keep_visible": "Leave the game available."
+      }
+    }
+  }
+}

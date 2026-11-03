@@ -2,7 +2,7 @@ import XCTest
 
 @testable import Ludavela
 
-/// Games registered ahead of their views (#215) stay invisible until each ships.
+/// Hidden games keep their stable IDs while staying out of the playable list.
 final class GameIDTests: XCTestCase {
 
     func testGivenAllGameIDsWhenRawValuesThenUniqueAndExistingUnchanged() {
@@ -22,15 +22,15 @@ final class GameIDTests: XCTestCase {
     }
 
     func testGivenUnreleasedGamesWhenReleasedThenTheyAreLeftOut() {
-        XCTAssertEqual(GameID.unreleased.count, 0)
+        XCTAssertEqual(GameID.unreleased, [.loteria])
         XCTAssertTrue(Set(GameID.released).isDisjoint(with: GameID.unreleased))
-        XCTAssertEqual(GameID.released.count, GameID.allCases.count)
+        XCTAssertEqual(GameID.released.count, GameID.allCases.count - 1)
         XCTAssertTrue(GameID.released.contains(.slidingBlocks))
         XCTAssertTrue(GameID.released.contains(.tilePairs))
         XCTAssertTrue(GameID.released.contains(.photoCaptions))
         XCTAssertTrue(GameID.released.contains(.tangram))
         XCTAssertTrue(GameID.released.contains(.repeatSequence))
-        XCTAssertTrue(GameID.released.contains(.loteria))
+        XCTAssertFalse(GameID.released.contains(.loteria))
         XCTAssertTrue(GameID.released.contains(.riddles))
         XCTAssertTrue(GameID.released.contains(.numberSlide))
     }

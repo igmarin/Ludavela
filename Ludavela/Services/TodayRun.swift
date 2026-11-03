@@ -16,7 +16,7 @@ nonisolated struct TodayRun: Equatable {
         plan: [GameID], hidden: Set<GameID> = [], sessions: [GameSession],
         now: Date = .now, calendar: Calendar = .current
     ) {
-        games = plan.filter { !hidden.contains($0) }
+        games = plan.filter { !hidden.contains($0) && !GameID.unreleased.contains($0) }
         let playedToday = sessions.filter { calendar.isDate($0.playedAt, inSameDayAs: now) }.compactMap(\.game)
         done = Set(playedToday).intersection(games)
         playsToday = playedToday.reduce(into: [:]) { $0[$1, default: 0] += 1 }
