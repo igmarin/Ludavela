@@ -10,7 +10,7 @@ no fail shame: "Almost, try again", never "wrong".
 
 **19 games playable**, offline-first, EN and ES complete. See [CHANGELOG.md](CHANGELOG.md)
 for what changed, [docs/roadmap.md](docs/roadmap.md) for what's next, and
-[GitHub issues](https://github.com/igmarin/menteviva/issues) for live work.
+[GitHub issues](https://github.com/igmarin/Ludavela/issues) for live work.
 
 ## The games
 
@@ -47,7 +47,7 @@ decided by a small rule policy on the device (no network, no cost).
 - Every game except Photo Stories has levels 1–10.
 - Deals are small pure types that take the random generator as a parameter, so tests can
   replay them. Sudoku boards are generated with exactly one solution.
-- Every string is in one catalogue, `MenteViva/Localizable.xcstrings`, in English and Spanish.
+- Every string is in one catalogue, `Ludavela/Localizable.xcstrings`, in English and Spanish.
 - No network calls, no accounts and no analytics. Photos stay on the device.
 
 ## Built with AI
@@ -60,11 +60,13 @@ uses no AI at runtime.
 ## Build
 
 Requires Xcode 16+, iOS 17+ target, zero third-party dependencies.
-The source project and scheme are still named `MenteViva`.
+The App Store bundle identifier remains `com.igmarin.MenteViva` so updates use
+the existing App Store record. The CloudKit container also keeps its current
+identifier for any existing data.
 
 ```sh
 swift tools/generate_project.swift   # regenerate project (local-only, the default)
-open MenteViva.xcodeproj             # pick a simulator, press ▶︎
+open Ludavela.xcodeproj             # pick a simulator, press ▶︎
 ```
 
 Two build modes, chosen at generation time:
@@ -85,8 +87,8 @@ After adding a `.swift` file: regenerate and commit the updated
 ## Structure
 
 ```
-MenteViva/
-  MenteVivaApp.swift      # app entry
+Ludavela/
+  LudavelaApp.swift      # app entry
   HomeView.swift          # game picker
   Models/                 # SwiftData: GameSession, RoundProgress, GameID
   Games/                  # one file per game; MemoryMatchView is the reference

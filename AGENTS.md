@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Instructions for AI agents (and humans in a hurry) working on Ludavela (source project: MenteViva).
+Instructions for AI agents (and humans in a hurry) working on Ludavela (source project: Ludavela).
 
 ## Read first, in order
 
@@ -28,8 +28,8 @@ Instructions for AI agents (and humans in a hurry) working on Ludavela (source p
 ## Where things are
 
 ```
-MenteViva/            app (SwiftUI + SwiftData)
-  MenteVivaApp.swift  entry; LOCAL_ONLY picks the store
+Ludavela/            app (SwiftUI + SwiftData)
+  LudavelaApp.swift  entry; LOCAL_ONLY picks the store
   HomeView, OnboardingView, SettingsView, HistoryView,
   MyProgressView (rates, #141), SetUpView (hide/pin/photos)
   Games/              19 games, one View file each (18 views: Names and Faces is Memory Lane's board),
@@ -50,7 +50,7 @@ MenteViva/            app (SwiftUI + SwiftData)
                         SoundPlayer, ToneSynth (the tones SoundPlayer plays)
                       HotPath (signposts)
   Localizable.xcstrings  every string, EN + ES
-MenteVivaTests/       unit tests (Given/When/Then names)
+LudavelaTests/       unit tests (Given/When/Then names)
 tools/                generate_project.swift (the only way to edit the Xcode project)
 docs/                 start at docs/README.md
 .github/workflows/    checks.yml (Linux) + swift.yml (macOS): CI on PRs to main (Workflow 5)
@@ -67,9 +67,14 @@ docs/                 start at docs/README.md
   `docs/design/2026-10-12-card-table.html`).
 - **TestFlight beta is running** (#229). **v1.0 on the App Store is pending** (epic #194); the
   hackathon submission is due **Nov 4, 9 PM ET** (epic #422). Epics are the open issues labelled `epic`.
-- Live state is in the [issues](https://github.com/igmarin/menteviva/issues), not here.
+- Live state is in the [issues](https://github.com/igmarin/Ludavela/issues), not here.
 
 ## Signing
+
+- The Xcode project, app target and scheme use `Ludavela`. Keep the App Store
+  bundle identifier `com.igmarin.MenteViva` and CloudKit container
+  `iCloud.com.igmarin.MenteViva`; changing either would break the existing app
+  identity or detach stored data.
 
 - The generator pre-fills `DEVELOPMENT_TEAM` (Ismael Marin Cabrera, Personal
   Team, `VB42T7NYX2`), so device builds never stop to ask. Change the constant
@@ -99,22 +104,22 @@ docs/                 start at docs/README.md
    object graph open is what produces "the project has a file format integrity
    issue". Close → regenerate → reopen.
 5. Verify before committing: build must pass —
-   `xcodebuild -project MenteViva.xcodeproj -scheme MenteViva -destination 'generic/platform=iOS Simulator' build`
+   `xcodebuild -project Ludavela.xcodeproj -scheme Ludavela -destination 'generic/platform=iOS Simulator' build`
    and tests must pass (conventions §9), and lint must be clean:
-   `xcrun swift-format lint --strict -r MenteViva MenteVivaTests tools`
+   `xcrun swift-format lint --strict -r Ludavela LudavelaTests tools`
    (Apple's formatter, ships with Xcode; config in `.swift-format`, #123).
-   `xcrun swift-format format -i -r MenteViva MenteVivaTests tools` fixes most of it.
+   `xcrun swift-format format -i -r Ludavela LudavelaTests tools` fixes most of it.
    Syntax checks (`swiftc -parse`) are
    NOT verification. **A pre-push hook runs all of this for you** — install it
    once with `git config core.hooksPath .githooks`; `git push --no-verify`
    skips it. It tests on the first booted simulator; when several agents work
-   in parallel, each pushes with its own: `MENTEVIVA_SIMULATOR=<udid> git push`.
+   in parallel, each pushes with its own: `LUDAVELA_SIMULATOR=<udid> git push`.
    It also runs the signpost and project-file checks.
    **CI runs the same checks on every PR to `main`**, split by cost (macOS
    minutes bill at 10× Linux; decisions.md 2026-10-20): `checks.yml` on Linux
    always runs signposts and the project-file check (~1 billed min);
    `swift.yml` on macOS runs generator drift, lint and `xcodebuild test` only
-   when a non-draft PR touches `MenteViva/`, `MenteVivaTests/`, the project,
+   when a non-draft PR touches `Ludavela/`, `LudavelaTests/`, the project,
    `tools/` or `.swift-format` (~20 billed min). Open PRs as drafts while
    iterating; marking ready runs the macOS job. Pushes cancel the run they
    supersede. A check added to the hook goes into one of the workflows too.
@@ -124,7 +129,7 @@ docs/                 start at docs/README.md
    `npm i -g @alibaba-group/open-code-review`; without them it warns and skips;
    `git commit --no-verify` skips it too).
 6. Track work in GitHub issues with the current milestone (see
-   [milestones](https://github.com/igmarin/menteviva/milestones)). Closed-issue labels mark the release
+   [milestones](https://github.com/igmarin/Ludavela/milestones)). Closed-issue labels mark the release
    (e.g. `v0.1.0`).
 7. Update `CHANGELOG.md` under `[Unreleased]` with any user-visible change.
 
@@ -149,8 +154,8 @@ docs/                 start at docs/README.md
 6. **Reference coding (optional, XERJ).** Before writing a new game or a tricky
    algorithm, search how others solved it. Needs a local node
    (`xerj --insecure --data-dir ~/xerj-data`, data dir outside the repo) and
-   `export PATH="$HOME/.local/bin:$PATH"`. Prefixes: `menteviva` (this repo; re-run
-   `xerj autoindex . --prefix menteviva` after big changes; `.githooks/post-merge`
+   `export PATH="$HOME/.local/bin:$PATH"`. Prefixes: `ludavela` (this repo; re-run
+   `xerj autoindex . --prefix ludavela` after big changes; `.githooks/post-merge`
    does it after a `git pull` on main), plus one per clone in
    `~/refs/` (`mysudoku` MIT, `imoofs-sudoku` Apache-2.0). Search is lexical, so use
    the identifiers the code uses: `xerj search --prefix <name> "<words>"`.
@@ -186,9 +191,9 @@ and merges; the lead agent reviews every PR; no agent merges.
    ticket: its branch starts from the logic branch and its PR targets that branch, not `main`. Let
    `gh stack` keep the stack in order; never rebase or force-push a branch someone else pushed to.
 8. **Green locally before every push.** On a Mac with Xcode, run lint
-   (`xcrun swift-format lint --strict -r MenteViva MenteVivaTests tools`) and the tests on your own
-   simulator (`MENTEVIVA_SIMULATOR=<udid> git push` runs both through the pre-push hook), and use the
-   `menteviva-checks` skill. Never `--no-verify`. An agent that can't run them (no Xcode) says so in
+   (`xcrun swift-format lint --strict -r Ludavela LudavelaTests tools`) and the tests on your own
+   simulator (`LUDAVELA_SIMULATOR=<udid> git push` runs both through the pre-push hook), and use the
+   `ludavela-checks` skill. Never `--no-verify`. An agent that can't run them (no Xcode) says so in
    the PR and opens it ready, so CI runs them.
 
 ## Definition of done (every PR)
@@ -211,7 +216,7 @@ Speed without quality is not progress. A PR is done when:
 
 ## Patterns
 
-- One file per game in `MenteViva/Games/`; copy `MemoryMatchView.swift`'s
+- One file per game in `Ludavela/Games/`; copy `MemoryMatchView.swift`'s
   shape (View + @State + `modelContext.record(GameSession(...))` on finish, #106).
   No game engine, no base classes, no protocol ceremony.
 - The daily plan is `Services/DailyPolicy.swift` (pure, tested). Policy stays in code,

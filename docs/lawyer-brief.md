@@ -4,6 +4,12 @@ Input pack for the owner's appointment, before the paid-release gate (decisions.
 Facts are as of 2026-10-28. This file links to the evidence; it does not copy it. Our own screening is
 not legal advice, which is why the review exists.
 
+**Name update (2026-11-02):** the public app name is now Ludavela. The MenteViva
+search and risk notes below describe the former name and do not clear Ludavela.
+See [the Ludavela name screen](name-screening-2026-11-02.md) for the limited
+exact-name searches and the similarity, territory and store-availability checks
+that remain unresolved.
+
 **Suggested hour:** 5 min §1 · 15 min §2 · 15 min §3 · 10 min §4 · 5 min §5 · 10 min checklist (§6).
 Priority if time runs short: §3 (generated pictures), then §1 (claims), then §2 (names).
 

@@ -13,7 +13,7 @@ App Store Connect and may have moved: follow the intent, not the exact label.
 - Version `0.1.0`, build `6` (builds 1 to 5 are already uploaded) live in `tools/generate_project.swift` (`MARKETING_VERSION`,
   `CURRENT_PROJECT_VERSION`). Export compliance is answered in the build
   (`ITSAppUsesNonExemptEncryption = NO`: no network, no custom crypto), so uploads don't stop to ask.
-- **Privacy manifest** (`MenteViva/PrivacyInfo.xcprivacy`, copied to the .app root): no tracking, no
+- **Privacy manifest** (`Ludavela/PrivacyInfo.xcprivacy`, copied to the .app root): no tracking, no
   collected data (matches the "Data Not Collected" label, #34). It declares the two required-reason APIs
   the code calls: UserDefaults (`CA92.1`) and file timestamps (`C617.1`, the photos folder is in the app
   container). Adding an API from another category (disk space, system uptime) means adding its reason here,
@@ -26,8 +26,8 @@ App Store Connect and may have moved: follow the intent, not the exact label.
 ## Checked on 2026-10-28 (Xcode 27.1, no upload, no account)
 
 ```sh
-xcodebuild -project MenteViva.xcodeproj -scheme MenteViva -configuration Release \
-  -destination 'generic/platform=iOS' -archivePath MenteViva.xcarchive archive CODE_SIGNING_ALLOWED=NO
+xcodebuild -project Ludavela.xcodeproj -scheme Ludavela -configuration Release \
+  -destination 'generic/platform=iOS' -archivePath Ludavela.xcarchive archive CODE_SIGNING_ALLOWED=NO
 ```
 
 `** ARCHIVE SUCCEEDED **`: arm64, `com.igmarin.MenteViva`, 0.1.0 (1), min iOS 17.0, dSYM present, no entitlements,
@@ -51,10 +51,10 @@ name. The creation steps below are for a first-ever upload only.
 
 1. developer.apple.com → Identifiers: `com.igmarin.MenteViva` exists under the paid team (Xcode creates it on first signed build).
 2. App Store Connect → **Apps → +** → New App: iOS, name Ludavela, languages English + Spanish, that bundle ID.
-3. Xcode → Product → Archive (scheme MenteViva, destination Any iOS Device, team = paid) → Organizer →
+3. Xcode → Product → Archive (scheme Ludavela, destination Any iOS Device, team = paid) → Organizer →
    **Distribute App → App Store Connect → Upload**.
 4. Command-line equivalent: archive with `DEVELOPMENT_TEAM=<id>` (drop `CODE_SIGNING_ALLOWED=NO`) and
-   `-allowProvisioningUpdates`, then `xcodebuild -exportArchive -archivePath MenteViva.xcarchive -exportPath out
+   `-allowProvisioningUpdates`, then `xcodebuild -exportArchive -archivePath Ludavela.xcarchive -exportPath out
    -exportOptionsPlist ExportOptions.plist` where the plist has `method` = `app-store-connect`,
    `destination` = `upload`, `teamID` = the paid id.
 5. Wait for "Processing" to finish (about 10 to 30 minutes; an email arrives).

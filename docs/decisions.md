@@ -6,7 +6,7 @@ the entry with that date in the month file below.
 
 | Month | Entries |
 |---|---|
-| [2026-11](decisions/2026-11.md) | Ludavela public name; Word Search 60pt squares, phone grid by width… |
+| [2026-11](decisions/2026-11.md) | Ludavela public name and project rename; Word Search 60pt squares… |
 | [2026-10](decisions/2026-10.md) | Direction to v1.0, several agents, privacy stance, retro art, legacy migration… |
 | [2026-09](decisions/2026-09.md) | Audience, the first four games, Jev, the decision-model spike… |
 | [Open questions](decisions/open-questions.md) | Not decided yet |

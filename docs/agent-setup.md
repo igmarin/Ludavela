@@ -10,7 +10,7 @@ shared skills live in one folder. Nothing here holds a key or token.
 | `AGENTS.md` | Claude Code (verified), and others (see table) | The rules: conventions, definition of done, workflow |
 | `.clinerules` | Cline | Pointer: "Read AGENTS.md and follow it" |
 | `.mcp.json` | Claude Code (verified), OMP (verified as fallback) | Project MCP servers. GitHub only, token from `GITHUB_TOKEN` |
-| `.agents/skills/` | Muse Code, Codex, OMP (see table) | The one shared skills folder. Holds `menteviva-checks` |
+| `.agents/skills/` | Muse Code, Codex, OMP (see table) | The one shared skills folder. Holds `ludavela-checks` |
 | `.claude/skills` | Claude Code (verified) | Symlink to `../.agents/skills`, so Claude sees the same skills |
 
 No `CLAUDE.md` is needed: Claude Code reads `AGENTS.md` by default when there is no `CLAUDE.md`.
@@ -38,7 +38,7 @@ machine.
 Do the steps for the agents you use. Nothing here is committed.
 
 1. **Clone and hooks.** `git config core.hooksPath .githooks` (enables pre-commit and pre-push).
-2. **GitHub token for MCP.** Create a token with repo scope for `igmarin/menteviva`. Export it in the
+2. **GitHub token for MCP.** Create a token with repo scope for `igmarin/ludavela`. Export it in the
    shell the agent starts from, never in a committed file:
    `export GITHUB_TOKEN=<token>`. Claude Code and OMP expand `${GITHUB_TOKEN}` from `.mcp.json`.
    Without it, the GitHub server fails to connect and the agent reports a warning.
@@ -64,7 +64,7 @@ Ask the agent, in the repo:
 
 - "List the MCP tools you can call. Is there one for GitHub?" Expect a GitHub tool list.
 - "What does AGENTS.md say about the definition of done? Quote the first rule." Expect the rule.
-- "List the skills you can use. Is `menteviva-checks` among them?" Expect it, or the agent says
+- "List the skills you can use. Is `ludavela-checks` among them?" Expect it, or the agent says
   where it looked.
 
 If an agent answers from memory and names nothing from AGENTS.md, it did not load the rules.
@@ -72,7 +72,7 @@ If an agent answers from memory and names nothing from AGENTS.md, it did not loa
 ## Local setup notes
 
 - `.mcp.json` needs `GITHUB_TOKEN` in your environment. Set it, or ignore `.mcp.json`.
-- Run graphify from the repo root only, so `graphify-out/` does not appear inside `MenteViva/`.
+- Run graphify from the repo root only, so `graphify-out/` does not appear inside `Ludavela/`.
 
 ## Open decisions for the owner
 

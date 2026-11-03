@@ -72,7 +72,7 @@ generation prompt, and do not supply third-party source images.
 ## Files and checks
 
 - Production: transparent 600×600 PNG, ≤120 KB; one universal single-scale
-  `pic.<slug>.imageset` under `MenteViva/Assets.xcassets/Pictures/`. Folder
+  `pic.<slug>.imageset` under `Ludavela/Assets.xcassets/Pictures/`. Folder
   `Contents.json` has no namespacing. Samples stay in `docs/design/art-samples/`.
 - Eight samples: dog, apple, teapot, sunflower, key, sailboat, violin, moon.
 - Review at 100pt **and actual game sizes**: Name the Herd uses 52pt; Memory Lane
@@ -88,7 +88,7 @@ Exact approved concept prompt: [reference prompt](art-samples/retro-direction-ap
 
 ## App tokens (#336)
 
-Implemented in `MenteViva/Theme.swift` as semantic light/dark colors. Views use
+Implemented in `Ludavela/Theme.swift` as semantic light/dark colors. Views use
 the token, never the hex. Each game keeps its own `GameID.ink`; all 13 still
 pass 4.5:1 on cream (lowest 4.77:1) and on the dark surround.
 
