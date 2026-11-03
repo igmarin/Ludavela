@@ -174,7 +174,7 @@ struct HomeView: View {
         return AppLanguage.localized("home.today.togo \(today.remaining)" as String.LocalizationValue)
     }
 
-    /// The next game leads at every text size; the remaining cards stay available below it.
+    /// The next game leads at every text size; all recommended cards stay available below it.
     private var table: some View {
         VStack(spacing: 16) {
             if today.isFinished {
