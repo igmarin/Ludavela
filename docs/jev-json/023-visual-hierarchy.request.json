@@ -1,0 +1,29 @@
+{
+  "model": "jev-latest",
+  "state": {
+    "product": "Ludavela is a free offline collection of calm games for adults, with older adults the reference audience. Native SwiftUI, EN/ES, accessible text, large controls, no medical claims.",
+    "existing": "Approved original retro illustrations, cream FFF1D0, espresso 2B2118, jade 246456, mustard E7AC45. Home has tilted cards on a jade-to-mustard gradient and a next-game action below them. Game cards have outer frame, inner illustration frame and solid-color title band. Accessible sizes already use rows and put the action first.",
+    "proposal": "Keep the existing palette in production, compare a lighter FFF8E8 only in mockups. Simplify cards to one outer frame, larger familiar illustration, espresso title on cream, small game-color accent. Put the main action before cards and emphasize the next game, keep others available and preserve existing daily policy. Compare flat muted-jade table against gradient. Celebration keeps a short warm message, illustration, next action and optional exit; no new reward system.",
+    "constraints": "No copied reference assets or recognizable characters. Native fonts, dark mode, Dynamic Type, VoiceOver and Reduce Motion retained. No change to scoring, levels, player data, or colors that encode game stimuli. Design judgment is advisory; user chooses the final visual direction. Mockups are not proof of usability improvement."
+  },
+  "questions": {
+    "hierarchy": {
+      "type": "choice",
+      "instructions": "Which intervention best supports a clear first action while preserving the existing collection?",
+      "criteria": {
+        "refine": "Simplify frames and prioritize next action in the existing layout",
+        "rebuild": "Replace navigation and all game screens together",
+        "retain": "Keep every decorative layer unchanged"
+      }
+    },
+    "palette": {
+      "type": "choice",
+      "instructions": "Which palette scope best controls risk before actual-device visual comparison?",
+      "criteria": {
+        "preserve_compare": "Keep checked colors and compare lighter cream as a mockup option",
+        "replace": "Replace the entire palette immediately",
+        "more_colors": "Increase the number of strong simultaneous colors"
+      }
+    }
+  }
+}
