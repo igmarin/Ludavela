@@ -10,7 +10,7 @@ xcuserdata/
 # Derived, regenerable
 graphify-out/
 .codegraph/
-MenteViva/Config/Local.xcconfig
+Ludavela/Config/Local.xcconfig
 
 # Local tooling state
 node_modules/

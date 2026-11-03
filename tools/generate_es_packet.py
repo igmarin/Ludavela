@@ -4,7 +4,7 @@ Run from the repo root:  python3 tools/generate_es_packet.py
 Keys without letters are pure format-specifier artifacts — skipped."""
 import json, re, subprocess
 
-d = json.load(open('MenteViva/Localizable.xcstrings'))['strings']
+d = json.load(open('Ludavela/Localizable.xcstrings'))['strings']
 
 # Signed off on #12 (2026-10-13, Card Table strings, #160/#161): pre-marked ✅.
 SIGNED_OFF = {
@@ -27,7 +27,7 @@ def where_used(key):
     # Explicit calls reference the key verbatim (specifiers included);
     # implicit Text("key \(x)") lookups match the prefix before specifiers.
     prefix = re.split(r' %', key)[0]
-    out = subprocess.run(['grep', '-rl', '--include=*.swift', prefix, 'MenteViva/'],
+    out = subprocess.run(['grep', '-rl', '--include=*.swift', prefix, 'Ludavela/'],
                          capture_output=True, text=True).stdout
     files = sorted({p.split('/')[-1].replace('.swift', '')
                     for p in out.strip().splitlines() if p})

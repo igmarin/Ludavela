@@ -5,7 +5,7 @@ cd "$(dirname "$0")/.." || exit 1
 
 pattern='improve|boost|train your brain|sharpen|prevent|protect|delay|decline|dementia|alzheimer|memory loss|mejora|mejorar|potencia|entrena tu cerebro|previene|protege|retrasa|deterioro|demencia|pérdida de memoria'
 files=(
-    MenteViva/Localizable.xcstrings
+    Ludavela/Localizable.xcstrings
     docs/store-listing.md
     docs/product-brief.md
     site/index.html
@@ -20,7 +20,7 @@ files=(
 # other. Never widen this for other strings.
 en='I made Ludavela mainly for my dad\. He was diagnosed with the early stages of dementia, and since then I have looked for activities he enjoys that keep his mind active\.'
 es='Hice Ludavela, sobre todo, para mi papá\. A él le diagnosticaron los inicios de una demencia, y desde entonces busco actividades que disfrute y que mantengan su mente activa\.'
-story="^(MenteViva/Localizable\.xcstrings:[0-9]+: +\"value\" : \"($en|$es)\",?|site/index\.html:[0-9]+:<p( lang=\"es\")?>($en|$es)</p>)$"
+story="^(Ludavela/Localizable\.xcstrings:[0-9]+: +\"value\" : \"($en|$es)\",?|site/index\.html:[0-9]+:<p( lang=\"es\")?>($en|$es)</p>)$"
 hits="$(grep -RniE "$pattern" "${files[@]}" | grep -vE "$story")"
 status=$?
 if [ "$status" -eq 0 ]; then
