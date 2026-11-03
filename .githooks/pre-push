@@ -6,7 +6,7 @@
 #
 # Install once:   git config core.hooksPath .githooks
 # Skip one push:  git push --no-verify
-# Own simulator:  MENTEVIVA_SIMULATOR=<udid> git push   (parallel agents each
+# Own simulator:  LUDAVELA_SIMULATOR=<udid> git push   (parallel agents each
 #                 pass their own, or the tests reinstall over a booted one in use)
 #
 # It deliberately does NOT run tools/generate_project.swift. That rewrites
@@ -33,8 +33,8 @@ run() {
 }
 
 simulator() {
-    if [ -n "${MENTEVIVA_SIMULATOR:-}" ]; then
-        echo "$MENTEVIVA_SIMULATOR"
+    if [ -n "${LUDAVELA_SIMULATOR:-}" ]; then
+        echo "$LUDAVELA_SIMULATOR"
         return
     fi
     local booted
@@ -49,7 +49,7 @@ simulator() {
 }
 
 echo "Pre-push checks (git push --no-verify to skip):"
-run "lint" xcrun swift-format lint --strict -r MenteViva MenteVivaTests tools
+run "lint" xcrun swift-format lint --strict -r Ludavela LudavelaTests tools
 run "claims" ./tools/check_claims.sh
 run "signposts vs docs" ./tools/check_signposts.sh
 run "project file" ./tools/check_project_files.sh
@@ -57,13 +57,13 @@ run "site placeholders" ./tools/check_site.sh
 run "sliding blocks drift" sh -c '
     swift -O tools/generate_sliding_blocks.swift \
         || { echo "tools/generate_sliding_blocks.swift failed (see above)."; exit 1; }
-    git diff --exit-code -- MenteViva/Games/SlidingBlocksLevels.swift \
+    git diff --exit-code -- Ludavela/Games/SlidingBlocksLevels.swift \
         || { echo "SlidingBlocksLevels.swift was regenerated; commit it."; exit 1; }'
 
 udid="$(simulator)"
 if [ -n "$udid" ]; then
     run "build + test" xcodebuild test \
-        -project MenteViva.xcodeproj -scheme MenteViva -destination "id=$udid"
+        -project Ludavela.xcodeproj -scheme Ludavela -destination "id=$udid"
 else
     printf '  %-22s%s\n' "build + test" "FAILED"
     echo "    No iPhone simulator available. Open Xcode once, or push with --no-verify."

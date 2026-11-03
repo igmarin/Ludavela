@@ -1,4 +1,4 @@
-# Build, lint and test MenteViva on macOS. macOS minutes bill at 10x Linux and
+# Build, lint and test Ludavela on macOS. macOS minutes bill at 10x Linux and
 # ran out once (decisions.md 2026-10-20), so this runs only when a non-draft PR
 # to main touches the app, tests, project or tools. A green run is ~2 minutes
 # (~20 billed). Everything without Xcode runs in checks.yml on Linux.
@@ -14,9 +14,9 @@ on:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
-      - "MenteViva/**"
-      - "MenteVivaTests/**"
-      - "MenteViva.xcodeproj/**"
+      - "Ludavela/**"
+      - "LudavelaTests/**"
+      - "Ludavela.xcodeproj/**"
       - "tools/**"
       - ".swift-format"
       - ".github/workflows/swift.yml"
@@ -51,21 +51,21 @@ jobs:
 
     - name: Fail if the committed project drifted from the generator
       run: |
-        git diff --exit-code -- MenteViva.xcodeproj || {
-          echo "::error::MenteViva.xcodeproj is stale. Run 'swift tools/generate_project.swift' and commit."
+        git diff --exit-code -- Ludavela.xcodeproj || {
+          echo "::error::Ludavela.xcodeproj is stale. Run 'swift tools/generate_project.swift' and commit."
           exit 1
         }
 
     - name: Fail if the Sliding Blocks puzzles drifted from their generator (#222)
       run: |
         swift -O tools/generate_sliding_blocks.swift
-        git diff --exit-code -- MenteViva/Games/SlidingBlocksLevels.swift || {
+        git diff --exit-code -- Ludavela/Games/SlidingBlocksLevels.swift || {
           echo "::error::SlidingBlocksLevels.swift doesn't match its seed. Run 'swift -O tools/generate_sliding_blocks.swift' and commit."
           exit 1
         }
 
     - name: Lint (Apple swift-format, ships with Xcode)
-      run: xcrun swift-format lint --strict --recursive MenteViva MenteVivaTests tools
+      run: xcrun swift-format lint --strict --recursive Ludavela LudavelaTests tools
 
     - name: Pick an available iPhone simulator
       id: sim
@@ -79,6 +79,6 @@ jobs:
     - name: Build and test
       run: |
         xcodebuild test \
-          -project MenteViva.xcodeproj \
-          -scheme MenteViva \
+          -project Ludavela.xcodeproj \
+          -scheme Ludavela \
           -destination "id=${{ steps.sim.outputs.udid }}"

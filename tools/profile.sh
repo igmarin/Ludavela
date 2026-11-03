@@ -18,7 +18,7 @@ if [ "${1:-}" = "--launch" ]; then
 fi
 seconds="${1:-30}"
 device="${2:-booted}"
-out="${TMPDIR:-/tmp}/MenteViva-$(date +%Y%m%d-%H%M%S).trace"
+out="${TMPDIR:-/tmp}/Ludavela-$(date +%Y%m%d-%H%M%S).trace"
 
 # xctrace wants a UDID, so resolve "booted" once and use it for both calls.
 # Checking against the booted list first is what keeps a missing or wrong
@@ -31,7 +31,7 @@ else
 fi
 if [ -z "$udid" ] || ! printf '%s\n' "$booted" | grep -qx "$udid"; then
   echo "No booted simulator matches '$device'. Open Simulator.app (or 'xcrun simctl boot <udid>')," >&2
-  echo "then press ⌘R in Xcode to install and run MenteViva. Booted right now:" >&2
+  echo "then press ⌘R in Xcode to install and run Ludavela. Booted right now:" >&2
   printf '%s\n' "${booted:-  (none)}" | sed 's/^/  /' >&2
   exit 1
 fi
@@ -44,7 +44,7 @@ else
   # xctrace can't attach to a simulator app by name, only by pid.
   pid="$(xcrun simctl spawn "$udid" launchctl list | awk -v b="UIKitApplication:$bundle" '$0 ~ b {print $1}' | head -1)"
   if [ -z "$pid" ] || [ "$pid" = "-" ]; then
-    echo "MenteViva is not running on $udid. Press ⌘R in Xcode, or:" >&2
+    echo "Ludavela is not running on $udid. Press ⌘R in Xcode, or:" >&2
     echo "  xcrun simctl launch $udid $bundle" >&2
     echo "Or record a cold start instead: tools/profile.sh --launch $seconds" >&2
     exit 1

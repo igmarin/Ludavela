@@ -1,4 +1,4 @@
-// Generates MenteViva/Games/SlidingBlocksLevels.swift: 30 puzzles per level (#222).
+// Generates Ludavela/Games/SlidingBlocksLevels.swift: 30 puzzles per level (#222).
 // Run: swift -O tools/generate_sliding_blocks.swift [seed]   (default seed 42; ~15 s)
 // Foundation only. The same seed writes the same file, byte for byte; CI checks it.
 //
@@ -10,7 +10,7 @@
 // interchangeable, so a position is its grid of cell codes, not a block order.
 import Foundation
 
-// MARK: - Positions (mirror MenteViva/Games/SlidingBlocksPuzzle.swift)
+// MARK: - Positions (mirror Ludavela/Games/SlidingBlocksPuzzle.swift)
 
 // Cell codes, 3 bits each, row-major: 0 empty, 1 big 2×2, 2 small 1×1,
 // 3/4 wide 2×1 left/right, 5/6 tall 1×2 top/bottom.
@@ -281,4 +281,4 @@ func emit(_ picked: [[(key: UInt64, moves: Int)]], seed: UInt64, to path: String
 
 let seed = CommandLine.arguments.dropFirst().first.flatMap { UInt64($0) } ?? 42
 let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
-emit(generate(seed: seed), seed: seed, to: root.appendingPathComponent("MenteViva/Games/SlidingBlocksLevels.swift").path)
+emit(generate(seed: seed), seed: seed, to: root.appendingPathComponent("Ludavela/Games/SlidingBlocksLevels.swift").path)

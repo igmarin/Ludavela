@@ -1,4 +1,4 @@
-#!/usr/bin/env swift  // Renders MenteViva's app icon. Zero dependencies — AppKit only.
+#!/usr/bin/env swift  // Renders Ludavela's app icon. Zero dependencies — AppKit only.
 // Re-run after changing the design: swift tools/generate_icon.swift
 //
 // Design notes (retro card icon, #337, docs/design/icon-studies.md study A):
@@ -14,7 +14,7 @@
 import AppKit
 
 let root = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-let iconDir = root.appendingPathComponent("MenteViva/Assets.xcassets/AppIcon.appiconset")
+let iconDir = root.appendingPathComponent("Ludavela/Assets.xcassets/AppIcon.appiconset")
 try FileManager.default.createDirectory(at: iconDir, withIntermediateDirectories: true)
 
 let side = 1024

@@ -1,4 +1,4 @@
-#!/usr/bin/env swift  // Generates MenteViva.xcodeproj from the files on disk. No external deps.
+#!/usr/bin/env swift  // Generates Ludavela.xcodeproj from the files on disk. No external deps.
 // Re-run after adding source files: swift tools/generate_project.swift
 import Foundation
 
@@ -15,9 +15,9 @@ let scriptPath =
     ?? "tools/generate_project.swift"
 let root = URL(fileURLWithPath: scriptPath).standardizedFileURL
     .deletingLastPathComponent().deletingLastPathComponent()
-let appDir = root.appendingPathComponent("MenteViva")
+let appDir = root.appendingPathComponent("Ludavela")
 guard FileManager.default.fileExists(atPath: appDir.path) else {
-    die("no MenteViva/ source folder at \(root.path). Run it as: swift tools/generate_project.swift")
+    die("no Ludavela/ source folder at \(root.path). Run it as: swift tools/generate_project.swift")
 }
 
 /// CloudKit is **off by default** until the paid Developer Program is bought
@@ -34,11 +34,12 @@ let localOnly = !cloudKit
 /// Signing team, pre-filled so device builds never stop to ask.
 /// Ismael Marin Cabrera (Personal Team) — free provisioning, so installs on a
 /// device expire 7 days after signing. Verified against the installed
-/// provisioning profile for com.igmarin.MenteViva (TeamIdentifier VB42T7NYX2).
-/// Override without editing: MENTEVIVA_TEAM=XXXXXXXXXX swift tools/generate_project.swift
+/// provisioning profile for the existing App Store bundle ID,
+/// com.igmarin.MenteViva (TeamIdentifier VB42T7NYX2).
+/// Override without editing: LUDAVELA_TEAM=XXXXXXXXXX swift tools/generate_project.swift
 /// (or change the default when the paid team replaces it).
-let developmentTeam = ProcessInfo.processInfo.environment["MENTEVIVA_TEAM"] ?? "VB42T7NYX2"
-let testsDir = root.appendingPathComponent("MenteVivaTests")
+let developmentTeam = ProcessInfo.processInfo.environment["LUDAVELA_TEAM"] ?? "VB42T7NYX2"
+let testsDir = root.appendingPathComponent("LudavelaTests")
 
 /// All .swift files under `dir`, paths relative to `base`.
 func swiftFiles(under dir: URL, relativeTo base: URL) -> [String] {
@@ -51,7 +52,7 @@ func swiftFiles(under dir: URL, relativeTo base: URL) -> [String] {
 }
 
 let appFiles = swiftFiles(under: appDir, relativeTo: appDir)
-let testFiles = swiftFiles(under: testsDir, relativeTo: root)  // "MenteVivaTests/…"
+let testFiles = swiftFiles(under: testsDir, relativeTo: root)  // "LudavelaTests/…"
 
 // Stable, deterministic IDs: FNV-1a hash → 24 hex chars.
 func oid(_ s: String) -> String {
@@ -60,7 +61,7 @@ func oid(_ s: String) -> String {
     return String(format: "%016llX%08X", h, UInt32(s.count))
 }
 
-let appID = oid("MenteViva.app")
+let appID = oid("Ludavela.app")
 let grpID = oid("group")
 let srcsID = oid("Sources")
 let rootGrpID = oid("rootGroup")
@@ -78,7 +79,7 @@ let assetsBuildID = oid("Assets.xcassets.build")
 let entID = oid("entitlements")
 
 // Test-target IDs (salted so they can never collide with app file hashes).
-let testsProductID = oid("MenteVivaTests.xctest")
+let testsProductID = oid("LudavelaTests.xctest")
 let testsTgtID = oid("tests:target")
 let testsSrcsID = oid("tests:Sources")
 let testsFwID = oid("tests:Frameworks")
@@ -136,13 +137,13 @@ var p = """
     """
 p += buildFiles + tests.builds + "\n" + fileRefs + tests.refs
 p +=
-    "\t\t\(appID) /* MenteViva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenteViva.app; sourceTree = BUILT_PRODUCTS_DIR; };\n"
+    "\t\t\(appID) /* Ludavela.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ludavela.app; sourceTree = BUILT_PRODUCTS_DIR; };\n"
 p +=
     "\t\t\(catID) /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = \"<group>\"; };\n"
     + "\t\t\(privacyID) /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = \"<group>\"; };\n\n"
 if !localOnly {
     p +=
-        "\t\t\(entID) /* MenteViva.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenteViva.entitlements; sourceTree = \"<group>\"; };\n"
+        "\t\t\(entID) /* Ludavela.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ludavela.entitlements; sourceTree = \"<group>\"; };\n"
 }
 p += "\t\t\(catBuildID) /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = \(catID); };\n"
 p += "\t\t\(privacyBuildID) /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = \(privacyID); };\n"
@@ -151,7 +152,7 @@ p +=
 p += "\t\t\(assetsBuildID) /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = \(assetsID); };\n\n"
 if hasTests {
     p +=
-        "\t\t\(testsProductID) /* MenteVivaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenteVivaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };\n"
+        "\t\t\(testsProductID) /* LudavelaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LudavelaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };\n"
 }
 p += "\n"
 
@@ -160,46 +161,46 @@ p += "\n"
 // Root group + Products group: Xcode expects a container group holding the
 // source group and a Products group holding built products. Without them the
 // GUI reports a "file format integrity issue" even though xcodebuild parses fine.
-var productsChildren = "\t\t\t\t\(appID) /* MenteViva.app */,\n"
-if hasTests { productsChildren += "\t\t\t\t\(testsProductID) /* MenteVivaTests.xctest */,\n" }
+var productsChildren = "\t\t\t\t\(appID) /* Ludavela.app */,\n"
+if hasTests { productsChildren += "\t\t\t\t\(testsProductID) /* LudavelaTests.xctest */,\n" }
 p +=
-    "\t\t\(rootGrpID) = {\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = ( \(grpID) /* MenteViva */, \(productsGrpID) /* Products */ );\n\t\t\tsourceTree = \"<group>\";\n\t\t};\n"
+    "\t\t\(rootGrpID) = {\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = ( \(grpID) /* Ludavela */, \(productsGrpID) /* Products */ );\n\t\t\tsourceTree = \"<group>\";\n\t\t};\n"
 p +=
     "\t\t\(productsGrpID) /* Products */ = {\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\(productsChildren)\t\t\t);\n\t\t\tname = Products;\n\t\t\tsourceTree = \"<group>\";\n\t\t};\n\n"
 
 p +=
-    "\t\t\(grpID) /* MenteViva */ = {\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\(children)"
-    + (localOnly ? "" : "\t\t\t\t\(entID) /* MenteViva.entitlements */,\n")
+    "\t\t\(grpID) /* Ludavela */ = {\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\(children)"
+    + (localOnly ? "" : "\t\t\t\t\(entID) /* Ludavela.entitlements */,\n")
     + "\t\t\t\t\(catID) /* Localizable.xcstrings */,\n\t\t\t\t\(privacyID) /* PrivacyInfo.xcprivacy */,\n\t\t\t\t\(assetsID) /* Assets.xcassets */,\n"
-if hasTests { p += "\t\t\t\t\(testsGrpID) /* MenteVivaTests */,\n" }
-p += "\t\t\t);\n\t\t\tpath = MenteViva;\n\t\t\tsourceTree = \"<group>\";\n\t\t};\n\n"
+if hasTests { p += "\t\t\t\t\(testsGrpID) /* LudavelaTests */,\n" }
+p += "\t\t\t);\n\t\t\tpath = Ludavela;\n\t\t\tsourceTree = \"<group>\";\n\t\t};\n\n"
 if hasTests {
     p +=
-        "\t\t\(testsGrpID) /* MenteVivaTests */ = {\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\(tests.kids)\t\t\t);\n\t\t\tname = MenteVivaTests;\n\t\t\tsourceTree = \"<group>\";\n\t\t};\n\n"
+        "\t\t\(testsGrpID) /* LudavelaTests */ = {\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\(tests.kids)\t\t\t);\n\t\t\tname = LudavelaTests;\n\t\t\tsourceTree = \"<group>\";\n\t\t};\n\n"
 }
 
 // MARK: Targets + dependencies
 
 p +=
-    "\t\t\(tgtID) /* MenteViva */ = {\n\t\t\tisa = PBXNativeTarget;\n\t\t\tbuildConfigurationList = \(oid("tgtCfgList")) /* Build configuration list for PBXNativeTarget \"MenteViva\" */;\n\t\t\tbuildPhases = ( \(srcsID) /* Sources */, \(fwID) /* Frameworks */, \(resID) /* Resources */ );\n\t\t\tbuildRules = ( );\n\t\t\tdependencies = ( );\n\t\t\tname = MenteViva;\n\t\t\tproductName = MenteViva;\n\t\t\tproductReference = \(appID);\n\t\t\tproductType = \"com.apple.product-type.application\";\n\t\t};\n\n"
+    "\t\t\(tgtID) /* Ludavela */ = {\n\t\t\tisa = PBXNativeTarget;\n\t\t\tbuildConfigurationList = \(oid("tgtCfgList")) /* Build configuration list for PBXNativeTarget \"Ludavela\" */;\n\t\t\tbuildPhases = ( \(srcsID) /* Sources */, \(fwID) /* Frameworks */, \(resID) /* Resources */ );\n\t\t\tbuildRules = ( );\n\t\t\tdependencies = ( );\n\t\t\tname = Ludavela;\n\t\t\tproductName = Ludavela;\n\t\t\tproductReference = \(appID);\n\t\t\tproductType = \"com.apple.product-type.application\";\n\t\t};\n\n"
 if hasTests {
     p +=
-        "\t\t\(testsTgtID) /* MenteVivaTests */ = {\n\t\t\tisa = PBXNativeTarget;\n\t\t\tbuildConfigurationList = \(oid("tests:cfgList")) /* Build configuration list for PBXNativeTarget \"MenteVivaTests\" */;\n\t\t\tbuildPhases = ( \(testsSrcsID) /* Sources */, \(testsFwID) /* Frameworks */, \(testsResID) /* Resources */ );\n\t\t\tbuildRules = ( );\n\t\t\tdependencies = ( \(testsDepID) /* PBXTargetDependency */ );\n\t\t\tname = MenteVivaTests;\n\t\t\tproductName = MenteVivaTests;\n\t\t\tproductReference = \(testsProductID);\n\t\t\tproductType = \"com.apple.product-type.bundle.unit-test\";\n\t\t};\n\n"
+        "\t\t\(testsTgtID) /* LudavelaTests */ = {\n\t\t\tisa = PBXNativeTarget;\n\t\t\tbuildConfigurationList = \(oid("tests:cfgList")) /* Build configuration list for PBXNativeTarget \"LudavelaTests\" */;\n\t\t\tbuildPhases = ( \(testsSrcsID) /* Sources */, \(testsFwID) /* Frameworks */, \(testsResID) /* Resources */ );\n\t\t\tbuildRules = ( );\n\t\t\tdependencies = ( \(testsDepID) /* PBXTargetDependency */ );\n\t\t\tname = LudavelaTests;\n\t\t\tproductName = LudavelaTests;\n\t\t\tproductReference = \(testsProductID);\n\t\t\tproductType = \"com.apple.product-type.bundle.unit-test\";\n\t\t};\n\n"
     p +=
-        "\t\t\(testsProxyID) /* PBXContainerItemProxy */ = { isa = PBXContainerItemProxy; containerPortal = \(pbxID) /* Project object */; proxyType = 1; remoteGlobalIDString = \(tgtID); remoteInfo = MenteViva; };\n"
+        "\t\t\(testsProxyID) /* PBXContainerItemProxy */ = { isa = PBXContainerItemProxy; containerPortal = \(pbxID) /* Project object */; proxyType = 1; remoteGlobalIDString = \(tgtID); remoteInfo = Ludavela; };\n"
     p +=
-        "\t\t\(testsDepID) /* PBXTargetDependency */ = { isa = PBXTargetDependency; target = \(tgtID) /* MenteViva */; targetProxy = \(testsProxyID); };\n\n"
+        "\t\t\(testsDepID) /* PBXTargetDependency */ = { isa = PBXTargetDependency; target = \(tgtID) /* Ludavela */; targetProxy = \(testsProxyID); };\n\n"
 }
 
 // MARK: Project
 
 var targetAttrs = "\(tgtID) = { CreatedOnToolsVersion = 16.0; };"
 if hasTests { targetAttrs += " \(testsTgtID) = { CreatedOnToolsVersion = 16.0; TestTargetID = \(tgtID); };" }
-var targetsList = "\(tgtID) /* MenteViva */"
-if hasTests { targetsList += ", \(testsTgtID) /* MenteVivaTests */" }
+var targetsList = "\(tgtID) /* Ludavela */"
+if hasTests { targetsList += ", \(testsTgtID) /* LudavelaTests */" }
 
 p +=
-    "\t\t\(pbxID) /* Project object */ = {\n\t\t\tisa = PBXProject;\n\t\t\tattributes = { BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 2630; LastUpgradeCheck = 2700; TargetAttributes = { \(targetAttrs) }; };\n\t\t\tbuildConfigurationList = \(oid("prjCfgList")) /* Build configuration list for PBXProject \"MenteViva\" */;\n\t\t\tdevelopmentRegion = en;\n\t\t\thasScannedForEncodings = 0;\n\t\t\tknownRegions = ( en, Base, es );\n\t\t\tmainGroup = \(rootGrpID);\n\t\t\tminimizedProjectReferenceProxies = 1;\n\t\t\tpreferredProjectObjectVersion = 90;\n\t\t\tproductRefGroup = \(productsGrpID) /* Products */;\n\t\t\tprojectDirPath = \"\";\n\t\t\tprojectRoot = \"\";\n\t\t\ttargets = ( \(targetsList) );\n\t\t};\n\n"
+    "\t\t\(pbxID) /* Project object */ = {\n\t\t\tisa = PBXProject;\n\t\t\tattributes = { BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 2630; LastUpgradeCheck = 2700; TargetAttributes = { \(targetAttrs) }; };\n\t\t\tbuildConfigurationList = \(oid("prjCfgList")) /* Build configuration list for PBXProject \"Ludavela\" */;\n\t\t\tdevelopmentRegion = en;\n\t\t\thasScannedForEncodings = 0;\n\t\t\tknownRegions = ( en, Base, es );\n\t\t\tmainGroup = \(rootGrpID);\n\t\t\tminimizedProjectReferenceProxies = 1;\n\t\t\tpreferredProjectObjectVersion = 90;\n\t\t\tproductRefGroup = \(productsGrpID) /* Products */;\n\t\t\tprojectDirPath = \"\";\n\t\t\tprojectRoot = \"\";\n\t\t\ttargets = ( \(targetsList) );\n\t\t};\n\n"
 
 // MARK: Build phases
 
@@ -298,7 +299,7 @@ let appSettings =
         ("ASSETCATALOG_COMPILER_APPICON_NAME", "AppIcon"),
         // Jade tint for system UI (share sheet, PhotosPicker, alerts), not just the SwiftUI root.
         ("ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME", "AccentColor"),
-        ("CODE_SIGN_ENTITLEMENTS", "MenteViva/MenteViva.entitlements"),
+        ("CODE_SIGN_ENTITLEMENTS", "Ludavela/Ludavela.entitlements"),
         // Compile-time switch for CloudKit. An INFOPLIST_KEY_* flag looked cleaner
         // but Xcode only injects a known allowlist of keys, so the value silently
         // vanished and the app enabled CloudKit against its own entitlements —
@@ -315,7 +316,7 @@ let appSettings =
         // The launch colour cannot be a generated INFOPLIST_KEY_* (Xcode drops
         // UILaunchScreen_BackgroundColor silently), so a partial Info.plist carries
         // UILaunchScreen > UIColorName and Xcode merges it with the generated keys.
-        ("INFOPLIST_FILE", "MenteViva/Info.plist"),
+        ("INFOPLIST_FILE", "Ludavela/Info.plist"),
         ("INFOPLIST_KEY_UILaunchScreen_Generation", "YES"),
         ("INFOPLIST_KEY_UIStatusBarStyle", "UIStatusBarStyleDefault"),
         (
@@ -341,10 +342,10 @@ let appSettings =
 let testSettings =
     common + [
         ("BUNDLE_LOADER", "\"$(TEST_HOST)\""),
-        ("TEST_HOST", "\"$(BUILT_PRODUCTS_DIR)/MenteViva.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MenteViva\""),
+        ("TEST_HOST", "\"$(BUILT_PRODUCTS_DIR)/Ludavela.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ludavela\""),
         ("GENERATE_INFOPLIST_FILE", "YES"),
         ("LD_RUNPATH_SEARCH_PATHS", "\"$(inherited) @executable_path/Frameworks @loader_path/Frameworks\""),
-        ("PRODUCT_BUNDLE_IDENTIFIER", "com.igmarin.MenteVivaTests"),
+        ("PRODUCT_BUNDLE_IDENTIFIER", "com.igmarin.LudavelaTests"),
         ("PRODUCT_NAME", "\"$(TARGET_NAME)\""),
         ("SWIFT_EMIT_LOC_STRINGS", "NO"),
     ]
@@ -370,7 +371,7 @@ p += "\t};\n\trootObject = \(pbxID) /* Project object */;\n}\n"
 
 // MARK: Write project + shared scheme
 
-let projDir = root.appendingPathComponent("MenteViva.xcodeproj")
+let projDir = root.appendingPathComponent("Ludavela.xcodeproj")
 /// Runs a filesystem step; on failure prints what failed instead of a trace.
 func attempt(_ what: String, _ body: () throws -> Void) {
     do { try body() } catch { die("could not \(what): \(error.localizedDescription)") }
@@ -382,12 +383,12 @@ attempt("write project.pbxproj") {
 
 var testables = ""
 func testable(_ id: String, bundle: String, name: String) -> String {
-    "\t\t\t<TestableReference skipped=\"NO\">\n\t\t\t\t<BuildableReference BuildableIdentifier=\"primary\" BlueprintIdentifier=\"\(id)\" BuildableName=\"\(bundle)\" BlueprintName=\"\(name)\" ReferencedContainer=\"container:MenteViva.xcodeproj\"/>\n\t\t\t</TestableReference>\n"
+    "\t\t\t<TestableReference skipped=\"NO\">\n\t\t\t\t<BuildableReference BuildableIdentifier=\"primary\" BlueprintIdentifier=\"\(id)\" BuildableName=\"\(bundle)\" BlueprintName=\"\(name)\" ReferencedContainer=\"container:Ludavela.xcodeproj\"/>\n\t\t\t</TestableReference>\n"
 }
-if hasTests { testables += testable(testsTgtID, bundle: "MenteVivaTests.xctest", name: "MenteVivaTests") }
+if hasTests { testables += testable(testsTgtID, bundle: "LudavelaTests.xctest", name: "LudavelaTests") }
 
 let appRef =
-    "<BuildableReference BuildableIdentifier=\"primary\" BlueprintIdentifier=\"\(tgtID)\" BuildableName=\"MenteViva.app\" BlueprintName=\"MenteViva\" ReferencedContainer=\"container:MenteViva.xcodeproj\"/>"
+    "<BuildableReference BuildableIdentifier=\"primary\" BlueprintIdentifier=\"\(tgtID)\" BuildableName=\"Ludavela.app\" BlueprintName=\"Ludavela\" ReferencedContainer=\"container:Ludavela.xcodeproj\"/>"
 
 let scheme = """
     <?xml version="1.0" encoding="UTF-8"?>
@@ -424,7 +425,7 @@ attempt("create the scheme folder") { try FileManager.default.createDirectory(at
 // Write the scheme only if absent: Xcode owns and reformats it from here on, and
 // regenerating over it causes churn (formatting/LastUpgradeVersion) with no
 // semantic value. Target IDs are deterministic, so a committed scheme stays valid.
-let schemeFile = schemeDir.appendingPathComponent("MenteViva.xcscheme")
+let schemeFile = schemeDir.appendingPathComponent("Ludavela.xcscheme")
 if !FileManager.default.fileExists(atPath: schemeFile.path) {
     attempt("write the scheme") { try scheme.write(to: schemeFile, atomically: true, encoding: .utf8) }
 }
@@ -449,5 +450,5 @@ attempt("write the workspace file") {
 }
 
 print(
-    "Generated MenteViva.xcodeproj: \(appFiles.count) app files, \(testFiles.count) test files\(cloudKit ? " [cloudkit]" : " [local-only]")"
+    "Generated Ludavela.xcodeproj: \(appFiles.count) app files, \(testFiles.count) test files\(cloudKit ? " [cloudkit]" : " [local-only]")"
 )

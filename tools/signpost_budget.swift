@@ -9,7 +9,7 @@ import Foundation
 ///
 /// `tools/profile.sh` runs this for you. See docs/profiling.md.
 
-let subsystem = "com.igmarin.MenteViva"
+let subsystem = "com.igmarin.Ludavela"
 let defaultBudgetMilliseconds = 100.0
 
 func fail(_ message: String) -> Never {
