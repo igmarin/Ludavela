@@ -13,6 +13,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Newest first.
 
 ### Changed
 - **Quieter game cards (#580):** bigger pictures, one printed outline and names in dark ink on cream; catalogue names wrap without shrinking, while compact cards keep their existing fit. Completed games keep their checkmark, and large-text rows use the same simpler treatment.
+- **A clearer place to start (#581):** Home puts the next game and its play action first on a calm table, while keeping all recommended cards, their completion marks and the daily week record.
 - **Lotería (#573):** temporarily hidden from the game list and daily picks while its play is reconsidered; previous sessions remain saved.
 - **MenteViva is now Ludavela (#565):** the Home-screen name, app text, shared summaries, website and store copy use Ludavela in English and Spanish. Existing installs keep their app identity and saved progress.
 - **Lotería help and large text (#556):** tapping "Next card" a second time while the called card waits on the board points out its tile once and counts as one more try. VoiceOver hears the card's row and column; Reduce Motion shows a ring instead of a pulse. At accessibility text sizes, the called card stays above the scrolling board. EN + ES.

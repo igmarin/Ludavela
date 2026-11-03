@@ -4833,6 +4833,23 @@
         }
       }
     },
+    "home.today.start %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jugar: %@"
+          }
+        }
+      }
+    },
     "home.today.played" : {
       "extractionState" : "stale",
       "localizations" : {

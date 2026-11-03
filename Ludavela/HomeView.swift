@@ -175,25 +175,21 @@ struct HomeView: View {
         return AppLanguage.localized("home.today.togo \(today.remaining)" as String.LocalizationValue)
     }
 
-    /// The icon's gradient with today's games on it: the hand and the button
-    /// while there is something left, a tidy pile and the week once done.
+    /// The next game leads at every text size; the remaining cards stay available below it.
     private var table: some View {
         VStack(spacing: 16) {
             if today.isFinished {
                 pile
                 shareButton
                 weekLink { weekBoardCard }
-            } else if typeSize.isAccessibilitySize {
-                nextButton
-                hand
             } else {
-                hand
                 nextButton
+                hand
             }
         }
         .padding(18)
         .frame(maxWidth: .infinity)
-        .background(.table, in: .rect(cornerRadius: 30))
+        .background(Color.tableSurface, in: .rect(cornerRadius: 30))
     }
 
     /// Today's cards. From the first Bigger text step up they are full-width rows, since names
@@ -258,32 +254,42 @@ struct HomeView: View {
     private var nextButton: some View {
         if let next = today.next {
             NavigationLink(value: next) {
-                HStack(spacing: 14) {
-                    Image(systemName: "play.fill")
-                        // A fixed size: at accessibility sizes a text-scaled glyph outgrew its
-                        // circle and was cut off (#529).
-                        .font(.system(size: 20))
-                        .foregroundStyle(Color.paper)
-                        .frame(width: 46, height: 46)
-                        .background(Color.brand, in: .circle)
+                VStack(alignment: .leading, spacing: 12) {
+                    if !typeSize.isAccessibilitySize {
+                        Group {
+                            if let picture = next.heroPicture {
+                                PictureView(picture: picture, size: 96)
+                            } else {
+                                Emblem(game: next).frame(width: 96, height: 96)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
                         .accessibilityHidden(true)
-                    Text(
-                        today.done.isEmpty
-                            ? AppLanguage.localized("home.today.play")
-                            : String(
-                                format: AppLanguage.localized("home.today.continue %@"),
+                    }
+                    Label {
+                        Text(
+                            String(
+                                format: AppLanguage.localized(
+                                    today.done.isEmpty ? "home.today.start %@" : "home.today.continue %@"),
                                 AppLanguage.localized(next.title))
-                    )
+                        )
+                    } icon: {
+                        Image(systemName: "play.fill")
+                            .font(.system(size: 20))
+                            .accessibilityHidden(true)
+                    }
                     .font(.title2.weight(.heavy))
-                    .fontDesign(.rounded)
                     .foregroundStyle(Color.brand)
-                    .multilineTextAlignment(.leading)
                 }
+                .fontDesign(.rounded)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
-                .frame(maxWidth: .infinity, minHeight: 100)
+                .frame(maxWidth: .infinity, minHeight: 100, alignment: .leading)
                 .background(Color.paper, in: .rect(cornerRadius: 26))
-                .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(Color.espresso, lineWidth: 2))
+                .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(Color.brand, lineWidth: 3))
+                .accessibilityElement(children: .combine)
             }
             .buttonStyle(CardPressStyle())
         }
