@@ -34,6 +34,15 @@ xcodebuild -project Ludavela.xcodeproj -scheme Ludavela -configuration Release \
 `ITSAppUsesNonExemptEncryption = false` in the app's Info.plist. **Not checked** (needs the owner's paid account
 and 2FA): the signed archive, `-exportArchive`, and the upload.
 
+## Xcode Cloud after the project rename
+
+If Xcode Cloud reports `Project MenteViva.xcodeproj does not exist at the root of the repository`,
+its workflow still points at the old project path. Open `Ludavela.xcodeproj`, then edit or reconfigure
+that workflow to use the Ludavela project and shared `Ludavela` scheme. In Xcode, use **Integrate →
+Manage Workflows**; App Store Connect also has **Xcode Cloud → Manage Workflows** ([Apple's guide](https://developer.apple.com/documentation/xcode/configuring-your-first-xcode-cloud-workflow)).
+Save and rerun the workflow, then confirm its GitHub check is green. This keeps the existing App Store
+app record and bundle ID.
+
 ## Reproducible build (every upload)
 
 1. Clean tree on `main`: `git status` prints nothing; `git pull`.
