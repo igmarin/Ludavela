@@ -134,22 +134,17 @@ How the numbers are kept honest:
 
 ## Build, test and CI
 
-- **The Xcode project is generated.** After adding or removing a `.swift` file, run
-  `swift tools/generate_project.swift` and commit the project file. Close Xcode first.
-- **Two build modes.** The default is local-only (no CloudKit), which a free Apple ID needs. A CloudKit build
-  without its entitlement crashes at launch, and the simulator doesn't show it, so test the mode you ship, on a
-  device.
+The commands and the reasons behind them are in [AGENTS.md](../AGENTS.md) (Workflow). In short:
+
+- **The Xcode project is generated** by `swift tools/generate_project.swift`. Run it after adding or removing
+  a `.swift` file, with Xcode closed.
+- **Two build modes.** The default is local-only (no CloudKit), which a free Apple ID needs.
 - **Tests** are in `LudavelaTests/`, named Given/When/Then. Pure logic is written test-first; SwiftUI layout is
   not tested. Tests never touch `UserDefaults.standard`; they use their own suite.
-- **Before every push**, `.githooks/pre-push` runs lint (`swift-format --strict`), the signpost and project-file
-  checks, and `xcodebuild test`. Install it once with `git config core.hooksPath .githooks`.
-- **CI on pull requests to `main`**, split by cost (macOS minutes bill at 10 times Linux):
-  - `checks.yml` on Linux, always: signposts match `docs/profiling.md`, the project file lists every `.swift`
-    file. About 1 billed minute.
-  - `swift.yml` on macOS, only for a non-draft PR that touches the app, tests, project or tools: regenerate the
-    project, lint, `xcodebuild test`. About 20 billed minutes. Open a PR as a draft while iterating.
-  - `ocr-review.yml` and `claude-code-review.yml` post automated code reviews when a PR is opened or marked
-    ready; `claude.yml` answers `@claude` mentions.
+- **`.githooks/pre-push`** runs lint, the signpost and project-file checks, and `xcodebuild test`.
+- **CI on pull requests to `main`:** `checks.yml` (Linux, always) and `swift.yml` (macOS, non-draft PRs that
+  touch code). `ocr-review.yml` and `claude-code-review.yml` post automated reviews when a PR is opened or
+  marked ready; `claude.yml` answers `@claude` mentions.
 - **Installing on a device** with a free Apple ID expires after 7 days; see [install-runbook.md](install-runbook.md).
 
 ## Adding a game

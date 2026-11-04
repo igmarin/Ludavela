@@ -224,11 +224,8 @@ Speed without quality is not progress. A PR is done when:
 
 ## Patterns
 
-- One file per game in `Ludavela/Games/`; copy `MemoryMatchView.swift`'s
-  shape (View + @State + `modelContext.record(GameSession(...))` on finish, #106).
-  No game engine, no base classes, no protocol ceremony.
-- The daily plan is `Services/DailyPolicy.swift` (pure, tested). Policy stays in code,
-  never in a model. Past Jev judgments are history: docs/jev-integration.md.
+- Games: one view per game in `Ludavela/Games/`, shaped like `MemoryMatchView.swift` (conventions §2).
+- The daily plan is `Services/DailyPolicy.swift` (pure, tested). Policy stays in code, never in a model.
 
 ## When unsure
 
