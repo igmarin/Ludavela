@@ -1,0 +1,20 @@
+{
+  "model": "jev-latest",
+  "state": {
+    "product": "Ludavela is an offline SwiftUI game collection for adults, with older adults as the reference audience. Project rules require interactive targets at least 60 points and aim for 100 points for game controls.",
+    "current": "Peg Solitaire uses an English cross board on a 7 by 7 grid, 33 holes. Each button fills one square. It is capped at 60pt per square and shrinks to avoid horizontal scrolling. With 16pt horizontal screen padding a 320pt viewport has at most 288pt for the board (41.14pt per cell), a 375pt viewport at most 343pt (49pt per cell). iPad width at least 452pt gives 60pt. Existing VoiceOver labels give row, column, occupied or empty, and directional actions on occupied holes.",
+    "candidate": "On widths too narrow for the 420pt board, preserve all holes and rules, use 60pt squares in a horizontal scroll viewport. Show a visible scroll affordance and clear localized instructions; preserve row-major accessibility traversal, row/column labels and directional actions. Keep 60pt capped board and no horizontal scroll on wide windows. Vertical scroll remains available for large text. This is untested and needs device, VoiceOver and older-adult evaluation.",
+    "constraints": "No puzzle rule changes. Do not silently add sideways scrolling; owner decides. Horizontal pan reduces simultaneous visibility and can compete with vertical scrolling. Bigger 100pt cells would require a 700pt board, with still less visible. Alternative selection/navigation controls need new interaction and copy. No option is established by real player testing."
+  },
+  "questions": {
+    "adaptation": {
+      "type": "choice",
+      "instructions": "Which proposed path is the most prudent starting point for an owner-reviewed prototype meeting the 60pt floor without changing the puzzle?",
+      "criteria": {
+        "scroll_board": "Prototype 420pt board in an explicitly discoverable horizontal viewport, retain cell actions, and test navigation",
+        "alternate_controls": "Prototype a separate large-control selection and movement interaction instead of board scrolling",
+        "defer": "Defer this game until a workable larger-target interaction is validated"
+      }
+    }
+  }
+}
