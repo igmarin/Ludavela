@@ -301,11 +301,19 @@ struct HomeView: View {
     /// Today's games once all are played: a tidy pile, the last one ticked.
     private var pile: some View {
         let games = today.games
-        return ZStack {
-            ForEach(Array(games.enumerated()), id: \.element) { index, game in
-                let last = index == games.count - 1
-                GameCard(game: game, size: .hand, playedToday: last)
-                    .rotationEffect(.degrees(last ? 0 : (index.isMultiple(of: 2) ? -9 : 6)))
+        return Group {
+            // From the same text step as the hand, the top card is the full-width row so its name
+            // is whole; a fanned card is too narrow for "Sudoku" or "Up or Down" there (#611).
+            if typeSize >= .xxxLarge, let last = games.last {
+                GameRow(game: last, playedToday: true)
+            } else {
+                ZStack {
+                    ForEach(Array(games.enumerated()), id: \.element) { index, game in
+                        let last = index == games.count - 1
+                        GameCard(game: game, size: .hand, playedToday: last)
+                            .rotationEffect(.degrees(last ? 0 : (index.isMultiple(of: 2) ? -9 : 6)))
+                    }
+                }
             }
         }
         .padding(.vertical, 10)
@@ -321,15 +329,28 @@ struct HomeView: View {
                 games: today.games, date: .now, locale: AppLanguage.currentLocale,
                 localize: { AppLanguage.localized($0) })
         ) {
-            Label(AppLanguage.localized("today.share"), systemImage: "square.and.arrow.up")
-                .font(.title2.weight(.heavy))
-                .fontDesign(.rounded)
-                .foregroundStyle(Color.brand)
-                .multilineTextAlignment(.leading)
-                .padding(.horizontal, 16)
-                .frame(maxWidth: .infinity, minHeight: 100)
-                .background(Color.paper, in: .rect(cornerRadius: 26))
-                .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(Color.espresso, lineWidth: 2))
+            // At accessibility sizes the icon sits above the words, so the text gets the whole
+            // width and wraps between words, not inside them (#611).
+            Group {
+                if typeSize.isAccessibilitySize {
+                    VStack(spacing: 8) {
+                        Image(systemName: "square.and.arrow.up")
+                        Text(AppLanguage.localized("today.share"))
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(.vertical, 12)
+                } else {
+                    Label(AppLanguage.localized("today.share"), systemImage: "square.and.arrow.up")
+                }
+            }
+            .font(.title2.weight(.heavy))
+            .fontDesign(.rounded)
+            .foregroundStyle(Color.brand)
+            .multilineTextAlignment(typeSize.isAccessibilitySize ? .center : .leading)
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, minHeight: 100)
+            .background(Color.paper, in: .rect(cornerRadius: 26))
+            .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(Color.espresso, lineWidth: 2))
         }
         .buttonStyle(CardPressStyle())
         .accessibilityHint(AppLanguage.localized("today.share.hint"))
