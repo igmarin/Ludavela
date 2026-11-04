@@ -1,10 +1,11 @@
 # Ludavela — referencias aplicadas (#579)
 
-Estado: propuesta revisable, no dirección final aprobada. Epic #578; implementación paralela en #580 y #581 autorizada por el propietario. No merge ni aprobación visual implícita.
+Estado: el propietario eligió crema actual, mesa jade plana y títulos sobre crema, conservando el abanico (2026-11-03). Las demás composiciones siguen en revisión. Epic #578; implementación paralela en #580 y #581 autorizada. No merge implícito.
 
 ## Abrir el estudio
 
 - [Comparador interactivo](2026-11-03-sobremesa.html): inicio, carta y celebración; controles de crema, mesa, banda, apariencia, tamaño de texto e idioma.
+- Capturas exportadas antes de la elección del propietario; conservadas como evidencia histórica.
 - [Captura completa clara](sobremesa-579/proposal-overview.png).
 - [Captura oscura, texto grande y EN](sobremesa-579/proposal-dark-large-en.png).
 - Referencias externas consultadas: `/Users/igmarin/Downloads/cartoon references/`. No se copian al repositorio ni se incorporan a la app.
@@ -15,7 +16,7 @@ El HTML es una maqueta de diseño autónoma, no una nueva página de producto. S
 
 El propietario pidió conservar la interacción de las recomendaciones del inicio y cómo se marca cada día. Por ello, el contrato conserva todas las cartas recomendadas, sus accesos directos, las marcas de completado y el tablero de siete días con cartas. La siguiente partida no sustituye una carta recomendada ni cambia la selección del plan. El estudio no propone una racha ni una métrica nueva.
 
-La variante de inicio del HTML conserva el abanico de tres cartas y coloca antes una acción crema con borde jade. No afirma ser la implementación exacta de #581. La versión implementable debe preservar la interacción del reparto actual; los cambios de posición de la acción o de composición siguen sujetos a la elección visual. Una maqueta no demuestra mayor retención o facilidad de uso.
+La variante de inicio del HTML conserva el abanico de tres cartas y coloca antes una acción crema con borde jade. No afirma ser la implementación exacta de #581. La versión implementable debe preservar la interacción del reparto actual; los cambios de posición de la acción y las demás composiciones siguen sujetos a revisión. Una maqueta no demuestra mayor retención o facilidad de uso.
 
 ## Referencia → rasgo → aplicación
 
@@ -93,14 +94,14 @@ Carta/celebración: fixture temporal de RootView que monta `GameCard(game: .memo
 
 ## Evidencia y límites
 
-Jev consultado realmente, respuesta `jev-1.14.0` en [023 request](../jev-json/023-visual-hierarchy.request.json) y [023 response](../jev-json/023-visual-hierarchy.response.json): recomienda refinar jerarquía y conservar paleta/comparar candidata. Es evidencia de criterio, no test de usabilidad ni aprobación del propietario.
+Jev consultado realmente, respuesta `jev-1.14.0` en [023 request](../jev-json/023-visual-hierarchy.request.json) y [023 response](../jev-json/023-visual-hierarchy.response.json): recomienda refinar jerarquía y conservar paleta/comparar candidata. Es evidencia de criterio, no test de usabilidad; la elección del propietario se registra por separado.
 
 Arte: reutiliza tetera, perro, manzana y girasol ya existentes en docs/design/art-samples. Su procedencia e incertidumbres permanecen en docs/art-prompts.md y docs/ip-clearance.md; esta exploración no afirma nueva autorización de uso. No se generó ni copió arte externo.
 
 - [x] Tres maquetas aplicadas, variantes, matriz de referencias, estados y storyboard.
 - [x] Juicio Jev real archivado.
-- [ ] Elección visual final del propietario: pendiente, no inferida de autorización para trabajar en paralelo.
+- [x] Elección del propietario: crema actual, mesa jade plana, títulos sobre crema y abanico conservado; no aprueba las demás composiciones.
 - [ ] Prueba de uso con participantes y dispositivos físicos: corresponde a #586.
 - [ ] Validación integrada definitiva de #580/#581: responsabilidad de sus PRs y revisión principal.
 
-Siguiente paso: revisar el comparador y las capturas de implementación #580/#581 manteniendo las interacciones solicitadas; registrar elección explícita y sólo entonces actualizar la dirección final. No cerrar #579 por disponer únicamente del material de exploración.
+Siguiente paso: revisar el comparador y las capturas de implementación #580/#581 manteniendo las interacciones solicitadas; validar las composiciones y la implementación pendientes.
