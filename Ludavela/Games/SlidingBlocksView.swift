@@ -7,6 +7,8 @@ import SwiftUI
 /// name the legal directions only. The rules live in `SlidingBlocksPuzzle`
 /// (#222); this view owns taps, drags and drawing. No illegal move is ever
 /// shown, so there is no failure copy, only movement. Fully offline.
+/// #600: the board sits on Home's flat jade table, drawn outside the board's own space so the cell
+/// size, and so the board, is exactly what it was before.
 struct SlidingBlocksView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -52,7 +54,8 @@ struct SlidingBlocksView: View {
             LevelExplainBanner(
                 game: GameID.slidingBlocks, hasStarted: (puzzle?.movesMade ?? 0) > 0, keepsSpace: true)
             Text(instruction)
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
 
             board
@@ -99,6 +102,10 @@ struct SlidingBlocksView: View {
                     }
                 }
                 .frame(width: boardWidth, height: boardHeight)
+                // Padding in, then out again: the table takes none of the board's room (#600).
+                .padding(8)
+                .background(Color.tableSurface, in: .rect(cornerRadius: 30))
+                .padding(-8)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }

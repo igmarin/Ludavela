@@ -5,6 +5,8 @@ import UIKit
 /// Up or Down (#180): a golf solitaire with big cards drawn in SwiftUI (`UpOrDownDeal`).
 /// Tap a top card one higher or one lower than the open card; turn the deck when none
 /// fits. A new deal every time. The game ends on cards cleared, never on a loss.
+/// #600: the piles, open card and deck sit on Home's flat jade table, drawn outside the row's space so
+/// the row is measured at the same width and deals the same piles and card sizes as before.
 struct UpOrDownView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -31,25 +33,33 @@ struct UpOrDownView: View {
             LevelExplainBanner(
                 game: GameID.upOrDown, hasStarted: played > 0 || taps > 0)
             Text(AppLanguage.localized("game.upordown.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
 
             if let deal {
                 note(for: deal)
-                piles(deal)
-                ViewThatFits(in: .horizontal) {
-                    // Top-aligned: the deck's caption hangs below it, and the two cards stay level.
-                    HStack(alignment: .top, spacing: 32) {
-                        openCard(deal)
-                        deckButton(deal)
-                    }
-                    // At the largest text sizes "Otra carta" is wider than a small phone's row
-                    // leaves beside the open card, so the deck goes under it (#528).
-                    VStack(spacing: 16) {
-                        openCard(deal)
-                        deckButton(deal)
+                VStack(spacing: 24) {
+                    piles(deal)
+                    ViewThatFits(in: .horizontal) {
+                        // Top-aligned: the deck's caption hangs below it, and the two cards stay level.
+                        HStack(alignment: .top, spacing: 32) {
+                            openCard(deal)
+                            deckButton(deal)
+                        }
+                        // At the largest text sizes "Otra carta" is wider than a small phone's row
+                        // leaves beside the open card, so the deck goes under it (#528).
+                        VStack(spacing: 16) {
+                            openCard(deal)
+                            deckButton(deal)
+                        }
                     }
                 }
+                .frame(maxWidth: .infinity)
+                // Padding in, then out again: the table takes none of the cards' room (#600).
+                .padding(8)
+                .background(Color.tableSurface, in: .rect(cornerRadius: 30))
+                .padding(-8)
             }
         }
         .frame(maxWidth: .infinity)
@@ -139,7 +149,7 @@ struct UpOrDownView: View {
                         .accessibilityValue(fits ? AppLanguage.localized("game.upordown.a11y.fits") : "")
                     } else {
                         RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(.secondary, style: StrokeStyle(lineWidth: 2, dash: [6, 6]))
+                            .strokeBorder(Color.inkSoft, style: StrokeStyle(lineWidth: 2, dash: [6, 6]))
                             .frame(width: width, height: width * 1.4)
                             .accessibilityLabel(AppLanguage.localized("game.upordown.a11y.empty"))
                     }
