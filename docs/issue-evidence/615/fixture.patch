@@ -1,0 +1,36 @@
+--- a/Ludavela/LudavelaApp.swift
++++ b/Ludavela/LudavelaApp.swift
+@@ -53 +53 @@
+-            RootView()
++            PegSolitaireView().frame(width: CGFloat(Double(ProcessInfo.processInfo.environment["FIXTURE_WIDTH"] ?? "375") ?? 375))
+--- a/Ludavela/Games/PegSolitaireView.swift
++++ b/Ludavela/Games/PegSolitaireView.swift
+@@ -42,3 +42 @@
+-        .firstPlayGuide(
+-            .pegSolitaire, line: AppLanguage.localized("game.peg.guide"), example: AppLanguage.localized("game.peg.example")
+-        )
++
+@@ -62,4 +60,19 @@
+-        Color.clear
+-            .aspectRatio(1, contentMode: .fit)
+-            .frame(maxWidth: 420)
+-            .overlay { GeometryReader { proxy in boardView(cell: min(60, proxy.size.width / 7)) } }
++        GeometryReader { proxy in
++            let width = proxy.size.width
++            let proposed = ProcessInfo.processInfo.environment["FIXTURE_PROPOSED"] == "1"
++            let cell = proposed ? CGFloat(60) : min(60, width / 7)
++            ZStack(alignment: .top) {
++                if proposed && width < 420 {
++                    ScrollView(.horizontal) { boardView(cell: cell).frame(width: 420, height: 420) }
++                } else {
++                    boardView(cell: cell)
++                }
++                Text(String(format: "viewport %.2f • cell %.2f • %@", width, cell, proposed ? "PROPOSAL" : "CURRENT"))
++                    .font(.system(size: 12)).padding(4).background(.white)
++                    .offset(y: -16)
++                    .onAppear { print(String(format: "FIXTURE_GEOMETRY viewport=%.3f cell=%.3f proposal=%@", width, cell, proposed.description)) }
++            }
++        }
++        .frame(height: ProcessInfo.processInfo.environment["FIXTURE_PROPOSED"] == "1" ? 420 : nil)
++        .aspectRatio(1, contentMode: .fit)
++        .frame(maxWidth: 420)
