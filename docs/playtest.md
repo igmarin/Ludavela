@@ -1,14 +1,16 @@
 # Playtest protocol
 
-For #6 (family playtest) and #33 (non-family seniors). Same method for both —
-the only difference is who is holding the iPad. For the #6 session itself,
-print [playtest-session-1.md](playtest-session-1.md): it maps each observation
-to the issue it unblocks (#44, #46, #47). Session #2, on the Card Table redesign,
-uses [playtest-session-2.md](playtest-session-2.md); session #3, on the three new games,
-uses [playtest-session-3.md](playtest-session-3.md); session #4, a week alone on levels, onboarding
-and the four new games, uses [playtest-session-4.md](playtest-session-4.md). For #33, print
-[playtest-outside.md](playtest-outside.md): the invite (EN + ES), a sheet per tester
-and the findings template.
+How to run a playtest with family (#6) or with seniors outside the family (#33). Same method for
+both; only the person holding the device changes. Each session has its own printable sheet:
+
+| Sheet | Session |
+|---|---|
+| [playtest-session-1.md](playtest-session-1.md) | #1, dad's first playtest (#6); maps observations to #44, #46, #47 |
+| [playtest-session-2.md](playtest-session-2.md) | #2, the Card Table redesign |
+| [playtest-session-3.md](playtest-session-3.md) | #3, Sudoku, Up or Down and Finish the Saying |
+| [playtest-session-4.md](playtest-session-4.md) | #4, a week alone on levels, onboarding and the four new games |
+| [playtest-session-5.md](playtest-session-5.md) | #5, the new look (#586) |
+| [playtest-outside.md](playtest-outside.md) | #33, testers outside the family: invite (EN + ES), sheet, findings template |
 
 ## The one rule
 
@@ -61,28 +63,17 @@ Top 3 friction:
 Top 3 friction goes into the issue. If a fix is obvious and small, fix it the
 same day; if it needs a design decision, it becomes its own issue.
 
-## Install logistics (free-account builds)
+## Install
 
-Until the paid Developer Program is bought, every build installed on a device
-**stops launching after 7 days**. That shapes how to run a session:
-
-- **Plan sessions to fit inside a week.** Install, test within a few days, done.
-  Don't promise a tester "keep it and use it for a month".
-- **Re-sign weekly** when the same person is testing long-term: reconnect the
-  device to the Mac and ⌘R again. Two minutes, but it needs the device present.
-- **Bring the device to the Mac** (or the Mac to the device) — free accounts
-  can't invite testers remotely. TestFlight needs the paid account.
-- Free provisioning also caps how many apps/devices can be signed at once, so
-  keep the device list short and remove stale ones in Xcode → Settings →
-  Accounts → Manage Certificates/Devices.
-- **Local-only builds are the default**: no CloudKit entitlement,
-  so a free Apple ID can provision them. Store data stays on that iPad.
+Testers install through TestFlight ([testflight-beta.md](testflight-beta.md)): builds last 90 days and
+need no cable. A free-Apple-ID build from Xcode stops launching after 7 days; use it only on the
+owner's development devices ([install-runbook.md](install-runbook.md)).
 
 ## Results
 
-No session has been recorded in the repo yet (#6 and #33 are open). After each
-session, paste the Record block above into the issue and add a dated section
-here with the top 3 friction.
+Findings go in the issue for the session (the Record block above, plus the top 3 friction).
+#6 closed on 2026-10-05 with seven friction points, which became #106–#110. #33 closed on
+2026-10-28 as not planned, with no outside sessions recorded.
 
 ## What counts as success
 

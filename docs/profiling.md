@@ -22,7 +22,7 @@ No third-party tools: `os_signpost` (via `HotPath.measure`) plus Instruments.
 `HotPath.measure("name") { ... }` costs next to nothing with no profiler attached.
 Add one only around work that can be slow or runs per redraw (conventions §8: no speculative code).
 
-Memory Lane decodes every photo up front inside `memory.deal`; Remember Together decodes
+Memory Lane decodes every photo up front inside `memory.deal`; Photo Stories decodes
 one at a time, which is why it needs its own per-card signpost.
 
 `reminiscence.photo` is the only one that covers `await`, through `HotPath.measure`'s async overload —
@@ -45,7 +45,7 @@ millisecond; what a trace shows is how many of them one redraw of Set up costs.
    Use `tools/profile.sh --launch 30` to relaunch the app under the recorder instead:
    attaching can never catch cold start, so that is the only way to see `plan.today`.
 3. Play the flow you care about (add photos, finish a game, open My Week, My progress and Set up,
-   play Remember Together past the first card).
+   play Photo Stories past the first card).
 4. The script then prints every interval it recorded against the budget and opens the trace:
 
    ```

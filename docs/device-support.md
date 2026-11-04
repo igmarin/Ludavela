@@ -40,18 +40,15 @@ iOS 17 is verified on physical hardware, never on a simulator.
 | iPhone 18 Pro (simulator) | iOS 27.0 | All screens exercised, screenshots reviewed (2026-09) |
 | Mac Catalyst | — | Not supported, not planned |
 
-## What we have NOT verified (open, tracked in #36)
+## What we have NOT verified
 
-- A **current physical iPhone** — only simulators so far. This is the last
-  box for #36, and only the owner can tick it:
-  1. Install on any recent iPhone with the free-account path in
-     [install-runbook.md](install-runbook.md) (Cmd+R from Xcode; re-trust under
-     Settings > General > VPN & Device Management on first install).
-  2. Play one full game of Memory Lane to the celebration screen.
-  3. Rotate to landscape mid-game and back; nothing should clip or scroll
-     the board away.
-  4. Comment on #36 with the iPhone model + exact iOS version
-     (Settings > General > About). Then this row moves up to the table.
+- **A current physical iPhone, on record.** The owner tested TestFlight builds on a real iPhone and iPad
+  ([#386](https://github.com/igmarin/Ludavela/issues/386), 2026-11-02) and played the new look on three
+  physical devices ([#586](issue-evidence/586/README.md)). Neither records the model and exact iOS version,
+  so no row is added above. To add one:
+  1. Play one full game of Memory Lane to the celebration screen.
+  2. Rotate to landscape mid-game and back; nothing should clip or scroll the board away.
+  3. Note the model and exact iOS version (Settings > General > About) and add the row.
 - The oldest OS exactly (17.0, not 17.x) — no device we own is pinned there;
   iPad Viejita on 17.7.11 is the floor-proxy.
 - Split-screen / Slide Over on iPad.
@@ -67,6 +64,7 @@ lands, or a game adds a board that must fit without scrolling.
 | Home tiles | 2 across (1 at accessibility text sizes: 300pt minimum) | 4 across (adaptive, min 150pt) |
 | Memory Lane board | every card visible, no scroll: `gridFit` picks the columns that make cards largest (4/6/8 pairs; cards stay ≥60pt, tested) | same, larger cards |
 | Category Fluency grid | adaptive, min 100pt | more columns |
+| Peg Solitaire board | the whole cross on screen, holes about 52pt on a 375pt phone (the logged exception, [#615](decisions/2026-11.md)) | 60pt holes |
 | Other games | fixed layouts, no grid | same, centered |
 | My Week rows | full width, 100pt minimum height | full width |
 

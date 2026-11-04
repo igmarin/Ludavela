@@ -11,9 +11,10 @@ launch
   HomeView.refreshPlan()             reads the last 14 days of sessions
     PlayerStateSummary.build         turns them into per-game numbers
     PlanStore.todaysPlan             today's games + each game's level (DailyPolicy)
-  player taps "Start today's games" games run back to back
+  player taps "Play: <game>"        the next of today's games
   a game ends
     modelContext.record(GameSession) one row saved, then the celebration
+    the celebration's filled button  the next of today's games, or Home when the day is done
     the card joins the week board    (no scores shown to the player)
 ```
 
@@ -22,8 +23,8 @@ launch
 | Piece | Where | What it does |
 |---|---|---|
 | App entry | `Ludavela/LudavelaApp.swift` | Opens the SwiftData store. Local-only build by default (free Apple ID). If no store opens, an in-memory one is used so play still works. |
-| Home | `HomeView.swift`, `GameCard.swift`, `Theme.swift` | Deals today's games (2, 3 or 5) as framed cards; each game has its own colour and an emblem drawn in SwiftUI shapes. |
-| Games | `Games/` | One file per game, plus the shared celebration, miss cue and `fitOrScroll`. |
+| Home | `HomeView.swift`, `GameCard.swift`, `Theme.swift`, `Services/HandLayout.swift`, `Services/HomeShelves.swift` | Deals today's games (2, 3 or 5) as a fan of cards on the jade table, in rows of at most three. "All games" sits below on four shelves, one per focus area. Each game has its own colour and a picture or an emblem drawn in SwiftUI shapes. |
+| Games | `Games/` | One view per game, plus the shared celebration, miss cue and `fitOrScroll`. |
 | Game list | `Models/GameID.swift` | The single list of games: stable ID, emoji, title key, whether it has levels. |
 | Levels | `Models/Difficulty.swift` | Levels 1–10 (#197). A game turns its level into its own knobs with `values(_:)`, a ten-row table. |
 | Saved play | `Models/GameSession.swift` | One row per finished game: rounds, attempts, correct, duration, level. No scores on screen. |
@@ -35,11 +36,12 @@ launch
 
 ## The games
 
-Memory Lane, Name the Herd, Quick Eyes, Photo Stories, Color Clash and Number Trail (the last two are
-hidden on dad's iPad). Sudoku (#179), Up or Down (#180) and Finish the Saying (#181) are new. Each game has the same shape:
+`GameID` lists 19 games. 18 are playable; Lotería is in `GameID.unreleased` until its play makes sense
+(#573). The README has [the list, with what you do in each](../README.md#the-games). Each game has the same shape:
 a `View`, `@State` for the round, `Difficulty.stored(.game)` read once on open, and one
 `modelContext.record(GameSession(...))` when it finishes. Games with real logic keep it in a separate pure
-file (`SudokuPuzzle`, `UpOrDownDeal`, `SayingsDeck`, `NumberTrailQuestion`) so it is tested without a screen.
+file (`SudokuPuzzle`, `UpOrDownDeal`, `SayingsDeck`, `NumberTrailQuestion`, `PegSolitaireBoard`, ...) so it is
+tested without a screen.
 
 Names and Faces (#142) is Memory Lane's board with each family photo paired to its caption
 (`MemoryMatchView(variant: .captions)`, deal in `PhotoCaptionDeal`). It needs four photos with different
@@ -50,7 +52,7 @@ captions; until then `GameAvailability` keeps it off Home, out of the daily plan
 
 `DailyPolicy.plan` scores every visible game and deals the top few. The deal holds 2 games for 5 minutes a
 day, 3 for 10 (also when nothing is set) and 5 for 15. The score is the game's fixed `value` (Memory Lane
-1.0; most others 0.8; Number Trail and Color Clash 0.55), times 1.5 if the game exercises an area the player
+1.0; Name the Herd and Photo Stories 0.7; Number Trail and Color Clash 0.55; the rest 0.8), times 1.5 if the game exercises an area the player
 chose, times a rest factor that runs from half (played today) to full (a week or more away). Ties go to
 the game that comes first in `GameID`. A brand-new player has every game equally rested, so the plain
 ranking decides.
@@ -77,7 +79,7 @@ first three sessions of each calibrating, and moves their levels in bigger steps
 
 - **One SwiftData model, `GameSession`.** No relationships and no unique constraints, and every field has a
   default, so it would also work with CloudKit later. Fields: game ID, score (kept for old rows; new rows store 0, #416), rounds, attempts,
-  correct, duration, played-at, level (-1 for old rows).
+  correct, duration, played-at, level (0 on rows saved before levels, which read the older `difficulty` field).
 - **Rounds / attempts / correct mean the same in every game** (#58): `rounds` is what the session was made of,
   `attempts` is the picks the player made, `correct` is how many were right. `accuracy` is `correct / attempts`,
   or nil when there were no attempts (Photo Stories records none).
@@ -114,7 +116,8 @@ How the numbers are kept honest:
 
 - **Targets:** at least 60pt everywhere, 100pt for game controls. Games that lay out a board (Sudoku, Up or
   Down) count the gaps and deal a smaller layout where a target would fall under 60pt, such as hard Sudoku on an
-  iPhone SE.
+  iPhone SE. The one logged exception is Peg Solitaire on phones: seven holes across fit only at about 52pt
+  ([decision, #615](decisions/2026-11.md)).
 - **VoiceOver:** every interactive element has a label; state is spoken, not only shown (for example "row 2,
   column 3, empty"). Colour is never the only signal: playing cards show the suit symbol as well as red or black.
 - **Text size:** Dynamic Type everywhere, `.title2` at minimum for instructions, and a "bigger text" switch in
@@ -145,7 +148,8 @@ How the numbers are kept honest:
     file. About 1 billed minute.
   - `swift.yml` on macOS, only for a non-draft PR that touches the app, tests, project or tools: regenerate the
     project, lint, `xcodebuild test`. About 20 billed minutes. Open a PR as a draft while iterating.
-  - `ocr-review.yml` posts an automated code review on the PR.
+  - `ocr-review.yml` and `claude-code-review.yml` post automated code reviews when a PR is opened or marked
+    ready; `claude.yml` answers `@claude` mentions.
 - **Installing on a device** with a free Apple ID expires after 7 days; see [install-runbook.md](install-runbook.md).
 
 ## Adding a game
