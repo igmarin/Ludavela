@@ -23,7 +23,7 @@ final class FinishBeatTests: XCTestCase {
 
     @MainActor
     func testGivenFinalAnswerWhenLeavingDuringBeatThenSessionIsSavedOnce() async throws {
-        for game in [GameID.categoryFluency, .quickEyes] {
+        for game in [GameID.categoryFluency, .quickEyes, .mathStreaks, .stroop] {
             let container = try ModelContainer(
                 for: GameSession.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
             let context = ModelContext(container)
@@ -43,7 +43,7 @@ final class FinishBeatTests: XCTestCase {
 
     @MainActor
     func testGivenFinishedRunWhenPlayingAgainThenEachRunIsRecordedOnce() throws {
-        for game in [GameID.categoryFluency, .quickEyes] {
+        for game in [GameID.categoryFluency, .quickEyes, .mathStreaks, .stroop] {
             let container = try ModelContainer(
                 for: GameSession.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
             let context = ModelContext(container)
@@ -59,7 +59,7 @@ final class FinishBeatTests: XCTestCase {
 
     @MainActor
     func testGivenFinalAnswerWhenBeatEndsThenCelebrationDoesNotRecordAgain() async throws {
-        for game in [GameID.categoryFluency, .quickEyes] {
+        for game in [GameID.categoryFluency, .quickEyes, .mathStreaks, .stroop] {
             let container = try ModelContainer(
                 for: GameSession.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
             let context = ModelContext(container)
