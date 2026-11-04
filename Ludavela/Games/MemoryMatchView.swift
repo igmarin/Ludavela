@@ -12,7 +12,8 @@ import SwiftUI
 /// #142: the `.captions` variant (Names and Faces) is the same board with each photo paired to
 /// its caption instead of to a twin.
 /// #582: pilot of the approved look (docs/design/2026-11-03-sobremesa.md): the board on Home's flat
-/// table, the instruction in espresso on cream, a "Pairs found" line, one 2pt outline per card.
+/// table, the instruction in espresso on cream, one 2pt outline per card. The table never takes
+/// board space: the same pairs are dealt as before on every screen.
 struct MemoryMatchView: View {
     /// Which game this board plays: Memory Lane, or Names and Faces.
     enum Variant {
@@ -31,7 +32,6 @@ struct MemoryMatchView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Environment(\.dynamicTypeSize) private var typeSize
 
     private static let spacing: CGFloat = 12
     /// The app icon's jade card and cream frame (#384): the same in light and dark.
@@ -139,34 +139,14 @@ struct MemoryMatchView: View {
     }
 
     var body: some View {
-        // The board gets what the header leaves: tight gaps, and the pairs-found line instead of
-        // a progress row of its own, so the cards stay as large as the screen allows (#582).
-        VStack(spacing: 12) {
+        VStack(spacing: 24) {
             LevelExplainBanner(
                 game: variant.game, hasStarted: moves > 0,
                 keepsSpace: true)
-            VStack(spacing: 4) {
-                Text(AppLanguage.localized(variant.instructionKey))
-                    .font(.title2.weight(.semibold))
-                    .foregroundStyle(Color.espresso)
-                    .multilineTextAlignment(.center)
-                // Words, not just ticks on the cards: the count never depends on colour. Left out at
-                // accessibility sizes, where two more lines of header would take the board's room;
-                // the ticks and the spoken "Pair found" still say it. Hidden (and silent) in the
-                // first layout pass, before any cards are dealt.
-                if !typeSize.isAccessibilitySize {
-                    Text(
-                        String(
-                            format: AppLanguage.localized("game.memory.found %lld %lld"),
-                            board.pairsFound, board.pairCount)
-                    )
-                    .font(.title3.weight(.semibold))
-                    .foregroundStyle(.tint)
-                    .multilineTextAlignment(.center)
-                    .opacity(board.pairCount == 0 ? 0 : 1)
-                    .accessibilityHidden(board.pairCount == 0)
-                }
-            }
+            Text(AppLanguage.localized(variant.instructionKey))
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
+                .multilineTextAlignment(.center)
 
             GeometryReader { geometry in
                 let fit = Self.gridFit(count: cards.count, in: geometry.size, spacing: Self.spacing)
@@ -215,10 +195,12 @@ struct MemoryMatchView: View {
                     }
                 }
             }
-            // The flat jade table Home deals on (#580), so the board sits on the same surface.
-            // The padding is outside the reader: cards are dealt and sized to what is left.
-            .padding(12)
+            // The flat jade table Home deals on (#580). It is drawn 8pt outside the board's own space
+            // (padding in, then out again), so the board is offered exactly the room it had before
+            // the table and deals the same pairs on every screen: levels stay as they were (#582).
+            .padding(8)
             .background(Color.tableSurface, in: .rect(cornerRadius: 30))
+            .padding(-8)
         }
         .padding()
         // A finished board is recorded already, so leaving in the beat before the cover never asks.

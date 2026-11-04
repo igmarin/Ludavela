@@ -2213,23 +2213,6 @@
         }
       }
     },
-    "game.memory.found %lld %lld" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pairs found: %lld of %lld"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Parejas encontradas: %lld de %lld"
-          }
-        }
-      }
-    },
     "game.memory.instruction" : {
       "extractionState" : "stale",
       "localizations" : {

@@ -63,31 +63,6 @@ final class MemoryBoardTests: XCTestCase {
         XCTAssertTrue(board.faceUp.isEmpty)
     }
 
-    // MARK: - Pairs found (#582)
-
-    func testGivenNewDealWhenAskedThenNoPairsFoundOfTwo() {
-        XCTAssertEqual(board.pairsFound, 0)
-        XCTAssertEqual(board.pairCount, 2)
-    }
-
-    func testGivenOneMatchAndOneMissWhenAskedThenOnlyTheMatchCounts() {
-        _ = board.tap(0)
-        _ = board.tap(2)
-        _ = board.tap(1)
-        _ = board.tap(0)
-
-        XCTAssertEqual(board.pairsFound, 1)
-    }
-
-    func testGivenEveryPairFoundWhenAskedThenFoundEqualsCount() {
-        _ = board.tap(0)
-        _ = board.tap(2)
-        _ = board.tap(1)
-        _ = board.tap(3)
-
-        XCTAssertEqual(board.pairsFound, board.pairCount)
-    }
-
     // MARK: - VoiceOver announcements (#393)
 
     /// The shipped catalog's text for one language, so the tests hear what a player hears.

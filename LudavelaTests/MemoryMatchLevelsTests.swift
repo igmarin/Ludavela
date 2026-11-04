@@ -45,4 +45,16 @@ final class MemoryMatchLevelsTests: XCTestCase {
         let fit = MemoryMatchView.gridFit(count: pairs * 2, in: Self.smallBoard, spacing: 12)
         XCTAssertGreaterThanOrEqual(min(fit.card.width, fit.card.height), MemoryMatchView.minCard)
     }
+
+    /// iPhone SE (3rd generation), whose Memory Lane board measured 343 x 511 pt on the simulator with
+    /// no level note above it (#582: the jade table around the board must not change this). A one-line
+    /// and a two-line note (`title2`, 28 pt a line, plus the 24 pt gap) take the height down to 459 and 431.
+    func testGivenIPhoneSEBoardWhenPairCountAtLevelsOneFiveTenThenPairsAreNeverFewer() {
+        for height in [511.0, 459.0, 431.0] {
+            let board = CGSize(width: 343, height: height)
+            XCTAssertEqual(MemoryMatchView.cappedPairs(for: Difficulty(level: 1), in: board), 3, "level 1, \(height)")
+            XCTAssertEqual(MemoryMatchView.cappedPairs(for: Difficulty(level: 5), in: board), 7, "level 5, \(height)")
+            XCTAssertEqual(MemoryMatchView.cappedPairs(for: Difficulty(level: 10), in: board), 12, "level 10, \(height)")
+        }
+    }
 }
