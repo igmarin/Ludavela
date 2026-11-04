@@ -40,6 +40,7 @@ struct HomeView: View {
     /// whenever Set up is visited, so it is read again each time Home appears.
     @State private var unavailable = GameAvailability.unavailable()
     private var hidden: Set<GameID> { FamilySettings.hidden(from: hiddenGames).union(unavailable) }
+    private var visibleGames: [GameID] { GameID.released.filter { !hidden.contains($0) } }
     /// True until this day's cards are dealt; the cards sit below the table, unseen, until then.
     private var undealt: Bool { HomeDeal.needsDeal(plan: plan, dealtDay: dealtDay, planDay: planDay) }
     /// The ticks to show: what was played when a game opened, while one is open.
@@ -72,14 +73,14 @@ struct HomeView: View {
                             if !today.isFinished { weekCard }
                         }
                         .frame(maxWidth: 560)
-                        allGames
+                        if !visibleGames.isEmpty { allGames }
                     }
                     .padding()
                 } else {
                     VStack(alignment: .leading, spacing: 20) {
                         todayColumn
                         if !today.isFinished { weekCard }
-                        allGames
+                        if !visibleGames.isEmpty { allGames }
                     }
                     .padding()
                 }
@@ -151,16 +152,15 @@ struct HomeView: View {
 
     private var todayColumn: some View {
         VStack(alignment: .leading, spacing: 6) {
-            // At accessibility sizes the date, greeting and status fill the first screen, so the
-            // date goes and the play button rises above the cards (#529).
+            // Leave room for the next action at accessibility sizes (#529).
             if !typeSize.isAccessibilitySize {
                 Text(Date.now, format: .dateTime.weekday(.wide).day().month(.wide))
                     .font(.title3.weight(.semibold))
+                Text(AppLanguage.localized(Greeting.key(hour: Calendar.current.component(.hour, from: .now))))
+                    .font(.largeTitle.bold())
+                    .fontDesign(.serif)
+                    .accessibilityAddTraits(.isHeader)
             }
-            Text(AppLanguage.localized(Greeting.key(hour: Calendar.current.component(.hour, from: .now))))
-                .font(.largeTitle.bold())
-                .fontDesign(.serif)
-                .accessibilityAddTraits(.isHeader)
             Text(statusLine)
                 .font(.title2.weight(.semibold))
             if !today.games.isEmpty {
@@ -170,30 +170,27 @@ struct HomeView: View {
     }
 
     private var statusLine: String {
+        if visibleGames.isEmpty { return AppLanguage.localized("home.no.games") }
         if today.isFinished { return AppLanguage.localized("home.today.done") }
         if today.done.isEmpty { return AppLanguage.localized("home.greeting") }
         return AppLanguage.localized("home.today.togo \(today.remaining)" as String.LocalizationValue)
     }
 
-    /// The icon's gradient with today's games on it: the hand and the button
-    /// while there is something left, a tidy pile and the week once done.
+    /// The next game leads at every text size; all recommended cards stay available below it.
     private var table: some View {
         VStack(spacing: 16) {
             if today.isFinished {
                 pile
                 shareButton
                 weekLink { weekBoardCard }
-            } else if typeSize.isAccessibilitySize {
-                nextButton
-                hand
             } else {
-                hand
                 nextButton
+                hand
             }
         }
         .padding(18)
         .frame(maxWidth: .infinity)
-        .background(.table, in: .rect(cornerRadius: 30))
+        .background(Color.tableSurface, in: .rect(cornerRadius: 30))
     }
 
     /// Today's cards. From the first Bigger text step up they are full-width rows, since names
@@ -258,32 +255,42 @@ struct HomeView: View {
     private var nextButton: some View {
         if let next = today.next {
             NavigationLink(value: next) {
-                HStack(spacing: 14) {
-                    Image(systemName: "play.fill")
-                        // A fixed size: at accessibility sizes a text-scaled glyph outgrew its
-                        // circle and was cut off (#529).
-                        .font(.system(size: 20))
-                        .foregroundStyle(Color.paper)
-                        .frame(width: 46, height: 46)
-                        .background(Color.brand, in: .circle)
+                VStack(alignment: .leading, spacing: 12) {
+                    if !typeSize.isAccessibilitySize {
+                        Group {
+                            if let picture = next.heroPicture {
+                                PictureView(picture: picture, size: 96)
+                            } else {
+                                Emblem(game: next).frame(width: 96, height: 96)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
                         .accessibilityHidden(true)
-                    Text(
-                        today.done.isEmpty
-                            ? AppLanguage.localized("home.today.play")
-                            : String(
-                                format: AppLanguage.localized("home.today.continue %@"),
+                    }
+                    Label {
+                        Text(
+                            String(
+                                format: AppLanguage.localized(
+                                    today.done.isEmpty ? "home.today.start %@" : "home.today.continue %@"),
                                 AppLanguage.localized(next.title))
-                    )
+                        )
+                    } icon: {
+                        Image(systemName: "play.fill")
+                            .font(.system(size: 20))
+                            .accessibilityHidden(true)
+                    }
                     .font(.title2.weight(.heavy))
-                    .fontDesign(.rounded)
                     .foregroundStyle(Color.brand)
-                    .multilineTextAlignment(.leading)
                 }
+                .fontDesign(.rounded)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
-                .frame(maxWidth: .infinity, minHeight: 100)
+                .frame(maxWidth: .infinity, minHeight: 100, alignment: .leading)
                 .background(Color.paper, in: .rect(cornerRadius: 26))
-                .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(Color.espresso, lineWidth: 2))
+                .overlay(RoundedRectangle(cornerRadius: 26).strokeBorder(Color.brand, lineWidth: 3))
+                .accessibilityElement(children: .combine)
             }
             .buttonStyle(CardPressStyle())
         }
@@ -375,7 +382,7 @@ struct HomeView: View {
                 .font(.title2.weight(.heavy))
                 .accessibilityAddTraits(.isHeader)
             // One shelf per area (#421); an area whose games are all hidden has no shelf.
-            ForEach(HomeShelves.group(GameID.released.filter { !hidden.contains($0) }), id: \.focus) { shelf in
+            ForEach(HomeShelves.group(visibleGames), id: \.focus) { shelf in
                 Text(AppLanguage.localized(ProfileAnswer.focus(shelf.focus).labelKey))
                     .font(.title3.weight(.heavy))
                     .accessibilityAddTraits(.isHeader)

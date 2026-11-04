@@ -4680,6 +4680,22 @@
         }
       }
     },
+    "home.no.games" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose games in Settings when you're ready."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige juegos en Ajustes cuando quieras."
+          }
+        }
+      }
+    },
     "home.greeting" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4829,6 +4845,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Empezar los juegos de hoy"
+          }
+        }
+      }
+    },
+    "home.today.start %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jugar: %@"
           }
         }
       }
