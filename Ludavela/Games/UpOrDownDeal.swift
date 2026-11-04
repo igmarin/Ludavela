@@ -144,7 +144,6 @@ nonisolated struct UpOrDownDeal: Equatable {
     var isCleared: Bool { piles.allSatisfy(\.isEmpty) }
     var isStuck: Bool { !isCleared && deck.isEmpty && playablePiles.isEmpty }
     var tableCards: Int { piles.count * cardsPerPile }
-    var cardsLeftOnTable: Int { piles.reduce(0) { $0 + $1.count } }
 
     /// Whether this row of piles keeps 60pt cards at `width`. A six-pile row dealt in
     /// landscape on a small iPhone stops fitting when the phone turns to portrait.
