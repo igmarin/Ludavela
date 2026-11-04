@@ -140,7 +140,8 @@ struct CategoryFluencyView: View {
         let total = CategoryDeal.itemsPerCategory
         return VStack(spacing: 24) {
             Text(AppLanguage.localized("game.category.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
 
             // Every name sits in the same slot, so the slot is as tall as the longest one wraps
@@ -197,7 +198,7 @@ struct CategoryFluencyView: View {
                     // Hangs 12pt over the tile's corner so the tick never covers the picture, and
                     // stops growing at xxxLarge so it stays inside the screen's 16pt edge (#413).
                     if tile.isPicked {
-                        CheckBadge().dynamicTypeSize(...DynamicTypeSize.xxxLarge).offset(x: 12, y: -12)
+                        CheckBadge().offset(x: 12, y: -12)
                     }
                 }
                 .modifier(

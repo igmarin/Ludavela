@@ -24,7 +24,7 @@ struct PegSolitaireView: View {
     var body: some View {
         VStack(spacing: 16) {
             LevelExplainBanner(game: .pegSolitaire, hasStarted: !(board?.history.isEmpty ?? true), keepsSpace: true)
-            Text(instruction).font(.title2).multilineTextAlignment(.center)
+            Text(instruction).font(.title2.weight(.semibold)).foregroundStyle(Color.espresso).multilineTextAlignment(.center)
             boardArea
             if let note {
                 AlmostNote(text: note)

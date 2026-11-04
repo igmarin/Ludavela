@@ -58,6 +58,15 @@ final class UpOrDownDealTests: XCTestCase {
         XCTAssertEqual(UpOrDownDeal.pileCount(for: Difficulty(level: 2), width: Self.iPhoneSE), 4)
     }
 
+    /// #600: the jade table is drawn outside the row's space, so the row is measured at the same 343pt
+    /// on an iPhone SE (3rd generation) as on main and deals the same piles at levels 1, 5 and 10.
+    /// Cards: 120pt at three piles (capped), 62.2pt at five; level 10 would ask for seven and gets five.
+    func testGivenIPhoneSEWidthWhenPileCountAtLevelsOneFiveTenThenThreeFiveFive() {
+        XCTAssertEqual(UpOrDownDeal.pileCount(for: Difficulty(level: 1), width: Self.iPhoneSE), 3)
+        XCTAssertEqual(UpOrDownDeal.pileCount(for: Difficulty(level: 5), width: Self.iPhoneSE), 5)
+        XCTAssertEqual(UpOrDownDeal.pileCount(for: Difficulty(level: 10), width: Self.iPhoneSE), 5)
+    }
+
     func testGivenAMadeDealThenEachPileHasThreeAndAll52CardsAreUsedOnce() {
         for difficulty in [Difficulty(level: 2), Difficulty(level: 4), Difficulty(level: 6)] {
             let d = deal(difficulty)

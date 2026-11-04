@@ -64,7 +64,8 @@ struct QuickEyesView: View {
             // choices off screen; while choosing, the short prompt is enough (#117).
             if phase == .showing || !typeSize.isAccessibilitySize, phase != .invite {
                 Text(AppLanguage.localized(isPaced ? "game.quickeyes.instruction.paced" : "game.quickeyes.instruction"))
-                    .font(.title2)
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(Color.espresso)
                     .multilineTextAlignment(.center)
             }
 

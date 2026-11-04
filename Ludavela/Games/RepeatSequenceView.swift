@@ -114,7 +114,8 @@ struct RepeatSequenceView: View {
             LevelExplainBanner(
                 game: GameID.repeatSequence, hasStarted: progress.completedRounds > 0 || tapped.count > 0)
             Text(AppLanguage.localized("game.sequence.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
             Text(instruction)
                 .font(.title3.weight(.semibold))
