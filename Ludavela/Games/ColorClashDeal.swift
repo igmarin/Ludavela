@@ -16,6 +16,22 @@ nonisolated enum Ink: String, CaseIterable {
     /// Key of the colour's name: VoiceOver reads it, and it names the right answer.
     var labelKey: String { "game.colorclash.color.\(rawValue)" }
 
+    /// The ink as 0xRRGGBB, the same in light and dark (#629). Chosen so every pair stays clearly
+    /// apart for typical vision and for protanopia, deuteranopia and tritanopia (`ColorVisionTests`);
+    /// the system colours it replaced made orange and yellow, red and yellow, or blue and purple
+    /// nearly the same. Each keeps about 3:1 on the white or black panel the word sits on, and
+    /// still reads as the colour it is named.
+    var rgb: UInt32 {
+        switch self {
+        case .red: 0xA82835
+        case .blue: 0x4359D4
+        case .green: 0x5EA173
+        case .orange: 0xC06731
+        case .purple: 0x894598
+        case .yellow: 0xC59302
+        }
+    }
+
     /// The shape drawn beside the word, a cue that is not colour.
     var shape: String {
         switch self {
