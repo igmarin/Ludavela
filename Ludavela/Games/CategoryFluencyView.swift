@@ -198,7 +198,7 @@ struct CategoryFluencyView: View {
                     // Hangs 12pt over the tile's corner so the tick never covers the picture, and
                     // stops growing at xxxLarge so it stays inside the screen's 16pt edge (#413).
                     if tile.isPicked {
-                        CheckBadge().dynamicTypeSize(...DynamicTypeSize.xxxLarge).offset(x: 12, y: -12)
+                        CheckBadge().offset(x: 12, y: -12)
                     }
                 }
                 .modifier(
