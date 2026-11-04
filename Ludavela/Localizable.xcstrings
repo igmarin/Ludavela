@@ -2552,6 +2552,57 @@
         }
       }
     },
+    "game.numberslide.goal %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: 1 to %lld in order, the space last"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta: del 1 al %lld en orden, el espacio al final"
+          }
+        }
+      }
+    },
+    "game.numberslide.goal.show" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See the goal"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver la meta"
+          }
+        }
+      }
+    },
+    "game.numberslide.goal.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta"
+          }
+        }
+      }
+    },
     "game.numberslide.guide" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2575,13 +2626,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slide the tiles to put the numbers in order."
+            "value" : "Slide the tiles until the numbers are in order, with the space last."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desliza las fichas para ordenar los números."
+            "value" : "Desliza las fichas hasta ordenar los números, con el espacio al final."
           }
         }
       }
