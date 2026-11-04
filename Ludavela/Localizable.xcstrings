@@ -946,13 +946,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld of %lld found"
+            "value" : "%1$lld of %2$lld found"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld de %lld encontrados"
+            "value" : "%1$lld de %2$lld encontrados"
           }
         }
       }
@@ -1456,13 +1456,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld of %lld today"
+            "value" : "%1$lld of %2$lld today"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hoy: %lld de %lld"
+            "value" : "Hoy: %1$lld de %2$lld"
           }
         }
       }
