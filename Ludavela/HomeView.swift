@@ -40,6 +40,7 @@ struct HomeView: View {
     /// whenever Set up is visited, so it is read again each time Home appears.
     @State private var unavailable = GameAvailability.unavailable()
     private var hidden: Set<GameID> { FamilySettings.hidden(from: hiddenGames).union(unavailable) }
+    private var visibleGames: [GameID] { GameID.released.filter { !hidden.contains($0) } }
     /// True until this day's cards are dealt; the cards sit below the table, unseen, until then.
     private var undealt: Bool { HomeDeal.needsDeal(plan: plan, dealtDay: dealtDay, planDay: planDay) }
     /// The ticks to show: what was played when a game opened, while one is open.
@@ -72,14 +73,14 @@ struct HomeView: View {
                             if !today.isFinished { weekCard }
                         }
                         .frame(maxWidth: 560)
-                        allGames
+                        if !visibleGames.isEmpty { allGames }
                     }
                     .padding()
                 } else {
                     VStack(alignment: .leading, spacing: 20) {
                         todayColumn
                         if !today.isFinished { weekCard }
-                        allGames
+                        if !visibleGames.isEmpty { allGames }
                     }
                     .padding()
                 }
@@ -169,6 +170,7 @@ struct HomeView: View {
     }
 
     private var statusLine: String {
+        if visibleGames.isEmpty { return AppLanguage.localized("home.no.games") }
         if today.isFinished { return AppLanguage.localized("home.today.done") }
         if today.done.isEmpty { return AppLanguage.localized("home.greeting") }
         return AppLanguage.localized("home.today.togo \(today.remaining)" as String.LocalizationValue)
@@ -380,7 +382,7 @@ struct HomeView: View {
                 .font(.title2.weight(.heavy))
                 .accessibilityAddTraits(.isHeader)
             // One shelf per area (#421); an area whose games are all hidden has no shelf.
-            ForEach(HomeShelves.group(GameID.released.filter { !hidden.contains($0) }), id: \.focus) { shelf in
+            ForEach(HomeShelves.group(visibleGames), id: \.focus) { shelf in
                 Text(AppLanguage.localized(ProfileAnswer.focus(shelf.focus).labelKey))
                     .font(.title3.weight(.heavy))
                     .accessibilityAddTraits(.isHeader)
