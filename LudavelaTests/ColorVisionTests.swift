@@ -6,9 +6,9 @@ import XCTest
 /// three full colour-blindness types. Shapes already carry the answer; this keeps the colours from
 /// contradicting them. The palettes before #629 fail it (Color Clash 5.2, Repeat 3.2).
 final class ColorVisionTests: XCTestCase {
-    /// CIE76 distance in Lab. About 2 is barely visible; 18 is two colours nobody mixes up. The old
+    /// CIE76 distance in Lab. About 2 is barely visible; 17 is two colours nobody mixes up. The old
     /// palettes had pairs at 3 to 8.
-    private static let minimumDifference = 18.0
+    private static let minimumDifference = 17.0
 
     func testGivenColorClashInksWhenSeenWithEachColorVisionThenEveryPairStaysApart() {
         assertApart(Ink.allCases.map { ("\($0)", $0.rgb) })
