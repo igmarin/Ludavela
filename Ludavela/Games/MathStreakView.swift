@@ -22,6 +22,7 @@ struct MathStreakView: View {
     @State private var streak = 0
     @State private var bestStreak = 0
     @State private var correct = 0
+    @State private var finishRecorder = FinishBeat.Recorder()
     @State private var startedAt = Date.now
     @State private var showCelebration = false
     @State private var finalDetail = ""
@@ -85,6 +86,7 @@ struct MathStreakView: View {
     private func restart() {
         difficulty = Difficulty.stored(.mathStreaks)
         beatTask?.cancel()
+        finishRecorder.reset()
         beat = nil
         progress.reset()
         streak = 0
@@ -117,6 +119,11 @@ struct MathStreakView: View {
             streak = 0
         }
         answer.play(rightName: "\(question.answer)")
+        // Save the final answer before the cancellable beat (#614): leaving during it would
+        // otherwise lose a game the player just finished. A repeated final answer saves once.
+        if progress.completedRounds + 1 == totalQuestions {
+            recordSession()
+        }
         beatTask = answer.after {
             beat = nil
             if progress.completeRound() {
@@ -127,14 +134,18 @@ struct MathStreakView: View {
         }
     }
 
-    private func finish() {
+    private func recordSession() {
         let elapsed = Int(Date.now.timeIntervalSince(startedAt))
-        modelContext.record(
+        finishRecorder.record(
             GameSession(
                 gameID: .mathStreaks,
                 rounds: totalQuestions, durationSeconds: elapsed,
                 correct: correct, attempts: totalQuestions,
-                difficulty: difficulty))
+                difficulty: difficulty),
+            in: modelContext)
+    }
+
+    private func finish() {
         // Completion, never a streak or a hit count (#45, #394).
         finalDetail = String(format: AppLanguage.localized("game.celebration.questions %lld"), totalQuestions)
         showCelebration = true

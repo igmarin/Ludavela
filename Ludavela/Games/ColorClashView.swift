@@ -18,6 +18,7 @@ struct ColorClashView: View {
     @State private var ink: Ink = .blue
     @State private var progress = RoundProgress(totalRounds: Self.totalRounds)
     @State private var correct = 0
+    @State private var finishRecorder = FinishBeat.Recorder()
     /// True once a word is dealt: `.onAppear` runs again when the celebration closes (#415).
     @State private var hasDealt = false
     @State private var startedAt = Date.now
@@ -122,6 +123,7 @@ struct ColorClashView: View {
     private func restart() {
         difficulty = Difficulty.stored(.stroop)
         beatTask?.cancel()
+        finishRecorder.reset()
         beat = nil
         progress.reset()
         correct = 0
@@ -147,6 +149,11 @@ struct ColorClashView: View {
             correct += 1
         }
         answer.play(rightName: ink.label)
+        // Save the final answer before the cancellable beat (#614): leaving during it would
+        // otherwise lose a game the player just finished. A repeated final answer saves once.
+        if progress.completedRounds + 1 == Self.totalRounds {
+            recordSession()
+        }
         beatTask = answer.after {
             beat = nil
             if progress.completeRound() {
@@ -157,16 +164,20 @@ struct ColorClashView: View {
         }
     }
 
-    private func finish() {
+    private func recordSession() {
         let elapsed = Int(Date.now.timeIntervalSince(startedAt))
-        // Completion, never a hit count: Color Clash is error-inducing by
-        // design (Stroop), so the warm message celebrates finishing (#45).
-        modelContext.record(
+        finishRecorder.record(
             GameSession(
                 gameID: .stroop,
                 rounds: Self.totalRounds, durationSeconds: elapsed,
                 correct: correct, attempts: Self.totalRounds,
-                difficulty: difficulty))
+                difficulty: difficulty),
+            in: modelContext)
+    }
+
+    private func finish() {
+        // Completion, never a hit count: Color Clash is error-inducing by
+        // design (Stroop), so the warm message celebrates finishing (#45).
         finalDetail = String(format: AppLanguage.localized("game.celebration.rounds %lld"), Self.totalRounds)
         showCelebration = true
     }

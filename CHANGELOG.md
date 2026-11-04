@@ -4,7 +4,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Newest first.
 
 ## [Unreleased]
 
-- Finished Name the Herd and Quick Eyes games now appear in your history even if you leave during the final answer pause.
+- Finished Name the Herd, Quick Eyes, Number Trail and Color Clash games now appear in your history even if you leave during the final answer pause.
 
 ### Added
 - **Calmer end-of-game screen (#583, proposal pending owner approval):** the game's own picture rests on a flat jade table after its card goes to the week, with one short message and one clear next step. While today's games last, "Next" is the filled button; when a game finishes the day, "Home" is, with "Play again" still there; after a replay, "Play again" is. The level question ("Shall we try the next level?") and the week board stay on screen with less weight: two outlined answers, side by side or stacked at large text. Today's picture is smaller, and with Reduce Motion it simply appears face up.
