@@ -123,3 +123,22 @@ remain comprehensible, vertical and horizontal gestures work together, and
 VoiceOver traverses and operates the entire board. Exercise narrow multitasking
 and rotation without resetting a deal. Validate with a real player and revisit
 the 100pt goal. #610 celebration verification is separate.
+
+## Owner decision and implementation (2026-11-04)
+
+The owner chose neither the scroll board nor hiding the game: **the board grows to within 4pt of the
+screen edge on a phone, and Peg Solitaire is the one logged exception to the 60pt floor**
+([decisions 2026-11-04](../../decisions/2026-11.md)). Reason: the player needs the whole cross in view
+to plan a jump, and sideways panning competes with the vertical scroll at large text.
+
+Measured from simulator screenshots (hole centre to centre), Spanish, light, temporary fixture not committed:
+
+| Device | Before | After | Evidence |
+| --- | ---: | ---: | --- |
+| iPhone SE 3rd gen, 375pt, default text | 49pt | 52.5pt | [375-normal-wider.png](375-normal-wider.png) |
+| iPhone SE 3rd gen, 375pt, AX5 | 49pt | 52.5pt (page scrolls vertically, as before) | [375-ax5-wider.png](375-ax5-wider.png) |
+| iPad Air 11-inch (M4) | 60pt | 60pt (unchanged, 420pt cap) | [ipad-normal-wider.png](ipad-normal-wider.png) |
+
+Each hole's tap area is its full square cell. No iPhone on iOS 17 or later is narrower than 375pt;
+320pt applies only to narrow iPad multitasking windows, where holes are about 44pt. VoiceOver labels,
+values and jump actions are unchanged; not re-tested on a device.

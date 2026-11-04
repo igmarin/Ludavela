@@ -26,6 +26,9 @@ struct PegSolitaireView: View {
             LevelExplainBanner(game: .pegSolitaire, hasStarted: !(board?.history.isEmpty ?? true), keepsSpace: true)
             Text(instruction).font(.title2.weight(.semibold)).foregroundStyle(Color.espresso).multilineTextAlignment(.center)
             boardArea
+                // Wider than the other rows on a phone (#615): the board reaches within 4pt of the screen
+                // edge, which buys each hole about 3pt. Capped at 420pt, so an iPad is unchanged.
+                .padding(.horizontal, -(Self.edge - 4))
             if let note {
                 AlmostNote(text: note)
                 if pointsToUndo {
@@ -34,7 +37,7 @@ struct PegSolitaireView: View {
             }
             controls
         }
-        .padding()
+        .padding(Self.edge)
         .fitOrScroll()
         .gameHeader(
             .pegSolitaire, instruction: instruction, inProgress: !(board?.history.isEmpty ?? true), celebrating: showCelebration
@@ -57,7 +60,13 @@ struct PegSolitaireView: View {
         (0..<7).map { column in PegSolitaireBoard.holes.firstIndex { $0.row == row && $0.column == column } }
     }
 
+    /// The screen's side margin; the board takes back most of it (#615).
+    private static let edge: CGFloat = 16
+
     /// A square as wide as the screen allows (at most 7 x 60pt), so the board never scrolls sideways.
+    /// On a 375pt phone that is about 52pt a hole: the one place under the 60pt floor, kept on
+    /// purpose so the whole cross stays in view (decisions 2026-11-04). Each hole's tap area is its
+    /// full square cell, never only the drawn circle.
     private var boardArea: some View {
         Color.clear
             .aspectRatio(1, contentMode: .fit)
