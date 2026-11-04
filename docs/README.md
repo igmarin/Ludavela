@@ -19,6 +19,7 @@ screen of real content, split it — long docs don't get read.
 | [playtest-session-2.md](playtest-session-2.md) | Printable session sheet for playtest #2: the Card Table redesign and Jev 015's open questions | Current |
 | [playtest-session-3.md](playtest-session-3.md) | Printable session sheet for playtest #3: Sudoku, Up or Down and Finish the Saying (#179–#181) | Current |
 | [playtest-session-4.md](playtest-session-4.md) | Printable session sheet for playtest #4: a week alone on TestFlight — levels, onboarding and the four new games (#231) | Ready for #229 |
+| [playtest-session-5.md](playtest-session-5.md) | Printable session sheet for playtest #5: the new look (#578) on devices and with players: device matrix, VoiceOver pass, three tasks (#586) | Ready |
 | [playtest-outside.md](playtest-outside.md) | Kit for testers outside the family: invite (EN + ES), sheet per tester, findings template (#33) | Current |
 | [install-runbook.md](install-runbook.md) | Installing on a device with a free Apple ID (7-day expiry) | Current |
 | [device-support.md](device-support.md) | What hardware/OS we claim and what we verified | Living |
