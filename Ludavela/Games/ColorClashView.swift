@@ -197,16 +197,7 @@ extension Ink {
     /// The shape's name, read after the colour by VoiceOver.
     var shapeName: String { AppLanguage.localized(shapeNameKey) }
 
-    var color: Color {
-        switch self {
-        case .red: .red
-        case .blue: .blue
-        case .green: .green
-        case .orange: .orange
-        case .purple: .purple
-        case .yellow: Color(red: 0.7, green: 0.6, blue: 0.0)
-        }
-    }
+    var color: Color { Color(UIColor(rgb: rgb)) }
 }
 
 #Preview {
