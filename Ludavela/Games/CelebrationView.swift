@@ -361,6 +361,10 @@ struct CelebrationView: View {
                     }
                 }
                 .buttonStyle(RetroButtonStyle())
+                // The whole button at its full height: when today's picture leaves little room, the
+                // stack would squeeze it and cut the name to "Siguiente: Sud…" (#610). The picture
+                // above gives way instead, and fitOrScroll scrolls if even that is not enough.
+                .fixedSize(horizontal: false, vertical: true)
             } else {
                 Button(action: run) { Text(title).outlineButton() }
                     .buttonStyle(.plain)
