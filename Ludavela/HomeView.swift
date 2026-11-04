@@ -301,26 +301,24 @@ struct HomeView: View {
     /// Today's games once all are played: a tidy pile, the last one ticked.
     private var pile: some View {
         let games = today.games
-        // From the same text step as the hand, the top card is the full-width row so its name
-        // is whole; a fanned card is too narrow for "Sudoku" or "Up or Down" there (#611).
-        if typeSize >= .xxxLarge, let last = games.last {
-            return AnyView(
+        return Group {
+            // From the same text step as the hand, the top card is the full-width row so its name
+            // is whole; a fanned card is too narrow for "Sudoku" or "Up or Down" there (#611).
+            if typeSize >= .xxxLarge, let last = games.last {
                 GameRow(game: last, playedToday: true)
-                    .padding(.vertical, 10)
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(AppLanguage.localized("home.today.done")))
-        }
-        return AnyView(
-            ZStack {
-                ForEach(Array(games.enumerated()), id: \.element) { index, game in
-                    let last = index == games.count - 1
-                    GameCard(game: game, size: .hand, playedToday: last)
-                        .rotationEffect(.degrees(last ? 0 : (index.isMultiple(of: 2) ? -9 : 6)))
+            } else {
+                ZStack {
+                    ForEach(Array(games.enumerated()), id: \.element) { index, game in
+                        let last = index == games.count - 1
+                        GameCard(game: game, size: .hand, playedToday: last)
+                            .rotationEffect(.degrees(last ? 0 : (index.isMultiple(of: 2) ? -9 : 6)))
+                    }
                 }
             }
-            .padding(.vertical, 10)
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel(AppLanguage.localized("home.today.done")))
+        }
+        .padding(.vertical, 10)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(AppLanguage.localized("home.today.done"))
     }
 
     /// Once the day is done, the player can send a short, number-free message to family (#381).
