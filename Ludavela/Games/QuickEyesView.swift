@@ -254,25 +254,22 @@ struct QuickEyesView: View {
         let answer = AnswerBeat(tapped: picture, right: target)
         beat = answer
         answer.play(rightName: name(of: target))
-        // Save the final answer before the cancellable answer beat.
-        let isFinalRound = progress.completedRounds + 1 == Self.totalRounds
-        if isFinalRound {
-            _ = progress.completeRound()
+        // Save the final answer before the cancellable answer beat (#614). The round itself completes
+        // in the beat's callback: completed early, a beat cut short would leave the game finished but
+        // never celebrated, with every tap refused. A repeated final answer is saved only once.
+        if progress.completedRounds + 1 == Self.totalRounds {
             recordSession()
         }
         // The beat shares revealTask, so leaving the game or restarting cancels it too.
         revealTask = answer.after {
             beat = nil
             let offerFaster = run.roundEnded(lookSeconds: lookTime)
-            if isFinalRound {
+            if progress.completeRound() {
                 finish()
+            } else if offerFaster {
+                phase = .invite
             } else {
-                _ = progress.completeRound()
-                if offerFaster {
-                    phase = .invite
-                } else {
-                    startRound()
-                }
+                startRound()
             }
         }
     }
