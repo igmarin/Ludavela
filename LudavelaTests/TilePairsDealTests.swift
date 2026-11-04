@@ -264,4 +264,13 @@ final class TilePairsDealTests: XCTestCase {
                 "\(symbol) has no asset \(picture.assetName)")
         }
     }
+
+    /// #599: the pilot look puts a table behind the board without taking room from it. On an iPhone SE
+    /// the board is offered 343 x 320pt (measured on the simulator): 8, 24 and 44 tiles at levels 1, 5 and 10.
+    func testGivenIPhoneSEBoardWhenLayoutAtLevelsOneFiveTenThenTileCountsAreTheMeasuredOnes() {
+        for (level, tiles) in [(1, 8), (5, 24), (10, 44)] {
+            let layout = TilePairsDeal.layout(for: Difficulty(level: level), width: 343, height: 320)
+            XCTAssertEqual(layout.tiles, tiles, "level \(level)")
+        }
+    }
 }

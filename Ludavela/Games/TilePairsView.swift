@@ -4,6 +4,7 @@ import SwiftUI
 /// Tile Pairs: mahjong-solitaire pairs (#221). Tap two free tiles that match;
 /// covered tiles shake warmly, mismatches glow amber, pairs lift away.
 /// Rules live in `TilePairsDeal`; this view owns taps, drawing and celebration.
+/// #599: the board sits on the approved table without taking room from it (docs/design/2026-11-03-sobremesa.md).
 struct TilePairsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -34,6 +35,12 @@ struct TilePairsView: View {
 
             board
                 .frame(minHeight: 320)
+                // The flat jade table (#599, as Memory Lane #582), drawn 8pt outside the board's own
+                // space so `tileSize` fits the same tiles. Tile Pairs has no board surface of its own
+                // (the 8% fill is only the hatching on covered tiles), so the table is the first.
+                .padding(8)
+                .background(Color.tableSurface, in: .rect(cornerRadius: 30))
+                .padding(-8)
 
             Button {
                 showPair()
@@ -76,7 +83,8 @@ struct TilePairsView: View {
     private var instructionRow: some View {
         ZStack {
             Text(AppLanguage.localized("game.tilepairs.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
                 .opacity(hint == nil ? 1 : 0)
                 .accessibilityHidden(hint != nil)

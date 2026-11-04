@@ -7,6 +7,7 @@ import UIKit
 /// fit gets a gentle "try another"; "Show me one" fills the square when he's
 /// stuck. The selection moves only when the player moves it, and a number with
 /// every copy on the board leaves the pad (#510). No timer.
+/// #599: the board sits on the approved table without taking room from it (docs/design/2026-11-03-sobremesa.md).
 struct SudokuView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -128,7 +129,8 @@ struct SudokuView: View {
     private var noteSlot: some View {
         ZStack {
             Text(AppLanguage.localized("game.sudoku.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
                 .opacity(note == nil ? 1 : 0)
                 .accessibilityHidden(note != nil)
@@ -157,6 +159,11 @@ struct SudokuView: View {
             }
         }
         .overlay(alignment: .topLeading) { boxOutlines(puzzle, side: side) }
+        // The flat jade table (#599, as Memory Lane #582): drawn 8pt outside the board's own space
+        // (padding in, then out again), so squares stay as wide as `arrangement` dealt them.
+        .padding(8)
+        .background(Color.tableSurface, in: .rect(cornerRadius: 30))
+        .padding(-8)
     }
 
     /// A 2pt espresso line round every box (#528): the shading alone was about 1.1:1, so the

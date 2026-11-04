@@ -444,4 +444,23 @@ final class SudokuPuzzleTests: XCTestCase {
         XCTAssertEqual(kept.side, SudokuPuzzle.minTarget)
         XCTAssertEqual(kept.pad, .beside)
     }
+
+    /// #599: the pilot look puts a table behind the board without taking room from it, so the dealt
+    /// boards and squares must stay what they were. Pinned at an iPhone SE (343pt of play area) and a
+    /// 6.1" iPhone (370pt).
+    func testGivenSEAndSixPointOneInchWidthsWhenLayoutAtLevelsOneFiveTenThenBoardsAreTheMeasuredOnes() {
+        let expected: [(width: Double, level: Int, size: Int, blanks: Int)] = [
+            (343, 1, 4, 3), (343, 5, 4, 10), (343, 10, 4, 12),
+            (370, 1, 4, 3), (370, 5, 4, 10), (370, 10, 6, 27),
+        ]
+        for row in expected {
+            let layout = SudokuPuzzle.layout(for: Difficulty(level: row.level), width: row.width)
+            XCTAssertEqual(layout.size, row.size, "width \(row.width) level \(row.level)")
+            XCTAssertEqual(layout.blanks, row.blanks, "width \(row.width) level \(row.level)")
+        }
+        let se = SudokuPuzzle.arrangement(size: 4, width: 343, height: nil)
+        XCTAssertEqual(se?.side ?? 0, 84.25, accuracy: 0.001)
+        let six = SudokuPuzzle.arrangement(size: 6, width: 370, height: nil)
+        XCTAssertEqual(six?.side ?? 0, 60, accuracy: 0.001)
+    }
 }
