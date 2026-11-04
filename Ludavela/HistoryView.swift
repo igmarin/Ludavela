@@ -170,15 +170,18 @@ struct HistoryView: View {
                 .frame(width: 30, height: 30)
             Text(AppLanguage.localized(entry.game.title))
                 .font(.title3)
+                .foregroundStyle(Color.espresso)
             Text(verbatim: "×\(entry.count)")
                 .font(.title3.weight(.heavy))
                 .monospacedDigit()
+                .foregroundStyle(Color.espresso)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
         // A rounded rectangle, not a capsule, so a name wrapped at large text sizes stays a chip.
+        // Printed like the cards (#580): the game's colour is a wash behind it, the edge is espresso.
         .background(entry.game.ink.opacity(0.12), in: .rect(cornerRadius: 22))
-        .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(entry.game.ink, lineWidth: 2))
+        .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(Color.espresso, lineWidth: 2))
     }
 
     /// "Memory Lane, 2 times" / "Memory Lane, once" for VoiceOver.
