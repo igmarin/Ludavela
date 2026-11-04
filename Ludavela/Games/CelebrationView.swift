@@ -1,12 +1,13 @@
 import SwiftData
 import SwiftUI
 
-/// Shared end-of-game screen (Card Table, step 5): the game's card arrives on
-/// the table stamped "Added to your week", then today's picture for the album
-/// after the day's first game (#376), a warm headline, the progress line (never points, #45),
-/// two big actions, then the week board with today's new card (the actions come first so they
-/// stay on screen, #526). During today's games the main one names the next game; otherwise it
-/// is "Play again". Presented as a fullScreenCover by every game on finish.
+/// Shared end-of-game screen (Card Table, step 5; calmed in #583): the game's card arrives on the
+/// flat jade table stamped "Added to your week", then flies to today's slot and leaves the game's
+/// own picture resting there. Below, on cream paper: today's picture for the album after the day's
+/// first game (#376), a warm headline, the progress line (never points, #45), the quiet level
+/// offer when it applies, two big actions (`CelebrationActions` says which is filled), then the
+/// week board (the actions come first so they stay on screen, #526). Presented as a
+/// fullScreenCover by every game on finish.
 struct CelebrationView: View {
     let game: GameID
     let detail: String
@@ -70,41 +71,55 @@ struct CelebrationView: View {
             .padding(.vertical, 8)
     }
 
+    /// The level offer, quieter than the next action (#583): a plain question and two outlined 64pt
+    /// answers, no fill or shadow, so the one filled button below stays the main thing. Side by side
+    /// when they fit, stacked at large text so neither answer is ever cut short.
     private var offerSection: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 10) {
             Text(AppLanguage.localized("level.offer.prompt"))
-                .font(.title2.weight(.semibold))
+                .font(.title2)
                 .multilineTextAlignment(.center)
                 .accessibilityAddTraits(.isHeader)
-            HStack(spacing: 12) {
-                Button {
-                    // A double tap reaches here twice; `applyChosen` itself allows one raise a day.
-                    guard !offerAnswered else { return }
-                    offerAnswered = true
-                    offerAccepted = true
-                    let today = PlanStore.dayStamp()
-                    LevelOfferStore.applyChosen(for: game, today: today)
-                    LevelOfferStore.markOffered(for: game, today: today)
-                    Feedback.play(.success)
-                    AccessibilityNotification.Announcement(AppLanguage.localized("level.explain.raised1")).post()
-                } label: {
-                    Text(AppLanguage.localized("level.offer.yes")).font(.title2.weight(.semibold))
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 12) {
+                    offerYes
+                    offerKeep
                 }
-                // Outlined, so the next action below stays the one filled button (#526).
-                .buttonStyle(AnswerTileStyle(strength: 0.08, minHeight: 100))
-                .accessibilityLabel(AppLanguage.localized("level.offer.yes"))
-                Button {
-                    offerAnswered = true
-                    LevelOfferStore.markOffered(for: game, today: PlanStore.dayStamp())
-                    Feedback.play(.success)
-                } label: {
-                    Text(AppLanguage.localized("level.offer.keep")).outlineButton()
+                VStack(spacing: 12) {
+                    offerYes
+                    offerKeep
                 }
-                .buttonStyle(.plain)
-                .accessibilityLabel(AppLanguage.localized("level.offer.keep"))
             }
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, 4)
+    }
+
+    private var offerYes: some View {
+        Button {
+            // A double tap reaches here twice; `applyChosen` itself allows one raise a day.
+            guard !offerAnswered else { return }
+            offerAnswered = true
+            offerAccepted = true
+            let today = PlanStore.dayStamp()
+            LevelOfferStore.applyChosen(for: game, today: today)
+            LevelOfferStore.markOffered(for: game, today: today)
+            Feedback.play(.success)
+            AccessibilityNotification.Announcement(AppLanguage.localized("level.explain.raised1")).post()
+        } label: {
+            Text(AppLanguage.localized("level.offer.yes")).outlineButton(minHeight: 64)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var offerKeep: some View {
+        Button {
+            offerAnswered = true
+            LevelOfferStore.markOffered(for: game, today: PlanStore.dayStamp())
+            Feedback.play(.success)
+        } label: {
+            Text(AppLanguage.localized("level.offer.keep")).outlineButton(minHeight: 64)
+        }
+        .buttonStyle(.plain)
     }
 
     /// The "n of m today" capsule. When this game closed the table it wears the amber seal, a shape
@@ -156,7 +171,7 @@ struct CelebrationView: View {
             // Above the paper sheet below, so the card flies over it to the week board instead of behind it.
             .zIndex(1)
 
-            Spacer(minLength: 0)
+            resting
 
             VStack(spacing: 14) {
                 if let dailyPicture {
@@ -179,18 +194,20 @@ struct CelebrationView: View {
                     offerSection
                 }
                 // Before the week board: the next step is always on screen, never below the fold (#526).
-                actions(next: today?.next(after: game))
+                actions(CelebrationActions(next: today?.next(after: game), closesTheDay: closesTheDay))
                 WeekBoard(
                     days: DayGrouping.thisWeek(sessions, date: \.playedAt).map {
                         (day: $0.day, games: $0.items.compactMap(\.game))
                     },
                     landed: landed
                 )
-                .padding(.vertical, 6)
+                .padding(.top, 2)
             }
             .padding(24)
             .frame(maxWidth: 560)
             .frame(maxWidth: .infinity)
+            // First in line for height, so the illustration above takes only what is left over.
+            .layoutPriority(1)
             .background {
                 UnevenRoundedRectangle(topLeadingRadius: 36, topTrailingRadius: 36)
                     .fill(Color.paper)
@@ -202,7 +219,7 @@ struct CelebrationView: View {
         .background(alignment: .bottom) {
             Color.paper.frame(height: 200).ignoresSafeArea(edges: .bottom)
         }
-        .background(.table)
+        .background(Color.tableSurface)
         // Reads the card's and today's slot's frames in one space, so the flight is one vector.
         .overlayPreferenceValue(LandingTargets.self) { targets in
             GeometryReader { proxy in
@@ -263,6 +280,31 @@ struct CelebrationView: View {
 
     private static let cardTilt = -4.0
 
+    /// What stays on the table once the card has gone to the week (#583): the game's own
+    /// illustration, unframed, so the protagonist does not leave with the card. It takes the room
+    /// the sheet leaves, up to 170pt, and gives way (nothing shown) when that is under 90pt, so a
+    /// long offer or large text never pushes an action off the screen. It appears only as the card
+    /// fades, so the two are never seen side by side.
+    private var resting: some View {
+        GeometryReader { box in
+            let side = min(170, box.size.height - 16)
+            if side >= 90 {
+                Group {
+                    if let hero = game.heroPicture {
+                        PictureView(picture: hero, size: side)
+                    } else {
+                        Emblem(game: game).frame(width: side * 0.7, height: side * 0.7)
+                    }
+                }
+                .frame(width: box.size.width, height: box.size.height)
+            }
+        }
+        .frame(maxHeight: .infinity)
+        .accessibilityHidden(true)
+        .opacity(faded ? 1 : 0)
+        .animation(.easeIn(duration: 0.25), value: faded)
+    }
+
     /// The finished game's card, stamped and tilted as it lands on the table.
     private var card: some View {
         GameCard(game: game)
@@ -299,31 +341,42 @@ struct CelebrationView: View {
                         + AppLanguage.localized("game.celebration.added")))
     }
 
-    private func actions(next: GameID?) -> some View {
+    /// One filled button and one quieter one; `CelebrationActions` decides which is which (#583).
+    private func actions(_ actions: CelebrationActions) -> some View {
         VStack(spacing: 12) {
-            if let next {
-                Button {
-                    onNext(next)
-                } label: {
-                    Label(
-                        String(
-                            format: AppLanguage.localized("game.celebration.next %@"),
-                            AppLanguage.localized(next.title)),
-                        systemImage: "arrow.forward"
-                    )
-                    .labelStyle(.titleAndIcon)
+            button(actions.primary, filled: true)
+            button(actions.secondary, filled: false)
+        }
+    }
+
+    private func button(_ choice: CelebrationActions.Choice, filled: Bool) -> some View {
+        let (title, run) = titleAndAction(choice)
+        return Group {
+            if filled {
+                Button(action: run) {
+                    if case .next = choice {
+                        Label(title, systemImage: "arrow.forward").labelStyle(.titleAndIcon)
+                    } else {
+                        Text(title)
+                    }
                 }
                 .buttonStyle(RetroButtonStyle())
             } else {
-                Button(action: onPlayAgain) {
-                    Text(AppLanguage.localized("game.celebration.playagain"))
-                }
-                .buttonStyle(RetroButtonStyle())
+                Button(action: run) { Text(title).outlineButton() }
+                    .buttonStyle(.plain)
             }
-            Button(action: onHome) {
-                Text(AppLanguage.localized("game.celebration.home")).outlineButton()
-            }
-            .buttonStyle(.plain)
+        }
+    }
+
+    private func titleAndAction(_ choice: CelebrationActions.Choice) -> (String, () -> Void) {
+        switch choice {
+        case .next(let next):
+            (
+                String(format: AppLanguage.localized("game.celebration.next %@"), AppLanguage.localized(next.title)),
+                { onNext(next) }
+            )
+        case .playAgain: (AppLanguage.localized("game.celebration.playagain"), onPlayAgain)
+        case .home: (AppLanguage.localized("game.celebration.home"), onHome)
         }
     }
 }
@@ -337,11 +390,14 @@ extension View {
         modifier(CelebrationCover(isPresented: isPresented, game: game, detail: detail, onPlayAgain: onPlayAgain))
     }
 
-    /// The quieter 100pt action beside a `RetroButtonStyle` one: an espresso outline with a blue label.
-    fileprivate func outlineButton() -> some View {
+    /// The quieter action beside a `RetroButtonStyle` one (100pt, or 64pt for the level offer): an espresso outline with a blue label.
+    fileprivate func outlineButton(minHeight: CGFloat = 100) -> some View {
         font(.title2.weight(.semibold))
             .foregroundStyle(Color.fadedBlue)
-            .frame(maxWidth: .infinity, minHeight: 100)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity, minHeight: minHeight)
             .overlay { RoundedRectangle(cornerRadius: 20).strokeBorder(Color.espresso, lineWidth: 2) }
             .contentShape(Rectangle())
     }

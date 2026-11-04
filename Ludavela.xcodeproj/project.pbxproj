@@ -83,6 +83,7 @@
 		CF167B18375C83D400000020 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C3DAA5B7FC9820000001A; };
 		B88EA6D0C0FF38D200000023 /* CaptionSpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EDFB62CC1B10200000001D; };
 		A5AB3B5A5FBDCEE000000020 /* CardLanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8614B7F8AD8626E0000001A; };
+		C29BA1A0CAE2E7A200000027 /* CelebrationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614FA3E7B422D1000000021; };
 		74E2DCC89787792D00000028 /* CelebrationHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F77BE44B5C133300000022; };
 		232C8B200714AB2700000028 /* ConversationPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C33EF89F55448D00000022; };
 		2BD8CCC3FFF7229C00000021 /* DailyPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7FC3CF253999A0000001B; };
@@ -122,6 +123,7 @@
 		45EF46093B3622A100000030 /* CardLandingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD8ECC0DA71AC70000002A; };
 		E312C1F3C4129A3B0000002C /* CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC098CE1C8A0C49100000026; };
 		FDF9C4410FC307CC00000031 /* CategoryDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B5C2D6AA1D382A0000002B; };
+		7823249A76C72E6300000037 /* CelebrationActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BBBE9EBD07604900000031; };
 		C814B13805C0F0B50000003A /* CelebrationDetailKeysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E63E26164DD4B00000034; };
 		4C89FAC758D0F90600000034 /* CelebrationExitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EB52586108A6240000002E; };
 		145089A7EEADE7E600000038 /* CelebrationHeadlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575DC74E4C934C0400000032; };
@@ -266,6 +268,7 @@
 		935C3DAA5B7FC9820000001A /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/AppLanguage.swift; sourceTree = "<group>"; };
 		A4EDFB62CC1B10200000001D /* CaptionSpeaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/CaptionSpeaker.swift; sourceTree = "<group>"; };
 		C8614B7F8AD8626E0000001A /* CardLanding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/CardLanding.swift; sourceTree = "<group>"; };
+		2614FA3E7B422D1000000021 /* CelebrationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/CelebrationActions.swift; sourceTree = "<group>"; };
 		83F77BE44B5C133300000022 /* CelebrationHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/CelebrationHeadline.swift; sourceTree = "<group>"; };
 		63C33EF89F55448D00000022 /* ConversationPrompts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/ConversationPrompts.swift; sourceTree = "<group>"; };
 		14C7FC3CF253999A0000001B /* DailyPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/DailyPicture.swift; sourceTree = "<group>"; };
@@ -305,6 +308,7 @@
 		9BBD8ECC0DA71AC70000002A /* CardLandingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CardLandingTests.swift; sourceTree = SOURCE_ROOT; };
 		BC098CE1C8A0C49100000026 /* CatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CatalogTests.swift; sourceTree = SOURCE_ROOT; };
 		17B5C2D6AA1D382A0000002B /* CategoryDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CategoryDealTests.swift; sourceTree = SOURCE_ROOT; };
+		82BBBE9EBD07604900000031 /* CelebrationActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CelebrationActionsTests.swift; sourceTree = SOURCE_ROOT; };
 		779E63E26164DD4B00000034 /* CelebrationDetailKeysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CelebrationDetailKeysTests.swift; sourceTree = SOURCE_ROOT; };
 		05EB52586108A6240000002E /* CelebrationExitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CelebrationExitTests.swift; sourceTree = SOURCE_ROOT; };
 		575DC74E4C934C0400000032 /* CelebrationHeadlineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CelebrationHeadlineTests.swift; sourceTree = SOURCE_ROOT; };
@@ -477,6 +481,7 @@
 				935C3DAA5B7FC9820000001A /* AppLanguage.swift */,
 				A4EDFB62CC1B10200000001D /* CaptionSpeaker.swift */,
 				C8614B7F8AD8626E0000001A /* CardLanding.swift */,
+				2614FA3E7B422D1000000021 /* CelebrationActions.swift */,
 				83F77BE44B5C133300000022 /* CelebrationHeadline.swift */,
 				63C33EF89F55448D00000022 /* ConversationPrompts.swift */,
 				14C7FC3CF253999A0000001B /* DailyPicture.swift */,
@@ -528,6 +533,7 @@
 				9BBD8ECC0DA71AC70000002A /* CardLandingTests.swift */,
 				BC098CE1C8A0C49100000026 /* CatalogTests.swift */,
 				17B5C2D6AA1D382A0000002B /* CategoryDealTests.swift */,
+				82BBBE9EBD07604900000031 /* CelebrationActionsTests.swift */,
 				779E63E26164DD4B00000034 /* CelebrationDetailKeysTests.swift */,
 				05EB52586108A6240000002E /* CelebrationExitTests.swift */,
 				575DC74E4C934C0400000032 /* CelebrationHeadlineTests.swift */,
@@ -737,6 +743,7 @@
 				CF167B18375C83D400000020 /* AppLanguage.swift in Sources */,
 				B88EA6D0C0FF38D200000023 /* CaptionSpeaker.swift in Sources */,
 				A5AB3B5A5FBDCEE000000020 /* CardLanding.swift in Sources */,
+				C29BA1A0CAE2E7A200000027 /* CelebrationActions.swift in Sources */,
 				74E2DCC89787792D00000028 /* CelebrationHeadline.swift in Sources */,
 				232C8B200714AB2700000028 /* ConversationPrompts.swift in Sources */,
 				2BD8CCC3FFF7229C00000021 /* DailyPicture.swift in Sources */,
@@ -784,6 +791,7 @@
 				45EF46093B3622A100000030 /* CardLandingTests.swift in Sources */,
 				E312C1F3C4129A3B0000002C /* CatalogTests.swift in Sources */,
 				FDF9C4410FC307CC00000031 /* CategoryDealTests.swift in Sources */,
+				7823249A76C72E6300000037 /* CelebrationActionsTests.swift in Sources */,
 				C814B13805C0F0B50000003A /* CelebrationDetailKeysTests.swift in Sources */,
 				4C89FAC758D0F90600000034 /* CelebrationExitTests.swift in Sources */,
 				145089A7EEADE7E600000038 /* CelebrationHeadlineTests.swift in Sources */,
