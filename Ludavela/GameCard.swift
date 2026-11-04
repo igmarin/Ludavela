@@ -505,6 +505,10 @@ struct WeekBoard: View {
                         .animation(.spring(duration: 0.3, bounce: 0.5), value: landed)
                     Text(entry.day, format: .dateTime.weekday(.abbreviated))
                         .font(.subheadline.weight(.bold))
+                        // The slots are a fixed 38pt wide: the label grows with text up to the largest
+                        // non-accessibility size and stops there, because at AX1-AX5 "Wed" / "mié"
+                        // used to be cut to "…" (#595).
+                        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                 }
