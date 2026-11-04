@@ -1,11 +1,12 @@
 # Product Brief — Ludavela
 
-Current truth as of 2026-09-29. History and reasons: `decisions.md`.
+Current truth as of 2026-11-04. History and reasons: `decisions.md`.
 
 ## What it is
 
-Warm, bilingual (ES/EN) mental-exercise games for older adults. Fourteen short
-games, big targets, no fail shame. Sold to families, played by a parent.
+Warm, bilingual (ES/EN) mental-exercise games for older adults. Eighteen short
+games (a nineteenth, Lotería, is hidden for now, #573), big targets, no fail shame.
+Sold to families, played by a parent.
 
 ## Who it's for
 
@@ -28,7 +29,7 @@ install it with nobody explaining it: self-serve onboarding, in-app settings
 (language, sound, bigger text), privacy policy, support contact, EN + ES store
 assets. v1.0 is free, with support links only outside the app (decisions
 2026-10-27, #228; the earlier one-time $12.99 lean was #21).
-Publishing waits on the paid Developer Program (decisions 2026-09-20).
+The paid Developer Program was bought on 2026-10-27; the App Store release is tracked in #194.
 
 **Marketing ceiling: "Fun mental exercise".** Games exercise memory and attention;
 never promise restored memory, clinical outcomes, treatment or screening
@@ -40,7 +41,7 @@ never promise restored memory, clinical outcomes, treatment or screening
    no fail shame. Words: "try again", never "wrong". Quick Eyes is player-paced
    (levels 1–5) and flashes its picture only from level 6 (#46).
 2. **Bilingual from birth** — every string in `Localizable.xcstrings`, EN + ES.
-3. **Games, grouped by what they exercise** (levels 1–10 in all but Remember Together):
+3. **Games, grouped by what they exercise** (levels 1–10 in all but Photo Stories):
 
    | Game | Domain | Mechanic |
    |---|---|---|
@@ -49,7 +50,7 @@ never promise restored memory, clinical outcomes, treatment or screening
    | 🐾 Name the Herd | Verbal fluency | Category recall from big tiles |
    | 🔢 Number Trail | Processing + numeracy | Easy sums in a row; the numbers grow with the level |
    | 👀 Quick Eyes | Processing speed | Look at a picture, then find it; player-paced, flash from level 6 |
-   | 📷 Remember Together | Reminiscence | The family's photos, one at a time; nothing to get wrong |
+   | 📷 Photo Stories | Reminiscence | The family's photos, one at a time; nothing to get wrong |
    | ✏️ Sudoku | Planning | 4×4 up to 9×9, one solution each |
    | 🃏 Up or Down | Planning | Golf solitaire: play a card one higher or lower |
    | 💬 Finish the Saying | Verbal fluency | Pick the ending of a familiar saying |
@@ -58,6 +59,11 @@ never promise restored memory, clinical outcomes, treatment or screening
    | 🀄 Tile Pairs | Attention | Find two free tiles that match |
    | 🧱 Sliding Blocks | Planning | Slide the blocks to free the big one |
    | 🖼️ Names and Faces | Names and faces | Match each family photo to its caption (needs four captioned photos) |
+   | 🧮 Number Slide | Planning | Rompecocos: put the numbers in order on a 3×3 or 4×4 board |
+   | 🔵 Peg Solitaire | Planning | Jump over pegs until one remains |
+   | 🔎 Word Search | Words | Find themed words hidden in a grid |
+   | ❓ Riddles | Words | Read a few lines and pick the word they describe |
+   | 🫘 Lotería (hidden) | Attention | Spot the called card on your board |
 
    Color Clash and Number Trail are hidden on dad's iPad (#47).
 4. **Progress, not points** — every game ends on a warm celebration with a
@@ -69,7 +75,7 @@ never promise restored memory, clinical outcomes, treatment or screening
 ## How today's plan is chosen (DailyPolicy, on the device)
 
 - Games are deterministic and offline. Code judges right/wrong, never a model.
-- `DailyPolicy` scores every game and deals the top three; each game's level follows a
+- `DailyPolicy` scores every game and deals the top 2, 3 or 5 (from the minutes chosen at onboarding); each game's level follows a
   staircase, once a day and never mid-game. The family can hide a game or pin a level in
   Set up. Details: `how-it-works.md`.
 - Nothing leaves the device: no model, no network, no key, no server (decisions.md
@@ -80,9 +86,9 @@ never promise restored memory, clinical outcomes, treatment or screening
 
 - Default build is **local-only**: sessions live on the device, no CloudKit
   entitlement, works with a free Apple ID.
-- CloudKit mirroring and real `CKShare` family sharing are **deferred**: they
-  need the paid program (#11, v0.4.0). Family sharing today is the native text
-  share of the week's games.
+- CloudKit mirroring and real `CKShare` family sharing are **deferred**: #11 was
+  closed on 2026-10-28 because SwiftData has no `CKShare` API on iOS 17. Family
+  sharing today is the native text share of the week's games.
 
 ## Non-goals for v1
 

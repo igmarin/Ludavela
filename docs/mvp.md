@@ -1,5 +1,10 @@
 # MVP — definition of done
 
+**Status, 2026-11-04:** this is the September plan, kept for its gates. The current
+release checklist is [#194](https://github.com/igmarin/Ludavela/issues/194). Since it was
+written, the paid Developer Program was bought (2026-10-27), TestFlight replaced the
+device-based beta, and v1.0 became free (#228).
+
 MVP = **exit of v0.3.0** (G1b + G2 + G4): a family can install the app on their own
 devices, play daily, and understand it without us, with every claim defensible.
 Selling (G5) and publishing (G6) follow.
@@ -18,15 +23,14 @@ No game #6 before playtest findings (#18).
 | G3 — Connected (optional) | Daily plan works offline on the device (`DailyPolicy`, #101); the app no longer calls Jev (#195) | Jev removed from the app (#195): no proxy, key or config; the real payload stays archived (`jev-json/011`, #62) |
 | G4 — Shippable (free path) | Disclaimer copy, ES native review, **device-based beta** ≥5 people, in-person | #12, #10, #38 |
 | G5 — Sellable (free path) | Works for strangers: onboarding, settings, privacy policy + support, listing assets, device support matrix | #31–#36 |
-| G6 — Publishable | **Blocked: Apple Developer Program.** Store listing live, price, StoreKit, CloudKit/`CKShare` | decisions.md 2026-09-20 |
+| G6 — Publishable | Store listing live. (Price and StoreKit dropped: v1.0 is free, #228. `CKShare` dropped with #11.) | #194 |
 
 **G1 was split on 2026-09-20:** the owner reported the app "performing great" for
 stability, which is what G1a measures. G1b (does he come back without being
 asked?) needs a week of observation and is not yet measured — that's the part
 that tells us whether the games are worth keeping.
 
-MVP = G1b + G2 + G4 (above). Sellable = G5. **Publishing (G6) waits on the account
-decision, and nothing before G5 needs it.**
+MVP = G1b + G2 + G4 (above). Sellable = G5. Publishing (G6) is tracked in #194.
 
 ## Checklist (owner → evidence)
 
@@ -38,8 +42,8 @@ decision, and nothing before G5 needs it.**
 - [ ] Family share + preset cheers → #11 (v0.4.0, needs the paid account; not MVP), tested with 2 Apple IDs
 - [ ] Medical-disclaimer copy in-app + store listing → research §5.1 wording
 - [ ] ES review by native speaker 65+ → #12 sign-off (packet: es-review-packet.md)
-- [ ] Device-based family beta (no TestFlight) → #10, feedback log
-- [ ] Price tier set in App Store Connect → #21 (G6, needs the paid account)
+- [ ] ~~Device-based family beta (no TestFlight) → #10~~ superseded by TestFlight (#229, #386)
+- [ ] ~~Price tier set in App Store Connect → #21~~ v1.0 is free (#228)
 
 ### G5 — Sellable (commercial intent, 2026-09-20)
 
@@ -48,7 +52,7 @@ decision, and nothing before G5 needs it.**
 - [ ] Playtest with non-family seniors (≥3 people) → #33
 - [ ] Privacy policy + support contact page → #34
 - [ ] App Store listing: description + screenshots in EN **and** ES → #35
-- [ ] Price + refund/purchase path verified in sandbox → #21
+- [ ] ~~Price + refund/purchase path verified in sandbox → #21~~ v1.0 is free (#228)
 - [ ] Device support matrix documented (which iPads/iPhones we claim) → #36
 
 ## Explicitly NOT in MVP

@@ -6,9 +6,8 @@ sample for an app that is meant to be sold. The method and the one rule
 
 **Who:** 5 or more people, 65+, not family (target raised from 3 on #33).
 At least one should speak only Spanish.
-**Install:** in person from the Mac, inside the 7-day free-signing window
-([install-runbook.md](install-runbook.md)). Once TestFlight works (#229),
-send them a TestFlight invite instead.
+**Install:** a TestFlight invite, with you beside them for the install
+([testflight-beta.md](testflight-beta.md#inviting-testers)).
 **Success:** they start a game without help, and afterwards they can say
 what the app is for ([playtest.md](playtest.md#what-counts-as-success)).
 

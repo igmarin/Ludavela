@@ -10,8 +10,9 @@ App Store Connect and may have moved: follow the intent, not the exact label.
   no entitlements file, so no iCloud/push capability and nothing for App Store Connect to reject.
   **Never archive a `--cloudkit` build for TestFlight**: it traps at launch (AGENTS.md Workflow 3)
   and TestFlight is a real device, which is the case the simulator never reproduces.
-- Version `0.1.0`, build `6` (builds 1 to 5 are already uploaded) live in `tools/generate_project.swift` (`MARKETING_VERSION`,
-  `CURRENT_PROJECT_VERSION`). Export compliance is answered in the build
+- Version `0.1.0`, build `6` live in `tools/generate_project.swift` (`MARKETING_VERSION`,
+  `CURRENT_PROJECT_VERSION`). Builds 1 to 6 have gone to the internal group (#386), so raise the build
+  before the next upload. Export compliance is answered in the build
   (`ITSAppUsesNonExemptEncryption = NO`: no network, no custom crypto), so uploads don't stop to ask.
 - **Privacy manifest** (`Ludavela/PrivacyInfo.xcprivacy`, copied to the .app root): no tracking, no
   collected data (matches the "Data Not Collected" label, #34). It declares the two required-reason APIs
@@ -118,9 +119,8 @@ ES: Juega dos juegos y abre Mi Semana. Cuéntanos qué costó ver, tocar o enten
 2. The non-family seniors of #33: add them by email too, and **sit with each one for the install**
    (10 minutes): they need an Apple ID, the free **TestFlight** app from the App Store, then tap Install on Ludavela.
    A public link is the fallback for someone whose email is awkward: group → Public Link → send it by message.
-   Anyone with the link can join, so remove it after the session. **Exception, contest period (#386):** the
-   public link of the external group stays open from upload until Nov 9, 2026, so judges can install without
-   an invite; remove it then.
+   Anyone with the link can join, so remove it after the session. (The contest-period public link of #386
+   was dropped with the contest on 2026-10-31.)
 3. Tell every tester: "It stays installed; a new version arrives through TestFlight. Don't delete the app."
 4. A build expires after 90 days: upload a new one before then, or the testers are back to a dead icon.
 5. Unverified: whether a game history from an older free-signed install carries into the TestFlight one

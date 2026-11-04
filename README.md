@@ -8,7 +8,9 @@ no fail shame: "Almost, try again", never "wrong".
 
 ## Status
 
-**18 games playable**, offline-first, EN and ES complete. See [CHANGELOG.md](CHANGELOG.md)
+18 games playable (Lotería, the 19th, is hidden until its play makes sense, #573), offline-first,
+EN and ES complete. Testers get builds through TestFlight; the App Store release is tracked in
+[#194](https://github.com/igmarin/Ludavela/issues/194). See [CHANGELOG.md](CHANGELOG.md)
 for what changed, [docs/roadmap.md](docs/roadmap.md) for what's next, and
 [GitHub issues](https://github.com/igmarin/Ludavela/issues) for live work.
 
@@ -35,7 +37,7 @@ for what changed, [docs/roadmap.md](docs/roadmap.md) for what's next, and
 | Word Search | Find themed words hidden in a grid |
 | Riddles | Read a few lines and pick the word they describe |
 
-Home marks today's picks and each game reads the daily difficulty. Both are
+Home deals today's picks and each game opens at its level for the day. Both are
 decided by a small rule policy on the device (no network, no cost).
 
 ## How it is built
@@ -89,7 +91,7 @@ After adding a `.swift` file: regenerate and commit the updated
 Ludavela/
   LudavelaApp.swift      # app entry
   HomeView.swift          # game picker
-  Models/                 # SwiftData: GameSession, RoundProgress, GameID
+  Models/                 # GameSession (SwiftData), RoundProgress, GameID, Difficulty
   Games/                  # one file per game; MemoryMatchView is the reference
   Services/               # DailyPolicy (on-device plan), LevelPolicy, MemoryPhotos, SoundPlayer, ...
 docs/                     # product & design docs — start at docs/README.md
@@ -98,15 +100,13 @@ tools/generate_project.swift
 
 ## Docs
 
-Start at [docs/README.md](docs/README.md) — product brief, decision log,
-research (audience evidence, licensing, pricing), roadmap.
+Start at [docs/README.md](docs/README.md): product brief, decision log, research, roadmap.
 
 ## Honest scope
 
-This is **not** a medical app. The science (see docs/research-2026-09.md):
-brain games alone show weak transfer to daily life; they work best as one
-ingredient of an engaged, active life. Our copy says "fun mental exercise" and
-never promises cognitive outcomes. That's the honest position and the legally safe one.
+This is not a medical app. The research (see [docs/research-2026-09.md](docs/research-2026-09.md))
+finds weak transfer from brain games alone to daily life; they work best as one part of an engaged,
+active life. Our copy says "fun mental exercise" and never promises cognitive outcomes.
 
 ## License
 

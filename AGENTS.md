@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Instructions for AI agents (and humans in a hurry) working on Ludavela (source project: Ludavela).
+Instructions for AI agents (and humans in a hurry) working on Ludavela (formerly MenteViva).
 
 ## Read first, in order
 
@@ -16,6 +16,8 @@ Instructions for AI agents (and humans in a hurry) working on Ludavela (source p
 - **Accessibility floor:** touch targets ≥60pt, aim 100pt (conventions §4;
   game controls ship at ≥100pt), VoiceOver labels on every interactive
   element, no color-only information, `.title2` minimum for instructions.
+  One logged exception: Peg Solitaire's holes on phones, about 52pt (#615,
+  `docs/decisions/2026-11.md`).
 - **Tone:** warm failure copy only. Never "wrong/error/failed" — the player is
   someone's dad you will never meet, installing this without anyone to explain
   it to them.
@@ -31,18 +33,22 @@ Instructions for AI agents (and humans in a hurry) working on Ludavela (source p
 Ludavela/            app (SwiftUI + SwiftData)
   LudavelaApp.swift  entry; LOCAL_ONLY picks the store
   HomeView, OnboardingView, SettingsView, HistoryView,
-  MyProgressView (rates, #141), SetUpView (hide/pin/photos)
+  MyProgressView (rates, #141), SetUpView (hide/pin/photos), MyPlanView,
+  AboutView, WhyTheseGamesView, FamilyPhotoCaptionSheet, FirstPlayGuide
+  GameCard, GameHeader, BigTargets, Theme (palette, game inks)
   Games/              19 games, one View file each (18 views: Names and Faces is Memory Lane's board),
                       with its pure deal/puzzle file beside it (SudokuPuzzle, UpOrDownDeal, ...);
-                      shared: CelebrationView, DailyPictureCard, MissCue, FitOrScroll, AnswerBeat,
-                      RoundCounter, LevelExplainLine, PictureView
+                      shared: CelebrationView, DailyPictureCard, MissCue, AlmostNote, FitOrScroll,
+                      AnswerBeat, FinishBeat, RoundCounter, LevelExplainLine, PictureView,
+                      InterruptionPause, LeaveGuard
   Models/             GameSession, GameID, Difficulty, RoundProgress
   Services/           plan and levels: DailyPolicy (on-device plan), PlanStore (saved plan + levels),
                         LevelPolicy (level note + next-level offer rules), LevelOfferStore,
                         LevelMigration (old easy/medium/hard to levels; temporary, #333)
                       first run: OnboardingSteps, PlayerProfile (onboarding answers), WarmUp
-                      Home and the day: HomeDeal, HandLayout, TodayRun, TodayShare,
-                        CelebrationHeadline, DailyPicture, PictureAlbum
+                      Home and the day: HomeDeal, HandLayout, HomeShelves, TodayRun, TodayShare,
+                        CelebrationHeadline, CelebrationActions, CardLanding, DailyPicture,
+                        PictureAlbum
                       family and progress: FamilySettings, MemoryPhotos, PlayerStateSummary,
                         WeeklySummary, ProgressRates, FirstPlayGuideStore
                       language, pictures, sound: AppLanguage, CaptionSpeaker, ConversationPrompts,
@@ -63,10 +69,12 @@ docs/                 start at docs/README.md
 - **Daily picks and levels are decided on the device** (`DailyPolicy`, #101): no model, no network,
   no cost. The app no longer calls Jev (#195); `docs/jev-json/` and `docs/jev-integration.md` are history.
 - Onboarding with goals and an optional warm-up set the starting levels (#212, #213). Each game is a
-  framed card in its own colour (`GameCard.swift`, palette in `Theme.swift`; spec
-  `docs/design/2026-10-12-card-table.html`).
-- **TestFlight beta is running** (#229). **v1.0 on the App Store is pending** (epic #194); the
-  hackathon submission is due **Nov 4, 9 PM ET** (epic #422). Epics are the open issues labelled `epic`.
+  card in its own colour (`GameCard.swift`, palette in `Theme.swift`). The current look is the
+  Sobremesa direction the owner chose on 2026-11-03: cream, a flat jade table and the card fan
+  (`docs/design/2026-11-03-sobremesa.md`, epic #578).
+- **TestFlight:** builds 1–6 went to the internal family group (#229, #386). **v1.0 on the App Store
+  is pending** (epic #194). The contest epic #422 was closed as not planned on 2026-10-31.
+  Epics are the open issues labelled `epic`.
 - Live state is in the [issues](https://github.com/igmarin/Ludavela/issues), not here.
 
 ## Signing
@@ -216,11 +224,8 @@ Speed without quality is not progress. A PR is done when:
 
 ## Patterns
 
-- One file per game in `Ludavela/Games/`; copy `MemoryMatchView.swift`'s
-  shape (View + @State + `modelContext.record(GameSession(...))` on finish, #106).
-  No game engine, no base classes, no protocol ceremony.
-- The daily plan is `Services/DailyPolicy.swift` (pure, tested). Policy stays in code,
-  never in a model. Past Jev judgments are history: docs/jev-integration.md.
+- Games: one view per game in `Ludavela/Games/`, shaped like `MemoryMatchView.swift` (conventions §2).
+- The daily plan is `Services/DailyPolicy.swift` (pure, tested). Policy stays in code, never in a model.
 
 ## When unsure
 

@@ -57,13 +57,12 @@ hola@nebulaideas.com). We answer in English or Spanish.
 
 - **Backups:** `MemoryPhotos.prepare` excludes the photo and caption folder from new device
   backups when a photo is added. Existing folders that have not gone through this path may still be
-  included. Game sessions and other app data may be included; older backups may contain photos. Re-check the App Privacy label before submission (#37).
+  included. Game sessions and other app data may be included; older backups may contain photos. Re-check the App Privacy label before submission (#194).
 
 - Matches the App Privacy label draft in [store-listing.md](store-listing.md): **Data Not Collected**.
 - Code facts backing every sentence: the app makes no network request (decisions.md 2026-10-26,
   #195); today's picks are computed on the device by `DailyPolicy`; SwiftData store is app-local;
   no third-party dependencies exist in the project.
-- Hosting: the repo is private and GitHub Pages on private repos needs a paid
-  plan, so use a tiny public policy repo or Cloudflare Pages (decisions
-  2026-09-20). Then link it in-app (Settings) and in App Store Connect — that
-  closes #34.
+- Hosting: Cloudflare Pages at `menteviva-e4s.pages.dev`, built from `site/`
+  ([install-runbook.md](install-runbook.md#privacy-and-support-pages-cloudflare-pages-34)).
+  Settings links to it; #34 is closed. App Store Connect still needs the URLs (#194).

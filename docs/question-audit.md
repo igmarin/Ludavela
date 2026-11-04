@@ -86,8 +86,9 @@ until the warm games are validated as loved.
 
 ## Still open (and where they live)
 
-- **Dad's actual game library** → gated on playtest (#6); candidates from Jev 008/010 (#44, #46, #47).
-- **Market languages** → #40 (validator-gated).
+- ~~**Dad's actual game library** → gated on playtest (#6)~~ answered: #6 ran (closed 2026-10-05);
+  #44 added Photo Stories, #46 made Quick Eyes player-paced, #47 hid Color Clash and Number Trail on dad's iPad.
+- **Market languages** → shortlist in [languages.md](languages.md) (#40, closed); no validator named yet.
 - **"Which person is this device" at first run** → implementation detail of the
   per-device model; decide when the first new game ships (not now).
 
@@ -96,4 +97,5 @@ until the warm games are validated as loved.
 - [x] Jev 007 — audience with corrected state (archived)
 - [x] Jev 008 — games re-scored for early dementia (archived; 010 matrix followed)
 - [x] Research — iOS/iPadOS adoption share: floor is cheap (research-2026-09-22 §7, #41 closed)
-- [ ] Research/owner — language shortlist + validator availability (#40)
+- [x] Research — language shortlist ([languages.md](languages.md), 2026-10-28, #40)
+- [ ] Owner — a named validator for the next language

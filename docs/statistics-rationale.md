@@ -37,14 +37,16 @@ world. Reading rules:
 
 - **Probability ≠ confidence.** A Noul of 0.79 means "lean yes"; its
   usefulness depends on state quality, not on the decimal.
-- **Confidence is a second axis** (distribution shape). Gate actions on it —
-  difficulty changes only at ≥0.6 (`jev-integration.md`); low-confidence
-  answers read as "no signal," not "no."
+- **Confidence is a second axis** (distribution shape). Low-confidence
+  answers read as "no signal," not "no." (While Jev ran in the app, difficulty
+  changed only at ≥0.6; `jev-integration.md`.)
 - **The 001/007 lesson is the control case:** P=0.95 at confidence 0.94 for
   the *wrong* audience, because the state was wrong. A confident answer to a
   badly-stated question is our most expensive failure mode — that's why
   `question-audit.md` exists.
-- Policy stays in code. Jev ranks, code decides, fallbacks always work offline.
+- Policy stays in code. Since 2026-10-26 (#195) the app does not call Jev:
+  `DailyPolicy` decides on the device, and Jev is evidence for product
+  decisions only.
 
 ## 4. What may be said, and where
 
