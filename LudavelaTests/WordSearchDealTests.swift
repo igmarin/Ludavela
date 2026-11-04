@@ -290,4 +290,16 @@ final class WordSearchDealTests: XCTestCase {
             }
         }
     }
+
+    /// #599: the pilot look puts a table behind the grid without taking room from it. An iPhone SE
+    /// offers 367pt (375 minus the 4pt margins) and a 6.1" iPhone 394pt: a 6x6 at every level, with
+    /// squares of 61.17pt and 64pt.
+    func testGivenSEAndSixPointOneInchSpaceWhenSideAtLevelsOneFiveTenThenSixBySixWithTheSameSquares() {
+        for (space, cell) in [(367.0, 61.1667), (394.0, 64.0)] {
+            for level in [1, 5, 10] {
+                XCTAssertEqual(WordSearchDeal.side(level: level, tablet: false, space: space), 6, "level \(level)")
+            }
+            XCTAssertEqual(WordSearchDeal.cell(side: 6, space: space), cell, accuracy: 0.001)
+        }
+    }
 }

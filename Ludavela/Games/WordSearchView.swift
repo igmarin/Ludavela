@@ -2,6 +2,7 @@ import SwiftData
 import SwiftUI
 
 /// Find themed words by tapping or dragging between their endpoints.
+/// #599: the grid sits on the approved table without taking room from it (docs/design/2026-11-03-sobremesa.md).
 struct WordSearchView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var difficulty = Difficulty.stored(.wordSearch)
@@ -35,7 +36,10 @@ struct WordSearchView: View {
             if wide, let game { board(game) }
             VStack(spacing: 16) {
                 LevelExplainBanner(game: .wordSearch, hasStarted: (game?.attempts ?? 0) > 0, keepsSpace: true)
-                Text(instruction).font(.title2).multilineTextAlignment(.center)
+                Text(instruction)
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(Color.espresso)
+                    .multilineTextAlignment(.center)
                 if let game {
                     Text(AppLanguage.localized(game.deal.themeKey)).font(.title2.bold())
                     if !wide { board(game) }
@@ -83,6 +87,12 @@ struct WordSearchView: View {
     private func board(_ game: WordSearchSelection) -> some View {
         let cell = WordSearchDeal.cell(side: game.deal.side, space: boardSpace)
         return grid(game, cell: cell).frame(width: cell * Double(game.deal.side), height: cell * Double(game.deal.side))
+            // The flat jade table (#599, as Memory Lane #582), drawn outside the grid's own space so the
+            // squares keep the width they were dealt by. 4pt, the screen's side margin: on an iPhone SE
+            // the 367pt grid leaves room for no more, and the table must not leave the screen.
+            .padding(WordSearchDeal.sideMargin)
+            .background(Color.tableSurface, in: .rect(cornerRadius: 30))
+            .padding(-WordSearchDeal.sideMargin)
     }
 
     private func grid(_ game: WordSearchSelection, cell: CGFloat) -> some View {
