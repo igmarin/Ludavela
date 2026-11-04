@@ -38,6 +38,7 @@ struct CategoryFluencyView: View {
     @State private var missedTile: Int?
     @State private var isShowingCompletionBeat = false
     @State private var completionTask: Task<Void, Never>?
+    @State private var finishRecorder = FinishBeat.Recorder()
     /// What the board has to work with (#415): the play area's height, measured outside the padding,
     /// and the width and height of the header block above the grid. The grid's own room is what is left.
     @State private var areaHeight: CGFloat = 0
@@ -228,6 +229,7 @@ struct CategoryFluencyView: View {
     }
 
     private func restart() {
+        finishRecorder.reset()
         progress.reset()
         totalCorrect = 0
         totalPicks = 0
@@ -294,6 +296,7 @@ struct CategoryFluencyView: View {
             hasNextRound: progress.completedRounds + 1 < session.count)
         guard completion != .keepPlaying else { return }
         isShowingCompletionBeat = true
+        if completion == .showBeatThenFinish { recordSession() }
         completionTask = Task { @MainActor in
             try? await Task.sleep(for: .seconds(1))
             guard !Task.isCancelled else { return }
@@ -313,14 +316,17 @@ struct CategoryFluencyView: View {
         }
     }
 
-    private func finish() {
+    private func recordSession() {
         let elapsed = Int(Date.now.timeIntervalSince(startedAt))
-        modelContext.record(
+        finishRecorder.record(
             GameSession(
                 gameID: .categoryFluency,
                 rounds: CategoryDeal.roundsPerSession, durationSeconds: elapsed,
                 correct: totalCorrect, attempts: totalPicks,
-                difficulty: difficulty))
+                difficulty: difficulty), in: modelContext)
+    }
+
+    private func finish() {
         finalDetail = String(format: AppLanguage.localized("game.celebration.items %lld"), totalCorrect)
         showCelebration = true
     }

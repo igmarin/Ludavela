@@ -1,9 +1,23 @@
 import Foundation
+import SwiftData
 
 /// The beat between the last move and the celebration (#415). Without it the cover rose in the same
 /// frame as the last pair or tile, so the finished board was never seen. The session is recorded
 /// before the beat and the VoiceOver line is posted then too; only the cover waits.
 enum FinishBeat {
+    /// Saves a completed run once, even if a final action is delivered more than once.
+    struct Recorder {
+        private var recorded = false
+
+        mutating func record(_ session: GameSession, in context: ModelContext) {
+            guard !recorded else { return }
+            recorded = true
+            context.record(session)
+        }
+
+        mutating func reset() { recorded = false }
+    }
+
     /// Long enough to see the board whole and the last card's bloom settle.
     static let seconds = 0.9
 
