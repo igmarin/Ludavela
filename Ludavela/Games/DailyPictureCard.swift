@@ -2,31 +2,35 @@ import SwiftUI
 
 /// Today's picture for the album (#376), shown by the celebration after the day's first finished game.
 /// It lands face down and turns over once in 0.4 s to show the illustration and its name; with Reduce
-/// Motion it cross-fades instead. It never says how many pictures exist or are left (decision 2026-10-30).
+/// Motion it simply shows the face, with no turn or fade (#583). It never says how many pictures
+/// exist or are left (decision 2026-10-30).
 struct DailyPictureCard: View {
     let picture: GamePicture
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var typeSize
     @State private var turned = false
+    /// Face up: after the turn, or at once under Reduce Motion.
+    private var faceUp: Bool { turned || reduceMotion }
 
     private static let shape = RoundedRectangle(cornerRadius: 18)
-    /// Small enough that the celebration's main action still fits on a 6.1" iPhone (#376 review).
-    private static let side: CGFloat = 140
+    /// Small enough that the celebration's main action still fits on a 6.1" iPhone (#376 review), and that
+    /// the game's own illustration keeps room on the table above it (#583).
+    private static let side: CGFloat = 112
     /// At accessibility text sizes the celebration scrolls anyway, so the card widens to keep a long
     /// name such as "Tienda de campaña" whole instead of truncating it.
     private var width: CGFloat { typeSize.isAccessibilitySize ? 260 : Self.side }
 
     var body: some View {
-        // Both faces swap at the halfway point, when the card is edge-on; Reduce Motion fades instead.
-        let swap: Animation = reduceMotion ? .easeInOut(duration: 0.4).delay(0.5) : .easeInOut(duration: 0.1).delay(0.65)
+        // Both faces swap at the halfway point, when the card is edge-on.
+        let swap: Animation? = reduceMotion ? nil : .easeInOut(duration: 0.1).delay(0.65)
         // The face sets the size, so a long name at large text sizes grows the card instead of truncating.
         front
-            .opacity(turned ? 1 : 0)
+            .opacity(faceUp ? 1 : 0)
             .animation(swap, value: turned)
             .overlay {
                 back
-                    .opacity(turned ? 0 : 1)
+                    .opacity(faceUp ? 0 : 1)
                     .animation(swap, value: turned)
             }
             .frame(width: width)
@@ -60,7 +64,7 @@ struct DailyPictureCard: View {
     /// The paper face; pre-turned so it reads upright once the card has turned over.
     private var front: some View {
         VStack(spacing: 6) {
-            PictureView(picture: picture, size: 96)
+            PictureView(picture: picture, size: 72)
             Text(AppLanguage.localized(picture.nameKey))
                 .font(.title3.weight(.heavy))
                 .fontDesign(.rounded)
