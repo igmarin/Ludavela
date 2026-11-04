@@ -1575,13 +1575,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tap the ink's color or its shape, not the word."
+            "value" : "Tap the ink's color or shape, not the word."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toca el color de la tinta o su forma, no la palabra."
+            "value" : "Toca el color o la forma, no la palabra."
           }
         }
       }
