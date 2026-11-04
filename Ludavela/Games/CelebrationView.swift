@@ -355,7 +355,7 @@ struct CelebrationView: View {
             if filled {
                 Button(action: run) {
                     if case .next = choice {
-                        Label(title, systemImage: "arrow.forward").labelStyle(.titleAndIcon)
+                        Label(title, systemImage: "arrow.forward").labelStyle(.iconUnlessLargeText)
                     } else {
                         Text(title)
                     }
