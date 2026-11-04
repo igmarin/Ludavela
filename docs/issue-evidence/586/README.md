@@ -3,6 +3,27 @@
 Refs #586, epic #578. This is the simulator half of `docs/playtest-session-5.md`. It records what was seen and nothing else: no
 preferences, no claim that anything got easier. Part D (players), the physical VoiceOver pass and Part E judgements are the owner's.
 
+## Status update — 2026-11-04 (baseline `a3868d7`)
+
+This report and its captures remain a **2026-11-03 simulator snapshot of `cfa269f`**, not captures of
+current main. Live issue states and repository history were checked on 2026-11-04:
+
+- [The owner's closure comment](https://github.com/igmarin/Ludavela/issues/586#issuecomment-6622624398)
+  records play on three physical devices with no problems found. #586 is closed. It explicitly says
+  structured Part D player tasks and a physical VoiceOver pass were not run as written.
+- F1 was addressed by [#609](https://github.com/igmarin/Ludavela/issues/609), merged in `283c556`;
+  F2/F3 by [#611](https://github.com/igmarin/Ludavela/issues/611), merged in `a3868d7`. Both issues
+  are closed; see the later [#609 evidence](../609/README.md) and [#611 evidence](../611/README.md).
+  The old screenshots below still show the pre-fix behavior; this update adds no new captures.
+- F5 is the **existing**, open [#610](https://github.com/igmarin/Ludavela/issues/610). An unmerged
+  fix is not evidence that main is fixed. Do not duplicate this finding.
+- The owner closure records #595 and #599 as resolved. Retain the original matrix's pending cells,
+  seeded-state limitations and lack of physical VoiceOver/Reduce Motion evidence; closure does not
+  turn these into completed checks.
+
+The [post-rollout source audit](../../audit-2026-11-04.md) is separate evidence, with its own limits.
+The remaining [playtest sheet](../../playtest-session-5.md) can still be used for structured tasks.
+
 ## Setup
 
 - **Build:** `cfa269f` (main, "Add the playtest #5 sheet", after the epic's last PR `2932f86`), local-only Debug build with a
