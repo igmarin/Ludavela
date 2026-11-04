@@ -281,6 +281,7 @@ struct HomeView: View {
                             .font(.system(size: 20))
                             .accessibilityHidden(true)
                     }
+                    .labelStyle(.iconUnlessLargeText)
                     .font(.title2.weight(.heavy))
                     .foregroundStyle(Color.brand)
                 }

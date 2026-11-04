@@ -282,9 +282,13 @@ struct OnboardingView: View {
     }
 
     /// Language is asked here rather than buried in settings: for a stranger,
-    /// this is the one setting that must be right before anything else.
+    /// this is the one setting that must be right before anything else. At accessibility sizes the
+    /// three stack, as the footer does: a third of an iPhone SE broke them letter by letter.
     private var languageChoice: some View {
-        HStack(spacing: 12) {
+        let layout =
+            typeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(spacing: 12)) : AnyLayout(HStackLayout(spacing: 12))
+        return layout {
             ForEach(AppLanguage.allCases) { language in
                 Button {
                     AppLanguage.apply(language.rawValue)

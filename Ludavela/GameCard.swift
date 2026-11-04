@@ -214,7 +214,28 @@ struct GameName: View {
         } icon: {
             Emblem(game: game).frame(width: size, height: size)
         }
+        .labelStyle(.iconUnlessLargeText)
     }
+}
+
+/// A label that drops its decorative icon at accessibility text sizes. On an iPhone SE at the
+/// largest size the icon took the first line's width and broke names mid-word: "Camin / o de
+/// Memoria", "Seguimo / s con Sudoku", "Sigu- / iente" (final review, 2026-11-04). The words
+/// carry the meaning; the icon never does.
+struct IconUnlessLargeTextLabelStyle: LabelStyle {
+    @Environment(\.dynamicTypeSize) private var typeSize
+
+    func makeBody(configuration: Configuration) -> some View {
+        if typeSize.isAccessibilitySize {
+            configuration.title
+        } else {
+            Label(configuration).labelStyle(.titleAndIcon)
+        }
+    }
+}
+
+extension LabelStyle where Self == IconUnlessLargeTextLabelStyle {
+    static var iconUnlessLargeText: IconUnlessLargeTextLabelStyle { .init() }
 }
 
 struct Emblem: View {
