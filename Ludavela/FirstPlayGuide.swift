@@ -66,7 +66,9 @@ private struct FirstPlayGuide: ViewModifier {
             }
             VStack {
                 if !cardAtTop { Spacer() }
-                card
+                // At the largest text sizes on a phone the card is taller than the screen: it
+                // scrolls instead of cutting the line to "Toca una ficha junto…" (#586 follow-up).
+                card.fitOrScroll()
                 if cardAtTop { Spacer() }
             }
             .padding()
@@ -97,7 +99,10 @@ private struct FirstPlayGuide: ViewModifier {
                 replay += 1
                 read()
             } label: {
+                // "Muéstramelo" is one long word: two lines and a smaller size before any break mid-word.
                 Text(AppLanguage.localized("guide.again")).font(.title2.weight(.semibold))
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.6)
             }
             .buttonStyle(AnswerTileStyle(strength: 0.08, minHeight: 100))
         }
