@@ -53,6 +53,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Newest first.
 - **Bigger pictures in Name the Herd and Quick Eyes (#413):** Name the Herd pictures grow from 52 to 72, Quick Eyes choices from 56 to 84, the Quick Eyes picture from 120 to up to 240 (a little over half the screen width on a phone) and the look-again picture from 72 to 96. They grow with the text size too, and the tick in Name the Herd now sits on the tile's corner so it never covers a picture.
 
 ### Fixed
+- **Sliding Blocks buttons at the largest text (#609):** Undo, Start over and "Show me a move" now stack one under the other at the accessibility text sizes, so no word is broken letter by letter. At default text they sit in a row as before. Number Slide already did this.
 - **Week board labels at large text (#595):** the weekday names under the week no longer shrink to "…" at the largest text sizes; the label grows with text up to the largest non-accessibility size and stops there, while the day slots, today ring and VoiceOver summary stay as they were.
 - **Naming a family photo in Set up (#508):** tapping a photo's name button opens the name sheet and it stays open while you type, until you save or close it. Before, it closed by itself a second after opening.
 - **Tile Pairs mixes a stuck board at once (#415):** when the pairs you took leave no two matching free tiles, the tiles are mixed with the same warm "Let's mix the tiles" line as soon as the pair has lifted away, instead of waiting for you to press Show me.
