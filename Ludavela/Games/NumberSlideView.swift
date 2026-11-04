@@ -113,7 +113,8 @@ struct NumberSlideView: View {
     /// arrow on the edge facing the gap when it can slide.
     private func tile(_ number: Int, in puzzle: NumberSlidePuzzle, cell: CGFloat, isGuideTarget: Bool) -> some View {
         let index = puzzle.tiles.firstIndex(of: number) ?? 0
-        let direction = puzzle.direction(ofTileAt: index)
+        // The goal is a picture: no arrows on it, so nothing suggests a move to make.
+        let direction = showingGoal ? nil : puzzle.direction(ofTileAt: index)
         let shape = RoundedRectangle(cornerRadius: cell * 0.14)
         let isShown = shownTile == number
         return
