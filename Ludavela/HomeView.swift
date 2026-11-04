@@ -161,8 +161,10 @@ struct HomeView: View {
                     .fontDesign(.serif)
                     .accessibilityAddTraits(.isHeader)
             }
+            // At accessibility sizes the greeting is hidden, so the status line is Home's first heading (#597).
             Text(statusLine)
                 .font(.title2.weight(.semibold))
+                .accessibilityAddTraits(typeSize.isAccessibilitySize ? .isHeader : [])
             if !today.games.isEmpty {
                 table.padding(.top, 10)
             }
