@@ -13,6 +13,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Newest first.
 
 ### Changed
 - **Memory Lane on the same table (#582):** the board now sits on the flat jade table that Home uses and the instruction is in dark ink on cream. Found cards keep their checkmark and wash, and the checkmark no longer covers a card's picture at accessibility text sizes. Names and Faces uses the same board. The table takes none of the board's room, so every screen deals the same pairs as before; game rules, levels and photos are unchanged.
+- **My Week day chips (#585):** each game chip is printed like the cards, with an espresso outline and name on a wash of the game's colour. Rates, trends and Settings are unchanged.
+- **Welcome screen (#584):** the card fan now sits on the jade table, the invitation leads and the explaining lines and the notice sit back, and the language choice is quieter, so Start is the one filled button. No steps or text removed.
 - **Quieter game cards (#580):** bigger pictures, one printed outline and names in dark ink on cream; catalogue names wrap without shrinking, while compact cards keep their existing fit. Completed games keep their checkmark, and large-text rows use the same simpler treatment.
 - **A clearer place to start (#581):** Home puts the next game and its play action first on a calm table, while keeping all recommended cards, their completion marks and the daily week record. At accessibility text sizes, the greeting gives the action more room. If all games are hidden, Home points to Settings to choose games.
 - **Lotería (#573):** temporarily hidden from the game list and daily picks while its play is reconsidered; previous sessions remain saved.
