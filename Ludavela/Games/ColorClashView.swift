@@ -41,7 +41,8 @@ struct ColorClashView: View {
             LevelExplainBanner(
                 game: GameID.stroop, hasStarted: progress.completedRounds > 0)
             Text(AppLanguage.localized("game.colorclash.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
 
             // Word is a decoy. VoiceOver hears the INK colour and its shape;
