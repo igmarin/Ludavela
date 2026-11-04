@@ -3,8 +3,8 @@ import SwiftUI
 
 /// First run, for someone who has never heard of this app and has nobody to ask (#212).
 ///
-/// Step 1 is the welcome screen, kept as it was: title, three short lines, the language
-/// choice, Start. Steps 2-5 are the four questions from `OnboardingSteps`, one per screen:
+/// Step 1 is the welcome screen: the card fan on the jade table, title, three short lines, the
+/// language choice (quiet, 72pt), Start (the only filled button). Steps 2-5 are the four questions from `OnboardingSteps`, one per screen:
 /// big answer tiles, a visible Skip, Back, and a "2 of 5" dot row. Answers save as they are
 /// given, so a flow left half-way keeps what was answered, and every one of them can be
 /// changed later in Settings -> My plan. No age, no health question, no text field.
@@ -94,7 +94,7 @@ struct OnboardingView: View {
         }
     }
 
-    // MARK: Step 1 - the welcome screen, kept as it was
+    // MARK: Step 1 - the welcome screen
 
     /// The full layout where it fits; on a short screen (an iPhone SE) the compact one, with tighter
     /// rows and a smaller card fan so Start stays on screen (#543); at the largest text, it scrolls.
@@ -111,27 +111,34 @@ struct OnboardingView: View {
         VStack(spacing: compact ? 12 : 20) {
             Spacer()
 
-            CardFan(slugs: ["dog", "teapot", "sunflower"])
-                .scaleEffect(compact ? 0.8 : 1)
-                .frame(height: compact ? 140 : nil)
+            // The card fan on the flat jade table, as on Home (sobremesa): the one picture here.
+            ZStack {
+                Color.tableSurface
+                CardFan(slugs: ["dog", "teapot", "sunflower"])
+                    .scaleEffect(compact ? 0.75 : 0.95)
+            }
+            .frame(height: compact ? 150 : 230)
+            .clipShape(.rect(cornerRadius: 28))
+            .accessibilityHidden(true)
 
             Text(AppLanguage.localized("app.title"))
                 .font(.largeTitle.weight(.bold))
                 .fontDesign(.serif)
 
             VStack(spacing: compact ? 8 : 12) {
-                line(AppLanguage.localized("onboarding.line1"))
-                line(AppLanguage.localized("onboarding.line2"))
-                line(AppLanguage.localized("onboarding.line3"))
+                // The invitation leads; the two lines that explain it sit back in the soft ink.
+                line(AppLanguage.localized("onboarding.line1"), weight: .semibold, soft: false)
+                line(AppLanguage.localized("onboarding.line2"), weight: .regular, soft: true)
+                line(AppLanguage.localized("onboarding.line3"), weight: .regular, soft: true)
             }
             .padding(.horizontal, 8)
 
             Text(AppLanguage.localized("onboarding.disclaimer"))
-                .font(.body)
+                .font(.callout)
                 .foregroundStyle(Color.inkSoft)
                 .multilineTextAlignment(.center)
 
-            Spacer()
+            Spacer(minLength: 0)
 
             languageChoice
 
@@ -265,9 +272,12 @@ struct OnboardingView: View {
         }
     }
 
-    private func line(_ text: String) -> some View {
+    /// One welcome line: same size (instructions stay at `.title2`), but weight and ink say which
+    /// one is the invitation and which two are the explanation, so they don't compete.
+    private func line(_ text: String, weight: Font.Weight, soft: Bool) -> some View {
         Text(text)
-            .font(.title2)
+            .font(.title2.weight(weight))
+            .foregroundStyle(soft ? Color.inkSoft : Color.espresso)
             .multilineTextAlignment(.center)
     }
 
@@ -281,11 +291,12 @@ struct OnboardingView: View {
                 } label: {
                     Text(language.label)
                         .font(.title3.weight(language.rawValue == appLanguage ? .bold : .regular))
+                        .foregroundStyle(Color.espresso)
                         // "Igual que el teléfono" wraps in its third of an iPhone SE: keep it off the edge.
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 6)
                         .minimumScaleFactor(0.85)
-                        .frame(maxWidth: .infinity, minHeight: 100)
+                        .frame(maxWidth: .infinity, minHeight: 72)
                         .background {
                             ZStack {
                                 Color.paper
@@ -296,8 +307,8 @@ struct OnboardingView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .strokeBorder(
-                                    language.rawValue == appLanguage ? Color.brand : Color.espresso,
-                                    lineWidth: language.rawValue == appLanguage ? 3 : 2)
+                                    language.rawValue == appLanguage ? Color.brand : Color.espresso.opacity(0.45),
+                                    lineWidth: language.rawValue == appLanguage ? 3 : 1.5)
                         )
                 }
                 .buttonStyle(.plain)

@@ -5,6 +5,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Newest first.
 ## [Unreleased]
 
 ### Added
+- **Welcome screen (#584):** the card fan now sits on the jade table, the invitation leads and the explaining lines and the notice sit back, and the language choice is quieter, so Start is the one filled button. No steps or text removed.
 - **Peg Solitaire / Come solo (#549):** jump pegs on a wooden cross board, with ten levels, undo and a guided next move.
 - **Lotería, a new game (#548):** a calm family lotería night with no timer. A card is called (its picture and name; from level 7, the name only) and you tap it on your board to place a bean; when it isn't on your board, you tap "Next card" ("Siguiente carta"). Tapping "Next card" while the called card is still waiting on your board shows "Look again — it's on your board." When the level's goal is complete (a row or a column, the four corners, or the whole board), a big "¡Lotería!" button appears; the game never wins by itself. Levels 1–4 deal a 3×3 board and 5–10 a 4×4 one. The 24 cards are our own pictures, with none of the classic lotería cards. VoiceOver reads each picture as "marked" or "not marked" and announces each called card; with "Read names aloud" on, the card is spoken. EN + ES.
 - **Word Search, a new game (#550):** a themed letter-grid game in English and Spanish.
