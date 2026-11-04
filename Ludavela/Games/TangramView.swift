@@ -125,7 +125,8 @@ struct TangramView: View {
 
     private var instruction: some View {
         Text(AppLanguage.localized("game.tangram.instruction"))
-            .font(.title2)
+            .font(.title2.weight(.semibold))
+            .foregroundStyle(Color.espresso)
             .multilineTextAlignment(.center)
     }
 
