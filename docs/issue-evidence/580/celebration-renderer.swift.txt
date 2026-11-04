@@ -1,0 +1,20 @@
+
+extension ContrastTests {
+    @MainActor
+    func testRenderCelebrationCardEvidence() throws {
+        let previous = UserDefaults.standard.object(forKey: AppLanguage.storageKey)
+        defer { UserDefaults.standard.set(previous, forKey: AppLanguage.storageKey) }
+        UserDefaults.standard.set("es", forKey: AppLanguage.storageKey)
+        let card = GameCard(game: .slidingBlocks)
+            .frame(width: 190)
+            .environment(\.dynamicTypeSize, .accessibility5)
+            .environment(\.locale, Locale(identifier: "es"))
+            .environment(\.colorScheme, .light)
+        let renderer = ImageRenderer(content: card)
+        renderer.scale = 2
+        let picture = try XCTUnwrap(renderer.uiImage)
+        print("CELEBRATION_CARD_POINTS \(picture.size.width) x \(picture.size.height)")
+        let folder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        try XCTUnwrap(picture.pngData()).write(to: folder.appendingPathComponent("celebration-card.png"))
+    }
+}
