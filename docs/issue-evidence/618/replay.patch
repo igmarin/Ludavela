@@ -1,0 +1,91 @@
+diff --git a/Ludavela/Games/SlidingBlocksView.swift b/Ludavela/Games/SlidingBlocksView.swift
+index 098957c..3b6396b 100644
+--- a/Ludavela/Games/SlidingBlocksView.swift
++++ b/Ludavela/Games/SlidingBlocksView.swift
+@@ -382,7 +382,10 @@ struct SlidingBlocksView: View {
+     private func deal() {
+         difficulty = Difficulty.stored(.slidingBlocks)
+         var generator = SystemRandomNumberGenerator()
+-        let next = SlidingBlocksLevels.puzzle(for: difficulty, using: &generator)
++        let next =
++            UserDefaults.standard.bool(forKey: "baseline.fixture")
++            ? SlidingBlocksLevels.puzzles(for: 10).first { $0.layout == "BBoo/BB<>/<>^o/o^vo/.v.o" }!
++            : SlidingBlocksLevels.puzzle(for: difficulty, using: &generator)
+         data = next
+         let fresh = next.puzzle
+         puzzle = fresh
+diff --git a/Ludavela/HomeView.swift b/Ludavela/HomeView.swift
+index 9676759..4e97073 100644
+--- a/Ludavela/HomeView.swift
++++ b/Ludavela/HomeView.swift
+@@ -116,6 +116,7 @@ struct HomeView: View {
+             unavailable = GameAvailability.unavailable()
+             refreshPlan()
+         }
++        .task { await runBaselineFixture() }
+         // Settings -> My plan can start the warm-up (#213), which replaces today's plan.
+         .onChange(of: showSettings) { _, shown in
+             if !shown {
+@@ -141,6 +142,62 @@ struct HomeView: View {
+         .environment(path)
+     }
+ 
++    /// Temporary #618 replay; archived as a patch, never shipped in the app.
++    private func runBaselineFixture() async {
++        guard UserDefaults.standard.bool(forKey: "baseline.fixture") else { return }
++        var events: [[String: Any]] = []
++        func event(_ name: String) {
++            events.append([
++                "name": name, "unixSeconds": Date.now.timeIntervalSince1970,
++                "mainThread": Thread.isMainThread,
++            ])
++        }
++        event("fixture.start")
++        try? await Task.sleep(for: .seconds(3))
++        path.games = [.quickEyes]
++        event("navigation.quickEyes")
++        try? await Task.sleep(for: .seconds(3))
++        path.games = []
++        event("navigation.home")
++        try? await Task.sleep(for: .seconds(3))
++        let bytes = await Task.detached {
++            let format = UIGraphicsImageRendererFormat()
++            format.scale = 1
++            return UIGraphicsImageRenderer(size: CGSize(width: 4032, height: 3024), format: format).jpegData(
++                withCompressionQuality: 0.9
++            ) { context in
++                for y in stride(from: 0, to: 3024, by: 64) {
++                    for x in stride(from: 0, to: 4032, by: 64) {
++                        UIColor(
++                            red: CGFloat((x * 7 + y) % 255) / 255,
++                            green: CGFloat((x + y * 11) % 255) / 255,
++                            blue: CGFloat((x * 3 + y * 5) % 255) / 255, alpha: 1
++                        ).setFill()
++                        context.fill(CGRect(x: x, y: y, width: 64, height: 64))
++                    }
++                }
++            }
++        }.value
++        let folder = FileManager.default.temporaryDirectory.appendingPathComponent("baseline-photos")
++        try? FileManager.default.removeItem(at: folder)
++        event("import.start")
++        let imported = await FamilyPhotoImport.run([0, 1, 2], folder: folder) { _ in bytes }
++        event("import.end")
++        precondition(imported?.result.added == 3)
++        precondition(imported?.added.count == 3)
++        events.append([
++            "name": "import.fixture", "jpegBytes": bytes.count,
++            "width": 4032, "height": 3024, "added": imported!.result.added,
++        ])
++        try? FileManager.default.removeItem(at: folder)
++        try? await Task.sleep(for: .seconds(2))
++        path.games = [.slidingBlocks]
++        event("navigation.slidingBlocks.level10")
++        try? await Task.sleep(for: .seconds(6))
++        let report = URL.documentsDirectory.appendingPathComponent("baseline-fixture.json")
++        try? JSONSerialization.data(withJSONObject: events, options: [.prettyPrinted, .sortedKeys]).write(to: report)
++    }
++
+     /// A new day must not deal yesterday's cards: clear them until today's plan is made.
+     private func catchUpDay() {
+         let day = PlanStore.dayStamp()
