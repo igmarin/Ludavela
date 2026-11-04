@@ -16,19 +16,20 @@ struct RepeatSequenceView: View {
 
         /// The print palette (#398): the same in light and dark, each with an espresso edge. Re-chosen
         /// for #629 so no two tiles look alike for typical vision or for protanopia, deuteranopia or
-        /// tritanopia (`ColorVisionTests`); two blues used to be near twins even for typical vision.
-        /// The square keeps the app's amber. All but the square stay dark enough for a white symbol.
+        /// tritanopia (`ColorVisionTests`), at full strength and at the 75% the tiles rest at; two blues
+        /// used to be near twins even for typical vision. The square keeps the app's amber. All but the
+        /// square keep at least 3:1 under a white symbol.
         var rgb: UInt32 {
             switch self {
-            case .circle: 0x11A59E
-            case .star: 0x5A1101
+            case .circle: 0x20A289
+            case .star: 0xD14500
             case .square: 0xE7AC45
-            case .triangle: 0x1A5FA0
-            case .heart: 0x75534A
-            case .moon: 0xBB73F3
-            case .drop: 0x7E9A5C
-            case .leaf: 0xD11F19
-            case .sun: 0x1F3045
+            case .triangle: 0x136270
+            case .heart: 0x98824C
+            case .moon: 0xC462FF
+            case .drop: 0x0F331F
+            case .leaf: 0x782E03
+            case .sun: 0x7A92C3
             }
         }
 

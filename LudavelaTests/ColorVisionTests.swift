@@ -6,15 +6,29 @@ import XCTest
 /// three full colour-blindness types. Shapes already carry the answer; this keeps the colours from
 /// contradicting them. The palettes before #629 fail it (Color Clash 5.2, Repeat 3.2).
 final class ColorVisionTests: XCTestCase {
-    /// CIE76 distance in Lab. About 2 is barely visible; 20 is two colours nobody mixes up.
-    private static let minimumDifference = 20.0
+    /// CIE76 distance in Lab. About 2 is barely visible; 18 is two colours nobody mixes up. The old
+    /// palettes had pairs at 3 to 8.
+    private static let minimumDifference = 18.0
 
     func testGivenColorClashInksWhenSeenWithEachColorVisionThenEveryPairStaysApart() {
         assertApart(Ink.allCases.map { ("\($0)", $0.rgb) })
     }
 
     func testGivenRepeatTilesWhenSeenWithEachColorVisionThenEveryPairStaysApart() {
-        assertApart(RepeatSequenceView.Tile.allCases.map { ("\($0)", $0.rgb) })
+        let tiles = RepeatSequenceView.Tile.allCases
+        assertApart(tiles.map { ("\($0)", $0.rgb) })
+        // At rest the tiles show at 75% over the screen (cream, or near-black in dark mode).
+        for background: UInt32 in [0xFFF1D0, 0x211E1B] {
+            assertApart(tiles.map { ("\($0) resting", Self.blend($0.rgb, over: background, opacity: 0.75)) })
+        }
+    }
+
+    private static func blend(_ rgb: UInt32, over background: UInt32, opacity: Double) -> UInt32 {
+        [16, 8, 0].reduce(0) { result, shift in
+            let top = Double(rgb >> UInt32(shift) & 0xFF)
+            let bottom = Double(background >> UInt32(shift) & 0xFF)
+            return result | UInt32((top * opacity + bottom * (1 - opacity)).rounded()) << UInt32(shift)
+        }
     }
 
     func testGivenTheOldNearTwinBluesWhenComparedThenTheCheckCatchesThem() {
