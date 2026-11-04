@@ -307,7 +307,7 @@ struct OnboardingView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .strokeBorder(
-                                    language.rawValue == appLanguage ? Color.brand : Color.espresso.opacity(0.45),
+                                    language.rawValue == appLanguage ? Color.brand : Color.espresso.opacity(0.6),
                                     lineWidth: language.rawValue == appLanguage ? 3 : 1.5)
                         )
                 }
