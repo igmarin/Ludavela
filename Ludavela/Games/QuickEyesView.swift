@@ -53,6 +53,7 @@ struct QuickEyesView: View {
     @State private var away = InterruptionPause()
     /// The answer beat (#235): set by a tap, cleared when the next picture flashes.
     @State private var beat: AnswerBeat<GamePicture>?
+    @State private var finishRecorder = FinishBeat.Recorder()
     @State private var showCelebration = false
     @State private var finalDetail = ""
 
@@ -182,6 +183,7 @@ struct QuickEyesView: View {
 
     private func restart() {
         revealTask?.cancel()
+        finishRecorder.reset()
         beat = nil
         progress.reset()
         run = QuickEyesRun(difficulty: Difficulty.stored(.quickEyes))
@@ -252,6 +254,12 @@ struct QuickEyesView: View {
         let answer = AnswerBeat(tapped: picture, right: target)
         beat = answer
         answer.play(rightName: name(of: target))
+        // Save the final answer before the cancellable answer beat (#614). The round itself completes
+        // in the beat's callback: completed early, a beat cut short would leave the game finished but
+        // never celebrated, with every tap refused. A repeated final answer is saved only once.
+        if progress.completedRounds + 1 == Self.totalRounds {
+            recordSession()
+        }
         // The beat shares revealTask, so leaving the game or restarting cancels it too.
         revealTask = answer.after {
             beat = nil
@@ -266,16 +274,19 @@ struct QuickEyesView: View {
         }
     }
 
-    private func finish() {
-        revealTask?.cancel()
-        revealTask = nil
+    private func recordSession() {
         let elapsed = Int(Date.now.timeIntervalSince(startedAt))
-        modelContext.record(
+        finishRecorder.record(
             GameSession(
                 gameID: .quickEyes,
                 rounds: Self.totalRounds, durationSeconds: elapsed,
                 correct: run.correct, attempts: Self.totalRounds,
-                difficulty: run.difficulty))
+                difficulty: run.difficulty), in: modelContext)
+    }
+
+    private func finish() {
+        revealTask?.cancel()
+        revealTask = nil
         // Completion, never a hit count: a first-try tally can be small (#394).
         finalDetail = String(format: AppLanguage.localized("game.celebration.rounds %lld"), Self.totalRounds)
         showCelebration = true
