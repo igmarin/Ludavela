@@ -39,7 +39,8 @@ struct NumberSlideView: View {
         VStack(spacing: 16) {
             LevelExplainBanner(game: GameID.numberSlide, hasStarted: hasMoved, keepsSpace: true)
             Text(instruction)
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
 
             board

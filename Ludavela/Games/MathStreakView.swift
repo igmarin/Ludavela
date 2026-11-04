@@ -34,7 +34,8 @@ struct MathStreakView: View {
             LevelExplainBanner(
                 game: GameID.mathStreaks, hasStarted: progress.completedRounds > 0)
             Text(AppLanguage.localized("game.math.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
 
             Text(verbatim: question.text)

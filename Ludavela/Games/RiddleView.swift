@@ -66,7 +66,8 @@ struct RiddleView: View {
     private var instructionRow: some View {
         ZStack {
             Text(AppLanguage.localized("game.riddles.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
                 .opacity(showAlmost ? 0 : 1)
                 .accessibilityHidden(showAlmost)

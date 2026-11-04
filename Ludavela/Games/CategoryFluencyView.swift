@@ -140,7 +140,8 @@ struct CategoryFluencyView: View {
         let total = CategoryDeal.itemsPerCategory
         return VStack(spacing: 24) {
             Text(AppLanguage.localized("game.category.instruction"))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
 
             // Every name sits in the same slot, so the slot is as tall as the longest one wraps
