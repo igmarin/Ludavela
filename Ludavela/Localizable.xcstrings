@@ -4832,23 +4832,6 @@
         }
       }
     },
-    "home.today.play" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start today's games"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Empezar los juegos de hoy"
-          }
-        }
-      }
-    },
     "home.today.start %@" : {
       "extractionState" : "manual",
       "localizations" : {
