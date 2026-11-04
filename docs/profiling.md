@@ -78,6 +78,9 @@ device before deciding, since a simulator number is not a device number.
   involved. It is the gap between launch and
   Home being able to star today's games. The 14-day `FetchDescriptor`, `PlayerStateSummary`
   and the plan all run before anything is shown.
+  Re-measured 2026-11-04 on `aafaee5` (#618): 5.7 ms on the first launch, 0.4 ms after, on an iPhone SE
+  simulator with no history ([evidence](issue-evidence/618/README.md)). Keep this entry until a device trace
+  with real history confirms it.
 - **`reminiscence.photo`, ~120 ms on the first card** (1.3 ms on later ones — the first
   decode pays for the cold file cache). Measured while `PhotoCard` decoded on the main actor;
   it now loads through `MemoryPhotos.image(at:)` off the main actor, so the interval is a wait,
