@@ -474,6 +474,8 @@ struct CheckBadge: View {
             // The game's ink behind a paper-coloured tick: 3:1+ in both modes.
             .foregroundStyle(Color.paper, .tint)
             .padding(6)
+            // Capped everywhere: an uncapped tick covered the card or tile it marks at accessibility sizes (#582).
+            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
             .accessibilityHidden(true)
     }
 }

@@ -249,8 +249,7 @@ struct MemoryMatchView: View {
         .shadow(color: .black.opacity(0.25), radius: 0, x: 3, y: 3)
         // Non-color cue: matched pairs keep a checkmark (WCAG 1.4.1).
         .overlay(alignment: .topTrailing) {
-            // Capped: at accessibility sizes a text-scaled tick covered the whole card and its picture.
-            if found { CheckBadge().dynamicTypeSize(...DynamicTypeSize.xxxLarge) }
+            if found { CheckBadge() }
         }
         // Gentle bloom on the moment a pair is found.
         .scaleEffect(found && !reduceMotion ? 1.03 : 1)
