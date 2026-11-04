@@ -12,6 +12,7 @@ import SwiftUI
 struct SlidingBlocksView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     /// Re-read on every deal, so "Play again" follows a level change.
     @State private var difficulty = Difficulty.stored(.slidingBlocks)
@@ -231,13 +232,23 @@ struct SlidingBlocksView: View {
 
     // MARK: - Controls
 
+    /// Three 100pt buttons in a row; at the accessibility text sizes one per row, full width, so no
+    /// label is broken letter by letter (#609). Same rule as Number Slide.
+    @ViewBuilder
     private var controls: some View {
-        HStack(spacing: 12) {
-            controlButton("game.sliding.undo", enabled: !(puzzle?.history.isEmpty ?? true), action: undo)
-            controlButton("game.sliding.restart", enabled: (puzzle?.movesMade ?? 0) > 0, action: startOver)
-            controlButton(
-                "game.sliding.hint", enabled: hintMap != nil && !(puzzle?.isSolved ?? true), action: showMove)
+        if typeSize.isAccessibilitySize {
+            VStack(spacing: 12) { controlButtons }
+        } else {
+            HStack(spacing: 12) { controlButtons }
         }
+    }
+
+    @ViewBuilder
+    private var controlButtons: some View {
+        controlButton("game.sliding.undo", enabled: !(puzzle?.history.isEmpty ?? true), action: undo)
+        controlButton("game.sliding.restart", enabled: (puzzle?.movesMade ?? 0) > 0, action: startOver)
+        controlButton(
+            "game.sliding.hint", enabled: hintMap != nil && !(puzzle?.isSolved ?? true), action: showMove)
     }
 
     private func controlButton(_ key: String, enabled: Bool, action: @escaping () -> Void) -> some View {
