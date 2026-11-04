@@ -11,6 +11,9 @@ import SwiftUI
 /// emoji fill whatever pairs the photos don't cover.
 /// #142: the `.captions` variant (Names and Faces) is the same board with each photo paired to
 /// its caption instead of to a twin.
+/// #582: pilot of the approved look (docs/design/2026-11-03-sobremesa.md): the board on Home's flat
+/// table, the instruction in espresso on cream, one 2pt outline per card. The table never takes
+/// board space: the same pairs are dealt as before on every screen.
 struct MemoryMatchView: View {
     /// Which game this board plays: Memory Lane, or Names and Faces.
     enum Variant {
@@ -141,7 +144,8 @@ struct MemoryMatchView: View {
                 game: variant.game, hasStarted: moves > 0,
                 keepsSpace: true)
             Text(AppLanguage.localized(variant.instructionKey))
-                .font(.title2)
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
 
             GeometryReader { geometry in
@@ -191,6 +195,12 @@ struct MemoryMatchView: View {
                     }
                 }
             }
+            // The flat jade table Home deals on (#580). It is drawn 8pt outside the board's own space
+            // (padding in, then out again), so the board is offered exactly the room it had before
+            // the table and deals the same pairs on every screen: levels stay as they were (#582).
+            .padding(8)
+            .background(Color.tableSurface, in: .rect(cornerRadius: 30))
+            .padding(-8)
         }
         .padding()
         // A finished board is recorded already, so leaving in the beat before the cover never asks.
@@ -239,7 +249,8 @@ struct MemoryMatchView: View {
         .shadow(color: .black.opacity(0.25), radius: 0, x: 3, y: 3)
         // Non-color cue: matched pairs keep a checkmark (WCAG 1.4.1).
         .overlay(alignment: .topTrailing) {
-            if found { CheckBadge() }
+            // Capped: at accessibility sizes a text-scaled tick covered the whole card and its picture.
+            if found { CheckBadge().dynamicTypeSize(...DynamicTypeSize.xxxLarge) }
         }
         // Gentle bloom on the moment a pair is found.
         .scaleEffect(found && !reduceMotion ? 1.03 : 1)
@@ -274,10 +285,13 @@ struct MemoryMatchView: View {
     /// the card has turned over, while it is still hidden mid-turn.
     private func cardFront(card: Card, size: CGSize, found: Bool) -> some View {
         ZStack {
+            // Paper first, so a found card's wash never lets the table show through (#582).
             RoundedRectangle(cornerRadius: 18)
-                .fill(
-                    found
-                        ? AnyShapeStyle(.tint.opacity(0.16)) : AnyShapeStyle(Color.paper))
+                .fill(Color.paper)
+            if found {
+                RoundedRectangle(cornerRadius: 18)
+                    .fill(.tint.opacity(0.16))
+            }
             RoundedRectangle(cornerRadius: 18)
                 .strokeBorder(Color.espresso, lineWidth: 2)
             if case .photo(let url) = card.face, let image = photoImages[url] {
