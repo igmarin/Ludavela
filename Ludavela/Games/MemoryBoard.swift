@@ -40,6 +40,12 @@ struct MemoryBoard {
 
     var isComplete: Bool { !pairs.isEmpty && matched.count == pairs.count }
 
+    /// Pairs on the board, for the "Pairs found: 2 of 6" line (#582). Every pair is two cards.
+    var pairCount: Int { pairs.count / 2 }
+
+    /// Pairs found so far; a missed pair is never counted, because only a match joins `matched`.
+    var pairsFound: Int { matched.count / 2 }
+
     mutating func tap(_ index: Int) -> Tap {
         // Cards of the showing miss ignore taps, as they did before the board
         // existed; only a different card turns the pair back. Found cards and

@@ -946,13 +946,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$lld of %2$lld found"
+            "value" : "%lld of %lld found"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$lld de %2$lld encontrados"
+            "value" : "%lld de %lld encontrados"
           }
         }
       }
@@ -1456,13 +1456,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$lld of %2$lld today"
+            "value" : "%lld of %lld today"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hoy: %1$lld de %2$lld"
+            "value" : "Hoy: %lld de %lld"
           }
         }
       }
@@ -2209,6 +2209,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Carta oculta"
+          }
+        }
+      }
+    },
+    "game.memory.found %lld %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pairs found: %lld of %lld"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parejas encontradas: %lld de %lld"
           }
         }
       }
@@ -3023,13 +3040,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Round %1$lld of %2$lld"
+            "value" : "Round %lld of %lld"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ronda %1$lld de %2$lld"
+            "value" : "Ronda %lld de %lld"
           }
         }
       }

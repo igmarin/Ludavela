@@ -11,6 +11,8 @@ import SwiftUI
 /// emoji fill whatever pairs the photos don't cover.
 /// #142: the `.captions` variant (Names and Faces) is the same board with each photo paired to
 /// its caption instead of to a twin.
+/// #582: pilot of the approved look (docs/design/2026-11-03-sobremesa.md): the board on Home's flat
+/// table, the instruction in espresso on cream, a "Pairs found" line, one 2pt outline per card.
 struct MemoryMatchView: View {
     /// Which game this board plays: Memory Lane, or Names and Faces.
     enum Variant {
@@ -29,6 +31,7 @@ struct MemoryMatchView: View {
 
     @Environment(\.modelContext) private var modelContext
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     private static let spacing: CGFloat = 12
     /// The app icon's jade card and cream frame (#384): the same in light and dark.
@@ -136,13 +139,34 @@ struct MemoryMatchView: View {
     }
 
     var body: some View {
-        VStack(spacing: 24) {
+        // The board gets what the header leaves: tight gaps, and the pairs-found line instead of
+        // a progress row of its own, so the cards stay as large as the screen allows (#582).
+        VStack(spacing: 12) {
             LevelExplainBanner(
                 game: variant.game, hasStarted: moves > 0,
                 keepsSpace: true)
-            Text(AppLanguage.localized(variant.instructionKey))
-                .font(.title2)
-                .multilineTextAlignment(.center)
+            VStack(spacing: 4) {
+                Text(AppLanguage.localized(variant.instructionKey))
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(Color.espresso)
+                    .multilineTextAlignment(.center)
+                // Words, not just ticks on the cards: the count never depends on colour. Left out at
+                // accessibility sizes, where two more lines of header would take the board's room;
+                // the ticks and the spoken "Pair found" still say it. Hidden (and silent) in the
+                // first layout pass, before any cards are dealt.
+                if !typeSize.isAccessibilitySize {
+                    Text(
+                        String(
+                            format: AppLanguage.localized("game.memory.found %lld %lld"),
+                            board.pairsFound, board.pairCount)
+                    )
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(.tint)
+                    .multilineTextAlignment(.center)
+                    .opacity(board.pairCount == 0 ? 0 : 1)
+                    .accessibilityHidden(board.pairCount == 0)
+                }
+            }
 
             GeometryReader { geometry in
                 let fit = Self.gridFit(count: cards.count, in: geometry.size, spacing: Self.spacing)
@@ -191,6 +215,10 @@ struct MemoryMatchView: View {
                     }
                 }
             }
+            // The flat jade table Home deals on (#580), so the board sits on the same surface.
+            // The padding is outside the reader: cards are dealt and sized to what is left.
+            .padding(12)
+            .background(Color.tableSurface, in: .rect(cornerRadius: 30))
         }
         .padding()
         // A finished board is recorded already, so leaving in the beat before the cover never asks.
@@ -239,7 +267,8 @@ struct MemoryMatchView: View {
         .shadow(color: .black.opacity(0.25), radius: 0, x: 3, y: 3)
         // Non-color cue: matched pairs keep a checkmark (WCAG 1.4.1).
         .overlay(alignment: .topTrailing) {
-            if found { CheckBadge() }
+            // Capped: at accessibility sizes a text-scaled tick covered the whole card and its picture.
+            if found { CheckBadge().dynamicTypeSize(...DynamicTypeSize.xxxLarge) }
         }
         // Gentle bloom on the moment a pair is found.
         .scaleEffect(found && !reduceMotion ? 1.03 : 1)
@@ -274,10 +303,13 @@ struct MemoryMatchView: View {
     /// the card has turned over, while it is still hidden mid-turn.
     private func cardFront(card: Card, size: CGSize, found: Bool) -> some View {
         ZStack {
+            // Paper first, so a found card's wash never lets the table show through (#582).
             RoundedRectangle(cornerRadius: 18)
-                .fill(
-                    found
-                        ? AnyShapeStyle(.tint.opacity(0.16)) : AnyShapeStyle(Color.paper))
+                .fill(Color.paper)
+            if found {
+                RoundedRectangle(cornerRadius: 18)
+                    .fill(.tint.opacity(0.16))
+            }
             RoundedRectangle(cornerRadius: 18)
                 .strokeBorder(Color.espresso, lineWidth: 2)
             if case .photo(let url) = card.face, let image = photoImages[url] {
