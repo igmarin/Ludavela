@@ -9,24 +9,30 @@ struct RepeatSequenceView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
 
-    /// One tile: colour + shape + name, so colour alone never decides.
-    private enum Tile: CaseIterable {
+    /// One tile: colour + shape + name, so colour alone never decides. Not private: the colour-vision
+    /// test reads the palette.
+    enum Tile: CaseIterable {
         case circle, star, square, triangle, heart, moon, drop, leaf, sun
 
-        /// The print palette (#398): the same in light and dark, each with an espresso edge.
-        var color: Color {
+        /// The print palette (#398): the same in light and dark, each with an espresso edge. Re-chosen
+        /// for #629 so no two tiles look alike for typical vision or for protanopia, deuteranopia or
+        /// tritanopia (`ColorVisionTests`); two blues used to be near twins even for typical vision.
+        /// The square keeps the app's amber. All but the square stay dark enough for a white symbol.
+        var rgb: UInt32 {
             switch self {
-            case .circle: Self.fixed(0x246456)
-            case .star: Self.fixed(0xAF3F32)
-            case .square: Self.fixed(0xE7AC45)
-            case .triangle: Self.fixed(0x35566D)
-            case .heart: Self.fixed(0x7A4B2A)
-            case .moon: Self.fixed(0x6B3FA0)
-            case .drop: Self.fixed(0x2E7D4F)
-            case .leaf: Self.fixed(0xC8372D)
-            case .sun: Self.fixed(0x1F5F7A)
+            case .circle: 0x11A59E
+            case .star: 0x5A1101
+            case .square: 0xE7AC45
+            case .triangle: 0x1A5FA0
+            case .heart: 0x75534A
+            case .moon: 0xBB73F3
+            case .drop: 0x7E9A5C
+            case .leaf: 0xD11F19
+            case .sun: 0x1F3045
             }
         }
+
+        var color: Color { Self.fixed(rgb) }
 
         /// White on every tile but the light mustard one, which takes `onAmber`: espresso that stays
         /// dark in dark mode too (`Color.espresso` turns cream there, unreadable on mustard).

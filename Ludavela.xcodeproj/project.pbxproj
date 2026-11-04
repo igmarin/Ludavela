@@ -128,6 +128,7 @@
 		4C89FAC758D0F90600000034 /* CelebrationExitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EB52586108A6240000002E; };
 		145089A7EEADE7E600000038 /* CelebrationHeadlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575DC74E4C934C0400000032; };
 		77398DA7FD8C391C00000033 /* ColorClashDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B1D18FAAE5641A0000002D; };
+		E23B5A6E188E3A4F00000030 /* ColorVisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BF1691C598B6650000002A; };
 		D9630E51AD1ED7380000002D /* ContrastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DF29F946E0C7600000027; };
 		2185C6C7F488193800000038 /* ConversationPromptsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E882A13F31B15E7600000032; };
 		41D8E70DF526B77D00000031 /* DailyPictureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DAF29587A8D230000002B; };
@@ -313,6 +314,7 @@
 		05EB52586108A6240000002E /* CelebrationExitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CelebrationExitTests.swift; sourceTree = SOURCE_ROOT; };
 		575DC74E4C934C0400000032 /* CelebrationHeadlineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/CelebrationHeadlineTests.swift; sourceTree = SOURCE_ROOT; };
 		B3B1D18FAAE5641A0000002D /* ColorClashDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/ColorClashDealTests.swift; sourceTree = SOURCE_ROOT; };
+		70BF1691C598B6650000002A /* ColorVisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/ColorVisionTests.swift; sourceTree = SOURCE_ROOT; };
 		F87DF29F946E0C7600000027 /* ContrastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/ContrastTests.swift; sourceTree = SOURCE_ROOT; };
 		E882A13F31B15E7600000032 /* ConversationPromptsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/ConversationPromptsTests.swift; sourceTree = SOURCE_ROOT; };
 		2E7DAF29587A8D230000002B /* DailyPictureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LudavelaTests/DailyPictureTests.swift; sourceTree = SOURCE_ROOT; };
@@ -538,6 +540,7 @@
 				05EB52586108A6240000002E /* CelebrationExitTests.swift */,
 				575DC74E4C934C0400000032 /* CelebrationHeadlineTests.swift */,
 				B3B1D18FAAE5641A0000002D /* ColorClashDealTests.swift */,
+				70BF1691C598B6650000002A /* ColorVisionTests.swift */,
 				F87DF29F946E0C7600000027 /* ContrastTests.swift */,
 				E882A13F31B15E7600000032 /* ConversationPromptsTests.swift */,
 				2E7DAF29587A8D230000002B /* DailyPictureTests.swift */,
@@ -796,6 +799,7 @@
 				4C89FAC758D0F90600000034 /* CelebrationExitTests.swift in Sources */,
 				145089A7EEADE7E600000038 /* CelebrationHeadlineTests.swift in Sources */,
 				77398DA7FD8C391C00000033 /* ColorClashDealTests.swift in Sources */,
+				E23B5A6E188E3A4F00000030 /* ColorVisionTests.swift in Sources */,
 				D9630E51AD1ED7380000002D /* ContrastTests.swift in Sources */,
 				2185C6C7F488193800000038 /* ConversationPromptsTests.swift in Sources */,
 				41D8E70DF526B77D00000031 /* DailyPictureTests.swift in Sources */,
