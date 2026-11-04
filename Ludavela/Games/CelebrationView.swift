@@ -266,6 +266,8 @@ struct CelebrationView: View {
     /// The finished game's card, stamped and tilted as it lands on the table.
     private var card: some View {
         GameCard(game: game)
+            // The floating card reserves no space; its accessible label is supplied below.
+            .dynamicTypeSize(...DynamicTypeSize.large)
             .frame(width: 190)
             // Measured before the flight moves it, so the vector starts from where it rests.
             .anchorPreference(key: LandingTargets.self, value: .bounds) { LandingTargets(card: $0) }

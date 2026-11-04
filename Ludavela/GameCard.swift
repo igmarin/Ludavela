@@ -1,10 +1,8 @@
 import SwiftUI
 
-/// A game as a framed card (Card Table, docs/design/2026-10-12-card-table.html):
-/// paper, a frame in the game's ink around its emblem, and the name on a band of
-/// that ink. The band's text is the background colour, which ContrastTests
-/// checks against every ink. Home's grid uses the full size; today's games on
-/// the table use the hand size, with an amber check once played today.
+/// One printed edge keeps the picture and name together without competing frames (#580).
+/// The game's colour stays behind its picture; the name uses checked espresso on paper.
+/// Home uses the grid or smaller hand size, with an amber check once played today.
 struct GameCard: View {
     enum Size { case grid, hand }
 
@@ -15,11 +13,6 @@ struct GameCard: View {
     var handWidth: CGFloat?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    private static let art = UnevenRoundedRectangle(
-        topLeadingRadius: 13, bottomLeadingRadius: 4, bottomTrailingRadius: 4, topTrailingRadius: 13)
-    private static let plate = UnevenRoundedRectangle(
-        topLeadingRadius: 4, bottomLeadingRadius: 13, bottomTrailingRadius: 13, topTrailingRadius: 4)
-
     var body: some View {
         let title = AppLanguage.localized(game.title)
         let hand = size == .hand
@@ -27,23 +20,23 @@ struct GameCard: View {
         // The hero picture is bigger than the emblem; both shrink with a narrowed hand card.
         let scale = hand ? width / HandLayout.fullWidth : 1
         let emblem = hand ? 52 * scale : 64
-        VStack(spacing: 5) {
-            illustration(emblem: emblem, picture: (hand ? 72 : 96) * scale)
+        VStack(spacing: 8) {
+            illustration(emblem: emblem, picture: (hand ? 80 : 112) * scale)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(hand ? 6 : 10)
-                .background(game.ink.opacity(0.12), in: Self.art)
-                .overlay(Self.art.strokeBorder(game.ink, lineWidth: 3))
+                .background(game.ink.opacity(0.12), in: .rect(cornerRadius: 12))
 
             Text(title)
                 .font((hand ? Font.headline : .title3).weight(.heavy))
                 .fontDesign(.rounded)
-                .foregroundStyle(Color.paper)
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.center)
-                .lineLimit(2)
-                .minimumScaleFactor(0.7)
+                // Keep the compact hand's existing fit; catalogue titles grow instead of shrinking.
+                .lineLimit(hand ? 2 : nil)
+                .minimumScaleFactor(hand ? 0.7 : 1)
+                .fixedSize(horizontal: false, vertical: !hand)
                 .padding(.horizontal, 6)
                 .frame(maxWidth: .infinity, minHeight: hand ? 44 : 52)
-                .background(game.ink, in: Self.plate)
         }
         .padding(6)
         .frame(width: hand ? width : nil, height: hand ? 164 : nil)
@@ -95,10 +88,9 @@ struct GameRow: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Emblem(game: game)
-                    .frame(width: 44, height: 44)
+                    .frame(width: 60, height: 60)
                     .padding(10)
                     .background(game.ink.opacity(0.12), in: .rect(cornerRadius: 14))
-                    .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(game.ink, lineWidth: 3))
                 Spacer(minLength: 0)
                 Group {
                     if playedToday { PlayedCheck().transition(PlayedCheck.transition(reduceMotion: reduceMotion)) }
@@ -108,7 +100,9 @@ struct GameRow: View {
             Text(title)
                 .font(.title2.weight(.heavy))
                 .fontDesign(.rounded)
+                .foregroundStyle(Color.espresso)
                 .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(14)

@@ -8,6 +8,8 @@ extension Color {
     /// The page and every card's face: cream in light mode, the dark surround in
     /// dark mode. Replaces `systemBackground`, so text on it is checked here.
     static let paper = Color(light: 0xFFF1D0, dark: 0x211E1B)
+    /// A quiet, flat table behind Home's paper cards (#580); the celebration keeps its gradient.
+    static let tableSurface = Color(light: 0xDCE7D5, dark: 0x2D4A3F)
     /// Outlines and the hard print shadow: espresso on cream, cream on the dark
     /// surround, so a card's edge shows in both modes.
     static let espresso = Color(light: 0x2B2118, dark: 0xFFF1D0)

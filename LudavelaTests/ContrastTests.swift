@@ -5,9 +5,8 @@ import XCTest
 
 /// WCAG AA (4.5:1 for text) in light and dark mode for every text pairing the
 /// Card Table theme adds, on `paper` (cream, or the dark surround). Game inks
-/// carry text both ways: as text on the paper (back buttons), and under the
-/// paper colour on each card's name band; contrast is symmetric, so one test
-/// covers both. Primary buttons put the paper colour on a brand-jade fill. The
+/// carry text on paper (back buttons); card names now use espresso on paper,
+/// covered by the retro-token test. Primary buttons put paper on a brand-jade fill. The
 /// warm text that was the "Today's pick" badge (#118) now sits on Quick Eyes'
 /// soft mustard note.
 final class ContrastTests: XCTestCase {

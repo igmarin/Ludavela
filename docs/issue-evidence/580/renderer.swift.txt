@@ -1,0 +1,42 @@
+
+extension ContrastTests {
+    /// Temporary evidence renderer; removed before committing.
+    @MainActor
+    func testRenderCardEvidence() throws {
+        let previous = UserDefaults.standard.object(forKey: AppLanguage.storageKey)
+        defer { UserDefaults.standard.set(previous, forKey: AppLanguage.storageKey) }
+        let folder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("580-evidence")
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        for language in ["en", "es"] {
+            UserDefaults.standard.set(language, forKey: AppLanguage.storageKey)
+            for dark in [false, true] {
+                let scheme: ColorScheme = dark ? .dark : .light
+                let style = dark ? "dark" : "light"
+                let cards = HStack(alignment: .top, spacing: 24) {
+                    GameCard(game: .slidingBlocks).frame(width: 150)
+                    GameCard(game: .slidingBlocks, size: .hand, playedToday: true)
+                    GameRow(game: .photoCaptions, playedToday: true).frame(width: 300)
+                }
+                .padding(20).background(Color.paper)
+                .environment(\.colorScheme, scheme)
+                .environment(\.locale, Locale(identifier: language))
+                .environment(\.dynamicTypeSize, .large)
+                let renderer = ImageRenderer(content: cards)
+                renderer.scale = 2
+                let png = try XCTUnwrap(renderer.uiImage?.pngData())
+                try png.write(to: folder.appendingPathComponent("cards-\(language)-\(style).png"))
+                let accessible = VStack(spacing: 20) {
+                    GameCard(game: .slidingBlocks).frame(width: 343)
+                    GameRow(game: .repeatSequence, playedToday: true).frame(width: 343)
+                }
+                .padding(20).background(Color.paper)
+                .environment(\.colorScheme, scheme)
+                .environment(\.locale, Locale(identifier: language))
+                .environment(\.dynamicTypeSize, .accessibility5)
+                let ax = ImageRenderer(content: accessible)
+                ax.scale = 2
+                try XCTUnwrap(ax.uiImage?.pngData()).write(to: folder.appendingPathComponent("cards-\(language)-\(style)-ax5.png"))
+            }
+        }
+    }
+}
