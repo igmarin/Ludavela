@@ -2626,13 +2626,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slide the tiles until the numbers are in order, with the space last."
+            "value" : "Put the numbers in order, with the space last."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desliza las fichas hasta ordenar los números, con el espacio al final."
+            "value" : "Ordena los números, con el espacio al final."
           }
         }
       }
