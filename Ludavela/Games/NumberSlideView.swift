@@ -28,6 +28,9 @@ struct NumberSlideView: View {
     /// board it ever points at.
     @State private var guideTile: Int?
     @State private var hintsUsed = 0
+    /// True for the three seconds the finished board lies over the real one (#630).
+    @State private var showingGoal = false
+    @State private var goalTask: Task<Void, Never>?
     @State private var startedAt = Date.now
     @State private var showCelebration = false
     @State private var finalDetail = ""
@@ -38,13 +41,13 @@ struct NumberSlideView: View {
     var body: some View {
         VStack(spacing: 16) {
             LevelExplainBanner(game: GameID.numberSlide, hasStarted: hasMoved, keepsSpace: true)
-            Text(instruction)
-                .font(.title2.weight(.semibold))
-                .foregroundStyle(Color.espresso)
-                .multilineTextAlignment(.center)
+            goalAndInstruction
 
             board
                 .frame(minHeight: 300)
+                // While the goal shows, the board is a picture: no slides, nothing for VoiceOver to act on.
+                .allowsHitTesting(!showingGoal)
+                .accessibilityHidden(showingGoal)
 
             controls
         }
@@ -64,7 +67,11 @@ struct NumberSlideView: View {
                 deal()
             }
         }
-        .onDisappear { fewest?.cancel() }
+        .onDisappear {
+            fewest?.cancel()
+            goalTask?.cancel()
+            showingGoal = false
+        }
         .celebration(isPresented: $showCelebration, game: .numberSlide, detail: finalDetail, onPlayAgain: deal)
     }
 
@@ -75,7 +82,7 @@ struct NumberSlideView: View {
 
     private var board: some View {
         GeometryReader { proxy in
-            if let puzzle {
+            if let puzzle = showingGoal ? puzzle.map({ NumberSlidePuzzle.solved(size: $0.size) }) : puzzle {
                 let inner = CGSize(width: proxy.size.width - 2 * rim, height: proxy.size.height - 2 * rim)
                 let cell = SlidingBoardLayout.cellSize(in: inner, columns: puzzle.size, rows: puzzle.size)
                 let side = cell * CGFloat(puzzle.size)
@@ -106,7 +113,8 @@ struct NumberSlideView: View {
     /// arrow on the edge facing the gap when it can slide.
     private func tile(_ number: Int, in puzzle: NumberSlidePuzzle, cell: CGFloat, isGuideTarget: Bool) -> some View {
         let index = puzzle.tiles.firstIndex(of: number) ?? 0
-        let direction = puzzle.direction(ofTileAt: index)
+        // The goal is a picture: no arrows on it, so nothing suggests a move to make.
+        let direction = showingGoal ? nil : puzzle.direction(ofTileAt: index)
         let shape = RoundedRectangle(cornerRadius: cell * 0.14)
         let isShown = shownTile == number
         return
@@ -191,6 +199,48 @@ struct NumberSlideView: View {
     nonisolated private static func swipe(_ translation: CGSize) -> SlidingDirection {
         if abs(translation.width) > abs(translation.height) { return translation.width > 0 ? .right : .left }
         return translation.height > 0 ? .down : .up
+    }
+
+    // MARK: - Goal
+
+    /// "Put the numbers in order" left players asking what the end looks like (#630). Beside the
+    /// instruction sits the finished board, small, like the picture on the toy's box. At the
+    /// accessibility sizes it has no room, so a button lays the finished board over the real one.
+    @ViewBuilder
+    private var goalAndInstruction: some View {
+        let text = Text(instruction)
+            .font(.title2.weight(.semibold))
+            .foregroundStyle(Color.espresso)
+            .multilineTextAlignment(.center)
+        if typeSize.isAccessibilitySize {
+            text
+            Button(action: showGoal) {
+                Text(AppLanguage.localized("game.numberslide.goal.show"))
+                    .font(.title2.weight(.semibold))
+                    .multilineTextAlignment(.center)
+            }
+            .buttonStyle(AnswerTileStyle(minHeight: 100))
+            .disabled(showingGoal || puzzle == nil)
+        } else {
+            HStack(spacing: 16) {
+                text.frame(maxWidth: .infinity)
+                if let puzzle { GoalBoard(size: puzzle.size) }
+            }
+        }
+    }
+
+    /// Three seconds of the finished board, then the player's own board again.
+    private func showGoal() {
+        guard let puzzle else { return }
+        showingGoal = true
+        AccessibilityNotification.Announcement(Self.goalLabel(size: puzzle.size)).post()
+        goalTask?.cancel()
+        goalTask = FinishBeat.after(seconds: 3) { showingGoal = false }
+    }
+
+    /// "Goal: 1 to 8 in order, the space last."
+    static func goalLabel(size: Int) -> String {
+        AppLanguage.localized("game.numberslide.goal \(size * size - 1)" as String.LocalizationValue)
     }
 
     // MARK: - Controls
@@ -283,6 +333,8 @@ struct NumberSlideView: View {
         var generator = SystemRandomNumberGenerator()
         let fresh = NumberSlidePuzzle.deal(for: difficulty, using: &generator)
         puzzle = fresh
+        goalTask?.cancel()
+        showingGoal = false
         guideTile =
             FirstPlayGuideStore.shouldShow(.numberSlide) ? NumberSlideSolver.hint(from: fresh).map { fresh.tiles[$0] } : nil
         hintsUsed = 0
@@ -312,6 +364,45 @@ struct NumberSlideView: View {
 /// The toy's colours. The tiles stay cream wood with crimson numbers in dark mode too, because they
 /// are the object, not the page; the tray is the game's ink, a shade deeper in dark mode so the
 /// cream tiles stand out on the dark surround. Number on face: 5.6:1.
+/// The finished board in miniature (#630): every number where it ends up and the gap last, in the
+/// toy's own wood and crimson. A picture, not a control; VoiceOver reads it as one line.
+private struct GoalBoard: View {
+    let size: Int
+
+    var body: some View {
+        let cell: CGFloat = size == 3 ? 26 : 21
+        VStack(spacing: 4) {
+            Text(AppLanguage.localized("game.numberslide.goal.title"))
+                .font(.headline)
+                .foregroundStyle(Color.espresso)
+            Grid(horizontalSpacing: 2, verticalSpacing: 2) {
+                ForEach(0..<size, id: \.self) { row in
+                    GridRow {
+                        ForEach(0..<size, id: \.self) { column in
+                            let number = row * size + column + 1
+                            if number < size * size {
+                                Text(verbatim: "\(number)")
+                                    .font(.system(size: cell * 0.5, weight: .heavy, design: .rounded))
+                                    .foregroundStyle(Wood.number)
+                                    .frame(width: cell, height: cell)
+                                    .background(Wood.face, in: .rect(cornerRadius: 4))
+                            } else {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(Color.black.opacity(0.38))
+                                    .frame(width: cell, height: cell)
+                            }
+                        }
+                    }
+                }
+            }
+            .padding(4)
+            .background(Wood.tray, in: .rect(cornerRadius: 8))
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(NumberSlideView.goalLabel(size: size))
+    }
+}
+
 private enum Wood {
     static let tray = Color(light: 0xA3283C, dark: 0x7E1F2F)
     static let face = Color(UIColor(rgb: 0xF6E2B8))
